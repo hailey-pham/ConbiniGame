@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="ConbiniGame"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+run/main_scene="res://node_2d.tscn"
+config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [dotnet]
