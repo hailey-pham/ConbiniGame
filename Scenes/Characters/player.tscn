@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c82k6db7jqgqs"]
+[gd_scene load_steps=54 format=3 uid="uid://c82k6db7jqgqs"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/player.cs" id="1_m3qxc"]
 [ext_resource type="Texture2D" uid="uid://7pt1f1mj2r1" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png" id="2_fyi1x"]
@@ -383,9 +383,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fqftc"]
+radius = 7.0
+height = 16.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_m3qxc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d0f5l")
 animation = &"idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_fqftc")
