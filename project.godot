@@ -23,8 +23,3 @@ window/size/viewport_height=1080
 [dotnet]
 
 project/assembly_name="ConbiniGame"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
