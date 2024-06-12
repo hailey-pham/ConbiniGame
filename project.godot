@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="ConbiniGame"
-run/main_scene="res://Scenes/node_2d.tscn"
+run/main_scene="res://Scenes/world.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=240
+window/size/viewport_width=256
 window/size/viewport_height=160
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
