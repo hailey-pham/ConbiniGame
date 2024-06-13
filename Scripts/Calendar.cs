@@ -4,8 +4,8 @@ using System;
 public partial class Calendar : Node2D
 {
     private int elapsedTime = 0;
-    private const int dayLength = 2; // change to 10 * 60 for the actual game
-    private const int seasonLength = 7; // 7 days per season
+    private const int dayLength = 2; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
+    private const int seasonLength = 7; // 7 days per season , or maybe 5?
 
     private int currentDay = 1;
     private int currentSeason = 1;
@@ -58,24 +58,28 @@ public partial class Calendar : Node2D
     }
 
     private void OnSeasonChange(int newSeason)
-    {
-        GD.Print("Season has changed to: " + newSeason);
-        switch (newSeason)
+    {   
+        // print and loop through seasons
+        int totalSeasons = 4;
+
+        int currentSeasonIndex = (newSeason - 1) % totalSeasons;
+
+        switch (currentSeasonIndex)
         {
-            case 1:
+            case 0:
                 GD.Print("It's Spring!");
                 break;
-            case 2:
+            case 1:
                 GD.Print("It's Summer!");
                 break;
-            case 3:
+            case 2:
                 GD.Print("It's Autumn!");
                 break;
-            case 4:
+            case 3:
                 GD.Print("It's Winter!");
                 break;
             default:
-                GD.Print("New Season: " + newSeason);
+                GD.Print("New Season: " + (currentSeasonIndex + 1));
                 break;
         }
     }
