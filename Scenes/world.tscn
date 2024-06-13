@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="3_lioy2"]
-[ext_resource type="PackedScene" uid="uid://cq6fojlwfxlai" path="res://Characters/npc.tscn" id="5_6ge08"]
 [ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
 [ext_resource type="Script" path="res://Scripts/Calendar.cs" id="6_v3x8q"]
 [ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="7_ufjg0"]
+[ext_resource type="PackedScene" uid="uid://eeusmhgxrluk" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(65, 148, 249, 153, 6, 153, 15, 148, 163, 54, 234, 75, 184, 75, 59, 62, 73, 53, 249, 7, 234, 125, 184, 125, 163, 7, 59, 12, 73, 7, 6, 6, 9, 12, 9, 62, 15, 98, 65, 98)
@@ -4170,22 +4170,23 @@ sources/0 = SubResource("TileSetAtlasSource_xmuob")
 y_sort_enabled = true
 script = ExtResource("1_j36vy")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Calendar" type="Node2D" parent="."]
 script = ExtResource("6_v3x8q")
 
-[node name="Timer" type="Timer" parent="Node2D"]
+[node name="Timer" type="Timer" parent="Calendar"]
 autostart = true
 
-[node name="CalendarLabel" type="Label" parent="Node2D"]
+[node name="CalendarLabel" type="Label" parent="Calendar"]
+z_index = 1
 offset_left = 2.0
 offset_top = 139.0
 offset_right = 42.0
 offset_bottom = 162.0
 theme_override_fonts/font = ExtResource("7_ufjg0")
 theme_override_font_sizes/font_size = 8
-metadata/_edit_use_anchors_ = true
 
-[node name="TimeLabel" type="Label" parent="Node2D"]
+[node name="TimeLabel" type="Label" parent="Calendar"]
+z_index = 1
 offset_left = 2.0
 offset_top = 148.0
 offset_right = 42.0
@@ -4229,8 +4230,8 @@ layer_1/tile_data = PackedInt32Array(65535, 458752, 1342177281, 131071, 458752, 
 [node name="Player" parent="." instance=ExtResource("3_gm0l6")]
 position = Vector2(98, 53)
 
-[node name="NPC" parent="." instance=ExtResource("5_6ge08")]
-position = Vector2(112, 120)
+[node name="npcSpawner" parent="." instance=ExtResource("9_w4hoi")]
+z_index = -1
+position = Vector2(128, 142)
 
-[node name="NPC2" parent="." instance=ExtResource("5_6ge08")]
-position = Vector2(220, 64)
+[connection signal="DayChanged" from="Calendar" to="npcSpawner" method="_on_calendar_day_changed"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://eeusmhgxrluk"]
+
+[ext_resource type="Texture2D" uid="uid://dual6cwvv8cy6" path="res://Assets/arrow.png" id="1_2fi0q"]
+[ext_resource type="Script" path="res://Scenes/Objects/npcSpawner.cs" id="1_tl1os"]
+[ext_resource type="PackedScene" uid="uid://cq6fojlwfxlai" path="res://Characters/npc.tscn" id="2_b8opk"]
+
+[node name="npcSpawner" type="Node2D"]
+script = ExtResource("1_tl1os")
+npcScene = ExtResource("2_b8opk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_2fi0q")

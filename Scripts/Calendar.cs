@@ -3,6 +3,10 @@ using System;
 
 public partial class Calendar : Node2D
 {
+
+    [Signal]
+    public delegate void DayChangedEventHandler();
+
     private int elapsedTime = 0;
     private const int dayLength = 2; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
     private const int seasonLength = 7; // 7 days per season , or maybe 5?
@@ -32,8 +36,11 @@ public partial class Calendar : Node2D
     private void OnTimerTimeout()
     {
         elapsedTime += 1;
+        //day has passed
         if (elapsedTime > dayLength)
         {
+            EmitSignal("DayChanged");
+
             elapsedTime = 0; // Reset elapsed time
             currentDay += 1;
             if (currentDay > seasonLength)
