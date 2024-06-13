@@ -1,13 +1,16 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class npc : CharacterBody2D
 {
     private NavigationAgent2D _navigationAgent;
+    private Timer _timer;
 
     private float _movementSpeed = 50.0f;
-    private Vector2 _movementTargetPosition = new Vector2(70.0f, 60.0f);
-    private Vector2 _movementTargetPosition2 = new Vector2(240.0f, 120.0f);
     private bool _isFirstMovementTargetPosition = true;
+
+    private List<Vector2> _movementTargets = new List<Vector2>();
+    private int _currentTargetIdx = 0;
 
     public Vector2 MovementTarget
     {
@@ -21,6 +24,19 @@ public partial class npc : CharacterBody2D
 
         _navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 
+        _timer = GetNode<Timer>("Timer");
+
+        foreach (Node counter in GetTree().GetNodesInGroup("counters"))
+        {
+            Marker2D marker2D = counter.GetNode<Marker2D>("Marker2D");
+
+            if (marker2D != null)
+            {
+                _movementTargets.Add(marker2D.GlobalPosition);
+            }
+        }
+            
+
         // These values need to be adjusted for the actor's speed
         // and the navigation layout.
         _navigationAgent.PathDesiredDistance = 4.0f;
@@ -28,6 +44,9 @@ public partial class npc : CharacterBody2D
 
         // Make sure to not await during _Ready.
         Callable.From(ActorSetup).CallDeferred();
+
+        //register the nav agent to the navserver for avoidance
+        NavigationServer2D.AgentSetAvoidanceCallback(_navigationAgent.GetRid(), new Callable(this, MethodName.AvoidanceCompleted));
     }
 
     public override void _PhysicsProcess(double delta)
@@ -36,16 +55,24 @@ public partial class npc : CharacterBody2D
 
         if (_navigationAgent.IsNavigationFinished())
         {
-            if(_isFirstMovementTargetPosition)
+            if(_timer.TimeLeft == 0)
             {
-                MovementTarget = _movementTargetPosition2;
-            }
-            else
-            {
-                MovementTarget = _movementTargetPosition;
-            }
+                RandomNumberGenerator rng = new RandomNumberGenerator();
+                _timer.WaitTime = rng.RandiRange(3, 8);
+                _timer.Timeout += () =>
+                {
+                    _currentTargetIdx += 1;
 
-            _isFirstMovementTargetPosition = !_isFirstMovementTargetPosition;
+                    if (_currentTargetIdx >= _movementTargets.Count)
+                    {
+                        _currentTargetIdx = 0;
+                    }
+
+                    MovementTarget = _movementTargets[_currentTargetIdx];
+                };
+
+                _timer.Start();
+            }
 
             Velocity = Vector2.Zero;
             return;
@@ -54,8 +81,7 @@ public partial class npc : CharacterBody2D
         Vector2 currentAgentPosition = GlobalTransform.Origin;
         Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
 
-        Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * _movementSpeed;
-        MoveAndSlide();
+        _navigationAgent.Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * _movementSpeed;
     }
 
     private async void ActorSetup()
@@ -64,6 +90,16 @@ public partial class npc : CharacterBody2D
         await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 
         // Now that the navigation map is no longer empty, set the movement target.
-        MovementTarget = _movementTargetPosition;
+        if (_movementTargets.Count != 0)
+        {
+            MovementTarget = _movementTargets[_currentTargetIdx];
+        }
+    }
+
+    //does the actual obstacle avoidance
+    private void AvoidanceCompleted(Vector3 newVelocity)
+    {
+        Velocity = new Vector2(newVelocity.X, newVelocity.Z);
+        MoveAndSlide();
     }
 }
