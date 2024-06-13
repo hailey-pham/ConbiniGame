@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=14 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_j36vy"]
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="3_lioy2"]
+[ext_resource type="PackedScene" uid="uid://cq6fojlwfxlai" path="res://Characters/npc.tscn" id="5_6ge08"]
+[ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
 [ext_resource type="Script" path="res://Scripts/Calendar.cs" id="6_v3x8q"]
 [ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="7_ufjg0"]
-[ext_resource type="PackedScene" uid="uid://cq6fojlwfxlai" path="res://Scenes/Characters/npc.tscn" id="5_6ge08"]
-[ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(65, 148, 249, 153, 6, 153, 15, 148, 163, 54, 234, 75, 184, 75, 59, 62, 73, 53, 249, 7, 234, 125, 184, 125, 163, 7, 59, 12, 73, 7, 6, 6, 9, 12, 9, 62, 15, 98, 65, 98)
