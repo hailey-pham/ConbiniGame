@@ -2,6 +2,5 @@
 
 [ext_resource type="Script" path="res://Scripts/AutoAnimator.cs" id="1_x4va0"]
 
-[node name="AutoAnimator" type="Node" node_paths=PackedStringArray("_animatedSprite")]
+[node name="AutoAnimator" type="Node"]
 script = ExtResource("1_x4va0")
-_animatedSprite = NodePath("")

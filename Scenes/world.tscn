@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=13 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_j36vy"]
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
-[ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Scenes/Characters/player.tscn" id="3_gm0l6"]
+[ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="3_lioy2"]
-[ext_resource type="PackedScene" uid="uid://cq6fojlwfxlai" path="res://Scenes/Characters/npc.tscn" id="5_6ge08"]
+[ext_resource type="PackedScene" uid="uid://cq6fojlwfxlai" path="res://Characters/npc.tscn" id="5_6ge08"]
+[ext_resource type="Script" path="res://Scripts/Calendar.cs" id="6_v3x8q"]
+[ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="7_ufjg0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(10, 149, 10, 10, 69, 11, 69, 57, 245, 149, 167, 58, 245, 11, 167, 11)
@@ -4165,6 +4167,29 @@ sources/0 = SubResource("TileSetAtlasSource_xetir")
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_j36vy")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("6_v3x8q")
+
+[node name="Timer" type="Timer" parent="Node2D"]
+autostart = true
+
+[node name="CalendarLabel" type="Label" parent="Node2D"]
+offset_left = 2.0
+offset_top = 139.0
+offset_right = 42.0
+offset_bottom = 162.0
+theme_override_fonts/font = ExtResource("7_ufjg0")
+theme_override_font_sizes/font_size = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabel" type="Label" parent="Node2D"]
+offset_left = 2.0
+offset_top = 148.0
+offset_right = 42.0
+offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("7_ufjg0")
+theme_override_font_sizes/font_size = 8
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_y8ues")

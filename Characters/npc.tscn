@@ -1,7 +1,7 @@
 [gd_scene load_steps=55 format=3 uid="uid://cq6fojlwfxlai"]
 
 [ext_resource type="Texture2D" uid="uid://7pt1f1mj2r1" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png" id="1_5gxp2"]
-[ext_resource type="Script" path="res://Scenes/Characters/npc.cs" id="1_ykupe"]
+[ext_resource type="Script" path="res://Characters/npc.cs" id="1_ykupe"]
 [ext_resource type="Texture2D" uid="uid://5g4xfw5kp3vl" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Alex_run_16x16.png" id="2_v2tgj"]
 [ext_resource type="PackedScene" uid="uid://bx5dch2keo0y7" path="res://Components/auto_animator.tscn" id="4_wro5x"]
 
