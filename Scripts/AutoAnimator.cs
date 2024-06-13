@@ -1,7 +1,5 @@
 using Godot;
 using System;
-using System.ComponentModel;
-using static Godot.TextServer;
 
 public partial class AutoAnimator : Node
 {

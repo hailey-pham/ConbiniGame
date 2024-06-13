@@ -6,6 +6,8 @@ public partial class npc : CharacterBody2D
 
     private float _movementSpeed = 50.0f;
     private Vector2 _movementTargetPosition = new Vector2(70.0f, 60.0f);
+    private Vector2 _movementTargetPosition2 = new Vector2(240.0f, 120.0f);
+    private bool _isFirstMovementTargetPosition = true;
 
     public Vector2 MovementTarget
     {
@@ -34,6 +36,17 @@ public partial class npc : CharacterBody2D
 
         if (_navigationAgent.IsNavigationFinished())
         {
+            if(_isFirstMovementTargetPosition)
+            {
+                MovementTarget = _movementTargetPosition2;
+            }
+            else
+            {
+                MovementTarget = _movementTargetPosition;
+            }
+
+            _isFirstMovementTargetPosition = !_isFirstMovementTargetPosition;
+
             Velocity = Vector2.Zero;
             return;
         }

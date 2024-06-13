@@ -4163,6 +4163,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xetir")
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_j36vy")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]

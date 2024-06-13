@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://7pt1f1mj2r1" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png" id="1_5gxp2"]
 [ext_resource type="Script" path="res://Scenes/Characters/npc.cs" id="1_ykupe"]
 [ext_resource type="Texture2D" uid="uid://5g4xfw5kp3vl" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Alex_run_16x16.png" id="2_v2tgj"]
-[ext_resource type="Script" path="res://Scripts/AutoAnimator.cs" id="4_aswu0"]
+[ext_resource type="PackedScene" uid="uid://bx5dch2keo0y7" path="res://Components/auto_animator.tscn" id="4_wro5x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mvrxx"]
 atlas = ExtResource("1_5gxp2")
@@ -389,9 +389,13 @@ radius = 5.0
 height = 10.0
 
 [node name="NPC" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_ykupe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.333333, 1, 0, 0.533333)
 sprite_frames = SubResource("SpriteFrames_f6cib")
 animation = &"walk_up"
 
@@ -401,6 +405,5 @@ shape = SubResource("CapsuleShape2D_yahj6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="AutoAnimator" type="Node" parent="." node_paths=PackedStringArray("_animatedSprite")]
-script = ExtResource("4_aswu0")
+[node name="AutoAnimator" parent="." node_paths=PackedStringArray("_animatedSprite") instance=ExtResource("4_wro5x")]
 _animatedSprite = NodePath("../AnimatedSprite2D")

@@ -27,6 +27,11 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="ConbiniGame"
 
+[editor]
+
+movie_writer/mjpeg_quality=1.0
+movie_writer/movie_file="C:/Users/gamer/Videos/Godot/movie.avi"
+
 [input]
 
 move_left={

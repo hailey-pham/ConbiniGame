@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx5dch2keo0y7"]
+
+[ext_resource type="Script" path="res://Scripts/AutoAnimator.cs" id="1_x4va0"]
+
+[node name="AutoAnimator" type="Node" node_paths=PackedStringArray("_animatedSprite")]
+script = ExtResource("1_x4va0")
+_animatedSprite = NodePath("")
