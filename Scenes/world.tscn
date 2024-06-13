@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
 [ext_resource type="Script" path="res://Scripts/Calendar.cs" id="6_v3x8q"]
 [ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="7_ufjg0"]
-[ext_resource type="PackedScene" uid="uid://eeusmhgxrluk" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
+[ext_resource type="PackedScene" uid="uid://4kb8ht7abd6i" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(65, 148, 249, 153, 6, 153, 15, 148, 163, 54, 234, 75, 184, 75, 59, 62, 73, 53, 249, 7, 234, 125, 184, 125, 163, 7, 59, 12, 73, 7, 6, 6, 9, 12, 9, 62, 15, 98, 65, 98)

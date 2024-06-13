@@ -404,7 +404,6 @@ animation = &"walk_up"
 shape = SubResource("CapsuleShape2D_yahj6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
 radius = 5.0
 
 [node name="AutoAnimator" parent="." node_paths=PackedStringArray("_animatedSprite") instance=ExtResource("4_wro5x")]
