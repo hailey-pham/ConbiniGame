@@ -4,3 +4,6 @@
 # vs ignore
 .vs/
 Properties/
+
+#vs code ignore
+.vscode/
