@@ -26,6 +26,8 @@ public partial class npc : CharacterBody2D
 
         _timer = GetNode<Timer>("Timer");
 
+        _timer.Timeout += OnTimerTimeout;
+
         foreach (Node counter in GetTree().GetNodesInGroup("counters"))
         {
             Marker2D marker2D = counter.GetNode<Marker2D>("Marker2D");
@@ -55,22 +57,10 @@ public partial class npc : CharacterBody2D
 
         if (_navigationAgent.IsNavigationFinished())
         {
-            if(_timer.TimeLeft == 0)
+            if (_timer.TimeLeft == 0)
             {
                 RandomNumberGenerator rng = new RandomNumberGenerator();
                 _timer.WaitTime = rng.RandiRange(3, 8);
-                _timer.Timeout += () =>
-                {
-                    _currentTargetIdx += 1;
-
-                    if (_currentTargetIdx >= _movementTargets.Count)
-                    {
-                        _currentTargetIdx = 0;
-                    }
-
-                    MovementTarget = _movementTargets[_currentTargetIdx];
-                };
-
                 _timer.Start();
             }
 
@@ -101,5 +91,19 @@ public partial class npc : CharacterBody2D
     {
         Velocity = new Vector2(newVelocity.X, newVelocity.Z);
         MoveAndSlide();
+    }
+
+    public void OnTimerTimeout()
+    {
+        {
+            _currentTargetIdx += 1;
+
+            if (_currentTargetIdx >= _movementTargets.Count)
+            {
+                _currentTargetIdx = 0;
+            }
+
+            MovementTarget = _movementTargets[_currentTargetIdx];
+        };
     }
 }
