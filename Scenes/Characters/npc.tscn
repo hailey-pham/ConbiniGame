@@ -396,14 +396,19 @@ script = ExtResource("1_ykupe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.333333, 1, 0, 0.533333)
+position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_f6cib")
 animation = &"walk_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
 shape = SubResource("CapsuleShape2D_yahj6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 7.0
 
 [node name="AutoAnimator" parent="." node_paths=PackedStringArray("_animatedSprite") instance=ExtResource("4_wro5x")]
 _animatedSprite = NodePath("../AnimatedSprite2D")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
