@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://4kb8ht7abd6i" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
-vertices = PackedVector2Array(65, 148, 249, 153, 6, 153, 15, 148, 163, 54, 234, 75, 184, 75, 59, 62, 73, 53, 249, 7, 234, 125, 184, 125, 163, 7, 59, 12, 73, 7, 6, 6, 9, 12, 9, 62, 15, 98, 65, 98)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 1, 10, 5), PackedInt32Array(10, 1, 0, 11), PackedInt32Array(12, 9, 5, 4), PackedInt32Array(8, 7, 13, 14), PackedInt32Array(15, 14, 13, 16), PackedInt32Array(2, 15, 16, 17), PackedInt32Array(3, 2, 17, 18), PackedInt32Array(11, 0, 19, 6), PackedInt32Array(7, 6, 19, 18, 17)])
+vertices = PackedVector2Array(162, 56, 204, 61, 204, 103, 203, 103, 59, 62, 73, 53, 162, 53, 250, 56, 250, 61, 59, 12, 73, 7, 6, 6, 9, 12, 6, 66, 9, 62, 53, 66, 203, 153, 53, 153)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 6, 0), PackedInt32Array(0, 7, 8, 1), PackedInt32Array(5, 4, 9, 10), PackedInt32Array(11, 10, 9, 12), PackedInt32Array(13, 11, 12, 14), PackedInt32Array(15, 13, 14, 4), PackedInt32Array(4, 3, 16, 17, 15)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 159, 255, 159, 256, 1, 157, 2, 157, 48, 79, 47, 79, 2)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 6.0
@@ -4198,8 +4198,11 @@ theme_override_font_sizes/font_size = 8
 navigation_polygon = SubResource("NavigationPolygon_y8ues")
 
 [node name="counter" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(209, 100)
-rotation = 1.57079
+position = Vector2(228, 31)
+collision_layer = 3
+
+[node name="counter4" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+position = Vector2(187, 31)
 collision_layer = 3
 
 [node name="counter2" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
@@ -4207,8 +4210,23 @@ position = Vector2(34, 37)
 collision_layer = 3
 
 [node name="counter3" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(40, 123)
+position = Vector2(28, 132)
 rotation = -1.57079
+collision_layer = 3
+
+[node name="counter5" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+position = Vector2(28, 91)
+rotation = -1.57079
+collision_layer = 3
+
+[node name="counter6" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+position = Vector2(229, 86)
+rotation = 1.57079
+collision_layer = 3
+
+[node name="counter7" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+position = Vector2(228, 128)
+rotation = 1.57079
 collision_layer = 3
 
 [node name="Tilemaps" type="Node2D" parent="."]
@@ -4232,6 +4250,7 @@ position = Vector2(98, 53)
 
 [node name="npcSpawner" parent="." instance=ExtResource("9_w4hoi")]
 z_index = -1
+y_sort_enabled = true
 position = Vector2(128, 142)
 
 [connection signal="DayChanged" from="Calendar" to="npcSpawner" method="_on_calendar_day_changed"]

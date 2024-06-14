@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 public partial class npc : CharacterBody2D
 {
+
+    [Export]
+    public float _clusterRadius = 10f;
+
     private static RandomNumberGenerator rng = new RandomNumberGenerator();
 
     private NavigationAgent2D _navigationAgent;
@@ -103,7 +107,7 @@ public partial class npc : CharacterBody2D
         // Now that the navigation map is no longer empty, set the movement target.
         if (_movementTargets.Count != 0)
         {
-            SetMovementTargetWithRadius(_movementTargets[_currentTargetIdx], 5f);
+            SetMovementTargetWithRadius(_movementTargets[_currentTargetIdx], _clusterRadius);
         }
     }
 
@@ -140,7 +144,7 @@ public partial class npc : CharacterBody2D
                 _currentTargetIdx = 0;
             }
 
-            SetMovementTargetWithRadius(_movementTargets[_currentTargetIdx], 5f);
+            SetMovementTargetWithRadius(_movementTargets[_currentTargetIdx], _clusterRadius);
         };
     }
 }
