@@ -1,11 +1,15 @@
 using Godot;
 using System;
+using System.Reflection;
 
 public partial class player : CharacterBody2D
 {
 	public AnimatedSprite2D _animatedSprite;
 
-	public const float Speed = 100.0f;
+    [Signal]
+    public delegate void HitEventHandler();
+
+    public const float Speed = 100.0f;
 
     public override void _Ready()
     {
@@ -28,6 +32,20 @@ public partial class player : CharacterBody2D
 		}
 
 		Velocity = velocity;
-		MoveAndSlide();
+        MoveAndSlide();
+
+
+
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			var collision = GetSlideCollision(i);
+			var body = collision.GetCollider();
+			if (body.GetType() == typeof(Area2D))
+			{
+
+				EmitSignal(SignalName.Hit);
+			}
+		}
+
+		}
 	}
-}

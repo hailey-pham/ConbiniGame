@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://coulmodr8mtcn"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Box.cs" id="1_unjg0"]
+[ext_resource type="Texture2D" uid="uid://b6ddp7pjvamhk" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/free_overview.png" id="2_2j35w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_er7sw"]
+size = Vector2(28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njdc2"]
+atlas = ExtResource("2_2j35w")
+region = Rect2(160, 994, 28, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_61tgc"]
+radius = 23.0217
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_er7sw")
+
+[node name="Box" type="Area2D" parent="."]
+script = ExtResource("1_unjg0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Box"]
+texture = SubResource("AtlasTexture_njdc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+shape = SubResource("CircleShape2D_61tgc")
