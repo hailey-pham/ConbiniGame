@@ -3,9 +3,8 @@ using System;
 
 public partial class Box : Area2D
 {
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		this.BodyEntered += _on_body_entered;
 	}
@@ -13,7 +12,11 @@ public partial class Box : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-	}
+        if (Input.IsActionPressed("Interact")&&(HasOverlappingBodies()))
+        {
+			GetParent().QueueFree();
+        }
+    }
 
     public void _on_player_hit()
     {
@@ -21,10 +24,6 @@ public partial class Box : Area2D
     }
 	public void _on_body_entered(Node2D body)
 	{
-		 if (Input.IsActionPressed("Interact")) {
-			Hide();
-		}
-
-		GD.Print("Life is パン");
+		 GD.Print("Life is パン");
 	}
 }

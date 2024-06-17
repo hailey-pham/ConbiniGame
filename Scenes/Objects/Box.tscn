@@ -19,6 +19,7 @@ radius = 23.0217
 shape = SubResource("RectangleShape2D_er7sw")
 
 [node name="Box" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_unjg0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Box"]
