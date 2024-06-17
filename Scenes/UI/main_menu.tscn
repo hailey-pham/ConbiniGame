@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://cva2ki3loidwk"]
+
+[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_8t4c0"]
+[ext_resource type="FontFile" uid="uid://dmbcwifetnggt" path="res://Fonts/GrapeSoda.ttf" id="2_3w68x"]
+[ext_resource type="FontFile" uid="uid://damdlnryiy8jq" path="res://Fonts/Pixelary.otf" id="3_v2jjk"]
+
+[sub_resource type="Gradient" id="Gradient_0ugxd"]
+colors = PackedColorArray(0.838059, 0.0324538, 0.300923, 1, 0.983469, 0.514717, 7.70092e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ntyg1"]
+gradient = SubResource("Gradient_0ugxd")
+
+[sub_resource type="Theme" id="Theme_h1ahl"]
+default_font = ExtResource("2_3w68x")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_02efv"]
+default_font = ExtResource("3_v2jjk")
+default_font_size = 57
+
+[node name="MainMenu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8t4c0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_ntyg1")
+
+[node name="Title1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 21.0
+offset_right = 129.0
+offset_bottom = 69.0
+theme = SubResource("Theme_h1ahl")
+text = "Disa"
+
+[node name="Title2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 3.0
+offset_right = 196.0
+offset_bottom = 51.0
+theme = SubResource("Theme_02efv")
+text = "Store"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
