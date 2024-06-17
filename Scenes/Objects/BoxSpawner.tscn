@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cygwwqrh3o1i0"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/BoxSpawner.cs" id="1_vrma6"]
+[ext_resource type="PackedScene" uid="uid://coulmodr8mtcn" path="res://Scenes/Objects/Box.tscn" id="2_87qmt"]
+
+[node name="BoxSpawner" type="Node2D"]
+script = ExtResource("1_vrma6")
+BoxScene = ExtResource("2_87qmt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

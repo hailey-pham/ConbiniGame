@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c82k6db7jqgqs"]
+[gd_scene load_steps=56 format=3 uid="uid://c82k6db7jqgqs"]
 
 [ext_resource type="Script" path="res://Characters/player.cs" id="1_m3qxc"]
 [ext_resource type="SpriteFrames" uid="uid://cntid8k36wy6o" path="res://Characters/player.tres" id="2_bfod7"]
 [ext_resource type="Script" path="res://Scripts/AutoAnimator.cs" id="4_bmbay"]
+[ext_resource type="PackedScene" uid="uid://d0whnk0jytoo3" path="res://Scenes/Items/ItemSpawner.tscn" id="5_51nma"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fqftc"]
 radius = 5.0
@@ -23,3 +24,6 @@ shape = SubResource("CapsuleShape2D_fqftc")
 [node name="AutoAnimator" type="Node" parent="." node_paths=PackedStringArray("_animatedSprite")]
 script = ExtResource("4_bmbay")
 _animatedSprite = NodePath("../AnimatedSprite2D")
+
+[node name="ItemSpawner" parent="." instance=ExtResource("5_51nma")]
+position = Vector2(0, -8)
