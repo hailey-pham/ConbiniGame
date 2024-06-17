@@ -3,6 +3,8 @@ using System;
 
 public partial class Calendar : Node2D
 {
+    //TODO add floating point time representation
+    //% day progress
 
     [Signal]
     public delegate void DayChangedEventHandler();
