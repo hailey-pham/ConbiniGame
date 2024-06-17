@@ -41,7 +41,8 @@ public partial class Calendar : Node2D
 
         if (elapsedTime > dayLength)
         {
-            EmitSignal(nameof(DayChangedEventHandler));
+            //
+            EmitSignal(nameof(DayChanged));
 
             elapsedTime = 0; // reset elapsed time
             currentDay += 1;
