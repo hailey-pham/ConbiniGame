@@ -7,6 +7,11 @@ public partial class npc : CharacterBody2D
     [Export]
     public float _clusterRadius = 10f;
 
+    [Export]
+    public int _maxCounters = 3;
+
+    private int _counterNum = 0;
+
     private static RandomNumberGenerator rng = new RandomNumberGenerator();
 
     private NavigationAgent2D _navigationAgent;
@@ -46,6 +51,9 @@ public partial class npc : CharacterBody2D
 
         //pick a random target to go to
         _currentTargetIdx = rng.RandiRange(0, _movementTargets.Count-1);
+
+        //keep track of how many counters we've been to so far
+        _counterNum++;
             
 
         // These values need to be adjusted for the actor's speed
@@ -70,6 +78,7 @@ public partial class npc : CharacterBody2D
 
         if (_navigationAgent.IsNavigationFinished())
         {
+           
             if (_timer.TimeLeft == 0)
             {
                 _timer.WaitTime = rng.RandiRange(3, 8);
@@ -126,7 +135,9 @@ public partial class npc : CharacterBody2D
 
     public void OnTimerTimeout()
     {
-        {
+        if (_counterNum <= _maxCounters) {
+
+            _counterNum++;
 
             //a simple but effective way to prevevnt picking the same table twice
 
@@ -145,6 +156,11 @@ public partial class npc : CharacterBody2D
             }
 
             SetMovementTargetWithRadius(_movementTargets[_currentTargetIdx], _clusterRadius);
-        };
+        }
+        else
+        {
+            Marker2D marker = GetTree().GetFirstNodeInGroup("checkout").GetNode<Marker2D>("Marker2D");
+            MovementTarget = marker.GlobalPosition;
+        }
     }
 }
