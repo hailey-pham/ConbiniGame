@@ -38,4 +38,5 @@ position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nmy8p")
 
 [connection signal="TransferSignal" from="." to="Area2D" method="_on_counter_transfer_signal"]
+[connection signal="Delete" from="Area2D" to="ItemSpawner" method="_on_area_2d_delete"]
 [connection signal="InformSpawn" from="Area2D" to="ItemSpawner" method="_on_area_2d_inform_spawn"]

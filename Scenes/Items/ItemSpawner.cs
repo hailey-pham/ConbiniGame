@@ -31,4 +31,8 @@ public partial class ItemSpawner : Node2D
     {
         this.spawn();
     }
+    public void _on_area_2d_delete()
+    {
+
+    }
 }

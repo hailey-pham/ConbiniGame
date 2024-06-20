@@ -4,9 +4,11 @@ using System.Linq;
 
 public partial class counter_area : Area2D
 {
-
+    bool hasObject = false;
     [Signal]
     public delegate void InformSpawnEventHandler();
+    [Signal]
+    public delegate void DeleteEventHandler();
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -32,7 +34,16 @@ public partial class counter_area : Area2D
         //This is messy but I just want the player to interact :3
         if (interact && bodyChecker != null)
         {
-            EmitSignal("InformSpawn");
+            if(hasObject) {
+                hasObject = false;
+                EmitSignal("Delete");
+            } 
+            else
+            {
+                hasObject = true;
+                EmitSignal("InformSpawn");
+            }
+            
         }
     }
 
