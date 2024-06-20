@@ -17,7 +17,7 @@ public abstract partial class State : Node
 	//parameter is a dictionary with arbitrary data the state can use to initialize itself
 	public void _Enter()
 	{
-		_Enter(new Dictionary { });
+		_Enter(null);
 	}
 	abstract public void _Enter(Dictionary message);
 	//Called by the state machine before changing the active state. Use this function to clean up the state.

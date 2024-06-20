@@ -44,7 +44,7 @@ public partial class checkout : StaticBody2D
 	{
 		var npc = npcs.Dequeue();
 
-		npc.LeaveStore();
+		//npc.LeaveStore();
 
         Timer.Start();
     }

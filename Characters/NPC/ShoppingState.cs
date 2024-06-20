@@ -16,9 +16,23 @@ public partial class ShoppingState : State
     private int _counterNum = 0;
     private int _currentTargetIdx = 0;
 
+    private npc npcScript;
+
     private static RandomNumberGenerator rng = new RandomNumberGenerator();
     public override void _Enter(Dictionary message)
     {
+        //check for reference to parent
+        if (message != null)
+        {
+            Variant temp;
+            if (message.TryGetValue("npcBody", out temp))
+            {
+                //set our npcBody reference to what was passed in the message dictionary
+                npcScript = (npc) temp;
+            }
+        }
+
+        //link our timer callback to the timeout signal of the timer
         timer.Timeout += Timer_Timeout;
 
         //get all the counters in the store and save their positions for later
@@ -37,6 +51,30 @@ public partial class ShoppingState : State
 
         //keep track of how many counters we've been to so far
         _counterNum++;
+
+        //tell npc to move to a target position
+        npcScript.MoveToPositionOffset(_movementTargets[_currentTargetIdx]);
+    }
+
+    
+    public override void _Exit()
+    {
+        
+    }
+
+    public override void _Handle_Input(InputEvent input)
+    {
+
+    }
+
+    public override void _Physics_Update(double delta)
+    {
+
+    }
+
+    public override void _Update(double delta)
+    {
+
     }
 
     private void Timer_Timeout()
@@ -56,35 +94,12 @@ public partial class ShoppingState : State
 
             _currentTargetIdx = newTargetIdx;
 
-            if (_currentTargetIdx >= _movementTargets.Count)
-            {
-                _currentTargetIdx = 0;
-            }
+            npcScript.MoveToPositionOffset(_movementTargets[newTargetIdx]);
         }
         else
         {
             //we're done browsing, so let's now checkout
             stateMachine.TransitionTo("CheckoutState");
         }
-    }
-
-    public override void _Exit()
-    {
-        
-    }
-
-    public override void _Handle_Input(InputEvent input)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void _Physics_Update(double delta)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void _Update(double delta)
-    {
-        throw new NotImplementedException();
     }
 }

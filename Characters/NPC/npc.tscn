@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cq6fojlwfxlai"]
+[gd_scene load_steps=58 format=3 uid="uid://cq6fojlwfxlai"]
 
 [ext_resource type="Script" path="res://Characters/NPC/npc.cs" id="1_5h8m4"]
 [ext_resource type="Texture2D" uid="uid://7pt1f1mj2r1" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png" id="2_05cy8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bx5dch2keo0y7" path="res://Components/auto_animator.tscn" id="4_1men2"]
 [ext_resource type="Script" path="res://Scripts/StateMachine.cs" id="5_rvei0"]
 [ext_resource type="Script" path="res://Characters/NPC/ShoppingState.cs" id="6_7k7ox"]
+[ext_resource type="Script" path="res://Characters/NPC/IdleState.cs" id="7_rotgl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mvrxx"]
 atlas = ExtResource("2_05cy8")
@@ -396,6 +397,7 @@ y_sort_enabled = true
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_5h8m4")
+spreadFactor = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
@@ -406,17 +408,24 @@ animation = &"walk_up"
 shape = SubResource("CapsuleShape2D_yahj6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
 radius = 5.0
+debug_enabled = true
 
 [node name="AutoAnimator" parent="." node_paths=PackedStringArray("_animatedSprite") instance=ExtResource("4_1men2")]
 _animatedSprite = NodePath("../AnimatedSprite2D")
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("5_rvei0")
-initialState = NodePath("ShoppingState")
+initialState = NodePath("IdleState")
 
-[node name="ShoppingState" type="Node" parent="StateMachine"]
+[node name="ShoppingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer")]
 script = ExtResource("6_7k7ox")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/ShoppingState"]
+one_shot = true
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("7_rotgl")
