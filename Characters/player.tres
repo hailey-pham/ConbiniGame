@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=31 format=3 uid="uid://cxg0dpwvedpps"]
+[gd_resource type="SpriteFrames" load_steps=31 format=3 uid="uid://kcffbk2lujrl"]
 
-[ext_resource type="Texture2D" uid="uid://cr5cdtou8lcag" path="res://Assets/MC_SpriteV1_16x32.png" id="1_i3wsf"]
+[ext_resource type="Texture2D" uid="uid://t1v7l0euxo0o" path="res://Assets/MC_SpriteV1_16x32.png" id="1_i3wsf"]
 [ext_resource type="Texture2D" uid="uid://5g4xfw5kp3vl" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Alex_run_16x16.png" id="2_5wqa6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3tgu"]
