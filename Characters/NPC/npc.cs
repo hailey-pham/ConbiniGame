@@ -25,7 +25,6 @@ public partial class npc : CharacterBody2D
     private Timer _timer;
 
     private float _movementSpeed = 50.0f;
-    private bool _isFirstMovementTargetPosition = true;
 
     private List<Vector2> _movementTargets = new List<Vector2>();
     private int _currentTargetIdx = 0;
