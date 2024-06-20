@@ -10,6 +10,13 @@ public partial class npc : CharacterBody2D
     [Export]
     public int _maxCounters = 3;
 
+
+    //will be used to let the counter know this NPC wants to check out
+    [Signal]
+    public delegate void NPCCheckoutEventHandler(npc npc);
+
+    private Node2D _checkout;
+
     private int _counterNum = 0;
 
     private static RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -22,6 +29,17 @@ public partial class npc : CharacterBody2D
 
     private List<Vector2> _movementTargets = new List<Vector2>();
     private int _currentTargetIdx = 0;
+
+    private bool leaving = false;
+
+    enum STATE
+    {
+        shopping,
+        checkout,
+        leaving
+    }
+
+    private STATE _state = STATE.shopping;
 
     public Vector2 MovementTarget
     {
@@ -36,6 +54,13 @@ public partial class npc : CharacterBody2D
         _navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 
         _timer = GetNode<Timer>("Timer");
+
+        //get a reference to our checkout counter when we spawn
+        _checkout = (Node2D) GetTree().GetFirstNodeInGroup("checkout");
+
+        //link our signal to the callback in checkout
+        checkout checkoutScript = _checkout as checkout;
+        NPCCheckout += checkoutScript.OnNPCCheckout;
 
         _timer.Timeout += OnTimerTimeout;
 
@@ -79,6 +104,15 @@ public partial class npc : CharacterBody2D
         if (_navigationAgent.IsNavigationFinished())
         {
            
+            //if we've made it back to the front of the store, die
+            if(leaving)
+            {
+                QueueFree();
+            }
+
+            //emit the signal for the counter to pick up
+            EmitSignal(nameof(NPCCheckout), this);
+
             if (_timer.TimeLeft == 0)
             {
                 _timer.WaitTime = rng.RandiRange(3, 8);
@@ -159,8 +193,15 @@ public partial class npc : CharacterBody2D
         }
         else
         {
+            //tell NPC to wait for checkout
             Marker2D marker = GetTree().GetFirstNodeInGroup("checkout").GetNode<Marker2D>("Marker2D");
             MovementTarget = marker.GlobalPosition;
         }
+    }
+
+    public void LeaveStore()
+    {
+        MovementTarget = GetParent<Node2D>().Position;
+        leaving = true;
     }
 }
