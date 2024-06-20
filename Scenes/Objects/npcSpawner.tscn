@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dual6cwvv8cy6" path="res://Assets/arrow.png" id="1_2fi0q"]
 [ext_resource type="Script" path="res://Scenes/Objects/npcSpawner.cs" id="1_tl1os"]
-[ext_resource type="PackedScene" uid="uid://cq6fojlwfxlai" path="res://Characters/npc.tscn" id="2_b8opk"]
+[ext_resource type="PackedScene" path="res://Characters/NPC/npc.tscn" id="2_b8opk"]
 
 [sub_resource type="Curve" id="Curve_icla7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.256735, 0.504716), 0.0, 0.0, 0, 0, Vector2(0.502377, 0.319586), 0.0, 0.0, 0, 0, Vector2(0.752773, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

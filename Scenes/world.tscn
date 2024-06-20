@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="PackedScene" uid="uid://coulmodr8mtcn" path="res://Scenes/Objects/Box.tscn" id="5_5kxiv"]
 [ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
-[ext_resource type="PackedScene" uid="uid://b6lbfdmn2glcc" path="res://Scenes/Objects/checkout.tscn" id="6_qywxc"]
+[ext_resource type="PackedScene" uid="uid://byaiw4cj1167a" path="res://Scenes/Objects/checkout.tscn" id="6_qywxc"]
 [ext_resource type="Script" path="res://Scripts/Calendar.cs" id="6_v3x8q"]
 [ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="7_ufjg0"]
 [ext_resource type="PackedScene" uid="uid://4kb8ht7abd6i" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
@@ -898,5 +898,5 @@ offset_bottom = 40.0
 
 [connection signal="DayChanged" from="Calendar" to="npcSpawner" method="_on_calendar_day_changed"]
 [connection signal="DayChanged" from="Calendar" to="BoxSpawner" method="_on_calendar_day_changed"]
-[connection signal="Hit" from="Player" to="NavigationRegion2D/counter" method="_on_player_hit"]
 [connection signal="DayPercent" from="Calendar" to="npcSpawner" method="_on_calendar_day_percent"]
+[connection signal="Hit" from="Player" to="NavigationRegion2D/counter" method="_on_player_hit"]
