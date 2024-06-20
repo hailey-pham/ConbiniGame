@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dury0hel2kujq"]
+[gd_scene load_steps=8 format=3 uid="uid://dury0hel2kujq"]
 
+[ext_resource type="Script" path="res://Scenes/Objects/counter.cs" id="1_fpsiv"]
 [ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="1_q77ev"]
 [ext_resource type="PackedScene" uid="uid://d0whnk0jytoo3" path="res://Scenes/Items/ItemSpawner.tscn" id="2_eykgy"]
+[ext_resource type="Script" path="res://Scenes/Objects/counter_area.cs" id="3_yqw4r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2u0fd"]
 atlas = ExtResource("1_q77ev")
@@ -14,6 +16,7 @@ size = Vector2(38, 38)
 size = Vector2(42, 51)
 
 [node name="counter" type="StaticBody2D" groups=["counters"]]
+script = ExtResource("1_fpsiv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_2u0fd")
@@ -24,11 +27,15 @@ position = Vector2(0, 19)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8qfgq")
 
+[node name="ItemSpawner" parent="." instance=ExtResource("2_eykgy")]
+position = Vector2(0, -6)
+
 [node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_yqw4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nmy8p")
 
-[node name="ItemSpawner" parent="." instance=ExtResource("2_eykgy")]
-position = Vector2(0, -6)
+[connection signal="TransferSignal" from="." to="Area2D" method="_on_counter_transfer_signal"]
+[connection signal="InformSpawn" from="Area2D" to="ItemSpawner" method="_on_area_2d_inform_spawn"]

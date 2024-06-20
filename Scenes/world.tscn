@@ -4263,3 +4263,4 @@ position = Vector2(126, 102)
 
 [connection signal="DayChanged" from="Calendar" to="npcSpawner" method="_on_calendar_day_changed"]
 [connection signal="DayChanged" from="Calendar" to="BoxSpawner" method="_on_calendar_day_changed"]
+[connection signal="Hit" from="Player" to="NavigationRegion2D/counter" method="_on_player_hit"]

@@ -3,13 +3,11 @@ using System;
 
 public partial class counter : StaticBody2D
 {
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    //takes a signal from the player and then gives that signal to the Area2d counter :3
+    [Signal]
+    public delegate void TransferSignalEventHandler();
+    public void _on_player_hit()
     {
-    }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
+        EmitSignal("TransferSignal");
     }
 }

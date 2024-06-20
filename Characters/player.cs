@@ -8,6 +8,8 @@ public partial class player : CharacterBody2D
 
     [Signal]
     public delegate void HitEventHandler();
+	[Signal]
+	public delegate void ItemHoldEventHandler();
 
     public const float Speed = 100.0f;
 
@@ -35,14 +37,13 @@ public partial class player : CharacterBody2D
         MoveAndSlide();
 
 
-
 		for (int i = 0; i < GetSlideCollisionCount(); i++)
 		{
 			var collision = GetSlideCollision(i);
 			var body = collision.GetCollider();
 			if (body.GetType() == typeof(Area2D))
 			{
-
+				GD.Print("Touchy :3");
 				EmitSignal(SignalName.Hit);
 			}
 		}
