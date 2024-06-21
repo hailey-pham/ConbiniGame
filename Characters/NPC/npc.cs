@@ -14,7 +14,7 @@ public partial class npc : CharacterBody2D
 
     private RandomNumberGenerator rng = new RandomNumberGenerator();
 
-    private StateMachine stateMachine;
+    public StateMachine stateMachine;
 
     public NavigationAgent2D _navigationAgent;
 
@@ -30,13 +30,6 @@ public partial class npc : CharacterBody2D
         //get references to all our component nodes
         _navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         stateMachine = GetNode("StateMachine") as StateMachine;
-
-        Dictionary message = new Dictionary
-        {
-            { "npcBody", this}
-        };
-
-        stateMachine.TransitionTo("ShoppingState", message);
 
         Callable.From(ActorSetup).CallDeferred();
     }
@@ -54,12 +47,6 @@ public partial class npc : CharacterBody2D
             return;
         }
 
-        //update MovementTarget if we received a changed _movementTargetPosition
-        if (_movementTargetPosition != MovementTarget)
-        {
-            MovementTarget = _movementTargetPosition;
-        }
-
         //actually move the dude
         Vector2 currentAgentPosition = GlobalTransform.Origin;
         Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
@@ -74,7 +61,7 @@ public partial class npc : CharacterBody2D
         //gives a random offset vector
         Vector2 offset = new Vector2(rng.RandfRange(-1,1), rng.RandfRange(-1,1)).Normalized() * spreadFactor;
 
-        _movementTargetPosition = pos + offset;
+        MovementTarget = pos + offset;
     }
 
     private async void ActorSetup()
@@ -84,5 +71,14 @@ public partial class npc : CharacterBody2D
 
         // Now that the navigation map is no longer empty, set the movement target.
         MovementTarget = _movementTargetPosition;
+
+        //now that navigation is online, let's start shopping!
+        Dictionary message = new Dictionary
+        {
+            { "npcScript", this}
+        };
+
+        //transition to our shopping state
+        stateMachine.TransitionTo("ShoppingState", message);
     }
 }

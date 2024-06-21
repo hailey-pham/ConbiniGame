@@ -22,4 +22,9 @@ public abstract partial class State : Node
 	abstract public void _Enter(Dictionary message);
 	//Called by the state machine before changing the active state. Use this function to clean up the state.
 	abstract public void _Exit();
+
+	public Node GetGrandparent()
+	{
+		return GetParent().GetParent();
+	}
 }

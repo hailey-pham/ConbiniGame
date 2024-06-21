@@ -18,14 +18,19 @@ public partial class ShoppingState : State
 
     private npc npcScript;
 
+    private Dictionary message;
+
     private static RandomNumberGenerator rng = new RandomNumberGenerator();
     public override void _Enter(Dictionary message)
     {
+        //save a copy of our message for later
+        this.message = message;
+
         //check for reference to parent
         if (message != null)
         {
             Variant temp;
-            if (message.TryGetValue("npcBody", out temp))
+            if (message.TryGetValue("npcScript", out temp))
             {
                 //set our npcBody reference to what was passed in the message dictionary
                 npcScript = (npc) temp;
@@ -54,12 +59,14 @@ public partial class ShoppingState : State
 
         //tell npc to move to a target position
         npcScript.MoveToPositionOffset(_movementTargets[_currentTargetIdx]);
+        npcScript._navigationAgent.NavigationFinished += OnNavigationFinished;
     }
 
     
     public override void _Exit()
     {
-        
+        //unsubscribe from callback
+        npcScript._navigationAgent.NavigationFinished -= OnNavigationFinished;
     }
 
     public override void _Handle_Input(InputEvent input)
@@ -67,6 +74,11 @@ public partial class ShoppingState : State
 
     }
 
+
+    public void OnNavigationFinished()
+    {
+        timer.Start();
+    }
     public override void _Physics_Update(double delta)
     {
 
@@ -98,8 +110,8 @@ public partial class ShoppingState : State
         }
         else
         {
-            //we're done browsing, so let's now checkout
-            stateMachine.TransitionTo("CheckoutState");
+            //we're done browsing, so let's now checkout and pass the npcScript through our copied message
+            stateMachine.TransitionTo("CheckoutState",message);
         }
     }
 }

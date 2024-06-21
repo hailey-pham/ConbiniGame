@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cq6fojlwfxlai"]
+[gd_scene load_steps=60 format=3 uid="uid://cq6fojlwfxlai"]
 
 [ext_resource type="Script" path="res://Characters/NPC/npc.cs" id="1_5h8m4"]
 [ext_resource type="Texture2D" uid="uid://7pt1f1mj2r1" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png" id="2_05cy8"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine.cs" id="5_rvei0"]
 [ext_resource type="Script" path="res://Characters/NPC/ShoppingState.cs" id="6_7k7ox"]
 [ext_resource type="Script" path="res://Characters/NPC/IdleState.cs" id="7_rotgl"]
+[ext_resource type="Script" path="res://Characters/NPC/CheckoutState.cs" id="8_oj45i"]
+[ext_resource type="Script" path="res://Characters/NPC/LeaveState.cs" id="9_67rdb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mvrxx"]
 atlas = ExtResource("2_05cy8")
@@ -411,7 +413,6 @@ shape = SubResource("CapsuleShape2D_yahj6")
 path_desired_distance = 4.0
 target_desired_distance = 4.0
 radius = 5.0
-debug_enabled = true
 
 [node name="AutoAnimator" parent="." node_paths=PackedStringArray("_animatedSprite") instance=ExtResource("4_1men2")]
 _animatedSprite = NodePath("../AnimatedSprite2D")
@@ -429,3 +430,9 @@ one_shot = true
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("7_rotgl")
+
+[node name="CheckoutState" type="Node" parent="StateMachine"]
+script = ExtResource("8_oj45i")
+
+[node name="LeaveState" type="Node" parent="StateMachine"]
+script = ExtResource("9_67rdb")

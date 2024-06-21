@@ -882,7 +882,7 @@ layer_1/tile_data = PackedInt32Array(65535, 458752, 1342177281, 131071, 458752, 
 [node name="Player" parent="." instance=ExtResource("3_gm0l6")]
 position = Vector2(98, 53)
 
-[node name="npcSpawner" parent="." instance=ExtResource("9_w4hoi")]
+[node name="npcSpawner" parent="." groups=["spawner"] instance=ExtResource("9_w4hoi")]
 z_index = -1
 y_sort_enabled = true
 position = Vector2(128, 142)
