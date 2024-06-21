@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=15 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_j36vy"]
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
@@ -799,6 +799,10 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xmuob")
 
+[sub_resource type="Curve" id="Curve_ksfjb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
+point_count = 2
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_j36vy")
@@ -886,7 +890,7 @@ position = Vector2(98, 53)
 z_index = -1
 y_sort_enabled = true
 position = Vector2(128, 142)
-spawnCurve = null
+spawnCurve = SubResource("Curve_ksfjb")
 
 [node name="BoxSpawner" parent="." instance=ExtResource("10_2clb6")]
 position = Vector2(126, 102)
@@ -899,4 +903,5 @@ offset_bottom = 40.0
 
 [connection signal="DayChanged" from="Calendar" to="npcSpawner" method="_on_calendar_day_changed"]
 [connection signal="DayChanged" from="Calendar" to="BoxSpawner" method="_on_calendar_day_changed"]
+[connection signal="DayPercent" from="Calendar" to="npcSpawner" method="_on_calendar_day_percent"]
 [connection signal="Hit" from="Player" to="NavigationRegion2D/counter" method="_on_player_hit"]

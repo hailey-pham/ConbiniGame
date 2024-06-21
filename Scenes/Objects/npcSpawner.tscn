@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://4kb8ht7abd6i"]
+[gd_scene load_steps=5 format=3 uid="uid://4kb8ht7abd6i"]
 
 [ext_resource type="Texture2D" uid="uid://dual6cwvv8cy6" path="res://Assets/arrow.png" id="1_2fi0q"]
 [ext_resource type="Script" path="res://Scenes/Objects/npcSpawner.cs" id="1_tl1os"]
