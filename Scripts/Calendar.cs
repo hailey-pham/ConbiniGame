@@ -46,7 +46,7 @@ public partial class Calendar : Node2D
 
         int newPercent = elapsedTime * 100/dayLength;
 
-        if(newPercent > dayPercent)
+        if(newPercent != dayPercent)
         {
             dayPercent = newPercent;
             EmitSignal(SignalName.DayPercent, dayPercent);
