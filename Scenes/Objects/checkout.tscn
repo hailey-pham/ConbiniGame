@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckmqad1bi4jb6"]
+[gd_scene load_steps=7 format=3 uid="uid://byaiw4cj1167a"]
 
+[ext_resource type="Script" path="res://Scenes/Objects/checkout.cs" id="1_m18t2"]
 [ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="1_yvgt8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xetir"]
@@ -3374,7 +3375,12 @@ sources/0 = SubResource("TileSetAtlasSource_xetir")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ya7dp"]
 size = Vector2(74, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_key52"]
+size = Vector2(46, 9)
+
 [node name="Checkout" type="StaticBody2D" groups=["checkout"]]
+collision_layer = 2
+script = ExtResource("1_m18t2")
 
 [node name="Foreground 16px" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1i7w2")
@@ -3387,3 +3393,14 @@ shape = SubResource("RectangleShape2D_ya7dp")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 22)
+
+[node name="PlayerCheck" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+position = Vector2(8, -8.5)
+shape = SubResource("RectangleShape2D_key52")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
