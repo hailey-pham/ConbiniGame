@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c82k6db7jqgqs"]
 
 [ext_resource type="Script" path="res://Characters/player.cs" id="1_m3qxc"]
-[ext_resource type="SpriteFrames" uid="uid://cxg0dpwvedpps" path="res://Characters/player.tres" id="2_bfod7"]
+[ext_resource type="SpriteFrames" uid="uid://kcffbk2lujrl" path="res://Characters/player.tres" id="2_bfod7"]
 [ext_resource type="Script" path="res://Scripts/AutoAnimator.cs" id="4_bmbay"]
 [ext_resource type="PackedScene" uid="uid://d0whnk0jytoo3" path="res://Scenes/Items/ItemSpawner.tscn" id="5_51nma"]
 
