@@ -42,10 +42,11 @@ public partial class checkout : StaticBody2D
 	//called when our timer finishes
 	public void OnTimerTimeout()
 	{
-		var npc = npcs.Dequeue();
-
-		npc.stateMachine.TransitionTo("LeaveState");
-
-        Timer.Start();
+		if (npcs.Count > 0)
+		{
+            var npc = npcs.Dequeue();
+            npc.stateMachine.TransitionTo("LeaveState");
+            Timer.Start();
+        }
     }
 }
