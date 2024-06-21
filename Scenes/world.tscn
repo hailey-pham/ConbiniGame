@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_j36vy"]
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/Box.tscn" id="5_5kxiv"]
+[ext_resource type="PackedScene" uid="uid://coulmodr8mtcn" path="res://Scenes/Objects/Box.tscn" id="5_5kxiv"]
 [ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/checkout.tscn" id="6_qywxc"]
+[ext_resource type="PackedScene" uid="uid://ckmqad1bi4jb6" path="res://Scenes/Objects/checkout.tscn" id="6_qywxc"]
 [ext_resource type="Script" path="res://Scripts/Calendar.cs" id="6_v3x8q"]
 [ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="7_ufjg0"]
 [ext_resource type="PackedScene" uid="uid://4kb8ht7abd6i" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/BoxSpawner.tscn" id="10_2clb6"]
+[ext_resource type="PackedScene" uid="uid://cygwwqrh3o1i0" path="res://Scenes/Objects/BoxSpawner.tscn" id="10_2clb6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(146, 122, 146, 82, 203, 103, 203, 153, 53, 153, 106, 122, 106, 82, 53, 66, 59, 62, 73, 53, 162, 53, 162, 56, 250, 56, 250, 61, 204, 61, 59, 12, 73, 7, 6, 6, 9, 12, 6, 66, 9, 62, 204, 103)
