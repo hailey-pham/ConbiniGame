@@ -1,10 +1,10 @@
 using Godot;
 using Godot.Collections;
+using System.Collections.Generic;
 
 public partial class npc : CharacterBody2D
 {
     //handles movement and calling state manager stuff
-
     [Export]
     private float speed = 50f;
 
@@ -18,13 +18,19 @@ public partial class npc : CharacterBody2D
 
     public NavigationAgent2D _navigationAgent;
 
-    private Vector2 _movementTargetPosition = new Vector2(70.0f, 226.0f);
+    //using a private variable and a public property in case I want to change it down the line
+    private List<ItemRes> shoppingCart = new List<ItemRes>();
+    public List<ItemRes> ShoppingCart { get => shoppingCart; set => shoppingCart = value; }
 
+    private Vector2 _movementTargetPosition = new Vector2(70.0f, 226.0f);
     public Vector2 MovementTarget
     {
         get { return _navigationAgent.TargetPosition; }
         set { _navigationAgent.TargetPosition = value; }
     }
+
+    
+
     public override void _Ready()
     {
         //get references to all our component nodes

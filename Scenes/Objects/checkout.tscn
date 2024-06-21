@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://byaiw4cj1167a"]
+[gd_scene load_steps=8 format=3 uid="uid://byaiw4cj1167a"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/checkout.cs" id="1_m18t2"]
 [ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="1_yvgt8"]
+[ext_resource type="PackedScene" uid="uid://d0xhd3com77f6" path="res://Scenes/UI/sell_animation.tscn" id="2_5r7tm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xetir"]
 texture = ExtResource("1_yvgt8")
@@ -3381,6 +3382,7 @@ size = Vector2(46, 9)
 [node name="Checkout" type="StaticBody2D" groups=["checkout"]]
 collision_layer = 2
 script = ExtResource("1_m18t2")
+sellAnimation = ExtResource("2_5r7tm")
 
 [node name="Foreground 16px" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1i7w2")

@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 public partial class checkout : StaticBody2D
 {
+	//the animation that will play when an item is sold
+	[Export]
+	private PackedScene sellAnimation;
+
 	Timer Timer;
 	Area2D PlayerCheck;
 
@@ -45,8 +49,18 @@ public partial class checkout : StaticBody2D
 		if (npcs.Count > 0)
 		{
             var npc = npcs.Dequeue();
+			npc.ShoppingCart.ForEach(SellItem);
             npc.stateMachine.TransitionTo("LeaveState");
-            Timer.Start();
         }
+
+        Timer.Start();
+    }
+
+	public void SellItem(ItemRes item)
+	{
+        var anim = sellAnimation.Instantiate();
+        var animScript = anim as sell_animation;
+		animScript.Value = item.price;
+		AddChild(anim);
     }
 }

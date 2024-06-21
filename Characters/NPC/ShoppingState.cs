@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 public partial class ShoppingState : State
 {
+    //get rid of this testItem later
+    [Export]
+    public ItemRes testItem;
+
     [Export]
     public int _maxCounters = 3;
 
@@ -60,6 +64,9 @@ public partial class ShoppingState : State
         //tell npc to move to a target position
         npcScript.MoveToPositionOffset(_movementTargets[_currentTargetIdx]);
         npcScript._navigationAgent.NavigationFinished += OnNavigationFinished;
+
+        //add the test item to the shoppingCart (get rid of later)
+        npcScript.ShoppingCart.Add(testItem);
     }
 
     
