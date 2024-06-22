@@ -4172,30 +4172,6 @@ sources/0 = SubResource("TileSetAtlasSource_xmuob")
 y_sort_enabled = true
 script = ExtResource("1_j36vy")
 
-[node name="Calendar" type="Node2D" parent="."]
-script = ExtResource("6_v3x8q")
-
-[node name="Timer" type="Timer" parent="Calendar"]
-autostart = true
-
-[node name="CalendarLabel" type="Label" parent="Calendar"]
-z_index = 1
-offset_left = 2.0
-offset_top = 139.0
-offset_right = 42.0
-offset_bottom = 162.0
-theme_override_fonts/font = ExtResource("7_ufjg0")
-theme_override_font_sizes/font_size = 8
-
-[node name="TimeLabel" type="Label" parent="Calendar"]
-z_index = 1
-offset_left = 2.0
-offset_top = 148.0
-offset_right = 42.0
-offset_bottom = 171.0
-theme_override_fonts/font = ExtResource("7_ufjg0")
-theme_override_font_sizes/font_size = 8
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_y8ues")
 
@@ -4261,6 +4237,30 @@ position = Vector2(128, 142)
 [node name="BoxSpawner" parent="." instance=ExtResource("10_2clb6")]
 position = Vector2(126, 102)
 
+[node name="Calendar" type="Node2D" parent="."]
+script = ExtResource("6_v3x8q")
+
+[node name="Timer" type="Timer" parent="Calendar"]
+autostart = true
+
+[node name="CalendarLabel" type="Label" parent="Calendar"]
+z_index = 1
+offset_left = 2.0
+offset_top = 139.0
+offset_right = 42.0
+offset_bottom = 162.0
+theme_override_fonts/font = ExtResource("7_ufjg0")
+theme_override_font_sizes/font_size = 8
+
+[node name="TimeLabel" type="Label" parent="Calendar"]
+z_index = 1
+offset_left = 2.0
+offset_top = 148.0
+offset_right = 42.0
+offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("7_ufjg0")
+theme_override_font_sizes/font_size = 8
+
+[connection signal="Hit" from="Player" to="NavigationRegion2D/counter" method="_on_player_hit"]
 [connection signal="DayChanged" from="Calendar" to="npcSpawner" method="_on_calendar_day_changed"]
 [connection signal="DayChanged" from="Calendar" to="BoxSpawner" method="_on_calendar_day_changed"]
-[connection signal="Hit" from="Player" to="NavigationRegion2D/counter" method="_on_player_hit"]

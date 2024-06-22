@@ -12,7 +12,7 @@ public partial class Calendar : Node2D
     private int dayPercent = 0;
 
     private int elapsedTime = 0;
-    private const int dayLength = 10; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
+    private const int dayLength = 2; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
     private const int seasonLength = 7; // 7 days per season, or maybe 5?
 
     private int currentDay = 1;
@@ -22,6 +22,8 @@ public partial class Calendar : Node2D
     private Label timeLabel;
     private Label calendarLabel;
     private string[] seasons = { "Spring", "Summer", "Autumn", "Winter" };
+
+    public SceneManager sceneManager { get; set; }
 
     public override void _Ready()
     {
@@ -33,6 +35,8 @@ public partial class Calendar : Node2D
         // get the label nodes
         timeLabel = GetNode<Label>("TimeLabel");
         calendarLabel = GetNode<Label>("CalendarLabel");
+
+        sceneManager = GetTree().Root.GetNode<SceneManager>("SceneManager");
 
         CustomizeLabels();
 
@@ -68,6 +72,7 @@ public partial class Calendar : Node2D
             else
             {
                 UpdateCalendarLabel();
+                ShowEndOfDayMenu();
             }
         }
         else
@@ -93,6 +98,18 @@ public partial class Calendar : Node2D
 
         GD.Print("Season has changed to: " + currentSeasonStr);
         UpdateCalendarLabel();
+    }
+    private void ShowEndOfDayMenu()
+    {
+        if (sceneManager != null)
+        {
+            sceneManager.ShowEndOfDayMenu();
+            GetTree().Paused = true;
+        }
+        else
+        {
+            GD.PrintErr("SceneManager is not found!");
+        }
     }
 
     private void CustomizeLabels()
