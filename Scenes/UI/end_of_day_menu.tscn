@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcfcdw8pkwlja"]
+[gd_scene load_steps=5 format=3 uid="uid://cmungyp8u20xa"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_lu53v"]
 [ext_resource type="Script" path="res://Scenes/UI/EndOfDay.cs" id="2_ney3s"]
@@ -33,10 +33,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+<<<<<<< Updated upstream
 offset_left = 5.0
 offset_top = 7.0
 offset_right = 5.0
 offset_bottom = 7.0
+=======
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 7.0
+offset_bottom = 4.0
+>>>>>>> Stashed changes
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
