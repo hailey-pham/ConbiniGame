@@ -5,5 +5,5 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - run: sudo snap install godot-mono --classic
-      - run: godot-mono --headless --path / --export-release windows Builds/Disastore.exe
+      - run: godot-mono --headless --path $GITHUB_WORKSPACE --export-release windows Builds/Disastore.exe
       
