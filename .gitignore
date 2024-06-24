@@ -9,4 +9,4 @@ Properties/
 .vscode/
 
 #Build folder ignore
-.Builds/
+Builds/
