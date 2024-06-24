@@ -4,6 +4,7 @@ jobs:
   build-game:
     runs-on: ubuntu-22.04
     steps:
+      - run: export DISPLAY=":0"
       - run: sudo snap install godot-mono --classic
       - run: godot-mono --headless --path $GITHUB_WORKSPACE --export-release windows Builds/Disastore.exe
       
