@@ -12,7 +12,8 @@ public partial class Calendar : Node2D
     private int dayPercent = 0;
 
     private int elapsedTime = 0;
-    private const int dayLength = 1 * 60; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
+    // private const int dayLength = 1 * 60; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
+    private const int dayLength = 2;
     private const int seasonLength = 7; // 7 days per season, or maybe 5?
 
     private int currentDay = 1;
@@ -23,8 +24,12 @@ public partial class Calendar : Node2D
     private Label calendarLabel;
     private string[] seasons = { "Spring", "Summer", "Autumn", "Winter" };
 
+    private SceneManager sceneManager;
+
     public override void _Ready()
     {
+        // get scenemanager
+        sceneManager = GetNode<SceneManager>("/root/SceneManager");
         // get the timer node
         Timer timer = GetNode<Timer>("Timer");
         timer.Timeout += OnTimerTimeout;
@@ -68,6 +73,8 @@ public partial class Calendar : Node2D
             else
             {
                 UpdateCalendarLabel();
+                sceneManager.ChangeScene("endofdayscene");
+
             }
         }
         else

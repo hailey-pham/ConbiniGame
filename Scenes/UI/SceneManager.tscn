@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://mflw1eotysg8"]
+
+[ext_resource type="Script" path="res://Scenes/UI/SceneManager.cs" id="1_6tj8r"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_6tj8r")
+scenes = {
+"endofdayscene": "res://Scenes/UI/end_of_day_menu.tscn",
+"gamescene": "res://Scenes/world.tscn"
+}
