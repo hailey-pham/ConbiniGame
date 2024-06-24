@@ -7,3 +7,6 @@ Properties/
 
 #vs code ignore
 .vscode/
+
+#Build folder ignore
+.Builds/
