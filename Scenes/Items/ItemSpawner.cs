@@ -32,11 +32,11 @@ public partial class ItemSpawner : Node2D
             currContains.Add(ItemBox);
         }
     }
-    public void _on_area_2d_inform_spawn()
+    public void signal_inform_spawn()
     {
         this.spawn();
     }
-    public void _on_area_2d_delete()
+    public void signal_delete()
     {
         foreach (Node a in currContains)
         {

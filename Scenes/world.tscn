@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=18 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_j36vy"]
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
@@ -10,8 +10,10 @@
 [ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="7_ufjg0"]
 [ext_resource type="PackedScene" uid="uid://4kb8ht7abd6i" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
 [ext_resource type="PackedScene" uid="uid://cygwwqrh3o1i0" path="res://Scenes/Objects/BoxSpawner.tscn" id="10_2clb6"]
+[ext_resource type="AudioStream" uid="uid://cqnmkwfii3ctx" path="res://Assets/Music/welcome.wav" id="10_34kgt"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="11_il57l"]
 [ext_resource type="Script" path="res://Scenes/MoneyLabel.cs" id="12_qyo2m"]
+[ext_resource type="AudioStream" uid="uid://sivy414r7kf4" path="res://Assets/Music/Shop Theme.wav" id="13_e5adc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(146, 122, 146, 82, 203, 103, 203, 153, 53, 153, 106, 122, 106, 82, 53, 66, 59, 62, 73, 53, 162, 53, 162, 56, 250, 56, 250, 61, 204, 61, 59, 12, 73, 7, 6, 6, 9, 12, 6, 66, 9, 62, 204, 103)
@@ -802,10 +804,6 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_xmuob")
 
-[sub_resource type="Curve" id="Curve_ksfjb"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
-point_count = 2
-
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_j36vy")
@@ -874,6 +872,7 @@ position = Vector2(126, 102)
 
 [node name="Checkout" parent="NavigationRegion2D" instance=ExtResource("6_qywxc")]
 position = Vector2(113, 30)
+sellAnimation = null
 
 [node name="Tilemaps" type="Node2D" parent="."]
 
@@ -893,7 +892,11 @@ position = Vector2(98, 53)
 z_index = -1
 y_sort_enabled = true
 position = Vector2(128, 142)
-spawnCurve = SubResource("Curve_ksfjb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="npcSpawner"]
+stream = ExtResource("10_34kgt")
+volume_db = -8.0
+max_polyphony = 2
 
 [node name="BoxSpawner" parent="." instance=ExtResource("10_2clb6")]
 position = Vector2(126, 102)
@@ -921,6 +924,11 @@ text = " Money:0"
 fit_content = true
 scroll_active = false
 script = ExtResource("12_qyo2m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_e5adc")
+volume_db = -6.0
+autoplay = true
 
 [connection signal="DayChanged" from="Calendar" to="npcSpawner" method="_on_calendar_day_changed"]
 [connection signal="DayChanged" from="Calendar" to="BoxSpawner" method="_on_calendar_day_changed"]
