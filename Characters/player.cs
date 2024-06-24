@@ -54,7 +54,6 @@ public partial class player : CharacterBody2D
 			var body = collision.GetCollider();
 			if (body.GetType() == typeof(Area2D))
 			{
-				GD.Print("Touchy :3");
 				EmitSignal(SignalName.Hit);
 			}
 		}
@@ -64,13 +63,11 @@ public partial class player : CharacterBody2D
 		//If the palyer shoudn't have the object and it has spawned, then it will despawn
         if (playerHasObject == true && objectIsSpawned == false)
         {
-			GD.Print("Amogus1");
 			objectIsSpawned = true;
             EmitSignal("InformSpawn");
         }
 		else if (playerHasObject == false && objectIsSpawned == true)
 		{
-            GD.Print("2Gus");
             objectIsSpawned = false;
             EmitSignal("Delete");
         }
