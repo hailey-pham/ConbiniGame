@@ -12,7 +12,7 @@ public partial class Calendar : Node2D
     private int dayPercent = 0;
 
     private int elapsedTime = 0;
-    private const int dayLength = 1 * 60; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
+    private const int dayLength = 2; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
     private const int seasonLength = 7; // 7 days per season, or maybe 5?
 
     private int currentDay = 1;
@@ -98,6 +98,10 @@ public partial class Calendar : Node2D
         UpdateCalendarLabel();
     }
 
+    private void ShowEndOfDayMenu()
+    {
+
+    }
  
     private void CustomizeLabels()
     {

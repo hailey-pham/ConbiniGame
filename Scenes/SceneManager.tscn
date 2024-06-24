@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu42l5ifnspxf"]
+[gd_scene load_steps=3 format=3 uid="uid://x73b25qa1icr"]
 
 [ext_resource type="Script" path="res://Scenes/SceneManager.cs" id="1_vp37v"]
 [ext_resource type="PackedScene" uid="uid://c7rjtc6wfqbbo" path="res://Scenes/world.tscn" id="2_3153a"]
@@ -6,3 +6,6 @@
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_vp37v")
 gamescene = ExtResource("2_3153a")
+scenes = {
+"gamescene": "res://Scenes/world.tscn"
+}

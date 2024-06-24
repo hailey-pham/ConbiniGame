@@ -1,15 +1,18 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class SceneManager : Node
 {
 	[Export]
 	public PackedScene gamescene;
+	[Export]
+	public Dictionary scenes;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		var scene = gamescene.Instantiate();
-		AddChild(scene);
+		PackedScene scene = (PackedScene) GD.Load((string) scenes["gamescene"]);
+		AddChild(scene.Instantiate());
 		
 	}
 
@@ -24,6 +27,16 @@ public partial class SceneManager : Node
 			}
 		}
     }
+
+	public void ChangeScene(string sceneName)
+	{
+		// removes current loaded scene
+        foreach (var child in GetChildren())
+        {
+            RemoveChild(child);
+        }
+    }
+
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
