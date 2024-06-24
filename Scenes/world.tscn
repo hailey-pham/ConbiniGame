@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=17 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_j36vy"]
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
@@ -10,6 +10,8 @@
 [ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="7_ufjg0"]
 [ext_resource type="PackedScene" uid="uid://4kb8ht7abd6i" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
 [ext_resource type="PackedScene" uid="uid://cygwwqrh3o1i0" path="res://Scenes/Objects/BoxSpawner.tscn" id="10_2clb6"]
+[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="11_il57l"]
+[ext_resource type="Script" path="res://Scenes/MoneyLabel.cs" id="12_qyo2m"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(146, 122, 146, 82, 203, 103, 203, 153, 53, 153, 106, 122, 106, 82, 53, 66, 59, 62, 73, 53, 162, 53, 162, 56, 250, 56, 250, 61, 204, 61, 59, 12, 73, 7, 6, 6, 9, 12, 6, 66, 9, 62, 204, 103)
@@ -4237,30 +4239,29 @@ position = Vector2(128, 142)
 [node name="BoxSpawner" parent="." instance=ExtResource("10_2clb6")]
 position = Vector2(126, 102)
 
-[node name="Calendar" type="Node2D" parent="."]
-script = ExtResource("6_v3x8q")
-
-[node name="Timer" type="Timer" parent="Calendar"]
-autostart = true
-
-[node name="CalendarLabel" type="Label" parent="Calendar"]
+[node name="UI" type="Control" parent="."]
 z_index = 1
-offset_left = 2.0
-offset_top = 139.0
-offset_right = 42.0
-offset_bottom = 162.0
-theme_override_fonts/font = ExtResource("7_ufjg0")
-theme_override_font_sizes/font_size = 8
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="TimeLabel" type="Label" parent="Calendar"]
-z_index = 1
+[node name="MoneyLabel" type="RichTextLabel" parent="UI"]
+layout_mode = 0
 offset_left = 2.0
-offset_top = 148.0
-offset_right = 42.0
-offset_bottom = 171.0
-theme_override_fonts/font = ExtResource("7_ufjg0")
-theme_override_font_sizes/font_size = 8
+offset_top = 1.0
+offset_right = 110.0
+offset_bottom = 41.0
+theme = ExtResource("11_il57l")
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 0
+bbcode_enabled = true
+text = " Money:0"
+fit_content = true
+scroll_active = false
+script = ExtResource("12_qyo2m")
 
-[connection signal="Hit" from="Player" to="NavigationRegion2D/counter" method="_on_player_hit"]
 [connection signal="DayChanged" from="Calendar" to="npcSpawner" method="_on_calendar_day_changed"]
 [connection signal="DayChanged" from="Calendar" to="BoxSpawner" method="_on_calendar_day_changed"]

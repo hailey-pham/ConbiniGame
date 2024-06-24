@@ -10,11 +10,17 @@ public partial class globals : Node
 	public static Dictionary<string, ItemRes> _stock = new Dictionary<string, ItemRes>(); 
 	public static int _purchaseCost;
 
+	//signal to tell money GUI to update
+	[Signal]
+	public delegate void MoneyUpdatedEventHandler(int money);
 
-	public static int Money
+	public int Money
 	{
 		get { return _money; }
-		set { _money = value; }
+		set {
+			_money = value;
+			EmitSignal(nameof(MoneyUpdated), _money);
+        }
 	}
 
 	// Called when the node enters the scene tree for the first time.
