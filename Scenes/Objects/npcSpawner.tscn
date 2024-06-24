@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cq6fojlwfxlai" path="res://Characters/NPC/npc.tscn" id="2_oe3xl"]
 
 [sub_resource type="Curve" id="Curve_icla7"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
+_data = [Vector2(0, 0.100612), 0.0, 0.259294, 0, 1, Vector2(1, 0.0978698), -1.64932, 0.0, 1, 0]
 point_count = 2
 
 [node name="npcSpawner" type="Node2D"]
