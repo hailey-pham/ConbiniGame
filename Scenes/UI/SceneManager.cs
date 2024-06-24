@@ -5,13 +5,12 @@ using System;
 public partial class SceneManager : Node
 {
     [Export]
-    public PackedScene gamescene;
-    [Export]
     public Dictionary scenes;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        PackedScene scene = (PackedScene)GD.Load((string)scenes["gamescene"]);
+        //load the main menu when the game starts
+        PackedScene scene = (PackedScene)GD.Load((string)scenes["mainmenu"]);
         AddChild(scene.Instantiate());
 
     }
@@ -36,7 +35,7 @@ public partial class SceneManager : Node
             RemoveChild(child);
         }
 
-        PackedScene scene = (PackedScene)GD.Load((string)scenes["endofdayscene"]);
+        PackedScene scene = (PackedScene)GD.Load((string)scenes[sceneName]);
         AddChild(scene.Instantiate());
     }
 
