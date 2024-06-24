@@ -4,8 +4,6 @@ jobs:
   build-game:
     runs-on: ubuntu-22.04
     steps:
-      - run: sudo apt update
-      - run: sudo apt install snapd
       - run: sudo snap install godot-mono --classic
       - run: godot-mono --headless --path / --export-release windows Builds/Disastore.exe
       
