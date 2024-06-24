@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://Scripts/Calendar.cs" id="6_v3x8q"]
 [ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="7_ufjg0"]
 [ext_resource type="PackedScene" uid="uid://4kb8ht7abd6i" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
+[ext_resource type="AudioStream" uid="uid://dud835hk2ffu6" path="res://Assets/Music/Irrashaimase.wav" id="9_wpaow"]
 [ext_resource type="PackedScene" uid="uid://cygwwqrh3o1i0" path="res://Scenes/Objects/BoxSpawner.tscn" id="10_2clb6"]
-[ext_resource type="AudioStream" uid="uid://cqnmkwfii3ctx" path="res://Assets/Music/welcome.wav" id="10_34kgt"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="11_il57l"]
 [ext_resource type="Script" path="res://Scenes/MoneyLabel.cs" id="12_qyo2m"]
 [ext_resource type="AudioStream" uid="uid://sivy414r7kf4" path="res://Assets/Music/Shop Theme.wav" id="13_e5adc"]
@@ -891,8 +891,8 @@ y_sort_enabled = true
 position = Vector2(128, 142)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="npcSpawner"]
-stream = ExtResource("10_34kgt")
-volume_db = -8.0
+stream = ExtResource("9_wpaow")
+volume_db = -4.0
 max_polyphony = 2
 
 [node name="BoxSpawner" parent="." instance=ExtResource("10_2clb6")]
