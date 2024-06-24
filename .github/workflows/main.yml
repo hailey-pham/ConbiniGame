@@ -4,6 +4,7 @@ jobs:
   build-game:
     runs-on: ubuntu-22.04
     steps:
+      - run: echo $GITHUB_WORKSPACE
       - run: sudo apt-get update && sudo apt-get install -y dotnet-sdk-6.0
       - run: sudo snap install godot-mono --classic
       - run: godot-mono --display-driver headless --audio-driver Dummy --path $GITHUB_WORKSPACE --export-release windows Builds/Disastore.exe
