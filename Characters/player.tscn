@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c82k6db7jqgqs"]
 
 [ext_resource type="Script" path="res://Characters/player.cs" id="1_m3qxc"]
-[ext_resource type="SpriteFrames" uid="uid://cxg0dpwvedpps" path="res://Characters/player.tres" id="2_bfod7"]
+[ext_resource type="SpriteFrames" uid="uid://kcffbk2lujrl" path="res://Characters/player.tres" id="2_bfod7"]
 [ext_resource type="Script" path="res://Scripts/AutoAnimator.cs" id="4_bmbay"]
 [ext_resource type="PackedScene" uid="uid://d0whnk0jytoo3" path="res://Scenes/Items/ItemSpawner.tscn" id="5_51nma"]
 
@@ -11,11 +11,12 @@ height = 10.0
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_mask = 2
 script = ExtResource("1_m3qxc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_bfod7")
-animation = &"idle_up"
+animation = &"walk_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)

@@ -6,6 +6,11 @@ public partial class npcSpawner : Node2D
 	[Export]
 	public PackedScene npcScene;
 
+	[Export]
+	public Curve spawnCurve;
+
+	private RandomNumberGenerator random = new RandomNumberGenerator();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -17,12 +22,27 @@ public partial class npcSpawner : Node2D
 	}
 
 	public void _on_calendar_day_changed()
+    {
+    }
+
+    private void SpawnNPC()
+    {
+        if (npcScene != null)
+        {
+            Node newNpc = npcScene.Instantiate();
+            newNpc.Set("z_as_relative", false);
+            AddChild(newNpc);
+        }
+    }
+
+    public void _on_calendar_day_percent(int percent)
 	{
-		if (npcScene != null)
+		var spawnProbability = spawnCurve.Sample(percent/100f);
+		var randomNum = random.Randf();
+
+		if(spawnProbability > randomNum)
 		{
-			Node newNpc = npcScene.Instantiate();
-			newNpc.Set("z_as_relative", false);
-			AddChild(newNpc);
+			SpawnNPC();
 		}
 	}
 }
