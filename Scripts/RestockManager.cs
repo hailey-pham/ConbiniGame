@@ -9,10 +9,12 @@ public partial class RestockManager : Node
 	Label totalCostLabel;
 	Label currentMoneyLabel;
 	private bool purchaseMade;
-
+	private globals globals;
 	public override void _Ready()
 	{
-		GiveMoney();
+        globals = GetNode<globals>("/root/Globals");
+
+        GiveMoney();
 		purchaseMade = false;
 		totalCostLabel = GetNode<Label>("TotalCost");
 		currentMoneyLabel = GetNode<Label>("CurrentMoney");
