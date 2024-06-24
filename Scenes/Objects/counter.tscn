@@ -13,7 +13,7 @@ region = Rect2(13, 161, 38, 37)
 size = Vector2(38, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmy8p"]
-size = Vector2(42, 51)
+size = Vector2(38, 51)
 
 [node name="counter" type="StaticBody2D" groups=["counters"]]
 script = ExtResource("1_fpsiv")
@@ -37,5 +37,5 @@ script = ExtResource("3_yqw4r")
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nmy8p")
 
-[connection signal="Delete" from="Area2D" to="ItemSpawner" method="_on_area_2d_delete"]
-[connection signal="InformSpawn" from="Area2D" to="ItemSpawner" method="_on_area_2d_inform_spawn"]
+[connection signal="Delete" from="Area2D" to="ItemSpawner" method="signal_delete"]
+[connection signal="InformSpawn" from="Area2D" to="ItemSpawner" method="signal_inform_spawn"]

@@ -4,6 +4,9 @@ using System.Reflection;
 
 public partial class player : CharacterBody2D
 {
+
+	public bool playerHasObject;
+	bool objectIsSpawned;
 	public AnimatedSprite2D _animatedSprite;
 
     [Signal]
@@ -11,14 +14,22 @@ public partial class player : CharacterBody2D
 	[Signal]
 	public delegate void ItemHoldEventHandler();
 
+    [Signal]
+    public delegate void InformSpawnEventHandler();
+    [Signal]
+    public delegate void DeleteEventHandler();
+
     public const float Speed = 100.0f;
 
     public override void _Ready()
     {
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		playerHasObject = true;
+		objectIsSpawned = false;
     }
     public override void _PhysicsProcess(double delta)
 	{
+
 		Vector2 velocity = Velocity;
 
 		// Get the input direction and handle the movement/deceleration.
@@ -48,5 +59,23 @@ public partial class player : CharacterBody2D
 			}
 		}
 
-		}
-	}
+		
+		//If player should have the object and it hasn't spawned, it will spawn.
+		//If the palyer shoudn't have the object and it has spawned, then it will despawn
+        if (playerHasObject == true && objectIsSpawned == false)
+        {
+			GD.Print("Amogus1");
+			objectIsSpawned = true;
+            EmitSignal("InformSpawn");
+        }
+		else if (playerHasObject == false && objectIsSpawned == true)
+		{
+            GD.Print("2Gus");
+            objectIsSpawned = false;
+            EmitSignal("Delete");
+        }
+		
+
+    }
+
+}

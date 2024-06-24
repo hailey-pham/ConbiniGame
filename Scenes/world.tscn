@@ -872,6 +872,7 @@ position = Vector2(126, 102)
 
 [node name="Checkout" parent="NavigationRegion2D" instance=ExtResource("6_qywxc")]
 position = Vector2(113, 30)
+sellAnimation = null
 
 [node name="Tilemaps" type="Node2D" parent="."]
 
