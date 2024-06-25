@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bx5dch2keo0y7" path="res://Components/auto_animator.tscn" id="4_1men2"]
 [ext_resource type="Script" path="res://Scripts/StateMachine.cs" id="5_rvei0"]
 [ext_resource type="Script" path="res://Characters/NPC/ShoppingState.cs" id="6_7k7ox"]
-[ext_resource type="Resource" uid="uid://dqf5cmmqh5sjl" path="res://Resources/Water.tres" id="7_kaw0k"]
+[ext_resource type="Resource" uid="uid://dqf5cmmqh5sjl" path="res://Resources/Items/Water.tres" id="7_kaw0k"]
 [ext_resource type="Script" path="res://Characters/NPC/IdleState.cs" id="7_rotgl"]
 [ext_resource type="Script" path="res://Characters/NPC/CheckoutState.cs" id="8_oj45i"]
 [ext_resource type="Script" path="res://Characters/NPC/LeaveState.cs" id="9_67rdb"]

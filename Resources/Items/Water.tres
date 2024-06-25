@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://dqf5cmmqh5sjl"]
 
-[ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_bglej"]
+[ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_18x1s"]
 
 [resource]
-script = ExtResource("1_bglej")
+script = ExtResource("1_18x1s")
 name = "Water"
 price = 2
 restockPrice = 1
