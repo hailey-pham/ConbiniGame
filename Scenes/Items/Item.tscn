@@ -1,11 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://y158cnulujts"]
+[gd_scene load_steps=2 format=3 uid="uid://y158cnulujts"]
 
 [ext_resource type="Script" path="res://Scenes/Items/Item.cs" id="1_anxbx"]
-[ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_w1l14"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ryhm"]
-atlas = ExtResource("2_w1l14")
-region = Rect2(3, 836, 10, 10)
 
 [node name="Node2D" type="Node2D"]
 z_index = 1
@@ -13,4 +8,3 @@ script = ExtResource("1_anxbx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = SubResource("AtlasTexture_7ryhm")

@@ -6,6 +6,7 @@ public partial class ItemRes : Resource
 	[Export] public String name;
 	[Export] public int price;
 	[Export] public int restockPrice;
+	[Export] public Texture2D spriteTexture;
 
 	public int restockAmount = 0;
 	public int currentStock = 0;
