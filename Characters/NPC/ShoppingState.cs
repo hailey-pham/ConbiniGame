@@ -106,6 +106,8 @@ public partial class ShoppingState : State
             //i hate this code so much
             var item = thisItemSpawner.currContains[0] as Item;
             npcScript.ShoppingCart.Add(item.itemRes);
+            //very incorrectly use this code to get rid of the item
+            thisItemSpawner.signal_delete();
         }
 
         if (_counterNum <= _maxCounters)
@@ -127,8 +129,16 @@ public partial class ShoppingState : State
         }
         else
         {
-            //we're done browsing, so let's now checkout and pass the npcScript through our copied message
-            stateMachine.TransitionTo("CheckoutState",message);
+            if (npcScript.ShoppingCart.Count > 0)
+            {
+                //we're done browsing, so let's now checkout and pass the npcScript through our copied message
+                stateMachine.TransitionTo("CheckoutState", message);
+            }
+            else
+            {
+                stateMachine.TransitionTo("LeaveState");
+            }
+            
         }
     }
 }
