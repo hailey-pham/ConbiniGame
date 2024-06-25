@@ -10,6 +10,8 @@ public partial class globals : Node
 	public static Dictionary<string, ItemRes> _stock = new Dictionary<string, ItemRes>(); 
 	public static int _purchaseCost;
 
+	public static Dictionary<string, Upgrade> _upgrades = new Dictionary<string, Upgrade>();
+
 	//signal to tell money GUI to update
 	[Signal]
 	public delegate void MoneyUpdatedEventHandler(int money);
@@ -23,6 +25,14 @@ public partial class globals : Node
         }
 	}
 
+	public static Dictionary<string, Upgrade> Upgrades
+	{
+		get { return _upgrades; }
+		set {
+			_upgrades = value;
+		}
+	}
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -33,6 +43,18 @@ public partial class globals : Node
 		foreach (string fileName in fileNames) {
 			ItemRes resource = GD.Load<ItemRes>(path+fileName);
 			_stock.Add(resource.name, resource);
+		}
+
+		string pathU = "res://Resources/Upgrades/";
+		var dirU = DirAccess.Open(pathU);
+
+		string[] fileNamesU = dirU.GetFiles();
+		GD.Print(pathU);
+		foreach (string fileName in fileNamesU) {
+			GD.Print("Getting resource...");
+			Upgrade resourceU = GD.Load<Upgrade>(pathU+fileName);
+			GD.Print(resourceU.name);
+			_upgrades.Add(resourceU.name, resourceU);
 		}
 	}
 
