@@ -9,6 +9,9 @@ public partial class Calendar : Node2D
     [Signal]
     public delegate void DayPercentEventHandler(int percent);
 
+    [Signal]
+    public delegate void DisplayEndOfDayStatsEventHandler();
+
     private int dayPercent = 0;
 
     private int elapsedTime = 0;
@@ -24,6 +27,7 @@ public partial class Calendar : Node2D
     private string[] seasons = { "Spring", "Summer", "Autumn", "Winter" };
 
     private SceneManager sceneManager;
+    private globals globals;
 
     private Timer timer;
 
@@ -39,6 +43,8 @@ public partial class Calendar : Node2D
         timer = GetNode<Timer>("Timer");
         timer.Timeout += OnTimerTimeout;
 
+        globals = GetNode<globals>("/root/Globals");
+
         CustomizeLabels();
     }
 
@@ -46,9 +52,9 @@ public partial class Calendar : Node2D
     {
         elapsedTime += 1;
 
-        int newPercent = elapsedTime * 100/dayLength;
+        int newPercent = elapsedTime * 100 / dayLength;
 
-        if(newPercent != dayPercent)
+        if (newPercent != dayPercent)
         {
             dayPercent = newPercent;
             EmitSignal(SignalName.DayPercent, dayPercent);
@@ -57,6 +63,7 @@ public partial class Calendar : Node2D
         if (elapsedTime > dayLength)
         {
             EmitSignal(nameof(DayChanged));
+            globals.IncrementDay();
             //dont apply time when we change scenes to the next day
             timer.Stop();
 
@@ -76,9 +83,11 @@ public partial class Calendar : Node2D
                 {
                     sceneManager.ChangeScene("disasterscene");
                 }
+
                 else
                 {
                     sceneManager.ChangeScene("endofdayscene");
+                    EmitSignal(nameof(DisplayEndOfDayStats));
                 }
             }
         }
@@ -109,8 +118,9 @@ public partial class Calendar : Node2D
 
     private void OnSceneChanged(string sceneName)
     {
-        if(sceneName == "gamescene")
+        if (sceneName == "gamescene")
         {
+            globals.ResetEarnings(); // reset earnings at the start of the new day
             timer.Start();
             // get the label nodes
             timeLabel = GetNode<Label>("/root/SceneManager/World/UI/TimeLabel");
@@ -118,7 +128,7 @@ public partial class Calendar : Node2D
             UpdateCalendarLabel();
             OnSeasonChange(currentSeason);
         }
-     
+
     }
 
     private void CustomizeLabels()

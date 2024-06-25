@@ -10,13 +10,20 @@ public partial class globals : Node
 	public static Dictionary<string, ItemRes> _stock = new Dictionary<string, ItemRes>(); 
 	public static int _purchaseCost;
 
+	public static int _customers;
+	public static int _earnings;
+	public static int _day = 0;
+
 	public static Dictionary<string, Upgrade> _upgrades = new Dictionary<string, Upgrade>();
 
 	//signal to tell money GUI to update
 	[Signal]
 	public delegate void MoneyUpdatedEventHandler(int money);
 
-	public int Money
+    [Signal]
+    public delegate void EarningsUpdatedEventHandler(int earnings);
+
+    public int Money
 	{
 		get { return _money; }
 		set {
@@ -25,7 +32,28 @@ public partial class globals : Node
         }
 	}
 
-	public static Dictionary<string, Upgrade> Upgrades
+	public int Customers
+	{
+		get { return _customers; }
+		set { _customers = value; }
+	}
+    public static int Day
+    {
+        get { return _day; }
+        set { _day = value; }
+    }
+
+    public int Earnings
+    {
+        get { return _earnings; }
+        set
+        {
+            _earnings = value;
+            EmitSignal(nameof(EarningsUpdated), _earnings);
+        }
+    }
+
+    public static Dictionary<string, Upgrade> Upgrades
 	{
 		get { return _upgrades; }
 		set {
@@ -59,8 +87,18 @@ public partial class globals : Node
 		}
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    public void ResetEarnings()
+    {
+        Earnings = 0;
+    }
+
+    public static void IncrementDay()
+    {
+        _day++;
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 	}
 }

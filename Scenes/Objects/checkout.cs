@@ -63,7 +63,9 @@ public partial class checkout : StaticBody2D
 		animScript.Value = item.price;
 
         var globals = GetNode<globals>("/root/Globals");
+		globals.Earnings += item.price;
         globals.Money += item.price;
+		globals.Customers += 1;
 		AddChild(anim);
     }
 }

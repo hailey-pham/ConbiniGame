@@ -18,7 +18,7 @@ public partial class EndOfDay : Control
     private RichTextLabel earningsLabel;
     private RichTextLabel dayLabel;
 
-    private Calendar calendar;
+    private globals globals;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -33,6 +33,11 @@ public partial class EndOfDay : Control
         customersLabel = GetNode<RichTextLabel>("VBoxContainer/Customers");
         earningsLabel = GetNode<RichTextLabel>("VBoxContainer/Cash");
         dayLabel = GetNode<RichTextLabel>("VBoxContainer/Day");
+
+        globals = GetNode<globals>("/root/Globals");
+        globals.EarningsUpdated += UpdateEarningsLabel;
+
+        DisplayEndOfDayStats();
     }
 
     private void OnUpgradeButtonPressed()
@@ -53,11 +58,16 @@ public partial class EndOfDay : Control
         sceneManager.ChangeScene("gamescene");
     }
 
-    public void SetStats(string customers, string earnings, string day)
+    private void UpdateEarningsLabel(int newEarnings)
     {
-        customersLabel.Text = "10";
-        earningsLabel.Text = "$100";
-        dayLabel.Text = day;
+        earningsLabel.Text = "Cash Earned: $" + newEarnings.ToString();
     }
 
+    public void DisplayEndOfDayStats()
+    {
+        var globals = GetNode<globals>("/root/Globals");
+        customersLabel.Text = "Customers Serviced: " + globals.Customers.ToString();
+        earningsLabel.Text = "Cash Earned: $" + globals.Earnings.ToString();
+        dayLabel.Text = "End of Day: " + globals.Day.ToString();
+    }
 }
