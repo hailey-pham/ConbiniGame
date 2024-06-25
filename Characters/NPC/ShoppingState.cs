@@ -5,9 +5,8 @@ using System.Collections.Generic;
 
 public partial class ShoppingState : State
 {
-    //get rid of this testItem later
     [Export]
-    public ItemRes testItem;
+    private float buyProbability = 0.5f;
 
     [Export]
     public int _maxCounters = 3;
@@ -15,7 +14,9 @@ public partial class ShoppingState : State
     [Export]
     public Timer timer;
 
+    //saves positions and 
     private List<Vector2> _movementTargets = new List<Vector2>();
+    private List<counter> _counters = new List<counter>();
 
     private int _counterNum = 0;
     private int _currentTargetIdx = 0;
@@ -52,6 +53,7 @@ public partial class ShoppingState : State
             if (marker2D != null)
             {
                 _movementTargets.Add(marker2D.GlobalPosition);
+                _counters.Add(counter as counter);
             }
         }
 
@@ -64,9 +66,6 @@ public partial class ShoppingState : State
         //tell npc to move to a target position
         npcScript.MoveToPositionOffset(_movementTargets[_currentTargetIdx]);
         npcScript._navigationAgent.NavigationFinished += OnNavigationFinished;
-
-        //add the test item to the shoppingCart (get rid of later)
-        npcScript.ShoppingCart.Add(testItem);
     }
 
     
@@ -98,6 +97,17 @@ public partial class ShoppingState : State
 
     private void Timer_Timeout()
     {
+        var thisCounter = _counters[_currentTargetIdx];
+        var thisItemSpawner = thisCounter.GetNode<ItemSpawner>("ItemSpawner");
+
+        //check if there is an item to buy and that we want to buy
+        if (thisItemSpawner.currContains.Count > 0 && buyProbability > rng.Randf())
+        {
+            //i hate this code so much
+            var item = thisItemSpawner.currContains[0] as Item;
+            npcScript.ShoppingCart.Add(item.itemRes);
+        }
+
         if (_counterNum <= _maxCounters)
         {
             _counterNum++;

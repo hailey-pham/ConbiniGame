@@ -4,6 +4,8 @@ using System.Reflection;
 
 public partial class player : CharacterBody2D
 {
+	//a reference to the item resource held by the player
+	private ItemRes heldItem;
 
 	public bool playerHasObject;
 	bool objectIsSpawned;
@@ -26,6 +28,10 @@ public partial class player : CharacterBody2D
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		playerHasObject = true;
 		objectIsSpawned = false;
+
+		//set the player's held item to a water bottle by default (for testing)
+		var globals = GetNode<globals>("/root/Globals");
+		heldItem = globals._stock["Water"];
     }
     public override void _PhysicsProcess(double delta)
 	{
