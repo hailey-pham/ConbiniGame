@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=17 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="PackedScene" uid="uid://cowkc28g6f0ov" path="res://Components/calendar.tscn" id="1_fqvvq"]
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dud835hk2ffu6" path="res://Assets/Music/Irrashaimase.wav" id="9_wpaow"]
 [ext_resource type="PackedScene" uid="uid://cygwwqrh3o1i0" path="res://Scenes/Objects/BoxSpawner.tscn" id="10_2clb6"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="11_il57l"]
+[ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="12_o3635"]
 [ext_resource type="Script" path="res://Scenes/MoneyLabel.cs" id="12_qyo2m"]
 [ext_resource type="AudioStream" uid="uid://sivy414r7kf4" path="res://Assets/Music/Shop Theme.wav" id="13_e5adc"]
 
@@ -898,6 +899,26 @@ text = " Money:0"
 fit_content = true
 scroll_active = false
 script = ExtResource("12_qyo2m")
+
+[node name="CalendarLabel" type="Label" parent="UI"]
+z_index = 1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 139.0
+offset_right = 42.0
+offset_bottom = 162.0
+theme_override_fonts/font = ExtResource("12_o3635")
+theme_override_font_sizes/font_size = 8
+
+[node name="TimeLabel" type="Label" parent="UI"]
+z_index = 1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 148.0
+offset_right = 42.0
+offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("12_o3635")
+theme_override_font_sizes/font_size = 8
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_e5adc")

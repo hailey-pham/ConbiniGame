@@ -37,14 +37,7 @@ public partial class Calendar : Node2D
         timer = GetNode<Timer>("Timer");
         timer.Timeout += OnTimerTimeout;
 
-        // get the label nodes
-        timeLabel = GetNode<Label>("TimeLabel");
-        calendarLabel = GetNode<Label>("CalendarLabel");
-
         CustomizeLabels();
-
-        OnSeasonChange(currentSeason);
-        UpdateCalendarLabel();
     }
 
     private void OnTimerTimeout()
@@ -109,6 +102,11 @@ public partial class Calendar : Node2D
         if(sceneName == "gamescene")
         {
             timer.Start();
+            // get the label nodes
+            timeLabel = GetNode<Label>("/root/SceneManager/World/UI/TimeLabel");
+            calendarLabel = GetNode<Label>("/root/SceneManager/World/UI/CalendarLabel");
+            UpdateCalendarLabel();
+            OnSeasonChange(currentSeason);
         }
     }
 
