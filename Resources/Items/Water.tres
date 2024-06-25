@@ -1,9 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dqf5cmmqh5sjl"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dqf5cmmqh5sjl"]
 
 [ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_18x1s"]
+[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/waterBottle.png" id="2_xoq2r"]
 
 [resource]
 script = ExtResource("1_18x1s")
 name = "Water"
 price = 2
 restockPrice = 1
+spriteTexture = ExtResource("2_xoq2r")

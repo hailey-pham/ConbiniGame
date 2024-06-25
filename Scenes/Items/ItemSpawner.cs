@@ -7,7 +7,7 @@ public partial class ItemSpawner : Node2D
     [Export]
     public PackedScene ItemScene;
 
-    List<Node> currContains = new List<Node>();
+    public List<Node> currContains = new List<Node>();
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -27,6 +27,11 @@ public partial class ItemSpawner : Node2D
             Node ItemBox = ItemScene.Instantiate();
             //ItemBox.Set("z_as_relative", false);
             //newBox.Set("Scale", 0.5);
+
+            //set the item to water bottle
+            var globals = GetNode<globals>("/root/Globals");
+            Item itemScript = ItemBox as Item;
+            itemScript.itemRes = globals._stock["Water"];
 
             AddChild(ItemBox);
             currContains.Add(ItemBox);
