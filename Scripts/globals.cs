@@ -91,7 +91,11 @@ public partial class globals : Node
     {
         Earnings = 0;
     }
-
+	
+	public void ResetCustomers()
+	{
+		Customers = 0;
+	}
     public static void IncrementDay()
     {
         _day++;
