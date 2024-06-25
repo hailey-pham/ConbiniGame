@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=16 format=3 uid="uid://c7rjtc6wfqbbo"]
 
-[ext_resource type="PackedScene" uid="uid://cowkc28g6f0ov" path="res://Components/calendar.tscn" id="1_fqvvq"]
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="PackedScene" uid="uid://coulmodr8mtcn" path="res://Scenes/Objects/Box.tscn" id="5_5kxiv"]
@@ -805,8 +804,6 @@ sources/0 = SubResource("TileSetAtlasSource_xmuob")
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
-
-[node name="Calendar" parent="." instance=ExtResource("1_fqvvq")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_y8ues")
