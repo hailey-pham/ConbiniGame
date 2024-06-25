@@ -6,11 +6,16 @@ public partial class ConfirmUpgradeBtn : Button
 	[Export] CanvasLayer PopUp;
 	[Export] UpgradeManager manager;
 
+	private globals globals;
+
+
 	Upgrade currentUpgrade;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		globals = GetNode<globals>("/root/Globals");
+
 	}
 
 	public void onPress() {
