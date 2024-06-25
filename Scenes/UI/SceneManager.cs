@@ -6,6 +6,10 @@ public partial class SceneManager : Node
 {
     [Export]
     public Dictionary scenes;
+
+    [Signal]
+    public delegate void SceneChangedEventHandler(string SceneName);
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -35,8 +39,19 @@ public partial class SceneManager : Node
             RemoveChild(child);
         }
 
-        PackedScene scene = (PackedScene)GD.Load((string)scenes[sceneName]);
-        AddChild(scene.Instantiate());
+        try
+        {
+            PackedScene scene = (PackedScene)GD.Load((string)scenes[sceneName]);
+            AddChild(scene.Instantiate());
+            //announce what scene we've changed to
+            //calendar uses this
+            EmitSignal(nameof(SceneChanged), sceneName);
+        }
+        catch (Exception)
+        {
+
+            GD.PrintErr("Scene not found!");
+        }
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

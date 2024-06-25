@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcfcdw8pkwlja"]
+[gd_scene load_steps=5 format=3 uid="uid://bcfcdw8pkwlja"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_lu53v"]
+[ext_resource type="Script" path="res://Scenes/UI/EndOfDay.cs" id="2_xdosx"]
 
 [sub_resource type="Gradient" id="Gradient_4p2re"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -16,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_lu53v")
+script = ExtResource("2_xdosx")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1

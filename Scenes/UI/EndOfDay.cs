@@ -46,6 +46,9 @@ public partial class EndOfDay : Control
         GD.Print("Sleep button pressed!");
         // todo later: logic for playing sleep scene
         EmitSignal(nameof(SleepButtonPressed));
+
+        var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        sceneManager.ChangeScene("gamescene");
     }
 
     public void SetStats(string customers, string earnings, string day)

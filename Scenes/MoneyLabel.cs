@@ -9,6 +9,8 @@ public partial class MoneyLabel : RichTextLabel
     {
         globals = GetNode<globals>("/root/Globals");
         globals.MoneyUpdated += UpdateMoneyLabel;
+        //update immediately
+        UpdateMoneyLabel(globals.Money);
     }
 
     public void UpdateMoneyLabel(int money)

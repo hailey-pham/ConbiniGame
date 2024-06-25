@@ -25,14 +25,17 @@ public partial class Calendar : Node2D
 
     private SceneManager sceneManager;
 
+    private Timer timer;
+
     public override void _Ready()
     {
         // get scenemanager
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        sceneManager.SceneChanged += OnSceneChanged;
+
         // get the timer node
-        Timer timer = GetNode<Timer>("Timer");
+        timer = GetNode<Timer>("Timer");
         timer.Timeout += OnTimerTimeout;
-        timer.Start();
 
         // get the label nodes
         timeLabel = GetNode<Label>("TimeLabel");
@@ -58,8 +61,9 @@ public partial class Calendar : Node2D
 
         if (elapsedTime > dayLength)
         {
-            //
             EmitSignal(nameof(DayChanged));
+            //dont apply time when we change scenes to the next day
+            timer.Stop();
 
             elapsedTime = 0; // reset elapsed time
             currentDay += 1;
@@ -73,7 +77,6 @@ public partial class Calendar : Node2D
             {
                 UpdateCalendarLabel();
                 sceneManager.ChangeScene("endofdayscene");
-
             }
         }
         else
@@ -99,6 +102,14 @@ public partial class Calendar : Node2D
 
         GD.Print("Season has changed to: " + currentSeasonStr);
         UpdateCalendarLabel();
+    }
+
+    private void OnSceneChanged(string sceneName)
+    {
+        if(sceneName == "gamescene")
+        {
+            timer.Start();
+        }
     }
 
     private void CustomizeLabels()

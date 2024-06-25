@@ -16,6 +16,10 @@ public partial class npcSpawner : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		//connects NPC spawner to spawn npcs when day increments a percent
+		Calendar calendar = GetNode<Calendar>("/root/Calendar");
+		calendar.DayPercent += _on_calendar_day_percent;
+
 		//get child node audio stream player 2d
 		audioPlayer = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 	}
@@ -24,10 +28,6 @@ public partial class npcSpawner : Node2D
 	public override void _Process(double delta)
 	{
 	}
-
-	public void _on_calendar_day_changed()
-    {
-    }
 
     private void SpawnNPC()
     {
