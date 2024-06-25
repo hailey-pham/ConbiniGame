@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_xufpw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 257.0
 offset_bottom = 163.0
 color = Color(0, 0, 0, 1)
@@ -44,6 +45,7 @@ grow_vertical = 0
 texture = ExtResource("3_3xaio")
 
 [node name="Purchase" type="Button" parent="."]
+layout_mode = 0
 offset_left = 166.0
 offset_top = 122.0
 offset_right = 246.0
@@ -98,6 +100,7 @@ offset_bottom = -14.0
 text = "Current Stock: "
 
 [node name="CurrentMoney" type="Label" parent="."]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 119.0
@@ -105,6 +108,7 @@ offset_bottom = 28.0
 text = "Current: ¥"
 
 [node name="TotalCost" type="Label" parent="."]
+layout_mode = 0
 offset_left = 140.0
 offset_top = 5.0
 offset_right = 254.0
