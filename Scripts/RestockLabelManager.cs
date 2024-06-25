@@ -10,9 +10,9 @@ public partial class RestockLabelManager : Label
 	public override void _Ready()
 	{
 		itemName = this.Text;
-		
-		purchaseAmountLabel = GetChild<Label>(2);
-		currentStockLabel = GetChild<Label>(3);
+
+		purchaseAmountLabel = GetNode<Label>("PurchaseAmount");
+		currentStockLabel = GetNode<Label>("CurrentStock");
 		
 		currentStockLabel.Text = string.Format("Current Stock: "+globals._stock[itemName].currentStock);
 		purchaseAmountLabel.Text = string.Format(globals._stock[itemName].restockAmount.ToString());

@@ -1,16 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://hunt30xi3ai5"]
+[gd_scene load_steps=6 format=3 uid="uid://hunt30xi3ai5"]
 
 [ext_resource type="Script" path="res://Scripts/StockButton.cs" id="1_k14yw"]
 [ext_resource type="Script" path="res://Scripts/RestockLabelManager.cs" id="1_v4sth"]
 [ext_resource type="Script" path="res://Scripts/RestockManager.cs" id="1_xufpw"]
+[ext_resource type="Texture2D" uid="uid://oolgqxqykh5i" path="res://Assets/storageGraphicLeft.png" id="2_feh7y"]
+[ext_resource type="Texture2D" uid="uid://baxh00c3uhtqa" path="res://Assets/storageGraphicRight.png" id="3_3xaio"]
 
-[node name="Restock" type="Node2D"]
+[node name="Restock" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_xufpw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 257.0
 offset_bottom = 163.0
 color = Color(0, 0, 0, 1)
+
+[node name="Boxes Left" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -113.0
+offset_right = 92.0
+grow_vertical = 0
+texture = ExtResource("2_feh7y")
+
+[node name="Boxes Right" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -147.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_3xaio")
 
 [node name="Purchase" type="Button" parent="."]
 offset_left = 166.0
