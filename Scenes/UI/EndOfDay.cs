@@ -18,6 +18,7 @@ public partial class EndOfDay : Control
     private RichTextLabel earningsLabel;
     private RichTextLabel dayLabel;
 
+    private Calendar calendar;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -46,6 +47,7 @@ public partial class EndOfDay : Control
         GD.Print("Sleep button pressed!");
         // todo later: logic for playing sleep scene
         EmitSignal(nameof(SleepButtonPressed));
+
 
         var sceneManager = GetNode<SceneManager>("/root/SceneManager");
         sceneManager.ChangeScene("gamescene");

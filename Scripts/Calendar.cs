@@ -27,6 +27,8 @@ public partial class Calendar : Node2D
 
     private Timer timer;
 
+    private bool disasterOccuring = false;
+
     public override void _Ready()
     {
         // get scenemanager
@@ -69,7 +71,15 @@ public partial class Calendar : Node2D
             else
             {
                 UpdateCalendarLabel();
-                sceneManager.ChangeScene("endofdayscene");
+
+                if (currentDay == 4)
+                {
+                    sceneManager.ChangeScene("disasterscene");
+                }
+                else
+                {
+                    sceneManager.ChangeScene("endofdayscene");
+                }
             }
         }
         else
@@ -108,6 +118,7 @@ public partial class Calendar : Node2D
             UpdateCalendarLabel();
             OnSeasonChange(currentSeason);
         }
+     
     }
 
     private void CustomizeLabels()

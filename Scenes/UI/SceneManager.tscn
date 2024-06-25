@@ -5,6 +5,8 @@
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_6tj8r")
 scenes = {
+"disasterscene": "res://Scenes/UI/disaster.tscn",
+"disasterstatsscene": "res://Scenes/UI/disaster_stats.tscn",
 "endofdayscene": "res://Scenes/UI/end_of_day_menu.tscn",
 "gamescene": "res://Scenes/world.tscn",
 "mainmenu": "res://Scenes/UI/main_menu.tscn"
