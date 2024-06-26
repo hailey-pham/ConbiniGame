@@ -18,3 +18,10 @@
 
 3. Build the project. Make sure to use the path to your godot installation.
 `/path/to/your/godot/install --headless --export-release "Windows" disastore.exe`
+
+
+https://github.com/hailey-pham/ConbiniGame
+^General repository that you are on
+
+https://github.com/hailey-pham/ConbiniGame/releases/tag/Installer
+^You can install a working version here very easy :34
