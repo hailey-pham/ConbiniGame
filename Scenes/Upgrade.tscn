@@ -1,14 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmagua8ojxkjr"]
+[gd_scene load_steps=6 format=3 uid="uid://dmagua8ojxkjr"]
 
+[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_titit"]
 [ext_resource type="Script" path="res://Scenes/UpgradeManager.cs" id="1_w8qvw"]
 [ext_resource type="Script" path="res://Scripts/UpgradeButton.cs" id="2_03jmg"]
 [ext_resource type="Script" path="res://Scripts/ConfirmUpgradeBtn.cs" id="3_5lqhx"]
 [ext_resource type="Script" path="res://Scripts/DenyUpgradeBtn.cs" id="3_q7q4r"]
 
-[node name="Upgrade" type="Node2D"]
+[node name="Upgrade" type="Control" node_paths=PackedStringArray("currentMoneyLabel")]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_titit")
 script = ExtResource("1_w8qvw")
+currentMoneyLabel = NodePath("CurrentMoney")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 257.0
 offset_bottom = 163.0
 color = Color(0, 0, 0, 1)
@@ -16,13 +22,16 @@ color = Color(0, 0, 0, 1)
 [node name="Upgrades" type="Node" parent="."]
 
 [node name="CurrentMoney" type="Label" parent="."]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 119.0
 offset_bottom = 28.0
+theme_override_font_sizes/font_size = 8
 text = "Current: ¥"
 
 [node name="TotalCost" type="Label" parent="."]
+layout_mode = 0
 offset_left = 140.0
 offset_top = 5.0
 offset_right = 254.0
@@ -30,28 +39,33 @@ offset_bottom = 28.0
 text = "Upgrades"
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 62.0
-offset_top = 45.0
-offset_right = 102.0
-offset_bottom = 85.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 69.0
+offset_top = 60.0
+offset_right = 205.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme = ExtResource("1_titit")
 
 [node name="Flood Proof Doors" type="Button" parent="GridContainer" node_paths=PackedStringArray("purchasePopUp", "manager")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "Flood Proof Doors"
 script = ExtResource("2_03jmg")
 upgradeName = "Flood Proof Doors"
 purchasePopUp = NodePath("../../PopUp")
 manager = NodePath("../..")
 
-[node name="Cashier" type="Button" parent="GridContainer/Flood Proof Doors" node_paths=PackedStringArray("purchasePopUp", "manager")]
+[node name="Cashier" type="Button" parent="GridContainer" node_paths=PackedStringArray("purchasePopUp", "manager")]
+visible = false
 layout_mode = 2
-offset_top = 35.0
-offset_right = 147.0
-offset_bottom = 66.0
+theme_override_font_sizes/font_size = 8
 text = "Cashier"
 script = ExtResource("2_03jmg")
-purchasePopUp = NodePath("../../../PopUp")
-manager = NodePath("../../..")
+purchasePopUp = NodePath("../../PopUp")
+manager = NodePath("../..")
 
 [node name="PopUp" type="CanvasLayer" parent="."]
 
@@ -67,8 +81,11 @@ offset_left = 31.0
 offset_top = 20.0
 offset_right = 232.0
 offset_bottom = 99.0
-text = "Would you like to purchase [UPGRADE] for [MONEY]?"
+theme = ExtResource("1_titit")
+theme_override_font_sizes/font_size = 8
+text = "Would you like to purchase UPGRADE for MONEY?"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Yes" type="Button" parent="PopUp" node_paths=PackedStringArray("PopUp", "manager")]
@@ -76,6 +93,7 @@ offset_left = 160.0
 offset_top = 106.0
 offset_right = 227.0
 offset_bottom = 137.0
+theme = ExtResource("1_titit")
 text = "Yes"
 script = ExtResource("3_5lqhx")
 PopUp = NodePath("..")
@@ -86,11 +104,21 @@ offset_left = 34.0
 offset_top = 106.0
 offset_right = 101.0
 offset_bottom = 137.0
+theme = ExtResource("1_titit")
 text = "No"
 script = ExtResource("3_q7q4r")
 PopUp = NodePath("..")
 
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 131.0
+offset_right = 83.0
+offset_bottom = 155.0
+theme_override_font_sizes/font_size = 8
+text = "Back"
+
 [connection signal="pressed" from="GridContainer/Flood Proof Doors" to="GridContainer/Flood Proof Doors" method="onPress"]
-[connection signal="pressed" from="GridContainer/Flood Proof Doors/Cashier" to="GridContainer/Flood Proof Doors/Cashier" method="onPress"]
+[connection signal="pressed" from="GridContainer/Cashier" to="GridContainer/Cashier" method="onPress"]
 [connection signal="pressed" from="PopUp/Yes" to="PopUp/Yes" method="onPress"]
 [connection signal="pressed" from="PopUp/No" to="PopUp/No" method="onPress"]

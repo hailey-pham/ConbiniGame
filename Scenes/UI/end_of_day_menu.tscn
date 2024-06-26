@@ -72,6 +72,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "UPGRADE"
 
+[node name="RestockButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "RESTOCK"
+
 [node name="SleepButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
