@@ -9,12 +9,15 @@ public partial class disaster_stats : Control
 	private RichTextLabel disasterLabel;
     private RichTextLabel messageLabel;
     private RichTextLabel statsLabel;
+    private RichTextLabel currentStatsLabel;
 	private Button continueButton;
 
 	private globals globals;
     private SceneManager sceneManager;
 
     private int newMoney;
+    private int currentMoney;
+    private int totalMoney;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -25,6 +28,7 @@ public partial class disaster_stats : Control
         disasterLabel = GetNode<RichTextLabel>("VBoxContainer/UhOh");
         messageLabel = GetNode<RichTextLabel>("VBoxContainer/Message");
         statsLabel = GetNode<RichTextLabel>("VBoxContainer/Stats");
+        currentStatsLabel = GetNode<RichTextLabel>("VBoxContainer/CurrentStats");
 
         globals = GetNode<globals>("/root/Globals");
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
@@ -50,15 +54,29 @@ public partial class disaster_stats : Control
         var globals = GetNode<globals>("/root/Globals");
 
         LoseMoney();
+        CurrentMoney();
         disasterLabel.Text = "Oh no! Disaster occured!";
         messageLabel.Text = "You lost a portion of your resources.";
-        statsLabel.Text = "Money lost:  $" + newMoney.ToString() ;
+        statsLabel.Text = "Money lost:  " + newMoney.ToString() + " yen";
+        currentStatsLabel.Text = "You now have: " + globals.Money.ToString() + " yen";
     }
 
     private int LoseMoney()
     {
-        newMoney = globals.Money % 2;
+        newMoney = globals.Money / 2;
         return newMoney;
+    }
+
+    private int CurrentMoney()
+    {
+        globals.Money = globals.Money - newMoney;
+        return globals.Money;
+    }
+
+    public void UpdateMoney()
+    {
+        totalMoney = CurrentMoney();
+        globals.Money = totalMoney;
     }
 
 

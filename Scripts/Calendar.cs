@@ -15,7 +15,7 @@ public partial class Calendar : Node2D
     private int dayPercent = 0;
 
     private int elapsedTime = 0;
-    private const int dayLength = 20; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
+    private const int dayLength = 1 * 60; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
     private const int seasonLength = 7; // 7 days per season, or maybe 5?
 
     private int currentDay = 1;
@@ -28,6 +28,7 @@ public partial class Calendar : Node2D
 
     private SceneManager sceneManager;
     private globals globals;
+    private disaster_stats stats;
 
     private Timer timer;
 
@@ -132,8 +133,8 @@ public partial class Calendar : Node2D
 
     public bool IsDisasterDay()
     {
-        // For testing, let's assume day 2 is a disaster day
-        return currentDay == 2;
+        // hard coding disaster day
+        return currentDay == 2 || currentDay == 4;
     }
 
     public void DetermineNextDay()
@@ -145,6 +146,8 @@ public partial class Calendar : Node2D
         if (IsDisasterDay())
         {
             sceneManager.ChangeScene("disasterscene");
+            stats.UpdateMoney();
+
         }
         else
         {
