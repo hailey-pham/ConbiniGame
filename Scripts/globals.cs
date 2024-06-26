@@ -95,12 +95,13 @@ public partial class globals : Node
 		foreach (string fileName in fileNamesU) {
 			if (fileName.Contains(".tres.remap")) { 
     			tempFileName = fileName.TrimEnd(remap);
+				
 			} else {
 				tempFileName = fileName;
 			}
 
 			GD.Print("Adding resource (item)...");
-			Upgrade resourceU = GD.Load<Upgrade>(pathU+fileName);
+			Upgrade resourceU = GD.Load<Upgrade>(pathU+tempFileName);
 			GD.Print(resourceU.name);
 			_upgrades.Add(resourceU.name, resourceU);
 		}

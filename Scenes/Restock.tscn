@@ -7,13 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://oolgqxqykh5i" path="res://Assets/storageGraphicLeft.png" id="2_feh7y"]
 [ext_resource type="Texture2D" uid="uid://baxh00c3uhtqa" path="res://Assets/storageGraphicRight.png" id="3_3xaio"]
 
-[node name="Restock" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 [node name="Restock" type="Control" node_paths=PackedStringArray("totalCostLabel", "currentMoneyLabel")]
 layout_mode = 3
 anchors_preset = 0
