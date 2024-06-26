@@ -30,12 +30,12 @@ shape = SubResource("RectangleShape2D_8qfgq")
 [node name="ItemSpawner" parent="." instance=ExtResource("2_eykgy")]
 position = Vector2(0, -6)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="counter_area" type="Area2D" parent="."]
 script = ExtResource("3_yqw4r")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="counter_area"]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nmy8p")
 
-[connection signal="Delete" from="Area2D" to="ItemSpawner" method="signal_delete"]
-[connection signal="InformSpawn" from="Area2D" to="ItemSpawner" method="signal_inform_spawn"]
+[connection signal="Delete" from="counter_area" to="ItemSpawner" method="signal_delete"]
+[connection signal="InformSpawn" from="counter_area" to="ItemSpawner" method="signal_inform_spawn"]

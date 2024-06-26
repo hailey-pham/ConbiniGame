@@ -97,8 +97,10 @@ public partial class ShoppingState : State
 
     private void Timer_Timeout()
     {
+        //Gets a reference to the counter, its area2d code with the item logic and the item spawner itself.
         var thisCounter = _counters[_currentTargetIdx];
-        var thisItemSpawner = thisCounter.GetNode<ItemSpawner>("ItemSpawner");
+        var thisCounterArea = thisCounter.GetNode<counter_area>("counter_area");
+        var thisItemSpawner = thisCounter.GetNode<ItemSpawner>("ItemSpawner"); // Technicall not needed anymore, maybe idk :3
 
         //check if there is an item to buy and that we want to buy
         if (thisItemSpawner.currContains.Count > 0 && buyProbability > rng.Randf())
@@ -107,7 +109,9 @@ public partial class ShoppingState : State
             var item = thisItemSpawner.currContains[0] as Item;
             npcScript.ShoppingCart.Add(item.itemRes);
             //very incorrectly use this code to get rid of the item
-            thisItemSpawner.signal_delete();
+            thisCounterArea.hasObject = false;
+            thisCounterArea.EmitSignal("Delete");
+            //thisItemSpawner.signal_delete();
         }
 
         if (_counterNum <= _maxCounters)

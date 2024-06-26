@@ -4,7 +4,7 @@ using System.Linq;
 
 public partial class counter_area : Area2D
 {
-    bool hasObject;
+    public bool hasObject;
     player Player = null;
     [Signal]
     public delegate void InformSpawnEventHandler();
