@@ -17,6 +17,7 @@ public partial class EndOfDay : Control
     private RichTextLabel customersLabel;
     private RichTextLabel earningsLabel;
     private RichTextLabel dayLabel;
+    private RichTextLabel totalMoneyLabel;
 
     private globals globals;
     private Calendar calendar;
@@ -35,6 +36,7 @@ public partial class EndOfDay : Control
         customersLabel = GetNode<RichTextLabel>("VBoxContainer/Customers");
         earningsLabel = GetNode<RichTextLabel>("VBoxContainer/Cash");
         dayLabel = GetNode<RichTextLabel>("VBoxContainer/Day");
+        totalMoneyLabel = GetNode<RichTextLabel>("VBoxContainer/TotalMoney");
 
         globals = GetNode<globals>("/root/Globals");
         calendar = GetNode<Calendar>("/root/Calendar");
@@ -68,7 +70,8 @@ public partial class EndOfDay : Control
     {
         var globals = GetNode<globals>("/root/Globals");
         customersLabel.Text = "Customers Serviced: " + globals.Customers.ToString();
-        earningsLabel.Text = "Cash Earned: $" + globals.Earnings.ToString();
+        earningsLabel.Text = "Cash Earned: " + globals.Earnings.ToString() + " yen";
         dayLabel.Text = "End of Day: " + globals.Day.ToString();
+        totalMoneyLabel.Text = "You now have: " + globals.Money.ToString() + " yen";
     }
 }
