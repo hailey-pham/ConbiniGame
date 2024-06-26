@@ -10,3 +10,4 @@ Properties/
 
 #Build folder ignore
 Builds/
+/Properties
