@@ -23,5 +23,5 @@
 https://github.com/hailey-pham/ConbiniGame
 ^General repository that you are on
 
-https://github.com/hailey-pham/ConbiniGame/releases/tag/Installer
+https://github.com/hailey-pham/ConbiniGame/releases/tag/1.0.1
 ^You can install a working version here very easy :34
