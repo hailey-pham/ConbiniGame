@@ -63,7 +63,7 @@ public partial class disaster_stats : Control
 
     private int LoseMoney()
     {
-        newMoney = globals.Money / 2;
+        newMoney = globals.Money / 3;
         return newMoney;
     }
 
