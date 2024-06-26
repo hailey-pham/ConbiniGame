@@ -36,7 +36,7 @@ public partial class globals : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		string path = "res://Resources/";
+		string path = "res://Resources/Items/";
 		var dir = DirAccess.Open(path);
 
 		string[] fileNames = dir.GetFiles();

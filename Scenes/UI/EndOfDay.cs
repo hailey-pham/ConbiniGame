@@ -8,10 +8,15 @@ public partial class EndOfDay : Control
     public delegate void UpgradeButtonPressedEventHandler();
 
     [Signal]
+    public delegate void RestockButtonPressedEventHandler();
+
+    [Signal]
     public delegate void SleepButtonPressedEventHandler();
 
 
     private Button upgradeButton;
+
+    private Button restockButton;
     private Button sleepButton;
 
     private RichTextLabel customersLabel;
@@ -23,9 +28,13 @@ public partial class EndOfDay : Control
     public override void _Ready()
     {
         upgradeButton = GetNode<Button>("VBoxContainer/HBoxContainer/UpgradeButton");
+
+        restockButton = GetNode<Button>("VBoxContainer/HBoxContainer/RestockButton");
+
         sleepButton = GetNode<Button>("VBoxContainer/HBoxContainer/SleepButton");
 
         upgradeButton.Pressed += OnUpgradeButtonPressed;
+        restockButton.Pressed += OnRestockButtonPressed;
         sleepButton.Pressed += OnSleepButtonPressed;
 
 
@@ -39,6 +48,17 @@ public partial class EndOfDay : Control
         GD.Print("Upgrade button pressed!");
         // todo later: logic for getting upgrade menu up
         EmitSignal(nameof(UpgradeButtonPressed));
+        var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        sceneManager.ChangeScene("upgrade");
+    }
+
+    private void OnRestockButtonPressed()
+    {
+        GD.Print("Restock button pressed!");
+        EmitSignal(nameof(RestockButtonPressed));
+
+        var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        sceneManager.ChangeScene("restock");
     }
 
     private void OnSleepButtonPressed()

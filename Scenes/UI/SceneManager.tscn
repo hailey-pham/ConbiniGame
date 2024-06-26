@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://mflw1eotysg8"]
+[gd_scene load_steps=2 format=3 uid="uid://di5qthu38sdn"]
 
 [ext_resource type="Script" path="res://Scenes/UI/SceneManager.cs" id="1_6tj8r"]
 
@@ -7,5 +7,7 @@ script = ExtResource("1_6tj8r")
 scenes = {
 "endofdayscene": "res://Scenes/UI/end_of_day_menu.tscn",
 "gamescene": "res://Scenes/world.tscn",
-"mainmenu": "res://Scenes/UI/main_menu.tscn"
+"mainmenu": "res://Scenes/UI/main_menu.tscn",
+"restock": "res://Scenes/Restock.tscn",
+"upgrade": "res://Scenes/Upgrade.tscn"
 }

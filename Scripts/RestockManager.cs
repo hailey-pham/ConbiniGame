@@ -6,20 +6,28 @@ using System.Data.SqlTypes;
 
 public partial class RestockManager : Node
 {	
-	Label totalCostLabel;
-	Label currentMoneyLabel;
+	 [Signal]
+    public delegate void BackButtonPressedEventHandler();
+
+	private Button backButton;
+	
+
+	[Export] Label totalCostLabel;
+	[Export] Label currentMoneyLabel;
 	private bool purchaseMade;
 	private globals globals;
 	public override void _Ready()
 	{
-        globals = GetNode<globals>("/root/Globals");
+		globals = GetNode<globals>("/root/Globals");
+		backButton = GetNode<Button>("BackButton");
+		backButton.Pressed += OnBackButtonPressed;
 
-        GiveMoney();
+
+        // GiveMoney();
 		purchaseMade = false;
-		totalCostLabel = GetNode<Label>("TotalCost");
-		currentMoneyLabel = GetNode<Label>("CurrentMoney");
-		currentMoneyLabel.Text = string.Format("Current: ¥"+globals.Money);
-
+		// totalCostLabel = GetNode<Label>("TotalCost");
+		// currentMoneyLabel = GetNode<Label>("CurrentMoney");
+		currentMoneyLabel.Text = string.Format("Current: "+globals.Money+ " Y");
 	}
 
 	private void GiveMoney() {
@@ -30,8 +38,7 @@ public partial class RestockManager : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		totalCostLabel.Text = string.Format("Total Cost: ¥"+globals._purchaseCost);
-
+		totalCostLabel.Text = string.Format("Total Cost: "+globals._purchaseCost+" Y");
 	}
 
 	public void completePurchase() {
@@ -46,10 +53,25 @@ public partial class RestockManager : Node
 					item.Value.currentStock += item.Value.restockAmount;
 					item.Value.restockAmount = 0;
 				}
+				currentMoneyLabel.Text = string.Format("Current: Yen "+globals.Money);
+				purchaseMade = false;
+				
 			} else {
 				GD.Print("not enough money for purchase");
+				purchaseMade = false;
 			}	
 		}
 		
 	}
+
+	
+	private void OnBackButtonPressed()
+    {
+        GD.Print("Back button pressed!");
+        // todo later: logic for getting upgrade menu up
+        EmitSignal(nameof(BackButtonPressed));
+        var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        GD.Print(sceneManager);
+		sceneManager.ChangeScene("endofdayscene");
+    }
 }
