@@ -53,7 +53,7 @@ public partial class RestockManager : Node
 					item.Value.currentStock += item.Value.restockAmount;
 					item.Value.restockAmount = 0;
 				}
-				currentMoneyLabel.Text = string.Format("Current: Yen "+globals.Money);
+				currentMoneyLabel.Text = string.Format("Current: "+globals.Money+" Y");
 				purchaseMade = false;
 				
 			} else {
@@ -67,11 +67,11 @@ public partial class RestockManager : Node
 	
 	private void OnBackButtonPressed()
     {
-        GD.Print("Back button pressed!");
+        // GD.Print("Back button pressed!");
         // todo later: logic for getting upgrade menu up
         EmitSignal(nameof(BackButtonPressed));
         var sceneManager = GetNode<SceneManager>("/root/SceneManager");
-        GD.Print(sceneManager);
+        // GD.Print(sceneManager);
 		sceneManager.ChangeScene("endofdayscene");
     }
 }

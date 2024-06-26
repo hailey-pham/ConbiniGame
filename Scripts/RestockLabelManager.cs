@@ -4,8 +4,8 @@ using System;
 public partial class RestockLabelManager : Label
 {
 	[Export] public string itemName;
-	Label currentStockLabel;
-	Label purchaseAmountLabel;
+	[Export] Label currentStockLabel;
+	[Export] Label purchaseAmountLabel;
 	// Called when the node enters the scene tree for the first time.
 	private globals globals;
 	public override void _Ready()

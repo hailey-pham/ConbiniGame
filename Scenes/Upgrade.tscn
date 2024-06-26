@@ -110,6 +110,7 @@ script = ExtResource("3_q7q4r")
 PopUp = NodePath("..")
 
 [node name="BackButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 131.0
 offset_right = 83.0

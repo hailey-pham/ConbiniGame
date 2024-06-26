@@ -40,8 +40,20 @@ public partial class globals : Node
 		var dir = DirAccess.Open(path);
 
 		string[] fileNames = dir.GetFiles();
+		GD.Print("Getting resources...");
+
+		string tempFileName;
+		char[] remap = {'.','r','e','m','a','p'};
 		foreach (string fileName in fileNames) {
-			ItemRes resource = GD.Load<ItemRes>(path+fileName);
+			GD.Print("Adding resource (item)...");
+			if (fileName.Contains(".tres.remap")) { 
+    			tempFileName = fileName.TrimEnd(remap);
+				GD.Print("TFN: "+tempFileName);
+			} else {
+				tempFileName = fileName;
+			}
+			ItemRes resource = GD.Load<ItemRes>(path+tempFileName);
+			GD.Print(resource.name);
 			_stock.Add(resource.name, resource);
 		}
 
@@ -50,8 +62,16 @@ public partial class globals : Node
 
 		string[] fileNamesU = dirU.GetFiles();
 		GD.Print(pathU);
+		GD.Print("Getting resources...");
+
 		foreach (string fileName in fileNamesU) {
-			GD.Print("Getting resource...");
+			if (fileName.Contains(".tres.remap")) { 
+    			tempFileName = fileName.TrimEnd(remap);
+			} else {
+				tempFileName = fileName;
+			}
+
+			GD.Print("Adding resource (item)...");
 			Upgrade resourceU = GD.Load<Upgrade>(pathU+fileName);
 			GD.Print(resourceU.name);
 			_upgrades.Add(resourceU.name, resourceU);
