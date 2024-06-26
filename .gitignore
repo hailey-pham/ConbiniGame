@@ -11,3 +11,4 @@ Properties/
 #Build folder ignore
 Builds/
 /Properties
+Properties/launchSettings.json
