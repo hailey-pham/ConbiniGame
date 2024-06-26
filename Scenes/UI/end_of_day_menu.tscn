@@ -3,11 +3,11 @@
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_lu53v"]
 [ext_resource type="Script" path="res://Scenes/UI/EndOfDay.cs" id="2_xdosx"]
 
-[sub_resource type="Gradient" id="Gradient_4p2re"]
+[sub_resource type="Gradient" id="Gradient_8jyrp"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_753f3"]
-gradient = SubResource("Gradient_4p2re")
+gradient = SubResource("Gradient_8jyrp")
 
 [node name="EndOfDayMenu" type="Control"]
 layout_mode = 3

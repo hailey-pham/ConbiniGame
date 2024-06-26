@@ -15,7 +15,7 @@ public partial class Calendar : Node2D
     private int dayPercent = 0;
 
     private int elapsedTime = 0;
-    private const int dayLength = 1 * 60; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
+    private const int dayLength = 20; // 2 seconds long for testing purposes, change to 10 * 60 for the actual game
     private const int seasonLength = 7; // 7 days per season, or maybe 5?
 
     private int currentDay = 1;
@@ -31,7 +31,7 @@ public partial class Calendar : Node2D
 
     private Timer timer;
 
-    private bool disasterOccuring = false;
+    private bool disasterDay = false;
 
     public override void _Ready()
     {
@@ -62,34 +62,13 @@ public partial class Calendar : Node2D
 
         if (elapsedTime > dayLength)
         {
-            EmitSignal(nameof(DayChanged));
-            globals.IncrementDay();
             //dont apply time when we change scenes to the next day
             timer.Stop();
-
             elapsedTime = 0; // reset elapsed time
-            currentDay += 1;
-            if (currentDay > seasonLength)
-            {
-                currentDay = 1;
-                currentSeason += 1;
-                OnSeasonChange(currentSeason);
-            }
-            else
-            {
-                UpdateCalendarLabel();
 
-                if (currentDay == 2)
-                {
-                    sceneManager.ChangeScene("disasterscene");
-                }
-
-                else
-                {
-                    sceneManager.ChangeScene("endofdayscene");
-                    EmitSignal(nameof(DisplayEndOfDayStats));
-                }
-            }
+            sceneManager.ChangeScene("endofdayscene");
+            EmitSignal(nameof(DisplayEndOfDayStats));
+            IncrementDay();
         }
         else
         {
@@ -136,5 +115,40 @@ public partial class Calendar : Node2D
     private void CustomizeLabels()
     {
         // in case we want to customize labels further
+    }
+
+    public void IncrementDay()
+    {
+        globals.IncrementDay();
+        currentDay += 1;
+        if (currentDay > seasonLength)
+        {
+            currentDay = 1;
+            currentSeason += 1;
+            OnSeasonChange(currentSeason);
+        }
+        UpdateCalendarLabel();
+    }
+
+    public bool IsDisasterDay()
+    {
+        // For testing, let's assume day 2 is a disaster day
+        return currentDay == 2;
+    }
+
+    public void DetermineNextDay()
+    {
+        GD.Print("Determining day...");
+        GD.Print("Current Day: " + currentDay);
+        var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+
+        if (IsDisasterDay())
+        {
+            sceneManager.ChangeScene("disasterscene");
+        }
+        else
+        {
+            sceneManager.ChangeScene("gamescene");
+        }
     }
 }

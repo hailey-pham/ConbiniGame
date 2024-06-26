@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cr2jc4y1en61o"]
+[gd_scene load_steps=5 format=3 uid="uid://dg5o4x6g8clfy"]
 
 [ext_resource type="Script" path="res://Scenes/UI/disaster_stats.cs" id="1_27r56"]
+[ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="1_veikm"]
+
+[sub_resource type="Gradient" id="Gradient_0o67u"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h813w"]
+gradient = SubResource("Gradient_0o67u")
 
 [node name="DisasterStats" type="Control"]
 layout_mode = 3
@@ -10,3 +17,64 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_27r56")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_h813w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 7.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="UhOh" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_veikm")
+theme_override_font_sizes/normal_font_size = 8
+text = "Oh no! Disaster occured!"
+fit_content = true
+
+[node name="Message" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_veikm")
+theme_override_font_sizes/normal_font_size = 8
+text = "You lost a portion of your resources."
+fit_content = true
+
+[node name="Stats" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_veikm")
+theme_override_font_sizes/normal_font_size = 8
+text = "Money Lost:
+
+You now have "
+fit_content = true
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -23.0
+offset_right = 33.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.613048, 0.634291)
+text = "CONTINUE"

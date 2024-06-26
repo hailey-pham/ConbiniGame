@@ -30,7 +30,7 @@ public partial class disaster : Control
 	{
 		GD.Print("Next button pressed!");
 		EmitSignal(nameof(DisasterEnded));
-		sceneManager.ChangeScene("endofdayscene");
+		sceneManager.ChangeScene("disasterstatsscene");
 	}
 
 	private void OnDisplayTimerTimeout()
@@ -41,7 +41,7 @@ public partial class disaster : Control
 	private void OnDisasterEnded()
 	{
 		GD.Print("Transitioning to disaster stats...");
-		sceneManager.ChangeScene("endofdayscene");
+		sceneManager.ChangeScene("disasterstatsscene");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
