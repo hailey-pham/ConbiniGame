@@ -11,10 +11,10 @@
 
 ### Steps
 1. Pull this repo to your local machine using git clone.
-'git clone https://github.com/hailey-pham/ConbiniGame.git'
+`git clone https://github.com/hailey-pham/ConbiniGame.git`
 
 2. Enter the repository directory on your local machine.
-'cd ConbiniGame'
+`cd ConbiniGame`
 
 3. Build the project. Make sure to use the path to your godot installation.
-'/path/to/your/godot/install --headless --export-release "Windows" disastore.exe
+`/path/to/your/godot/install --headless --export-release "Windows" disastore.exe`
