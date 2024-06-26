@@ -77,8 +77,14 @@ public partial class player : CharacterBody2D
             objectIsSpawned = false;
             EmitSignal("Delete");
         }
-		
 
+       
+    }
+    //Store inventory signals
+    public void _on_inventory_item_clicked(long index, Vector2 at_position, long mouse_button_index)
+    {
+		playerHasObject = true;
+		objectIsSpawned = false;
     }
 
 }
