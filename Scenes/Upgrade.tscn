@@ -6,12 +6,11 @@
 [ext_resource type="Script" path="res://Scripts/ConfirmUpgradeBtn.cs" id="3_5lqhx"]
 [ext_resource type="Script" path="res://Scripts/DenyUpgradeBtn.cs" id="3_q7q4r"]
 
-[node name="Upgrade" type="Control" node_paths=PackedStringArray("currentMoneyLabel")]
+[node name="Upgrade" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_titit")
 script = ExtResource("1_w8qvw")
-currentMoneyLabel = NodePath("CurrentMoney")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

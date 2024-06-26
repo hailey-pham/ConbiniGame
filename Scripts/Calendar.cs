@@ -66,11 +66,11 @@ public partial class Calendar : Node2D
         {
             //dont apply time when we change scenes to the next day
             timer.Stop();
+            IncrementDay();
             elapsedTime = 0; // reset elapsed time
 
             sceneManager.ChangeScene("endofdayscene");
             EmitSignal(nameof(DisplayEndOfDayStats));
-            IncrementDay();
         }
         else
         {
@@ -147,7 +147,7 @@ public partial class Calendar : Node2D
         if (IsDisasterDay())
         {
             sceneManager.ChangeScene("disasterscene");
-            stats.UpdateMoney();
+            // stats.UpdateMoney();
         }
         else
         {

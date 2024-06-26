@@ -12,7 +12,7 @@ public partial class globals : Node
 
 	public static int _customers;
 	public static int _earnings;
-	public static int _day = 1;
+	public static int _day = 0;
 
 	public static Dictionary<string, Upgrade> _upgrades = new Dictionary<string, Upgrade>();
 
