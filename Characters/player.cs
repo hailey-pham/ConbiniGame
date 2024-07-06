@@ -31,7 +31,7 @@ public partial class player : CharacterBody2D
 
 		//set the player's held item to a water bottle by default (for testing)
 		var globals = GetNode<globals>("/root/Globals");
-		heldItem = globals._stock["Water"];
+		heldItem = globals.Stock["Water"];
     }
     public override void _PhysicsProcess(double delta)
 	{

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=16 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
@@ -11,7 +11,6 @@
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="11_il57l"]
 [ext_resource type="Script" path="res://Scenes/MoneyLabel.cs" id="12_qyo2m"]
 [ext_resource type="AudioStream" uid="uid://sivy414r7kf4" path="res://Assets/Music/Shop Theme.wav" id="13_e5adc"]
-[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/waterBottle.png" id="13_vag2a"]
 [ext_resource type="Script" path="res://Scenes/Inventory.cs" id="14_77igf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
@@ -928,11 +927,6 @@ offset_right = 163.0
 offset_bottom = 135.0
 theme = ExtResource("11_il57l")
 max_text_lines = 2
-item_count = 2
-item_0/text = "みず"
-item_0/icon = ExtResource("13_vag2a")
-item_1/text = "Water"
-item_1/icon = ExtResource("13_vag2a")
 script = ExtResource("14_77igf")
 
 [connection signal="Hit" from="Player" to="NavigationRegion2D/counter" method="_on_player_hit"]

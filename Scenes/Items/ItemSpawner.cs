@@ -31,7 +31,7 @@ public partial class ItemSpawner : Node2D
             //set the item to water bottle
             var globals = GetNode<globals>("/root/Globals");
             Item itemScript = ItemBox as Item;
-            itemScript.itemRes = globals._stock["Water"];
+            itemScript.itemRes = globals.Stock["Water"];
 
             AddChild(ItemBox);
             currContains.Add(ItemBox);

@@ -12,15 +12,15 @@ public partial class StockButton : Button
 		if(addButton) {
 			// add
 			GD.Print("Add");
-			globals._stock[itemName].restockAmount += 1;
-			globals._purchaseCost += globals._stock[itemName].restockPrice;
+			globals.Stock[itemName].restockAmount += 1;
+			globals._purchaseCost += globals.Stock[itemName].restockPrice;
 
 		} else {
 			// subtract
 			GD.Print("Subtract");
-			if(globals._stock[itemName].restockAmount >= 1) {
-				globals._stock[itemName].restockAmount -= 1;
-				globals._purchaseCost -= globals._stock[itemName].restockPrice;
+			if(globals.Stock[itemName].restockAmount >= 1) {
+				globals.Stock[itemName].restockAmount -= 1;
+				globals._purchaseCost -= globals.Stock[itemName].restockPrice;
 			}
 			
 		}

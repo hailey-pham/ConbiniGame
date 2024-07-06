@@ -32,7 +32,7 @@ public partial class RestockManager : Node
 
 	private void GiveMoney() {
 		globals.Money = 30;
-		globals._stock["Water"].currentStock = 2;
+		globals.Stock["Water"].currentStock = 2;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,7 +49,7 @@ public partial class RestockManager : Node
 			if(globals.Money > globals._purchaseCost) {
 				globals.Money -= globals._purchaseCost;
 				globals._purchaseCost = 0;
-				foreach (var item in globals._stock) {
+				foreach (var item in globals.Stock) {
 					item.Value.currentStock += item.Value.restockAmount;
 					item.Value.restockAmount = 0;
 				}

@@ -7,8 +7,8 @@ using System.IO;
 public partial class globals : Node
 {
 	private static int _money;
-	public static Dictionary<string, ItemRes> _stock = new Dictionary<string, ItemRes>(); 
-	public static int _purchaseCost;
+    private static Dictionary<string, ItemRes> stock = new Dictionary<string, ItemRes>();
+    public static int _purchaseCost;
 
 	public static int _customers;
 	public static int _earnings;
@@ -61,8 +61,10 @@ public partial class globals : Node
 		}
 	}
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    public static Dictionary<string, ItemRes> Stock { get => stock; set => stock = value; }
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		string path = "res://Resources/Items/";
 		var dir = DirAccess.Open(path);
@@ -82,7 +84,7 @@ public partial class globals : Node
 			}
 			ItemRes resource = GD.Load<ItemRes>(path+tempFileName);
 			GD.Print(resource.name);
-			_stock.Add(resource.name, resource);
+			Stock.Add(resource.name, resource);
 		}
 
 		string pathU = "res://Resources/Upgrades/";
@@ -105,6 +107,11 @@ public partial class globals : Node
 			GD.Print(resourceU.name);
 			_upgrades.Add(resourceU.name, resourceU);
 		}
+
+		//sets water stock to five if we're in debug mode
+#if DEBUG
+		Stock["Water"].currentStock = 5;
+#endif
 	}
 
     public void ResetEarnings()
