@@ -166,8 +166,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 4640.0
-offset_bottom = 2432.0
+offset_right = 4896.0
+offset_bottom = 2592.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -176,9 +176,8 @@ theme = ExtResource("1_3nyi5")
 theme_override_colors/default_color = Color(0, 1, 0.227451, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
-theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
-text = "y"
+text = "￥"
 scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

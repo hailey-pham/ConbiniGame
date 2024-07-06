@@ -14,10 +14,6 @@ public partial class disaster_animation : Control
 		bg = GetNode<TextureRect>("Background");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animPlayer.Play("shake");
-        animPlayer.AnimationFinished += (anim) =>
-        {
-            QueueFree();
-        };
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

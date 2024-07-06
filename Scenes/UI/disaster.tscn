@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d16j5oem2q3rs"]
 
 [ext_resource type="Script" path="res://Scenes/UI/disaster.cs" id="1_i7o8l"]
-[ext_resource type="Texture2D" uid="uid://vog8f81y4ktb" path="res://Assets/storefrontPlaceholder.png" id="1_wqaob"]
 [ext_resource type="PackedScene" uid="uid://ch5b42j2po0cp" path="res://Scenes/UI/disaster_animation.tscn" id="3_ois8q"]
+[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="4_1g73a"]
 
 [node name="Disaster" type="Control"]
 layout_mode = 3
@@ -12,12 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i7o8l")
-
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 256.0
-offset_bottom = 160.0
-texture = ExtResource("1_wqaob")
 
 [node name="DisasterAnimation" parent="." instance=ExtResource("3_ois8q")]
 layout_mode = 1
@@ -33,26 +27,30 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -33.0
+offset_left = -32.0
 offset_top = -22.0
 offset_right = 16.0
 offset_bottom = 9.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.613048, 0.634291)
+theme = ExtResource("4_1g73a")
+theme_override_font_sizes/font_size = 20
 text = "NEXT"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -68.5
-offset_top = -20.0
-offset_right = 68.5
-offset_bottom = 20.0
+offset_top = -11.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "EARTHQUAKE!!!!"
+theme = ExtResource("4_1g73a")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]EARTHQUAKE!!!!"
+fit_content = true

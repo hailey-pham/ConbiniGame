@@ -41,15 +41,18 @@ grow_vertical = 0
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Play"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "quit"
+theme_override_font_sizes/font_size = 20
+text = "Quit"
 
 [node name="Title" type="TextureRect" parent="."]
 modulate = Color(0, 0.466667, 1, 1)

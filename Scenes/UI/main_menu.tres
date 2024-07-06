@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://0owu7viu20al"]
 
-[ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="1_hokdy"]
+[ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_wqfkb"]
 
 [resource]
-default_font = ExtResource("1_hokdy")
-default_font_size = 8
-Button/font_sizes/font_size = 16
+default_font = ExtResource("1_wqfkb")
+default_font_size = 10
+Button/font_sizes/font_size = 10

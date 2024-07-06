@@ -43,25 +43,22 @@ theme_override_constants/separation = 10
 
 [node name="Day" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 8
 text = "End of day:"
 fit_content = true
 
 [node name="Cash" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 8
 text = "Cash earned:"
 fit_content = true
 
 [node name="Customers" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 8
 text = "Customers Serviced:"
 fit_content = true
 
 [node name="TotalMoney" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-text = "you now have:"
+text = "You now have:"
 fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -69,15 +66,12 @@ layout_mode = 2
 
 [node name="UpgradeButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
 text = "UPGRADE"
 
 [node name="RestockButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
 text = "RESTOCK"
 
 [node name="SleepButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
 text = "SLEEP"

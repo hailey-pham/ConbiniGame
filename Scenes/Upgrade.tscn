@@ -6,11 +6,12 @@
 [ext_resource type="Script" path="res://Scripts/ConfirmUpgradeBtn.cs" id="3_5lqhx"]
 [ext_resource type="Script" path="res://Scripts/DenyUpgradeBtn.cs" id="3_q7q4r"]
 
-[node name="Upgrade" type="Control"]
+[node name="Upgrade" type="Control" node_paths=PackedStringArray("currentMoneyLabel")]
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_titit")
 script = ExtResource("1_w8qvw")
+currentMoneyLabel = NodePath("CurrentMoney")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -26,8 +27,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 119.0
 offset_bottom = 28.0
-theme_override_font_sizes/font_size = 8
-text = "Current: ¥"
+text = "Current: ￥"
 
 [node name="TotalCost" type="Label" parent="."]
 layout_mode = 0
@@ -50,7 +50,6 @@ theme = ExtResource("1_titit")
 
 [node name="Flood Proof Doors" type="Button" parent="GridContainer" node_paths=PackedStringArray("purchasePopUp", "manager")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
 text = "Flood Proof Doors"
 script = ExtResource("2_03jmg")
 upgradeName = "Flood Proof Doors"
@@ -81,7 +80,6 @@ offset_top = 20.0
 offset_right = 232.0
 offset_bottom = 99.0
 theme = ExtResource("1_titit")
-theme_override_font_sizes/font_size = 8
 text = "Would you like to purchase UPGRADE for MONEY?"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -114,7 +112,6 @@ offset_left = 7.0
 offset_top = 131.0
 offset_right = 83.0
 offset_bottom = 155.0
-theme_override_font_sizes/font_size = 8
 text = "Back"
 
 [connection signal="pressed" from="GridContainer/Flood Proof Doors" to="GridContainer/Flood Proof Doors" method="onPress"]

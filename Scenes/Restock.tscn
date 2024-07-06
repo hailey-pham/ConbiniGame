@@ -7,11 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://oolgqxqykh5i" path="res://Assets/storageGraphicLeft.png" id="2_feh7y"]
 [ext_resource type="Texture2D" uid="uid://baxh00c3uhtqa" path="res://Assets/storageGraphicRight.png" id="3_3xaio"]
 
-[node name="Restock" type="Control"]
+[node name="Restock" type="Control" node_paths=PackedStringArray("totalCostLabel", "currentMoneyLabel")]
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_wgo4a")
 script = ExtResource("1_xufpw")
+totalCostLabel = NodePath("TotalCost")
+currentMoneyLabel = NodePath("CurrentMoney")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -57,7 +59,6 @@ offset_left = 7.0
 offset_top = 131.0
 offset_right = 83.0
 offset_bottom = 155.0
-theme_override_font_sizes/font_size = 8
 text = "Back"
 
 [node name="Items" type="Node" parent="."]
@@ -119,7 +120,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 119.0
 offset_bottom = 28.0
-text = "Current: ¥"
+text = "Current: ￥"
 
 [node name="TotalCost" type="Label" parent="."]
 layout_mode = 0
@@ -127,7 +128,7 @@ offset_left = 109.0
 offset_top = 5.0
 offset_right = 254.0
 offset_bottom = 28.0
-text = "Total Cost: ¥"
+text = "Total Cost: ￥"
 
 [connection signal="pressed" from="Purchase" to="." method="completePurchase"]
 [connection signal="pressed" from="Items/Water/More" to="Items/Water/More" method="onPress"]
