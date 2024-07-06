@@ -1,14 +1,19 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 public partial class Inventory : ItemList
 {
     private globals globals;
+    private ItemSpawner playerItemSpawner;
 
     private List<ItemRes> inventoryItems = new List<ItemRes>();
     public override void _Ready()
     {
+        playerItemSpawner = GetNode<ItemSpawner>("%Player/ItemSpawner");
+
+        ItemClicked += OnItemClicked;
         globals = GetNode<globals>("/root/Globals");
         Hide();
     }
@@ -50,6 +55,17 @@ public partial class Inventory : ItemList
         foreach (ItemRes item in inventoryItems)
         {
             AddItem(item.name + " " + item.currentStock, item.spriteTexture, selectable:true);
+        }
+    }
+
+    private void OnItemClicked(long index, Vector2 atPosition, long mouseButtonIndex)
+    {
+        //get item res and give it to player
+        var itemRes = inventoryItems[(int) index];
+
+        if (itemRes != null && !playerItemSpawner.HasItem())
+        {
+            playerItemSpawner.AddItemRes(itemRes);
         }
     }
 

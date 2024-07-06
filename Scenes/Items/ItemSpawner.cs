@@ -1,13 +1,14 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Xml.Schema;
 
 public partial class ItemSpawner : Node2D
 {
     [Export]
     public PackedScene ItemScene;
 
-    public List<Node> currContains = new List<Node>();
+    public ItemRes currItem;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -20,41 +21,49 @@ public partial class ItemSpawner : Node2D
 
     }
 
-    public void spawn()
+    public bool HasItem()
+    {
+        if (currItem == null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void Spawn()
     {
         if (ItemScene != null)
         {
             Node ItemBox = ItemScene.Instantiate();
-            //ItemBox.Set("z_as_relative", false);
-            //newBox.Set("Scale", 0.5);
 
-            //set the item to water bottle
-            var globals = GetNode<globals>("/root/Globals");
+            //set the item to whatever our current item is
             Item itemScript = ItemBox as Item;
-            itemScript.itemRes = globals.Stock["Water"];
+            itemScript.itemRes = currItem;
 
             AddChild(ItemBox);
-            currContains.Add(ItemBox);
         }
     }
-    public void signal_inform_spawn()
-    {
-        this.spawn();
-    }
-    public void signal_delete()
-    {
-        foreach (Node a in currContains)
-        {
-            a.QueueFree();
-        }
-        //currContains[0].QueueFree();
-        currContains.Clear();
 
-        //recommended code to remove parent's child :3
-        //Node childnode = GetChild(0);
-        //if (childnode.GetParent() != null)
-        //{
-         //   childnode.GetParent().RemoveChild(childnode);
-        //}
+    private void Despawn()
+    {
+        foreach (var child in GetChildren()) {
+            child.QueueFree();
+        }
+    }
+
+    //lets hope this passes by value and not by reference
+    public ItemRes RemoveItemRes()
+    {
+        var item = currItem;
+        currItem = null;
+        Despawn();
+        return item;
+    }
+
+    public void AddItemRes(ItemRes item)
+    {
+        currItem = item;
+        Spawn();
     }
 }

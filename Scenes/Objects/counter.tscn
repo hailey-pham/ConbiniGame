@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Objects/counter.cs" id="1_fpsiv"]
 [ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="1_q77ev"]
 [ext_resource type="PackedScene" uid="uid://d0whnk0jytoo3" path="res://Scenes/Items/ItemSpawner.tscn" id="2_eykgy"]
-[ext_resource type="Script" path="res://Scenes/Objects/counter_area.cs" id="3_yqw4r"]
+[ext_resource type="Script" path="res://Scenes/Objects/CounterArea.cs" id="3_yqw4r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2u0fd"]
 atlas = ExtResource("1_q77ev")
@@ -36,6 +36,3 @@ script = ExtResource("3_yqw4r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="counter_area"]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nmy8p")
-
-[connection signal="Delete" from="counter_area" to="ItemSpawner" method="signal_delete"]
-[connection signal="InformSpawn" from="counter_area" to="ItemSpawner" method="signal_inform_spawn"]

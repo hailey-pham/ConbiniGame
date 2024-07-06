@@ -3,23 +3,43 @@ using System;
 
 public partial class counter : StaticBody2D
 {
-    //takes a signal from the player and then gives that signal to the Area2d counter :3
-    [Signal]
-    public delegate void TransferSignalEventHandler();
-    [Signal]
-    public delegate void TransferInformSpawnEventHandler();
-    [Signal]
-    public delegate void TransferDeleteEventHandler();
-    public void _on_player_hit()
+    private CounterArea counterArea;
+    private ItemSpawner itemSpawner;
+
+    public override void _Ready()
     {
-        EmitSignal("TransferSignal");
+        counterArea = GetNode<CounterArea>("counter_area");
+        itemSpawner = GetNode<ItemSpawner>("ItemSpawner");
     }
-    public void _on_area_2d_delete()
+    public override void _UnhandledInput(InputEvent @event)
     {
-        EmitSignal("TransferDelete");
-    }
-    public void _on_area_2d_inform_spawn()
-    {
-        EmitSignal("TransferInformSpawn");
+        if(@event.IsAction("Interact"))
+        {
+            //player is not null when player is inside area
+            player Player = counterArea.Player;
+            //basically the same as checking if the player is inside the area
+            if (Player != null)
+            {
+                if (itemSpawner.HasItem())
+                {
+                    //attempt to transfer current item to player
+
+                    //if player currently doesn't have an item
+                    if(!Player._itemSpawner.HasItem())
+                    {
+                        //give player our itemres
+                        Player._itemSpawner.AddItemRes(itemSpawner.RemoveItemRes());
+                    }
+                } else
+                {
+                    //attempt to take item from player
+                    if (Player._itemSpawner.HasItem())
+                    {
+                        //take itemres from player
+                        itemSpawner.AddItemRes(Player._itemSpawner.RemoveItemRes());
+                    }
+                }
+            }
+        }
     }
 }

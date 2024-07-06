@@ -28,6 +28,3 @@ _animatedSprite = NodePath("../AnimatedSprite2D")
 
 [node name="ItemSpawner" parent="." instance=ExtResource("5_51nma")]
 position = Vector2(0, -8)
-
-[connection signal="Delete" from="." to="ItemSpawner" method="signal_delete"]
-[connection signal="InformSpawn" from="." to="ItemSpawner" method="signal_inform_spawn"]

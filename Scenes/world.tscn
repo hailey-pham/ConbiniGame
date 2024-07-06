@@ -858,6 +858,7 @@ layer_1/name = "Collision"
 layer_1/tile_data = PackedInt32Array(65535, 458752, 1342177281, 131071, 458752, 1342177281, 196607, 458752, 1342177281, 262143, 458752, 1342177281, 327679, 458752, 1342177281, -65536, 458752, 805306369, -65535, 458752, 805306369, -65534, 458752, 805306369, -65533, 458752, 805306369, -65532, 458752, 805306369, -65531, 458752, 805306369, -65530, 458752, 805306369, -65529, 458752, 805306369, 8, 458752, 1610612737, 65544, 458752, 1610612737, 131080, 458752, 1610612737, 196616, 458752, 1610612737, 262152, 458752, 1610612737, 327687, 458752, 1, 327686, 458752, 1, 327685, 458752, 1, 327684, 458752, 1, 327683, 458752, 1, 327682, 458752, 1, 327681, 458752, 1, 327680, 458752, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_gm0l6")]
+unique_name_in_owner = true
 position = Vector2(98, 53)
 
 [node name="npcSpawner" parent="." groups=["spawner"] instance=ExtResource("9_w4hoi")]
@@ -928,6 +929,3 @@ offset_bottom = 135.0
 theme = ExtResource("11_il57l")
 max_text_lines = 2
 script = ExtResource("14_77igf")
-
-[connection signal="Hit" from="Player" to="NavigationRegion2D/counter" method="_on_player_hit"]
-[connection signal="item_clicked" from="Inventory" to="Player" method="_on_inventory_item_clicked"]
