@@ -99,15 +99,12 @@ public partial class ShoppingState : State
     {
         //Gets a reference to the counter, its area2d code with the item logic and the item spawner itself.
         var thisCounter = _counters[_currentTargetIdx];
-        var thisCounterArea = thisCounter.GetNode<CounterArea>("counter_area");
         var thisItemSpawner = thisCounter.GetNode<ItemSpawner>("ItemSpawner"); // Technicall not needed anymore, maybe idk :3
 
         //check if there is an item to buy and that we want to buy
         if (thisItemSpawner.currItem != null && buyProbability > rng.Randf())
         {
-            //i hate this code so much
-            var item = thisItemSpawner.currItem;
-            npcScript.ShoppingCart.Add(item);
+            npcScript.ShoppingCart.Add(thisItemSpawner.RemoveItemRes());
         }
 
         if (_counterNum <= _maxCounters)

@@ -13,7 +13,7 @@ public partial class counter : StaticBody2D
     }
     public override void _UnhandledInput(InputEvent @event)
     {
-        if(@event.IsAction("Interact"))
+        if(@event.IsActionPressed("Interact"))
         {
             //player is not null when player is inside area
             player Player = counterArea.Player;

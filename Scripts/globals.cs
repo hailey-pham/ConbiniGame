@@ -110,7 +110,10 @@ public partial class globals : Node
 
 		//sets water stock to five if we're in debug mode
 #if DEBUG
-		Stock["Water"].currentStock = 5;
+		foreach (var item in stock.Values)
+		{
+			item.currentStock = 999;
+		}
 #endif
 	}
 
@@ -127,9 +130,9 @@ public partial class globals : Node
     {
         _day++;
     }
-	
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+
+	public static void DecrementItemResStock(ItemRes itemRes)
 	{
-	}
+		stock[itemRes.name].currentStock = stock[itemRes.name].currentStock - 1;
+    }
 }

@@ -25,14 +25,12 @@ public partial class Inventory : ItemList
         { 
             if(this.IsVisibleInTree())
             {
-                Clear();
                 Hide();
                 GD.Print("meowers in the chat rn :3");
             }
             else
             {
                 LoadInventory();
-                AddItemsToMenu();
                 Show();
             }
         }
@@ -42,16 +40,22 @@ public partial class Inventory : ItemList
     //adds items to the inventory list
     private void LoadInventory()
     {
+        inventoryItems.Clear();
+
         foreach(ItemRes item in globals.Stock.Values) {
             if (!inventoryItems.Contains(item) && item.currentStock > 0)
                 {
                 inventoryItems.Add(item);
             }
         }
+
+        ReloadItemList();
     }
 
-    private void AddItemsToMenu()
+    private void ReloadItemList()
     {
+        Clear();
+
         foreach (ItemRes item in inventoryItems)
         {
             AddItem(item.name + " " + item.currentStock, item.spriteTexture, selectable:true);
@@ -66,7 +70,10 @@ public partial class Inventory : ItemList
         if (itemRes != null && !playerItemSpawner.HasItem())
         {
             playerItemSpawner.AddItemRes(itemRes);
+            globals.DecrementItemResStock(itemRes);
         }
+
+        LoadInventory();
     }
 
 }

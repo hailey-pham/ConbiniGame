@@ -922,9 +922,10 @@ volume_db = -6.0
 autoplay = true
 
 [node name="Inventory" type="ItemList" parent="."]
-offset_left = 81.0
+z_index = 1
+offset_left = 9.0
 offset_top = 60.0
-offset_right = 163.0
+offset_right = 249.0
 offset_bottom = 135.0
 theme = ExtResource("11_il57l")
 max_text_lines = 2
