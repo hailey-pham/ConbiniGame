@@ -50,7 +50,6 @@ offset_left = 176.0
 offset_top = 132.0
 offset_right = 252.0
 offset_bottom = 156.0
-theme_override_font_sizes/font_size = 8
 text = "Purchase"
 
 [node name="BackButton" type="Button" parent="."]
