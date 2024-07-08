@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public partial class npc : CharacterBody2D
 {
+    //fired when NPC leaves store
+    [Signal]
+    public delegate void LeftStoreEventHandler();
+
     //handles movement and calling state manager stuff
     [Export]
     private float speed = 50f;
@@ -68,6 +72,11 @@ public partial class npc : CharacterBody2D
         Vector2 offset = new Vector2(rng.RandfRange(-1,1), rng.RandfRange(-1,1)).Normalized() * spreadFactor;
 
         MovementTarget = pos + offset;
+    }
+
+    public void OnLeaveStore()
+    {
+        EmitSignal(nameof(LeftStore));
     }
 
     private async void ActorSetup()

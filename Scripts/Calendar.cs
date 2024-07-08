@@ -68,9 +68,6 @@ public partial class Calendar : Node2D
             timer.Stop();
             IncrementDay();
             elapsedTime = 0; // reset elapsed time
-
-            sceneManager.ChangeScene("endofdayscene");
-            EmitSignal(nameof(DisplayEndOfDayStats));
         }
         else
         {
@@ -80,6 +77,12 @@ public partial class Calendar : Node2D
         }
     }
 
+    //called from the npcSpawner once all npcs have left the store
+    public void EndDay()
+    {
+        sceneManager.ChangeScene("endofdayscene");
+        EmitSignal(nameof(DisplayEndOfDayStats));
+    }
     private void UpdateCalendarLabel()
     {
         calendarLabel.Text = string.Format("Season: {0}, Day: {1}", currentSeasonStr, currentDay);
@@ -136,6 +139,12 @@ public partial class Calendar : Node2D
     {
         // hard coding disaster day
         return currentDay == 2 || currentDay == 4;
+    }
+
+    //a silly check
+    public bool IsDayOver()
+    {
+        return elapsedTime == 0;
     }
 
     public void DetermineNextDay()
