@@ -918,6 +918,7 @@ theme = ExtResource("11_il57l")
 
 [node name="Inventory" type="ItemList" parent="UI"]
 z_index = 1
+layout_mode = 0
 offset_left = 9.0
 offset_top = 60.0
 offset_right = 249.0
