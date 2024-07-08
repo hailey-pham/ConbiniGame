@@ -57,6 +57,7 @@ _data = {
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_6tj8r")
 scenes = {
+"credits": "res://Scenes/UI/credits.tscn",
 "disasterscene": "res://Scenes/UI/disaster.tscn",
 "disasterstatsscene": "res://Scenes/UI/disaster_stats.tscn",
 "endofdayscene": "res://Scenes/UI/end_of_day_menu.tscn",

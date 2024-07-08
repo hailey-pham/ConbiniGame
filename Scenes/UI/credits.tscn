@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5bky6nidjsef"]
+[gd_scene load_steps=8 format=3 uid="uid://b5bky6nidjsef"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_jvu1w"]
 [ext_resource type="Texture2D" uid="uid://six140ru7we8" path="res://Assets/DisastoreTitle.png" id="2_c8gvx"]
 [ext_resource type="Script" path="res://Scenes/UI/CreditsPlayer.cs" id="2_ni4c7"]
+[ext_resource type="AudioStream" uid="uid://c52b6ib1jmsfa" path="res://Assets/Music/Shop End Credits.wav" id="4_asg3v"]
 
 [sub_resource type="Animation" id="Animation_v5acn"]
 length = 0.001
@@ -56,8 +57,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 160.0
-offset_right = 256.0
-offset_bottom = 319.996
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -115,3 +115,9 @@ libraries = {
 "": SubResource("AnimationLibrary_3l5go")
 }
 script = ExtResource("2_ni4c7")
+speedUp = 5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_asg3v")
+volume_db = -6.0
+autoplay = true
