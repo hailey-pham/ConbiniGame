@@ -26,18 +26,6 @@ public partial class SceneManager : Node
 
     }
 
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        base._UnhandledInput(@event);
-        if (@event.IsAction("Exit"))
-        {
-            foreach (var child in GetChildren())
-            {
-                RemoveChild(child);
-            }
-        }
-    }
-
     public async void ChangeScene(string sceneName)
     {
         animationPlayer.Play("fade_out");
