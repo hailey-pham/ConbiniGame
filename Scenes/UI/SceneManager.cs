@@ -1,11 +1,15 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 public partial class SceneManager : Node
 {
     [Export]
     public Dictionary scenes;
+
+    private AnimationPlayer animationPlayer;
+    private Node sceneParent;
 
     [Signal]
     public delegate void SceneChangedEventHandler(string SceneName);
@@ -13,9 +17,12 @@ public partial class SceneManager : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        //load references to children components
+        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        sceneParent = GetNode<Node>("SceneParent");
+
         //load the main menu when the game starts
-        PackedScene scene = (PackedScene)GD.Load((string)scenes["mainmenu"]);
-        AddChild(scene.Instantiate());
+        LoadNewScene("mainmenu");
 
     }
 
@@ -31,18 +38,32 @@ public partial class SceneManager : Node
         }
     }
 
-    public void ChangeScene(string sceneName)
+    public async void ChangeScene(string sceneName)
     {
-        // removes current loaded scene
-        foreach (var child in GetChildren())
-        {
-            RemoveChild(child);
-        }
+        animationPlayer.Play("fade_out");
 
+        await ToSignal(animationPlayer, "animation_finished");
+
+        RemoveChildScenes();
+        LoadNewScene(sceneName);
+
+        animationPlayer.Play("fade_in");
+    }
+
+    private void RemoveChildScenes()
+    {
+        foreach (var child in sceneParent.GetChildren())
+        {
+            sceneParent.RemoveChild(child);
+        }
+    }
+
+    private void LoadNewScene(string sceneName)
+    {
         try
         {
             PackedScene scene = (PackedScene)GD.Load((string)scenes[sceneName]);
-            AddChild(scene.Instantiate());
+            sceneParent.AddChild(scene.Instantiate());
             //announce what scene we've changed to
             //calendar uses this
             EmitSignal(nameof(SceneChanged), sceneName);
@@ -52,10 +73,5 @@ public partial class SceneManager : Node
 
             GD.PrintErr("Scene not found!");
         }
-    }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
     }
 }

@@ -106,8 +106,8 @@ public partial class Calendar : Node2D
             globals.ResetCustomers();
             timer.Start();
             // get the label nodes
-            timeLabel = GetNode<Label>("/root/SceneManager/World/UI/TimeLabel");
-            calendarLabel = GetNode<Label>("/root/SceneManager/World/UI/CalendarLabel");
+            timeLabel = GetNode<Label>("/root/SceneManager/SceneParent/World/UI/TimeLabel");
+            calendarLabel = GetNode<Label>("/root/SceneManager/SceneParent/World/UI/CalendarLabel");
             UpdateCalendarLabel();
             OnSeasonChange(currentSeason);
         }

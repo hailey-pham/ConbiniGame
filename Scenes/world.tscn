@@ -916,12 +916,7 @@ offset_right = 42.0
 offset_bottom = 171.0
 theme = ExtResource("11_il57l")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_e5adc")
-volume_db = -6.0
-autoplay = true
-
-[node name="Inventory" type="ItemList" parent="."]
+[node name="Inventory" type="ItemList" parent="UI"]
 z_index = 1
 offset_left = 9.0
 offset_top = 60.0
@@ -930,3 +925,8 @@ offset_bottom = 135.0
 theme = ExtResource("11_il57l")
 max_text_lines = 2
 script = ExtResource("14_77igf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_e5adc")
+volume_db = -6.0
+autoplay = true
