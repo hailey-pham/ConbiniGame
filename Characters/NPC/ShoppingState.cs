@@ -21,8 +21,8 @@ public partial class ShoppingState : State
     private int _counterNum = 0;
     private int _currentTargetIdx = 0;
 
+    private NPCPreferenceModifier modifier;
     private npc npcScript;
-
     private Dictionary message;
 
     private static RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -102,9 +102,14 @@ public partial class ShoppingState : State
         var thisItemSpawner = thisCounter.GetNode<ItemSpawner>("ItemSpawner"); // Technicall not needed anymore, maybe idk :3
 
         //check if there is an item to buy and that we want to buy
-        if (thisItemSpawner.currItem != null && buyProbability > rng.Randf())
+        if (thisItemSpawner.currItem != null)
         {
-            npcScript.ShoppingCart.Add(thisItemSpawner.RemoveItemRes());
+            modifier ??= GetNode<NPCPreferenceModifier>("/root/NpcPreferenceModifier");
+            buyProbability = modifier.ItemBuyProbability(thisItemSpawner.currItem);
+            if(rng.Randf() < buyProbability)
+            {
+                npcScript.ShoppingCart.Add(thisItemSpawner.RemoveItemRes());
+            }
         }
 
         if (_counterNum <= _maxCounters)

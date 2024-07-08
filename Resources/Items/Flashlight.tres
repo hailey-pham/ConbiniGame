@@ -12,4 +12,6 @@ script = ExtResource("1_4kupn")
 name = "Flashlight"
 price = 10
 restockPrice = 5
+SeasonFlags = 0
+DisasterFlags = 10
 spriteTexture = SubResource("AtlasTexture_pvf44")

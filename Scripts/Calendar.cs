@@ -34,7 +34,6 @@ public partial class Calendar : Node2D
 
     private bool disasterDay = false;
 
-
     public override void _Ready()
     {
         // get scenemanager
@@ -162,5 +161,11 @@ public partial class Calendar : Node2D
         {
             sceneManager.ChangeScene("gamescene");
         }
+    }
+
+    //getters
+    public int GetCurrentSeason()
+    {
+        return currentSeason;
     }
 }
