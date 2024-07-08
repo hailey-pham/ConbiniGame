@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://jqjteha36u5b"]
+
+[ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_4kupn"]
+[ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_fdnea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvf44"]
+atlas = ExtResource("2_fdnea")
+region = Rect2(72, 464, 7, 9)
+
+[resource]
+script = ExtResource("1_4kupn")
+name = "Flashlight"
+price = 10
+restockPrice = 5
+spriteTexture = SubResource("AtlasTexture_pvf44")
