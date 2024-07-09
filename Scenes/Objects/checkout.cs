@@ -14,11 +14,12 @@ public partial class checkout : StaticBody2D
 	private Timer timer;
 	private Area2D playerCheck;
 	private AudioStreamPlayer audioStreamPlayer;
+	private globals globals;
 
-	Queue<npc> npcs = new Queue<npc>();
+	private List<npc> npcs = new();
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		playerCheck = GetNode<Area2D>("PlayerCheck");
 		timer = GetNode<Timer>("Timer");
@@ -30,20 +31,63 @@ public partial class checkout : StaticBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		//if player is standing at the counter and NPC is waiting...
-		if (playerCheck.HasOverlappingBodies() && npcs.Count > 0)
+		
+		if (npcs.Count > 0)
 		{
-			timer.Paused = false;
+            
+            var nextNpc = npcs.First();
+            var checkoutState = nextNpc.stateMachine.GetCurrentState() as CheckoutState;
+
+            //if player is standing at the counter and NPC is waiting...
+            if (playerCheck.HasOverlappingBodies())
+			{
+				if(timer.IsStopped())
+				{
+					timer.Start();
+				}
+
+                //if the NPC is getting impatient, tell him to chill out. he's next.
+                checkoutState.PauseLeaveEarly();
+            }
+			else
+			{
+				//if player is not at counter and NPC is waiting...
+				timer.Stop();
+
+				//tell NPC to get impatient again. Player has left him and he should be mad.
+				checkoutState.ResumeLeaveEarly();
+			}
+			
 		} else
 		{
-			timer.Paused = true;
+			//if player is not at counter and NPC isn't waiting
+			timer.Stop();
 		}
 	}
 
-	//the callback we run when an NPC fires NPCCheckout Signal
+	//called directly by an npc
 	public void OnNPCCheckout(npc npc)
 	{
-		npcs.Enqueue(npc);
+		npcs.Add(npc);
+		npc.LeftEarly += OnNPCLeaveEarly;
+	}
+
+	//the callback we run when an NPC fires LeaveEarly signal
+	private void OnNPCLeaveEarly(npc npc)
+	{
+		if(npcs.Contains(npc))
+		{
+			npc.ShoppingCart.ForEach(ReturnItemToStock);
+			npcs.Remove(npc);
+		}
+	}
+
+	private void ReturnItemToStock(ItemRes item)
+	{
+		//short hand way of getting globals only if globals is null
+		globals ??= GetNode<globals>("/root/Globals");
+		//add one back to the global stock
+		globals.Stock[item.name].currentStock++;
 	}
 
 	//called when our timer finishes
@@ -61,7 +105,7 @@ public partial class checkout : StaticBody2D
 				if(npc.ShoppingCart.Count == 0)
 				{
 					//we have sold everything in the npc's cart
-					npcs.Dequeue();
+					npcs.RemoveAt(0);
                     npc.stateMachine.TransitionTo("LeaveState");
                 }
             }

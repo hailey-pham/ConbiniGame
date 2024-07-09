@@ -8,6 +8,9 @@ public partial class npc : CharacterBody2D
     [Signal]
     public delegate void LeftStoreEventHandler();
 
+    //fired when NPC leaves counter early
+    [Signal] public delegate void LeftEarlyEventHandler(npc npc);
+
     //handles movement and calling state manager stuff
     [Export]
     private float speed = 50f;
