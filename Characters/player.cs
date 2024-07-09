@@ -51,6 +51,7 @@ public partial class player : CharacterBody2D
 		else
 		{
             IsPlayerFrozen = true;
+			Velocity = Vector2.Zero;
         }
 
     }

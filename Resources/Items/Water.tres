@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_18x1s")
 name = "Water"
-price = 2
-restockPrice = 1
+price = 100
+restockPrice = 75
 SeasonFlags = 2
 DisasterFlags = 126
 spriteTexture = ExtResource("2_xoq2r")

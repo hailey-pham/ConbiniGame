@@ -1,21 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=14 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
-[ext_resource type="PackedScene" uid="uid://coulmodr8mtcn" path="res://Scenes/Objects/Box.tscn" id="5_5kxiv"]
 [ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
 [ext_resource type="PackedScene" uid="uid://byaiw4cj1167a" path="res://Scenes/Objects/checkout.tscn" id="6_qywxc"]
 [ext_resource type="PackedScene" uid="uid://4kb8ht7abd6i" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
 [ext_resource type="AudioStream" uid="uid://dud835hk2ffu6" path="res://Assets/Music/Irrashaimase.wav" id="9_wpaow"]
-[ext_resource type="PackedScene" uid="uid://cygwwqrh3o1i0" path="res://Scenes/Objects/BoxSpawner.tscn" id="10_2clb6"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="11_il57l"]
 [ext_resource type="Script" path="res://Scenes/MoneyLabel.cs" id="12_qyo2m"]
 [ext_resource type="PackedScene" uid="uid://vit6v1iaab2a" path="res://Scenes/Objects/storage.tscn" id="13_1hsmu"]
 [ext_resource type="AudioStream" uid="uid://sivy414r7kf4" path="res://Assets/Music/Shop Theme.wav" id="13_e5adc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
-vertices = PackedVector2Array(146, 122, 146, 82, 203, 103, 203, 153, 53, 153, 106, 122, 106, 82, 53, 66, 59, 62, 73, 53, 162, 53, 162, 56, 250, 56, 250, 61, 204, 61, 59, 12, 73, 7, 6, 6, 9, 12, 6, 66, 9, 62, 204, 103)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 5, 4, 7, 8), PackedInt32Array(9, 10, 11, 8), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(6, 8, 11, 14, 1), PackedInt32Array(9, 8, 15, 16), PackedInt32Array(17, 16, 15, 18), PackedInt32Array(19, 17, 18, 20), PackedInt32Array(7, 19, 20, 8), PackedInt32Array(2, 1, 14, 21)])
+vertices = PackedVector2Array(162, 56, 204, 61, 204, 103, 203, 103, 59, 62, 73, 53, 162, 53, 250, 56, 250, 61, 59, 12, 73, 7, 6, 6, 9, 12, 6, 66, 9, 62, 53, 66, 203, 153, 53, 153)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 6, 0), PackedInt32Array(0, 7, 8, 1), PackedInt32Array(5, 4, 9, 10), PackedInt32Array(11, 10, 9, 12), PackedInt32Array(13, 11, 12, 14), PackedInt32Array(15, 13, 14, 4), PackedInt32Array(4, 3, 16, 17, 15)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 159, 255, 159, 256, 1, 157, 2, 157, 48, 79, 47, 79, 2)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 6.0
@@ -840,9 +838,6 @@ position = Vector2(228, 128)
 rotation = 1.57079
 collision_layer = 3
 
-[node name="Box" parent="NavigationRegion2D" instance=ExtResource("5_5kxiv")]
-position = Vector2(126, 102)
-
 [node name="Checkout" parent="NavigationRegion2D" instance=ExtResource("6_qywxc")]
 position = Vector2(113, 30)
 
@@ -859,7 +854,7 @@ layer_1/tile_data = PackedInt32Array(65535, 458752, 1342177281, 131071, 458752, 
 
 [node name="Player" parent="." instance=ExtResource("3_gm0l6")]
 unique_name_in_owner = true
-position = Vector2(98, 53)
+position = Vector2(120, 8)
 
 [node name="npcSpawner" parent="." groups=["spawner"] instance=ExtResource("9_w4hoi")]
 z_index = -1
@@ -870,9 +865,6 @@ position = Vector2(128, 142)
 stream = ExtResource("9_wpaow")
 volume_db = -4.0
 max_polyphony = 2
-
-[node name="BoxSpawner" parent="." instance=ExtResource("10_2clb6")]
-position = Vector2(126, 102)
 
 [node name="UI" type="Control" parent="."]
 z_index = 1
@@ -917,6 +909,7 @@ offset_bottom = 171.0
 theme = ExtResource("11_il57l")
 
 [node name="storage" parent="." instance=ExtResource("13_1hsmu")]
+z_index = -1
 position = Vector2(81.895, 1.865)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -10,8 +10,8 @@ region = Rect2(72, 464, 7, 9)
 [resource]
 script = ExtResource("1_4kupn")
 name = "Flashlight"
-price = 10
-restockPrice = 5
+price = 1000
+restockPrice = 500
 SeasonFlags = 0
 DisasterFlags = 10
 spriteTexture = SubResource("AtlasTexture_pvf44")

@@ -10,8 +10,8 @@ region = Rect2(17, 855, 14, 18)
 [resource]
 script = ExtResource("1_u3g8x")
 name = "Apple"
-price = 4
-restockPrice = 3
+price = 600
+restockPrice = 200
 SeasonFlags = 4
 DisasterFlags = 0
 spriteTexture = SubResource("AtlasTexture_dlne5")

@@ -65,7 +65,6 @@ public partial class Calendar : Node2D
         {
             //dont apply time when we change scenes to the next day
             timer.Stop();
-            IncrementDay();
             elapsedTime = 0; // reset elapsed time
         }
         else
@@ -79,6 +78,7 @@ public partial class Calendar : Node2D
     //called from the npcSpawner once all npcs have left the store
     public void EndDay()
     {
+        IncrementDay();
         sceneManager.ChangeScene("endofdayscene");
         EmitSignal(nameof(DisplayEndOfDayStats));
     }
@@ -168,4 +168,26 @@ public partial class Calendar : Node2D
     {
         return currentSeason;
     }
+
+    /*
+     * 
+     * MULTITHREADED FOR PERFORMANT ASPECT
+     * 
+     */
+
+    //a method to return the disaster (or no disaster) occuring tomorrow
+
+    //run this once before new week starts
+    //array of possible events (0, 0, 0, 0, 0, 1, 1)
+    //get a random integer range 0-array.count
+    //get the value at array[rand] and put it in new array
+    //newarray = (0)
+    //remove value at array[rand]
+    //repeat until original array is empty.
+
+    //GetNextDayDisasterIndex -> int
+    //a method for checking tomorrow's disaster
+
+    //GetCurrentDayDisasterIndex -> int
+    //a method for checking the current day's disaster
 }
