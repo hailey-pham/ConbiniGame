@@ -24,8 +24,9 @@ public partial class checkout : StaticBody2D
 		playerCheck = GetNode<Area2D>("PlayerCheck");
 		timer = GetNode<Timer>("Timer");
 		audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        globals = GetNode<globals>("/root/Globals");
 
-		timer.Timeout += OnTimerTimeout;
+        timer.Timeout += OnTimerTimeout;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -84,8 +85,7 @@ public partial class checkout : StaticBody2D
 
 	private void ReturnItemToStock(ItemRes item)
 	{
-		//short hand way of getting globals only if globals is null
-		globals ??= GetNode<globals>("/root/Globals");
+		
 		//add one back to the global stock
 		globals.Stock[item.name].currentStock++;
 	}
@@ -104,8 +104,9 @@ public partial class checkout : StaticBody2D
 				SellItem(item);
 				if(npc.ShoppingCart.Count == 0)
 				{
-					//we have sold everything in the npc's cart
-					npcs.RemoveAt(0);
+                    globals.Customers += 1;
+                    //we have sold everything in the npc's cart
+                    npcs.RemoveAt(0);
                     npc.stateMachine.TransitionTo("LeaveState");
                 }
             }
@@ -125,10 +126,8 @@ public partial class checkout : StaticBody2D
 		//play the sound
 		audioStreamPlayer.Play();
 
-		//update global variables
-        var globals = GetNode<globals>("/root/Globals");
 		globals.Earnings += item.price;
         globals.Money += item.price;
-		globals.Customers += 1;
+		
     }
 }
