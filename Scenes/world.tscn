@@ -916,7 +916,6 @@ offset_right = 42.0
 offset_bottom = 171.0
 theme = ExtResource("11_il57l")
 
-
 [node name="storage" parent="." instance=ExtResource("13_1hsmu")]
 position = Vector2(81.895, 1.865)
 
