@@ -9,8 +9,16 @@ public partial class CheckoutState : State
 
     private Node2D checkoutNode;
     private checkout checkoutScript;
+    private Timer leaveEarlyTimer;
+    private AnimationPlayer animationPlayer;
     public override void _Enter(Dictionary message)
     {
+        //get timer component
+        leaveEarlyTimer = GetNode<Timer>("Timer");
+        leaveEarlyTimer.Timeout += OnLeaveEarlyTimeout;
+        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        animationPlayer.AnimationFinished += OnFlashFinished;
+
         //check for reference to parent
         if (message != null)
         {
@@ -54,5 +62,17 @@ public partial class CheckoutState : State
     public void OnNavigationFinished()
     {
         checkoutScript.OnNPCCheckout(npcScript);
+        leaveEarlyTimer.Start();
+    }
+
+    private void OnLeaveEarlyTimeout()
+    {
+        leaveEarlyTimer.Stop();
+        animationPlayer.Play("flash");
+    }
+
+    private void OnFlashFinished(StringName animName)
+    {
+        stateMachine.TransitionTo("LeaveState");
     }
 }
