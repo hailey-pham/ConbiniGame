@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhha82nglx6v0"]
+
+[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_4uqdi"]
+[ext_resource type="Script" path="res://Scenes/Objects/Inventory.cs" id="2_h7nu8"]
+
+[node name="Inventory" type="ItemList"]
+z_index = 1
+offset_left = -72.895
+offset_top = 58.135
+offset_right = 167.105
+offset_bottom = 133.135
+theme = ExtResource("1_4uqdi")
+max_text_lines = 2
+script = ExtResource("2_h7nu8")

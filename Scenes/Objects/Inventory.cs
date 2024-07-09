@@ -9,9 +9,11 @@ public partial class Inventory : ItemList
     private ItemSpawner playerItemSpawner;
 
     private List<ItemRes> inventoryItems = new List<ItemRes>();
+
+    private player Player;
     public override void _Ready()
     {
-        playerItemSpawner = GetNode<ItemSpawner>("%Player/ItemSpawner");
+        playerItemSpawner = GetTree().GetFirstNodeInGroup("player").GetNode<ItemSpawner>("%Player/ItemSpawner");
 
         ItemClicked += OnItemClicked;
         globals = GetNode<globals>("/root/Globals");
@@ -21,6 +23,7 @@ public partial class Inventory : ItemList
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        /* //OLD INVENTORY CODE TO ACCESS ANYWHERE
         if (Input.IsActionJustPressed("Open Inventory"))
         { 
             if(this.IsVisibleInTree())
@@ -34,11 +37,11 @@ public partial class Inventory : ItemList
                 Show();
             }
         }
-
+        */
     }
 
     //adds items to the inventory list
-    private void LoadInventory()
+    public void LoadInventory()
     {
         inventoryItems.Clear();
 
@@ -52,7 +55,7 @@ public partial class Inventory : ItemList
         ReloadItemList();
     }
 
-    private void ReloadItemList()
+    public void ReloadItemList()
     {
         Clear();
 
