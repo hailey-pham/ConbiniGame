@@ -53,20 +53,19 @@ public partial class storage : Area2D
                     Player._itemSpawner.currItem.ReturnItemToStock();
                     Player._itemSpawner.RemoveItemRes();
                 }
+                
+                if (Inventory.IsVisibleInTree())
+                {
+                    Inventory.Hide();
+                }
                 else
                 {
-                    if (Inventory.IsVisibleInTree())
-                    {
-                        Inventory.Hide();
-                    }
-                    else
-                    {
-                        Inventory.LoadInventory();
-                        Inventory.Show();
-                    }
-
-                    Player.playerFreezeState();
+                    Inventory.LoadInventory();
+                    Inventory.Show();
                 }
+
+                Player.playerFreezeState();
+                
             }
 
         }
