@@ -46,17 +46,27 @@ public partial class storage : Area2D
             //basically the same as checking if the player is inside the area
             if (Player != null)
             {
-                if (Inventory.IsVisibleInTree())
+                //if player is currently holding an item
+                if (Player._itemSpawner.currItem != null)
                 {
-                    Inventory.Hide();
+                    //return it to stock and remove the item
+                    Player._itemSpawner.currItem.ReturnItemToStock();
+                    Player._itemSpawner.RemoveItemRes();
                 }
                 else
                 {
-                    Inventory.LoadInventory();
-                    Inventory.Show();
-                }
+                    if (Inventory.IsVisibleInTree())
+                    {
+                        Inventory.Hide();
+                    }
+                    else
+                    {
+                        Inventory.LoadInventory();
+                        Inventory.Show();
+                    }
 
-                Player.playerFreezeState();
+                    Player.playerFreezeState();
+                }
             }
 
         }

@@ -79,6 +79,7 @@ public partial class checkout : StaticBody2D
 		if(npcs.Contains(npc))
 		{
 			npc.ShoppingCart.ForEach(ReturnItemToStock);
+			npc.ShoppingCart.Clear();
 			npcs.Remove(npc);
 		}
 	}

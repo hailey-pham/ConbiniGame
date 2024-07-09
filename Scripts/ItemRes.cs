@@ -49,6 +49,12 @@ public partial class ItemRes : Resource
 		currentStock = _currentStock;
 	}
 
+    public void ReturnItemToStock()
+    {
+        //add one back to the global stock
+        globals.Stock[name].currentStock++;
+    }
+
 
 
 }

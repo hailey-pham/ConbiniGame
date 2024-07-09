@@ -13,7 +13,8 @@ public partial class Inventory : ItemList
     private player Player;
     public override void _Ready()
     {
-        playerItemSpawner = GetTree().GetFirstNodeInGroup("player").GetNode<ItemSpawner>("%Player/ItemSpawner");
+        Player = GetTree().GetFirstNodeInGroup("player") as player;
+        playerItemSpawner = Player.GetNode<ItemSpawner>("ItemSpawner");
 
         ItemClicked += OnItemClicked;
         globals = GetNode<globals>("/root/Globals");
@@ -74,6 +75,8 @@ public partial class Inventory : ItemList
         {
             playerItemSpawner.AddItemRes(itemRes);
             globals.DecrementItemResStock(itemRes);
+            Player.playerFreezeState();
+            Hide();
         }
 
         LoadInventory();
