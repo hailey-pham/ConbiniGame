@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class npcSpawner : Node2D
 {
@@ -8,6 +9,9 @@ public partial class npcSpawner : Node2D
 
 	[Export]
 	public Curve spawnCurve;
+
+	[Signal]
+	public delegate void StoreEmptyEventHandler();
 
 	private AudioStreamPlayer2D audioPlayer;
 
@@ -35,6 +39,8 @@ public partial class npcSpawner : Node2D
         {
             Node newNpc = npcScene.Instantiate();
             newNpc.Set("z_as_relative", false);
+            var npcScript = newNpc as npc;
+            npcScript.LeftStore += OnNPCLeaveStore;
             AddChild(newNpc);
 			audioPlayer.Play();
         }
@@ -48,6 +54,29 @@ public partial class npcSpawner : Node2D
 		if(spawnProbability > randomNum)
 		{
 			SpawnNPC();
+		}
+	}
+
+	private void OnNPCLeaveStore()
+	{
+		int npcCount = 0;
+
+		foreach (var child in GetChildren())
+		{
+			if (child is npc)
+			{
+				npcCount++;
+			}
+		}
+
+		if(npcCount == 1)
+		{
+			//we close the store if the day is up
+			var calendar = GetNode<Calendar>("/root/Calendar");
+			if(calendar.IsDayOver())
+			{
+				calendar.EndDay();
+			}
 		}
 	}
 }

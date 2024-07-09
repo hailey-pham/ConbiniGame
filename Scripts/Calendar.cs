@@ -34,7 +34,6 @@ public partial class Calendar : Node2D
 
     private bool disasterDay = false;
 
-
     public override void _Ready()
     {
         // get scenemanager
@@ -68,9 +67,6 @@ public partial class Calendar : Node2D
             timer.Stop();
             IncrementDay();
             elapsedTime = 0; // reset elapsed time
-
-            sceneManager.ChangeScene("endofdayscene");
-            EmitSignal(nameof(DisplayEndOfDayStats));
         }
         else
         {
@@ -80,6 +76,12 @@ public partial class Calendar : Node2D
         }
     }
 
+    //called from the npcSpawner once all npcs have left the store
+    public void EndDay()
+    {
+        sceneManager.ChangeScene("endofdayscene");
+        EmitSignal(nameof(DisplayEndOfDayStats));
+    }
     private void UpdateCalendarLabel()
     {
         calendarLabel.Text = string.Format("Season: {0}, Day: {1}", currentSeasonStr, currentDay);
@@ -106,8 +108,8 @@ public partial class Calendar : Node2D
             globals.ResetCustomers();
             timer.Start();
             // get the label nodes
-            timeLabel = GetNode<Label>("/root/SceneManager/World/UI/TimeLabel");
-            calendarLabel = GetNode<Label>("/root/SceneManager/World/UI/CalendarLabel");
+            timeLabel = GetNode<Label>("/root/SceneManager/SceneParent/World/UI/TimeLabel");
+            calendarLabel = GetNode<Label>("/root/SceneManager/SceneParent/World/UI/CalendarLabel");
             UpdateCalendarLabel();
             OnSeasonChange(currentSeason);
         }
@@ -138,6 +140,12 @@ public partial class Calendar : Node2D
         return currentDay == 2 || currentDay == 4;
     }
 
+    //a silly check
+    public bool IsDayOver()
+    {
+        return elapsedTime == 0;
+    }
+
     public void DetermineNextDay()
     {
         GD.Print("Determining day...");
@@ -153,5 +161,11 @@ public partial class Calendar : Node2D
         {
             sceneManager.ChangeScene("gamescene");
         }
+    }
+
+    //getters
+    public int GetCurrentSeason()
+    {
+        return currentSeason;
     }
 }

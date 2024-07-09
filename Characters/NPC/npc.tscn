@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cq6fojlwfxlai"]
+[gd_scene load_steps=62 format=3 uid="uid://cq6fojlwfxlai"]
 
 [ext_resource type="Script" path="res://Characters/NPC/npc.cs" id="1_5h8m4"]
 [ext_resource type="Texture2D" uid="uid://7pt1f1mj2r1" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png" id="2_05cy8"]
@@ -393,6 +393,28 @@ animations = [{
 radius = 5.0
 height = 10.0
 
+[sub_resource type="Animation" id="Animation_gtdt0"]
+resource_name = "flash"
+length = 10.0
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 2.1209, 2.2211, 4.1249, 4.2251, 5.1436, 5.2438, 6.1456, 6.2458, 6.8637, 6.9639, 7.5818, 7.682, 8.183, 8.2164, 8.7174, 8.7341, 9.1015, 9.1349, 9.5023, 9.51667, 9.7528, 9.78333, 9.96878, 10),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mm2c0"]
+_data = {
+"flash": SubResource("Animation_gtdt0")
+}
+
 [node name="NPC" type="CharacterBody2D"]
 z_as_relative = false
 y_sort_enabled = true
@@ -433,6 +455,15 @@ script = ExtResource("7_rotgl")
 
 [node name="CheckoutState" type="Node" parent="StateMachine"]
 script = ExtResource("8_oj45i")
+
+[node name="Timer" type="Timer" parent="StateMachine/CheckoutState"]
+wait_time = 20.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StateMachine/CheckoutState"]
+libraries = {
+"": SubResource("AnimationLibrary_mm2c0")
+}
 
 [node name="LeaveState" type="Node" parent="StateMachine"]
 script = ExtResource("9_67rdb")

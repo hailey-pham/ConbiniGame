@@ -916,10 +916,11 @@ offset_right = 42.0
 offset_bottom = 171.0
 theme = ExtResource("11_il57l")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_e5adc")
-volume_db = -6.0
-autoplay = true
 
 [node name="storage" parent="." instance=ExtResource("13_1hsmu")]
 position = Vector2(81.895, 1.865)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_e5adc")
+volume_db = -16.0
+autoplay = true

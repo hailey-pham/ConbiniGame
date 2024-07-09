@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://byaiw4cj1167a"]
+[gd_scene load_steps=9 format=3 uid="uid://byaiw4cj1167a"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/checkout.cs" id="1_m18t2"]
 [ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="1_yvgt8"]
 [ext_resource type="PackedScene" uid="uid://d0xhd3com77f6" path="res://Scenes/UI/sell_animation.tscn" id="2_5r7tm"]
+[ext_resource type="AudioStream" uid="uid://b1xakyg6pd1pb" path="res://Assets/Music/Beep.wav" id="4_w8tre"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xetir"]
 texture = ExtResource("1_yvgt8")
@@ -3406,3 +3407,8 @@ shape = SubResource("RectangleShape2D_key52")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_w8tre")
+volume_db = -6.0
+max_polyphony = 2

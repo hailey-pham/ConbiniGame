@@ -33,6 +33,7 @@ public partial class main_menu : Control
     private void onCreditsPressed()
     {
         //show some credits here
+        sceneManager.ChangeScene("credits");
     }
 
     private void onQuitPressed()

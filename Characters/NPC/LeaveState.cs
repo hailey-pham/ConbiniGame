@@ -53,6 +53,7 @@ public partial class LeaveState : State
     public void OnNavigationFinished()
     {
         //once we make it out the door, kill ourselves
+        npcScript.OnLeaveStore();
         npcScript.QueueFree();
     }
 }

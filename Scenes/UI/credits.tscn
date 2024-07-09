@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5bky6nidjsef"]
+
+[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_jvu1w"]
+[ext_resource type="Texture2D" uid="uid://six140ru7we8" path="res://Assets/DisastoreTitle.png" id="2_c8gvx"]
+[ext_resource type="Script" path="res://Scenes/UI/CreditsPlayer.cs" id="2_ni4c7"]
+[ext_resource type="AudioStream" uid="uid://c52b6ib1jmsfa" path="res://Assets/Music/Shop End Credits.wav" id="4_asg3v"]
+
+[sub_resource type="Animation" id="Animation_v5acn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scroll Node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 160)]
+}
+
+[sub_resource type="Animation" id="Animation_t8jhg"]
+resource_name = "scroll"
+length = 60.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scroll Node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 340), Vector2(0, -130)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3l5go"]
+_data = {
+"RESET": SubResource("Animation_v5acn"),
+"scroll": SubResource("Animation_t8jhg")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scroll Node" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 160.0
+offset_right = 256.0
+offset_bottom = 160.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Scroll Node"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0003
+offset_bottom = 40.0003
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jvu1w")
+bbcode_enabled = true
+text = "[center]Disastore
+
+
+Hailey Pham
+[wave]Claw Machine[/wave] Consultant
+
+Tess Kiddy
+Founder of [pulse]Kiddy Land[/pulse]
+
+Yavna Chand
+[shake]Caffeine[/shake] Addict
+
+Gabriel Wagner
+Still can't get [tornado radius=4 freq=3]docker[/tornado] working...
+
+Romeo Casale
+The [rainbow]Artist![/rainbow]
+
+Made with [color=red]愛[/color] at Kyoto University"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="Scroll Node"]
+modulate = Color(100, 100, 100, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.5
+offset_top = -174.755
+offset_right = 115.5
+offset_bottom = -122.754
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_c8gvx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3l5go")
+}
+script = ExtResource("2_ni4c7")
+speedUp = 5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_asg3v")
+volume_db = -6.0
+autoplay = true

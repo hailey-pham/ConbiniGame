@@ -63,4 +63,9 @@ public partial class StateMachine : Node
 
 		EmitSignal(nameof(Transitioned),state.Name);
 	}
+
+	public State GetCurrentState()
+	{
+		return state;
+	}
 }
