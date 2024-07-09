@@ -27,6 +27,6 @@ public partial class CreditsPlayer : AnimationPlayer
     private void OnAnimationFinished(StringName name)
     {
         var sceneManager = GetNode<SceneManager>("/root/SceneManager");
-        sceneManager.ChangeScene("mainmenu");
+        sceneManager.ChangeScene("mainmenu","FadeToBlack");
     }
 }

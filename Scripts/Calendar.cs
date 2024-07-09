@@ -79,7 +79,7 @@ public partial class Calendar : Node2D
     public void EndDay()
     {
         IncrementDay();
-        sceneManager.ChangeScene("endofdayscene");
+        sceneManager.ChangeScene("endofdayscene", "FadeToBlack");
         EmitSignal(nameof(DisplayEndOfDayStats));
     }
     private void UpdateCalendarLabel()
@@ -154,7 +154,7 @@ public partial class Calendar : Node2D
 
         if (IsDisasterDay())
         {
-            sceneManager.ChangeScene("disasterscene");
+            sceneManager.ChangeScene("disasterscene","Sleep");
             // stats.UpdateMoney();
         }
         else
