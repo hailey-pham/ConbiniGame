@@ -28,6 +28,7 @@ position = Vector2(0, 19)
 shape = SubResource("RectangleShape2D_0rpun")
 
 [node name="ItemSpawner" parent="." instance=ExtResource("2_eykgy")]
+y_sort_enabled = true
 position = Vector2(0, -6)
 
 [node name="counter_area" type="Area2D" parent="."]
