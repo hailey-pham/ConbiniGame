@@ -13,7 +13,7 @@ region = Rect2(13, 161, 38, 37)
 size = Vector2(38, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmy8p"]
-size = Vector2(38, 51)
+size = Vector2(52, 48)
 
 [node name="counter" type="StaticBody2D" groups=["counters"]]
 script = ExtResource("1_fpsiv")
@@ -34,5 +34,4 @@ position = Vector2(0, -6)
 script = ExtResource("3_yqw4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="counter_area"]
-position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nmy8p")

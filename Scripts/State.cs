@@ -19,6 +19,7 @@ public abstract partial class State : Node
 	{
 		_Enter(null);
 	}
+	//Called by state machine when entering new state
 	abstract public void _Enter(Dictionary message);
 	//Called by the state machine before changing the active state. Use this function to clean up the state.
 	abstract public void _Exit();
