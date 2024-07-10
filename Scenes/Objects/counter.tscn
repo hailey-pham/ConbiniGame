@@ -7,13 +7,13 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2u0fd"]
 atlas = ExtResource("1_q77ev")
-region = Rect2(13, 161, 38, 37)
+region = Rect2(48, 80, 16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qfgq"]
-size = Vector2(38, 38)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rpun"]
+size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmy8p"]
-size = Vector2(52, 48)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6slpf"]
+size = Vector2(27.5792, 20.8612)
 
 [node name="counter" type="StaticBody2D" groups=["counters"]]
 script = ExtResource("1_fpsiv")
@@ -25,7 +25,7 @@ texture = SubResource("AtlasTexture_2u0fd")
 position = Vector2(0, 19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_8qfgq")
+shape = SubResource("RectangleShape2D_0rpun")
 
 [node name="ItemSpawner" parent="." instance=ExtResource("2_eykgy")]
 position = Vector2(0, -6)
@@ -34,4 +34,6 @@ position = Vector2(0, -6)
 script = ExtResource("3_yqw4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="counter_area"]
-shape = SubResource("RectangleShape2D_nmy8p")
+position = Vector2(4.76837e-07, 0.5)
+scale = Vector2(1.01526, 1.00665)
+shape = SubResource("RectangleShape2D_6slpf")
