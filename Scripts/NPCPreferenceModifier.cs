@@ -21,6 +21,8 @@ public partial class NPCPreferenceModifier : Node
         //FlashFlood = 5
         //HeavySnow = 6
 
+        // calendar.GetNextDayDisasterIndex(); <<- i think something like that
+
         //this is temporary
         var tomorrowDisasterInt = 1;
 
