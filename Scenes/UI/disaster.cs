@@ -8,6 +8,7 @@ public partial class disaster : Control
 
 	private Button nextButton;
 	private Timer displayTimer;
+	private WarningAnimation warningAnimation;
 
 	private SceneManager sceneManager;
 
@@ -16,7 +17,11 @@ public partial class disaster : Control
 	{
         // get scenemanager
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
-        
+		warningAnimation = GetNode<WarningAnimation>("WarningAnimation");
+
+		//change disasters to not always be hardcoded to earthquakes
+		warningAnimation.SetDisasterType(Calendar.DisastersEnum.Earthquake);
+
 		nextButton = GetNode<Button>("NextButton");
 		nextButton.Visible = false;
 		nextButton.Pressed += OnNextButtonPressed;
