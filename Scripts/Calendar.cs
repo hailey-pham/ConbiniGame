@@ -36,8 +36,19 @@ public partial class Calendar : Node2D
 
     private bool disasterDay = false;
     private int[] weeklyDisasters;
-    public int currentDayIndex;
-    public int nextDayIndex;
+    public int currentDayIndex = 0;
+    public int nextDayIndex = 0;
+
+    private enum DisasterType
+    {
+        None = 0,
+        Earthquake = 1,
+        Tsunami = 2,
+        Typhoon = 3,
+        WildFire = 4,
+        FlashFlood = 5,
+        HeavySnow = 6
+    }
 
     public override void _Ready()
     {
@@ -51,14 +62,17 @@ public partial class Calendar : Node2D
 
         globals = GetNode<globals>("/root/Globals");
 
-        GenerateDisasterCalendar();
+       GenerateDisasterDays();
 
         GD.Print("Weekly events: " + string.Join(",", weeklyDisasters));
 
-        GetCurrentDayDisasterIndex();
-        GetNextDayDisasterIndex();
-        GD.Print("Current day index:" + currentDayIndex);
+        currentDayIndex = 0;
+
+        currentDayIndex = GetCurrentDayDisasterIndex();
+        nextDayIndex = GetNextDayDisasterIndex();
+        GD.Print("Current day index: " + currentDayIndex);
         GD.Print("Next day index: " + nextDayIndex);
+
     }
 
     private void OnTimerTimeout()
@@ -128,7 +142,6 @@ public partial class Calendar : Node2D
 
     }
 
-
     public void IncrementDay()
     {
         globals.IncrementDay();
@@ -140,12 +153,13 @@ public partial class Calendar : Node2D
             OnSeasonChange(currentSeason);
         }
         UpdateCalendarLabel();
+        GD.Print("Current day index: " + currentDayIndex);
+        GD.Print("Next day index: " + nextDayIndex);
     }
 
     public bool IsDisasterDay()
     {
-        // hard coding disaster day
-        return currentDay == 2 || currentDay == 4;
+        return weeklyDisasters[currentDayIndex] != (int)DisasterType.None;
     }
 
     //a silly check
@@ -177,87 +191,62 @@ public partial class Calendar : Node2D
         return currentSeason;
     }
 
-    public void GenerateDisasterCalendar()
+    public void GenerateDisasterDays()
     {
         int[] weeklyArray = { 0, 0, 0, 0, 0, 1, 1 };
         List<int> list = new List<int>(weeklyArray);
         weeklyDisasters = new int[7];
+        List<int> disasterTypes = new List<int> { 1, 2, 3, 4, 5, 6 };
 
         Task shuffleTask = Task.Run(() =>
         {
-
             Random random = new Random();
             int lastDayDisaster = -1;
             int disasterCount = 0;
 
-            for (int i = 0; i < weeklyArray.Length; i++)
+            // assign two disasters to random days
+            while (disasterCount < 2)
             {
-                if (i == 0)
-                {
-                    weeklyDisasters[i] = 0;
-                    continue; // first day is always a normal day
-                }
-
                 int randIndex;
-                int eventDay;
-
                 do
                 {
-                    randIndex = random.Next(list.Count);
-                    eventDay = list[randIndex];
+                    randIndex = random.Next(1, 7); // make sure the first day is a normal day
                 }
-                while ((eventDay == 1 && lastDayDisaster == 1) || (i == 1 && eventDay == 1)); // make sure there isn't two consecutive disasters
+                while (weeklyDisasters[randIndex] != 0 || // make sure there's no disasters two days in a row
+                       (randIndex > 0 && weeklyDisasters[randIndex - 1] != 0) ||
+                       (randIndex < 6 && weeklyDisasters[randIndex + 1] != 0));
 
-                if (eventDay == 1)
-                    {
-                        disasterCount++;
-                        if (disasterCount > 2)
-                        {
-                            eventDay = 0;
-                        }
-                    }
-                weeklyDisasters[i] = eventDay;
-                lastDayDisaster = eventDay;
-                list.RemoveAt(randIndex);
-                }
-                while (disasterCount < 2)
+                // assign random disaster to the disaster days
+                int disasterTypeIndex = random.Next(disasterTypes.Count);
+                weeklyDisasters[randIndex] = disasterTypes[disasterTypeIndex];
+                disasterTypes.RemoveAt(disasterTypeIndex);
+
+                disasterCount++;
+            }
+
+            // assign 0 to the rest of the days
+            for (int i = 0; i < weeklyArray.Length; i++)
+            {
+                if (weeklyDisasters[i] == 0)
                 {
-                    int indexToChange;
-                    do
-                    {
-                        indexToChange = random.Next(1, 7);
-                    }
-                while (weeklyDisasters[indexToChange] == 1 ||
-                     (indexToChange > 0 && weeklyDisasters[indexToChange - 1] == 1) ||
-                     (indexToChange < 6 && weeklyDisasters[indexToChange + 1] == 1));
-
-                    weeklyDisasters[indexToChange] = 1;
-                    disasterCount++;
+                    weeklyDisasters[i] = (int)DisasterType.None;
                 }
-                while (disasterCount > 2)
-                {
-                    int indexToChange;
-                    do
-                    {
-                        indexToChange = random.Next(1, 7);
-                    }
-                    while (weeklyDisasters[indexToChange] == 0);
-
-                    weeklyDisasters[indexToChange] = 0;
-                    disasterCount--;
-                }
+            }
         });
+
         shuffleTask.Wait();
-     }
+    }
 
     public int GetNextDayDisasterIndex()
     {
-        return weeklyDisasters[(currentDayIndex + 1) % weeklyDisasters.Length];
+        int nextDay = (currentDay % 7);
+        return weeklyDisasters[nextDay];
     }
 
     public int GetCurrentDayDisasterIndex()
     {
-        return weeklyDisasters[currentDayIndex];
+        int today = (currentDay - 1) % 7;
+        return weeklyDisasters[today];
     }
 
     /*
