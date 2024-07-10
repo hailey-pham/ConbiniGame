@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public partial class Calendar : Node2D
 {
@@ -33,6 +35,9 @@ public partial class Calendar : Node2D
     private Timer timer;
 
     private bool disasterDay = false;
+    private int[] weeklyDisasters;
+    public int currentDayIndex;
+    public int nextDayIndex;
 
     public override void _Ready()
     {
@@ -46,7 +51,14 @@ public partial class Calendar : Node2D
 
         globals = GetNode<globals>("/root/Globals");
 
-        CustomizeLabels();
+        GenerateDisasterCalendar();
+
+        GD.Print("Weekly events: " + string.Join(",", weeklyDisasters));
+
+        GetCurrentDayDisasterIndex();
+        GetNextDayDisasterIndex();
+        GD.Print("Current day index:" + currentDayIndex);
+        GD.Print("Next day index: " + nextDayIndex);
     }
 
     private void OnTimerTimeout()
@@ -116,10 +128,6 @@ public partial class Calendar : Node2D
 
     }
 
-    private void CustomizeLabels()
-    {
-        // in case we want to customize labels further
-    }
 
     public void IncrementDay()
     {
@@ -167,6 +175,89 @@ public partial class Calendar : Node2D
     public int GetCurrentSeason()
     {
         return currentSeason;
+    }
+
+    public void GenerateDisasterCalendar()
+    {
+        int[] weeklyArray = { 0, 0, 0, 0, 0, 1, 1 };
+        List<int> list = new List<int>(weeklyArray);
+        weeklyDisasters = new int[7];
+
+        Task shuffleTask = Task.Run(() =>
+        {
+
+            Random random = new Random();
+            int lastDayDisaster = -1;
+            int disasterCount = 0;
+
+            for (int i = 0; i < weeklyArray.Length; i++)
+            {
+                if (i == 0)
+                {
+                    weeklyDisasters[i] = 0;
+                    continue; // first day is always a normal day
+                }
+
+                int randIndex;
+                int eventDay;
+
+                do
+                {
+                    randIndex = random.Next(list.Count);
+                    eventDay = list[randIndex];
+                }
+                while ((eventDay == 1 && lastDayDisaster == 1) || (i == 1 && eventDay == 1)); // make sure there isn't two consecutive disasters
+
+                if (eventDay == 1)
+                    {
+                        disasterCount++;
+                        if (disasterCount > 2)
+                        {
+                            eventDay = 0;
+                        }
+                    }
+                weeklyDisasters[i] = eventDay;
+                lastDayDisaster = eventDay;
+                list.RemoveAt(randIndex);
+                }
+                while (disasterCount < 2)
+                {
+                    int indexToChange;
+                    do
+                    {
+                        indexToChange = random.Next(1, 7);
+                    }
+                while (weeklyDisasters[indexToChange] == 1 ||
+                     (indexToChange > 0 && weeklyDisasters[indexToChange - 1] == 1) ||
+                     (indexToChange < 6 && weeklyDisasters[indexToChange + 1] == 1));
+
+                    weeklyDisasters[indexToChange] = 1;
+                    disasterCount++;
+                }
+                while (disasterCount > 2)
+                {
+                    int indexToChange;
+                    do
+                    {
+                        indexToChange = random.Next(1, 7);
+                    }
+                    while (weeklyDisasters[indexToChange] == 0);
+
+                    weeklyDisasters[indexToChange] = 0;
+                    disasterCount--;
+                }
+        });
+        shuffleTask.Wait();
+     }
+
+    public int GetNextDayDisasterIndex()
+    {
+        return weeklyDisasters[(currentDayIndex + 1) % weeklyDisasters.Length];
+    }
+
+    public int GetCurrentDayDisasterIndex()
+    {
+        return weeklyDisasters[currentDayIndex];
     }
 
     /*
