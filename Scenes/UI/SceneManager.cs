@@ -11,7 +11,6 @@ public partial class SceneManager : Node
     [Export]
     public Dictionary transitions;
 
-    private AnimationPlayer animationPlayer;
     private Node sceneParent;
     private bool transitioning = false;
 
@@ -23,7 +22,6 @@ public partial class SceneManager : Node
     public override void _Ready()
     {
         //load references to children components
-        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         sceneParent = GetNode<Node>("SceneParent");
 
         //load the main menu when the game starts

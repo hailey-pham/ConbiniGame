@@ -9,7 +9,7 @@
 size = Vector2(58, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87t1j"]
-size = Vector2(38, 25)
+size = Vector2(40, 26)
 
 [node name="storage" type="Area2D"]
 script = ExtResource("2_yhkxo")
@@ -34,7 +34,8 @@ max_text_lines = 2
 script = ExtResource("4_aw73v")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_87t1j")
