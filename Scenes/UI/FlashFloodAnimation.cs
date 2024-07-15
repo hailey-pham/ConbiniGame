@@ -11,7 +11,6 @@ public partial class FlashFloodAnimation : Control
     private NoiseTexture2D cloudTexture;
     private AudioStreamPlayer thunderSound;
     private AudioStreamPlayer rainSound;
-    private WarningAnimation warningAnimation;
     private Timer timer;
 
     private RandomNumberGenerator rng = new();
@@ -22,10 +21,7 @@ public partial class FlashFloodAnimation : Control
         clouds = GetNode<TextureRect>("Clouds");
         thunderSound = GetNode<AudioStreamPlayer>("Thunder");
         rainSound = GetNode<AudioStreamPlayer>("Rain");
-        warningAnimation = GetNode<WarningAnimation>("WarningAnimation");
         timer = GetNode<Timer>("Timer");
-
-        warningAnimation.SetDisasterType(Calendar.DisastersEnum.FlashFlood);
 
         timer.WaitTime = rng.RandfRange(6f, 15f);
         timer.Timeout += OnTimerTimeout;

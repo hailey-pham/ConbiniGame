@@ -18,6 +18,21 @@ height = 160
 color_ramp = SubResource("Gradient_7npl2")
 noise = SubResource("FastNoiseLite_o7cad")
 
+[sub_resource type="Animation" id="Animation_57i1l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.423529, 0.423529, 0.423529, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_unm4m"]
 resource_name = "lightning"
 length = 2.0
@@ -32,21 +47,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(3.73213, 1, 1e-05, 0.447624, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.744181, 0.744181, 0.744181, 1), Color(0.744181, 0.744181, 0.744181, 1), Color(1, 1, 1, 1), Color(0.422371, 0.422371, 0.422371, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_57i1l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.423529, 0.423529, 0.423529, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m0uj0"]
