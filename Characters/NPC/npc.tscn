@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cq6fojlwfxlai"]
+[gd_scene load_steps=63 format=3 uid="uid://cq6fojlwfxlai"]
 
 [ext_resource type="Script" path="res://Characters/NPC/npc.cs" id="1_5h8m4"]
 [ext_resource type="Texture2D" uid="uid://7pt1f1mj2r1" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png" id="2_05cy8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bx5dch2keo0y7" path="res://Components/auto_animator.tscn" id="4_1men2"]
 [ext_resource type="Script" path="res://Scripts/StateMachine.cs" id="5_rvei0"]
 [ext_resource type="Script" path="res://Characters/NPC/ShoppingState.cs" id="6_7k7ox"]
+[ext_resource type="PackedScene" uid="uid://dxq51tf2xffeo" path="res://Scenes/UI/SpeechBubbleAnimation.tscn" id="7_qe6mu"]
 [ext_resource type="Script" path="res://Characters/NPC/IdleState.cs" id="7_rotgl"]
 [ext_resource type="Script" path="res://Characters/NPC/CheckoutState.cs" id="8_oj45i"]
 [ext_resource type="Script" path="res://Characters/NPC/LeaveState.cs" id="9_67rdb"]
@@ -446,6 +447,7 @@ initialState = NodePath("IdleState")
 [node name="ShoppingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer")]
 script = ExtResource("6_7k7ox")
 timer = NodePath("Timer")
+WantItemScene = ExtResource("7_qe6mu")
 
 [node name="Timer" type="Timer" parent="StateMachine/ShoppingState"]
 one_shot = true
@@ -467,3 +469,6 @@ libraries = {
 
 [node name="LeaveState" type="Node" parent="StateMachine"]
 script = ExtResource("9_67rdb")
+
+[node name="BubbleSpawn" type="Marker2D" parent="."]
+position = Vector2(-23, -26)

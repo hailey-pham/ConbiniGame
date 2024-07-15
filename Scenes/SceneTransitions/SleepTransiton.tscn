@@ -116,3 +116,4 @@ theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center][shake rate=4 level=20 connected=1]Z[/shake][/center]"
 fit_content = true
+metadata/_edit_use_anchors_ = true

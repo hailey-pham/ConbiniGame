@@ -804,6 +804,7 @@ sources/0 = SubResource("TileSetAtlasSource_xmuob")
 y_sort_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_y8ues")
 
 [node name="counter" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
