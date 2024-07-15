@@ -180,6 +180,19 @@ public partial class Calendar : Node2D
         return currentSeason;
     }
 
+    public override void _UnhandledKeyInput(InputEvent @event)
+    {
+        //only allow for debug key inputs if in debug mode
+#if DEBUG
+        if (@event.IsActionPressed("DEBUG_skip_day"))
+        {
+            timer.Stop();
+            elapsedTime = 0; // reset elapsed time
+            EndDay();
+        }
+#endif
+    }
+
     /*
      * 
      * MULTITHREADED FOR PERFORMANT ASPECT

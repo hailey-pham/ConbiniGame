@@ -12,7 +12,12 @@ public partial class disaster : Control
 
 	private SceneManager sceneManager;
 
-	// Called when the node enters the scene tree for the first time.
+	// Called when the node enters the scene tree for the first time
+
+	[Export]
+	private Calendar.DisastersEnum currDisaster = Calendar.DisastersEnum.Earthquake;
+
+	
 	public override void _Ready()
 	{
         // get scenemanager
@@ -20,9 +25,16 @@ public partial class disaster : Control
 		warningAnimation = GetNode<WarningAnimation>("WarningAnimation");
 
 		//change disasters to not always be hardcoded to earthquakes
-		warningAnimation.SetDisasterType(Calendar.DisastersEnum.Earthquake);
+		warningAnimation.SetDisasterType(currDisaster);
 
-		nextButton = GetNode<Button>("NextButton");
+        //load in the disasterAnimation that matches our current enum
+
+        var disasterAnim = GD.Load<PackedScene>("res://Scenes/UI/DiasterAnimations/" + Enum.GetName(typeof(Calendar.DisastersEnum), currDisaster) + "Animation.tscn");
+		AddChild(disasterAnim.Instantiate());
+
+        nextButton = GetNode<Button>("NextButton");
+		//we have to move button in front of animation to get it to register inputs
+		MoveChild(nextButton, -1);
 		nextButton.Visible = false;
 		nextButton.Pressed += OnNextButtonPressed;
 

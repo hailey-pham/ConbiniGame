@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch5b42j2po0cp"]
 
-[ext_resource type="Script" path="res://Scenes/UI/EarthquakeAnimation.cs" id="1_xn1he"]
+[ext_resource type="Script" path="res://Scenes/UI/DiasterAnimations/EarthquakeAnimation.cs" id="1_xn1he"]
 [ext_resource type="Texture2D" uid="uid://vog8f81y4ktb" path="res://Assets/storefrontPlaceholder.png" id="2_8dvk0"]
 
 [sub_resource type="Animation" id="Animation_a7hxe"]

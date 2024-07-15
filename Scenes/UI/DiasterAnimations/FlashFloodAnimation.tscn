@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dkmtqkt5pqq68"]
 
-[ext_resource type="Script" path="res://Scenes/UI/FlashFloodAnimation.cs" id="1_mr0aa"]
+[ext_resource type="Script" path="res://Scenes/UI/DiasterAnimations/FlashFloodAnimation.cs" id="1_mr0aa"]
 [ext_resource type="Texture2D" uid="uid://vog8f81y4ktb" path="res://Assets/storefrontPlaceholder.png" id="1_ppvnx"]
 [ext_resource type="AudioStream" uid="uid://dnbac0lpmh411" path="res://Assets/Music/Rain.wav" id="3_dbdu2"]
 [ext_resource type="AudioStream" uid="uid://dpcunerwg6k4a" path="res://Assets/Music/Thunder.wav" id="3_pauqg"]

@@ -10,6 +10,9 @@ public partial class counter : StaticBody2D
     {
         counterArea = GetNode<CounterArea>("counter_area");
         itemSpawner = GetNode<ItemSpawner>("ItemSpawner");
+
+        var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        sceneManager.SceneChanged += OnSceneChanged;
     }
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -39,6 +42,17 @@ public partial class counter : StaticBody2D
                         itemSpawner.AddItemRes(Player._itemSpawner.RemoveItemRes());
                     }
                 }
+            }
+        }
+    }
+
+    private void OnSceneChanged(string sceneName)
+    {
+        if(sceneName.Equals("endofdayscene"))
+        {
+            if (itemSpawner.HasItem())
+            {
+                globals.IncrementItemResStock(itemSpawner.RemoveItemRes());
             }
         }
     }

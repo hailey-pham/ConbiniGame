@@ -66,4 +66,20 @@ public partial class SleepTransiton : SceneTransition
             }
         }
     }
+    public override void _UnhandledKeyInput(InputEvent @event)
+    {
+        if(@event.IsAction("Interact"))
+        {
+            if (@event.IsPressed())
+            {
+                animationPlayer.SpeedScale = 2;
+            }
+            else
+            {
+                animationPlayer.SpeedScale = 1;
+            }
+            
+        }
+
+    }
 }

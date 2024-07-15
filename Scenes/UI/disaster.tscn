@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d16j5oem2q3rs"]
+[gd_scene load_steps=4 format=3 uid="uid://d16j5oem2q3rs"]
 
 [ext_resource type="Script" path="res://Scenes/UI/disaster.cs" id="1_i7o8l"]
-[ext_resource type="PackedScene" uid="uid://ch5b42j2po0cp" path="res://Scenes/UI/EarthquakeAnimation.tscn" id="3_ois8q"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="4_1g73a"]
 [ext_resource type="PackedScene" uid="uid://ii550elalv1u" path="res://Scenes/UI/WarningAnimation.tscn" id="4_ld1vi"]
 
@@ -14,14 +13,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i7o8l")
 
-[node name="EarthquakeAnimation" parent="." instance=ExtResource("3_ois8q")]
-layout_mode = 1
-
 [node name="DisplayTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
 
 [node name="NextButton" type="Button" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -40,4 +37,6 @@ theme_override_font_sizes/font_size = 20
 text = "NEXT"
 
 [node name="WarningAnimation" parent="." instance=ExtResource("4_ld1vi")]
+z_index = 1
 layout_mode = 1
+mouse_filter = 2
