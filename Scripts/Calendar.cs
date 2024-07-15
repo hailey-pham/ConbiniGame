@@ -34,6 +34,17 @@ public partial class Calendar : Node2D
 
     private bool disasterDay = false;
 
+    public enum DisastersEnum
+    {
+        None,
+        Earthquake,
+        Tsunami,
+        Typhoon,
+        WildFire,
+        FlashFlood,
+        HeavySnow,
+    }
+
     public override void _Ready()
     {
         // get scenemanager

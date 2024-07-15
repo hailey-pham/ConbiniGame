@@ -38,6 +38,12 @@ project/assembly_name="ConbiniGame"
 movie_writer/mjpeg_quality=1.0
 movie_writer/movie_file="C:/Users/gamer/Videos/Godot/movie.avi"
 
+[importer_defaults]
+
+wav={
+"edit/loop_mode": 2
+}
+
 [input]
 
 move_left={
