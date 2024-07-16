@@ -24,6 +24,9 @@ public partial class EndOfDay : Control
     private RichTextLabel dayLabel;
     private RichTextLabel totalMoneyLabel;
 
+    private Label itemsSoldLabel;
+    private ItemList itemsSoldList;
+
     private globals globals;
     private Calendar calendar;
 
@@ -47,10 +50,11 @@ public partial class EndOfDay : Control
         dayLabel = GetNode<RichTextLabel>("VBoxContainer/Day");
         totalMoneyLabel = GetNode<RichTextLabel>("VBoxContainer/TotalMoney");
 
+        itemsSoldLabel = GetNode<Label>("VBoxContainer2/ItemsSoldLabel");
+        itemsSoldList = GetNode<ItemList>("VBoxContainer2/ItemsSoldList");
+
         globals = GetNode<globals>("/root/Globals");
         calendar = GetNode<Calendar>("/root/Calendar");
-
-        globals.EarningsUpdated += UpdateEarningsLabel;
 
         DisplayEndOfDayStats();
     }
@@ -81,17 +85,22 @@ public partial class EndOfDay : Control
         calendar.DetermineNextDay();
     }
 
-    private void UpdateEarningsLabel(int newEarnings)
-    {
-        earningsLabel.Text = "Cash Earned: $" + newEarnings.ToString();
-    }
-
     public void DisplayEndOfDayStats()
     {
-        var globals = GetNode<globals>("/root/Globals");
         customersLabel.Text = "Customers Serviced: " + globals.Customers.ToString();
         earningsLabel.Text = "Cash Earned: " + globals.Earnings.ToString() + " yen";
         dayLabel.Text = "End of Day: " + globals.Day.ToString();
         totalMoneyLabel.Text = "You now have: " + globals.Money.ToString() + " yen";
+        UpdateItemsSold();
+    }
+
+    private void UpdateItemsSold()
+    {
+        var itemsSoldToday = globals.ItemsSoldToday;
+
+        foreach (var item in itemsSoldToday)
+        {
+            itemsSoldList.AddItem(item.name, item.spriteTexture, false);
+        }
     }
 }

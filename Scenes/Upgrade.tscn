@@ -280,17 +280,6 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_aobno")
 theme_override_styles/focus = SubResource("StyleBoxFlat_xu0ry")
 text = "No"
 
-[node name="BackButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 5.0
-offset_right = 31.0
-offset_bottom = 29.0
-texture_normal = ExtResource("6_1ybc3")
-texture_pressed = ExtResource("7_qfgsn")
-texture_hover = ExtResource("8_r3wi8")
-stretch_mode = 4
-
 [node name="UpgradeInfo" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -352,3 +341,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ww4cm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tb088")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2enus")
 text = "Purchase"
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 31.0
+offset_bottom = 29.0
+texture_normal = ExtResource("6_1ybc3")
+texture_pressed = ExtResource("7_qfgsn")
+texture_hover = ExtResource("8_r3wi8")
+stretch_mode = 4

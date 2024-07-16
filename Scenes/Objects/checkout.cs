@@ -127,8 +127,7 @@ public partial class checkout : StaticBody2D
 		//play the sound
 		audioStreamPlayer.Play();
 
-		globals.Earnings += item.price;
-        globals.Money += item.price;
+		globals.SellItem(item);
 		
     }
 }

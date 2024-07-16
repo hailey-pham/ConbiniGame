@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 
 public partial class globals : Node
@@ -10,8 +11,10 @@ public partial class globals : Node
     private static Dictionary<string, ItemRes> stock = new Dictionary<string, ItemRes>();
     public static int _purchaseCost;
 
+	//daily properties
 	public static int _customers;
 	public static int _earnings;
+	private static List<ItemRes> _itemsSoldToday = new();
 	public static int _day = 0;
 
 	public static Dictionary<string, Upgrade> _upgrades = new Dictionary<string, Upgrade>();
@@ -19,9 +22,6 @@ public partial class globals : Node
 	//signal to tell money GUI to update
 	[Signal]
 	public delegate void MoneyUpdatedEventHandler(int money);
-
-    [Signal]
-    public delegate void EarningsUpdatedEventHandler(int earnings);
 
     public int Money
 	{
@@ -49,7 +49,6 @@ public partial class globals : Node
         set
         {
             _earnings = value;
-            EmitSignal(nameof(EarningsUpdated), _earnings);
         }
     }
 
@@ -62,6 +61,7 @@ public partial class globals : Node
 	}
 
     public static Dictionary<string, ItemRes> Stock { get => stock; set => stock = value; }
+    public static List<ItemRes> ItemsSoldToday { get => _itemsSoldToday; set => _itemsSoldToday = value; }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -117,12 +117,12 @@ public partial class globals : Node
 #endif
 	}
 
-    public void ResetEarnings()
+    private void ResetEarnings()
     {
         Earnings = 0;
     }
 	
-	public void ResetCustomers()
+	private void ResetCustomers()
 	{
 		Customers = 0;
 	}
@@ -130,6 +130,13 @@ public partial class globals : Node
     {
         _day++;
     }
+
+	public void ResetDayStats()
+	{
+		ResetCustomers();
+		ResetEarnings();
+		ItemsSoldToday.Clear();
+	}
 
 	public static void DecrementItemResStock(ItemRes itemRes)
 	{
@@ -139,5 +146,17 @@ public partial class globals : Node
 	public static void IncrementItemResStock(ItemRes itemRes)
 	{
         stock[itemRes.name].currentStock = stock[itemRes.name].currentStock + 1;
+    }
+
+	public void SellItem(ItemRes item)
+	{
+        Earnings += item.price;
+		Money += item.price;
+
+		//if we haven't seen the item we sold today
+		if(!ItemsSoldToday.Contains(item))
+		{
+			ItemsSoldToday.Add(item);
+		}
     }
 }

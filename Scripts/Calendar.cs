@@ -114,9 +114,8 @@ public partial class Calendar : Node2D
     {
         if (sceneName == "gamescene")
         {
-            // reset earnings and customers at the start of the new day
-            globals.ResetEarnings();
-            globals.ResetCustomers();
+            // reset all daily stats
+            globals.ResetDayStats();
             timer.Start();
             // get the label nodes
             timeLabel = GetNode<Label>("/root/SceneManager/SceneParent/World/UI/TimeLabel");
