@@ -15,10 +15,9 @@ public partial class Calendar : Node2D
     public delegate void DisplayEndOfDayStatsEventHandler();
 
     private int dayPercent = 0;
-
     private int elapsedTime = 0;
     private const int dayLength = 1 * 60;
-    private const int seasonLength = 7; // 7 days per season, or maybe 5?
+    private const int seasonLength = 4;
 
     private int currentDay = 1;
     private int currentSeason = 1;
@@ -34,10 +33,14 @@ public partial class Calendar : Node2D
 
     private Timer timer;
 
-    private bool disasterDay = false;
     private int[] weeklyDisasters;
     public int currentDayIndex = 0;
     public int nextDayIndex = 0;
+
+    private int[] springArray;
+    private int[] summerArray;
+    private int[] autumnArray;
+    private int[] winterArray;
 
     private enum DisasterType
     {
@@ -73,10 +76,8 @@ public partial class Calendar : Node2D
 
         globals = GetNode<globals>("/root/Globals");
 
-        GenerateDisasterDays();
-
-        // print calendar stuff
-        GD.Print("This week's disasters: " + string.Join(",", weeklyDisasters));
+        GenerateDisasterCalendar();
+        UpdateCurrentWeekDisasters();
 
         currentDayIndex = GetCurrentDayDisasterIndex();
         nextDayIndex = GetNextDayDisasterIndex();
@@ -84,7 +85,6 @@ public partial class Calendar : Node2D
         GD.Print("Next day index: " + nextDayIndex);
 
     }
-
     private void OnTimerTimeout()
     {
         elapsedTime += 1;
@@ -126,13 +126,15 @@ public partial class Calendar : Node2D
     private void OnSeasonChange(int newSeason)
     {
         // print and loop through seasons
-        int totalSeasons = 4;
+        int totalSeasons = seasons.Length;
+        currentSeason = newSeason;
 
         int currentSeasonIndex = (newSeason - 1) % totalSeasons;
         currentSeasonStr = seasons[currentSeasonIndex];
 
         GD.Print("Season has changed to: " + currentSeasonStr);
         UpdateCalendarLabel();
+        UpdateCurrentWeekDisasters();
     }
 
     private void OnSceneChanged(string sceneName)
@@ -161,12 +163,20 @@ public partial class Calendar : Node2D
             currentDay = 1;
             currentSeason += 1;
             OnSeasonChange(currentSeason);
+            UpdateCurrentWeekDisasters();
         }
+        currentDayIndex = GetCurrentDayDisasterIndex();
+        nextDayIndex = GetNextDayDisasterIndex();
         UpdateCalendarLabel();
     }
 
     public bool IsDisasterDay()
     {
+        if (currentDayIndex < 0 || currentDayIndex >= weeklyDisasters.Length)
+        {
+            GD.PrintErr("IsDisasterDay: Index out of bounds. Current Day Index: " + currentDayIndex);
+            return false;
+        }
         return weeklyDisasters[currentDayIndex] != (int)DisasterType.None;
     }
 
@@ -198,41 +208,81 @@ public partial class Calendar : Node2D
 
     // disaster calendar generating things
 
-    // to do : make the disaster probability depend on the season
-    public void GenerateDisasterDays()
+    private int GetSeasonProbabilities(DisasterType disaster, string season)
     {
-        int[] weeklyArray = { 0, 0, 0, 0, 0, 0, 0 };
-        List<int> list = new List<int>(weeklyArray);
-        weeklyDisasters = new int[7];
-        List<int> disasterTypes = new List<int> { 1, 2, 3, 4, 5, 6 };
+        // create different probabilities for each disaster depending on the current season
+        int defaultProbability = 0;
+        switch (disaster)
+        {
+            case DisasterType.Typhoon:
+                if (season == "Summer" || season == "Autumn") return defaultProbability + 50;
+                break;
+            case DisasterType.WildFire:
+                if (season == "Spring") return defaultProbability + 50;
+                break;
+            case DisasterType.FlashFlood:
+                if (season == "Summer") return defaultProbability + 50;
+                break;
+            case DisasterType.HeavySnow:
+                if (season == "Winter") return defaultProbability + 50;
+                break;
+            // earthquake and tsunami probability always stays the same
+        }
+        return defaultProbability;
+    }
+
+    private DisasterType AssignRandomDisaster(Random random, string season)
+    {
+        List<(DisasterType, int)> disasterTypes = new List<(DisasterType, int)>
+        {
+            (DisasterType.Earthquake, 20),
+            (DisasterType.Tsunami, 20),
+            (DisasterType.Typhoon, GetSeasonProbabilities(DisasterType.Typhoon, season)),
+            (DisasterType.FlashFlood, GetSeasonProbabilities(DisasterType.FlashFlood, season)),
+            (DisasterType.WildFire, GetSeasonProbabilities(DisasterType.WildFire, season)),
+            (DisasterType.HeavySnow, GetSeasonProbabilities(DisasterType.HeavySnow, season)),
+        };
+
+        int totalProbability = 0;
+        List<int> cumulativeProbabilities = new List<int>();
+
+        foreach (var (disaster, probability) in disasterTypes)
+        {
+            // iterate through each tuple and add the disaster type's probability to the new list
+            totalProbability += probability;
+            cumulativeProbabilities.Add(totalProbability);
+        }
+
+        int randomValue = random.Next(totalProbability);
+
+        for (int i = 0; i < cumulativeProbabilities.Count; i++)
+        {
+            if (randomValue < cumulativeProbabilities[i])
+            {
+                // find the first probability that is greater than the generated random value
+                // assign disaster
+                return disasterTypes[i].Item1;
+            }
+        }
+
+        return DisasterType.None;
+    }
+
+    private int[] GenerateDisasterDays(string season)
+    {
+        int[] weeklyDisasters = new int[seasonLength];
+
+        Random random = new Random();
 
         Task shuffleTask = Task.Run(() =>
         {
-            Random random = new Random();
-            int disasterCount = 0;
+            int randIndex = random.Next(1, seasonLength); // choose a random day, except first
 
-            // assign two disasters to random days
-            while (disasterCount < 2)
-            {
-                int randIndex;
-                do
-                {
-                    randIndex = random.Next(1, 7); // make sure the first day is a normal day
-                }
-                while (weeklyDisasters[randIndex] != 0 || // make sure there's no disasters two days in a row
-                       (randIndex > 0 && weeklyDisasters[randIndex - 1] != 0) ||
-                       (randIndex < 6 && weeklyDisasters[randIndex + 1] != 0));
+            // assign a random disaster to the chosen day
+            weeklyDisasters[randIndex] = (int)AssignRandomDisaster(random, season);
 
-                // assign random disaster to the disaster days
-                int disasterTypeIndex = random.Next(disasterTypes.Count);
-                weeklyDisasters[randIndex] = disasterTypes[disasterTypeIndex];
-                disasterTypes.RemoveAt(disasterTypeIndex);
-
-                disasterCount++;
-            }
-
-            // assign 0 to the rest of the days
-            for (int i = 0; i < weeklyArray.Length; i++)
+            // assign 0 (no disaster) to the rest of the days
+            for (int i = 0; i < weeklyDisasters.Length; i++)
             {
                 if (weeklyDisasters[i] == 0)
                 {
@@ -242,6 +292,55 @@ public partial class Calendar : Node2D
         });
 
         shuffleTask.Wait();
+
+        return weeklyDisasters;
+    }
+
+    public void GenerateDisasterCalendar()
+    {
+        // generate and output all the disaster arrays at once
+        Task<int[]> springTask = Task.Run(() => GenerateDisasterDays("Spring"));
+        Task<int[]> summerTask = Task.Run(() => GenerateDisasterDays("Summer"));
+        Task<int[]> autumnTask = Task.Run(() => GenerateDisasterDays("Autumn"));
+        Task<int[]> winterTask = Task.Run(() => GenerateDisasterDays("Winter"));
+
+        Task.WaitAll(springTask, summerTask, autumnTask, winterTask);
+
+        springArray = springTask.Result;
+        summerArray = summerTask.Result;
+        autumnArray = autumnTask.Result;
+        winterArray = winterTask.Result;
+
+        GD.Print("Spring events: " + string.Join(",", springArray));
+        GD.Print("Summer events: " + string.Join(",", summerArray));
+        GD.Print("Autumn events: " + string.Join(",", autumnArray));
+        GD.Print("Winter events: " + string.Join(",", winterArray));
+
+        UpdateCurrentWeekDisasters();
+    }
+
+
+    private void UpdateCurrentWeekDisasters()
+    {
+        switch (currentSeasonStr)
+        {
+            case "Spring":
+                weeklyDisasters = springArray;
+                break;
+            case "Summer":
+                weeklyDisasters = summerArray;
+                break;
+            case "Autumn":
+                weeklyDisasters = autumnArray;
+                break;
+            case "Winter":
+                weeklyDisasters = winterArray;
+                break;
+            default:
+                GD.PrintErr("UpdateCurrentWeekDisasters: Invalid season string.");
+                weeklyDisasters = new int[seasonLength];
+                break;
+        }
     }
 
     //getters
@@ -250,18 +349,41 @@ public partial class Calendar : Node2D
         return currentSeason;
     }
 
+    private int[] GetCurrentSeasonArray()
+    {
+        switch (currentSeasonStr)
+        {
+            case "Spring":
+                return springArray;
+            case "Summer":
+                return summerArray;
+            case "Autumn":
+                return autumnArray;
+            case "Winter":
+                return winterArray;
+            default:
+                return new int[7];
+        }
+    }
+
     public int GetNextDayDisasterIndex()
     {
-        int nextDay = (currentDay % 7);
-        return weeklyDisasters[nextDay];
+        int nextDay = currentDay % seasonLength;
+        int[] seasonArray = GetCurrentSeasonArray();
+        GD.Print($"Current Day: {currentDay}, Next Day: {nextDay}, Season Array: {string.Join(",", seasonArray)}");
+        if (nextDay >= 0 && nextDay < seasonArray.Length)
+        {
+            return seasonArray[nextDay];
+        }
+        return (int)DisasterType.None;
     }
 
     public int GetCurrentDayDisasterIndex()
     {
-        int today = (currentDay - 1) % 7;
-        return weeklyDisasters[today];
-    }
-    
+        int today = (currentDay - 1) % seasonLength;
+        int[] seasonArray = GetCurrentSeasonArray();
+        return seasonArray[today];
+    }    
     public override void _UnhandledKeyInput(InputEvent @event)
     {
         //only allow for debug key inputs if in debug mode
@@ -274,6 +396,7 @@ public partial class Calendar : Node2D
         }
 #endif
     }
+}
 
     /*
      * 
@@ -296,4 +419,3 @@ public partial class Calendar : Node2D
 
     //GetCurrentDayDisasterIndex -> int
     //a method for checking the current day's disaster
-}
