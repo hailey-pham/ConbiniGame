@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://0owu7viu20al"]
 
-[ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_wqfkb"]
+[ext_resource type="FontFile" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_wqfkb"]
 
 [resource]
 default_font = ExtResource("1_wqfkb")

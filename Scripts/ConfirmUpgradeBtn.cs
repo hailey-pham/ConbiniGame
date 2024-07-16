@@ -18,20 +18,20 @@ public partial class ConfirmUpgradeBtn : Button
 
 	}
 
-	public void onPress() {
-		GD.Print(manager.upgradeName);
-		currentUpgrade = globals.Upgrades[manager.upgradeName];
-		GD.Print("Current Upgrade Set");
-		GD.Print(currentUpgrade.name);
-		if(globals.Money > currentUpgrade.cost) {
-			GD.Print("updating...");
-			globals.Money -= currentUpgrade.cost;
-			globals.Upgrades[currentUpgrade.name].owned = true;
-		}
+	// public void onPress() {
+	// 	GD.Print(manager.upgradeName);
+	// 	currentUpgrade = globals.Upgrades[manager.upgradeName];
+	// 	GD.Print("Current Upgrade Set");
+	// 	GD.Print(currentUpgrade.name);
+	// 	if(globals.Money > currentUpgrade.cost) {
+	// 		GD.Print("updating...");
+	// 		globals.Money -= currentUpgrade.cost;
+	// 		globals.Upgrades[currentUpgrade.name].owned = true;
+	// 	}
 		
-		GD.Print("Set Visibility");
-		PopUp.Visible = false;
-	}
+	// 	GD.Print("Set Visibility");
+	// 	PopUp.Visible = false;
+	// }
 
 	
 }
