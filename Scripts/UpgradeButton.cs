@@ -21,9 +21,9 @@ public partial class UpgradeButton : Button
 	public void onPress()
 	{
 		GD.Print("UPGRADE BUTTON PRESSED");
-		GD.Print(manager);
-		manager.upgradeName = upgradeName;
-		GD.Print("NAME: "+manager.upgradeName);
-		purchasePopUp.Visible = true;
+		// GD.Print(manager);
+		// manager.upgradeName = upgradeName;
+		// GD.Print("NAME: "+manager.upgradeName);
+		// purchasePopUp.Visible = true;
 	}
 }

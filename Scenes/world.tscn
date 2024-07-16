@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dud835hk2ffu6" path="res://Assets/Music/Irrashaimase.wav" id="9_wpaow"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="11_il57l"]
 [ext_resource type="Script" path="res://Scenes/MoneyLabel.cs" id="12_qyo2m"]
-[ext_resource type="PackedScene" uid="uid://vit6v1iaab2a" path="res://Scenes/Objects/storage.tscn" id="13_1hsmu"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/storage.tscn" id="13_1hsmu"]
 [ext_resource type="AudioStream" uid="uid://sivy414r7kf4" path="res://Assets/Music/Shop Theme.wav" id="13_e5adc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
