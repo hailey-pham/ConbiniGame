@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2bidv1rm3rwm"
-path="res://.godot/imported/SpeechBubble.png-cf19093ba0f84abeacb596250ff37384.ctex"
+uid="uid://csy0sypjbladf"
+path="res://.godot/imported/DayBar.png-a6034037eef84c663c4937aae096a77f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpeechBubble.png"
-dest_files=["res://.godot/imported/SpeechBubble.png-cf19093ba0f84abeacb596250ff37384.ctex"]
+source_file="res://Assets/DayProgress/DayBar.png"
+dest_files=["res://.godot/imported/DayBar.png-a6034037eef84c663c4937aae096a77f.ctex"]
 
 [params]
 

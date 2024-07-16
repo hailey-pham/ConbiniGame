@@ -1,13 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dury0hel2kujq"]
+[gd_scene load_steps=7 format=3 uid="uid://dury0hel2kujq"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/counter.cs" id="1_fpsiv"]
-[ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="1_q77ev"]
 [ext_resource type="PackedScene" uid="uid://d0whnk0jytoo3" path="res://Scenes/Items/ItemSpawner.tscn" id="2_eykgy"]
+[ext_resource type="Texture2D" uid="uid://keyb4og5wfe" path="res://Assets/TallerCounter.png" id="2_km5ry"]
 [ext_resource type="Script" path="res://Scenes/Objects/CounterArea.cs" id="3_yqw4r"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2u0fd"]
-atlas = ExtResource("1_q77ev")
-region = Rect2(48, 80, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rpun"]
 size = Vector2(16, 16)
@@ -19,7 +15,8 @@ size = Vector2(27.5792, 20.8612)
 script = ExtResource("1_fpsiv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_2u0fd")
+position = Vector2(0, 5)
+texture = ExtResource("2_km5ry")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 19)
@@ -29,7 +26,7 @@ shape = SubResource("RectangleShape2D_0rpun")
 
 [node name="ItemSpawner" parent="." instance=ExtResource("2_eykgy")]
 y_sort_enabled = true
-position = Vector2(0, -6)
+position = Vector2(0, -9)
 
 [node name="counter_area" type="Area2D" parent="."]
 script = ExtResource("3_yqw4r")

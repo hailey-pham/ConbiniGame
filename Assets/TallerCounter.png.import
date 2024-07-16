@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2bidv1rm3rwm"
-path="res://.godot/imported/SpeechBubble.png-cf19093ba0f84abeacb596250ff37384.ctex"
+uid="uid://keyb4og5wfe"
+path="res://.godot/imported/TallerCounter.png-166b70c6bb00822ed16e3c98c95716ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpeechBubble.png"
-dest_files=["res://.godot/imported/SpeechBubble.png-cf19093ba0f84abeacb596250ff37384.ctex"]
+source_file="res://Assets/TallerCounter.png"
+dest_files=["res://.godot/imported/TallerCounter.png-166b70c6bb00822ed16e3c98c95716ca.ctex"]
 
 [params]
 
