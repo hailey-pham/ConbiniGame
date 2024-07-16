@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://oawvk0cu233a"]
+
+[ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_np6bn"]
+[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/waterBottle.png" id="2_4e3d6"]
+
+[resource]
+script = ExtResource("1_np6bn")
+name = "Rain Jacket"
+price = 700
+restockPrice = 500
+SeasonFlags = 0
+DisasterFlags = 44
+spriteTexture = ExtResource("2_4e3d6")

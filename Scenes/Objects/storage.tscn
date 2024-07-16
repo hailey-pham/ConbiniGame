@@ -26,9 +26,9 @@ shape = SubResource("RectangleShape2D_gfu4v")
 [node name="Inventory" type="ItemList" parent="."]
 z_index = 2
 offset_left = -42.0
-offset_top = 37.0
+offset_top = 21.0
 offset_right = 198.0
-offset_bottom = 112.0
+offset_bottom = 131.0
 theme = ExtResource("3_n3ugu")
 max_text_lines = 2
 script = ExtResource("4_aw73v")
