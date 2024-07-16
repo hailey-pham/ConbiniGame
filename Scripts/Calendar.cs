@@ -66,6 +66,7 @@ public partial class Calendar : Node2D
 
     public override void _Ready()
     {
+        currentDay = 1;
         // get scenemanager
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
         sceneManager.SceneChanged += OnSceneChanged;
@@ -77,10 +78,10 @@ public partial class Calendar : Node2D
         globals = GetNode<globals>("/root/Globals");
 
         GenerateDisasterCalendar();
+
         UpdateCurrentWeekDisasters();
 
-        currentDayIndex = GetCurrentDayDisasterIndex();
-        nextDayIndex = GetNextDayDisasterIndex();
+        GD.Print("Day: " + currentDay + " Season: " + currentSeasonStr);
         GD.Print("Current day index: " + currentDayIndex);
         GD.Print("Next day index: " + nextDayIndex);
 
@@ -134,7 +135,10 @@ public partial class Calendar : Node2D
 
         GD.Print("Season has changed to: " + currentSeasonStr);
         UpdateCalendarLabel();
-        UpdateCurrentWeekDisasters();
+        if (newSeason > totalSeasons)
+        {
+            OnNewYear();
+        }
     }
 
     private void OnSceneChanged(string sceneName)
@@ -150,6 +154,7 @@ public partial class Calendar : Node2D
             calendarLabel = GetNode<Label>("/root/SceneManager/SceneParent/World/UI/CalendarLabel");
             UpdateCalendarLabel();
             OnSeasonChange(currentSeason);
+            
         }
 
     }
@@ -168,6 +173,10 @@ public partial class Calendar : Node2D
         currentDayIndex = GetCurrentDayDisasterIndex();
         nextDayIndex = GetNextDayDisasterIndex();
         UpdateCalendarLabel();
+
+        GD.Print("Day: " + currentDay + " Season: " + currentSeasonStr);
+        GD.Print("Current day index: " + currentDayIndex);
+        GD.Print("Next day index: " + nextDayIndex);
     }
 
     public bool IsDisasterDay()
@@ -189,10 +198,6 @@ public partial class Calendar : Node2D
     public void DetermineNextDay()
     {
         GD.Print("Determining day...");
-        currentDayIndex = GetCurrentDayDisasterIndex();
-        nextDayIndex = GetNextDayDisasterIndex();
-        GD.Print("Current day index: " + currentDayIndex);
-        GD.Print("Next day index: " + nextDayIndex);
         var sceneManager = GetNode<SceneManager>("/root/SceneManager");
 
         if (IsDisasterDay())
@@ -204,6 +209,20 @@ public partial class Calendar : Node2D
         {
             sceneManager.ChangeScene("gamescene","Sleep");
         }
+    }
+
+    private void OnNewYear()
+    {
+        // reset seasons after a year passes
+        // idk how many years we want though
+        currentSeason = 1;
+        currentSeasonStr = seasons[0];
+        currentDay = 1;
+
+        GenerateDisasterCalendar();
+        UpdateCurrentWeekDisasters();
+
+        GD.Print("New Year Started: " + currentSeasonStr);
     }
 
     // disaster calendar generating things
@@ -268,7 +287,7 @@ public partial class Calendar : Node2D
         return DisasterType.None;
     }
 
-    private int[] GenerateDisasterDays(string season)
+    private async Task<int[]> GenerateDisasterDays(string season)
     {
         int[] weeklyDisasters = new int[seasonLength];
 
@@ -290,26 +309,21 @@ public partial class Calendar : Node2D
                 }
             }
         });
-
-        shuffleTask.Wait();
-
-        return weeklyDisasters;
+        return await Task.FromResult(weeklyDisasters);
     }
 
-    public void GenerateDisasterCalendar()
+    public async void GenerateDisasterCalendar()
     {
         // generate and output all the disaster arrays at once
-        Task<int[]> springTask = Task.Run(() => GenerateDisasterDays("Spring"));
-        Task<int[]> summerTask = Task.Run(() => GenerateDisasterDays("Summer"));
-        Task<int[]> autumnTask = Task.Run(() => GenerateDisasterDays("Autumn"));
-        Task<int[]> winterTask = Task.Run(() => GenerateDisasterDays("Winter"));
+        var springTask = Task.Run(() => GenerateDisasterDays("Spring"));
+        var summerTask = Task.Run(() => GenerateDisasterDays("Summer"));
+        var autumnTask = Task.Run(() => GenerateDisasterDays("Autumn"));
+        var winterTask = Task.Run(() => GenerateDisasterDays("Winter"));
 
-        Task.WaitAll(springTask, summerTask, autumnTask, winterTask);
-
-        springArray = springTask.Result;
-        summerArray = summerTask.Result;
-        autumnArray = autumnTask.Result;
-        winterArray = winterTask.Result;
+        springArray = await springTask;
+        summerArray = await summerTask;
+        autumnArray = await autumnTask;
+        winterArray = await winterTask;
 
         GD.Print("Spring events: " + string.Join(",", springArray));
         GD.Print("Summer events: " + string.Join(",", summerArray));
@@ -337,7 +351,6 @@ public partial class Calendar : Node2D
                 weeklyDisasters = winterArray;
                 break;
             default:
-                GD.PrintErr("UpdateCurrentWeekDisasters: Invalid season string.");
                 weeklyDisasters = new int[seasonLength];
                 break;
         }
@@ -362,20 +375,15 @@ public partial class Calendar : Node2D
             case "Winter":
                 return winterArray;
             default:
-                return new int[7];
+                return new int[seasonLength];
         }
     }
 
     public int GetNextDayDisasterIndex()
     {
-        int nextDay = currentDay % seasonLength;
+        int nextDay = (currentDay % seasonLength);
         int[] seasonArray = GetCurrentSeasonArray();
-        GD.Print($"Current Day: {currentDay}, Next Day: {nextDay}, Season Array: {string.Join(",", seasonArray)}");
-        if (nextDay >= 0 && nextDay < seasonArray.Length)
-        {
-            return seasonArray[nextDay];
-        }
-        return (int)DisasterType.None;
+        return seasonArray[nextDay];
     }
 
     public int GetCurrentDayDisasterIndex()
