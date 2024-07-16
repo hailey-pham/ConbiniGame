@@ -12,6 +12,7 @@ scenes = {
 "gamescene": "res://Scenes/world.tscn",
 "mainmenu": "res://Scenes/UI/main_menu.tscn",
 "restock": "res://Scenes/Restock.tscn",
+"seasontitle": "res://Scenes/UI/SeasonTitle.tscn",
 "upgrade": "res://Scenes/Upgrade.tscn"
 }
 transitions = {

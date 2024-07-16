@@ -1,5 +1,6 @@
-using Godot;
+﻿using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class ItemRes : Resource
 {
@@ -55,6 +56,72 @@ public partial class ItemRes : Resource
         globals.Stock[name].currentStock++;
     }
 
+    public string GetTagsAsEmoji()
+    {
+        var tagString = "";
+
+        var seasonEmojis = new string[] {"🌸", "☀️", "🍂", "❄️"};
+        //earthquake
+        //tsunami
+        //typhoon
+        //wildfire
+        //flashflood
+        //heavysnow
+        var disasterEmojis = new string[] { "⛰️", "🌊", "🌀", "🔥", "🌧️", "🌨️" };
+
+
+        if (SeasonFlags.HasFlag(SeasonsEnum.Spring))
+        {
+            tagString += seasonEmojis[0];
+        }
+
+        if (SeasonFlags.HasFlag(SeasonsEnum.Summer))
+        {
+            tagString += seasonEmojis[1];
+        }
+
+        if (SeasonFlags.HasFlag(SeasonsEnum.Fall))
+        {
+            tagString += seasonEmojis[2];
+        }
+
+        if (SeasonFlags.HasFlag(SeasonsEnum.Winter))
+        {
+            tagString += seasonEmojis[3];
+        }
+
+        if (DisasterFlags.HasFlag(DisastersEnum.Earthquake))
+        {
+            tagString += disasterEmojis[0];
+        }
+
+        if (DisasterFlags.HasFlag(DisastersEnum.Tsunami))
+        {
+            tagString += disasterEmojis[1];
+        }
+
+        if (DisasterFlags.HasFlag(DisastersEnum.Typhoon))
+        {
+            tagString += disasterEmojis[2];
+        }
+
+        if (DisasterFlags.HasFlag(DisastersEnum.WildFire))
+        {
+            tagString += disasterEmojis[3];
+        }
+
+        if (DisasterFlags.HasFlag(DisastersEnum.FlashFlood))
+        {
+            tagString += disasterEmojis[4];
+        }
+
+        if (DisasterFlags.HasFlag(DisastersEnum.HeavySnow))
+        {
+            tagString += disasterEmojis[5];
+        }
+
+        return tagString;
+    }
 
 
 }

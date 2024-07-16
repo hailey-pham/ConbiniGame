@@ -100,7 +100,8 @@ public partial class EndOfDay : Control
 
         foreach (var item in itemsSoldToday)
         {
-            itemsSoldList.AddItem(item.name, item.spriteTexture, false);
+            var itemTags = item.GetTagsAsEmoji();
+            itemsSoldList.AddItem(item.name + " " + itemTags, item.spriteTexture, false);
         }
     }
 }
