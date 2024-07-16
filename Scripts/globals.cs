@@ -135,4 +135,9 @@ public partial class globals : Node
 	{
 		stock[itemRes.name].currentStock = stock[itemRes.name].currentStock - 1;
     }
+
+	public static void IncrementItemResStock(ItemRes itemRes)
+	{
+        stock[itemRes.name].currentStock = stock[itemRes.name].currentStock + 1;
+    }
 }

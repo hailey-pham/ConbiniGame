@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bold1farw6jv0"]
+
+[ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_aes0j"]
+[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/waterBottle.png" id="2_anofy"]
+
+[resource]
+script = ExtResource("1_aes0j")
+name = "Fire Extinguisher"
+price = 2500
+restockPrice = 1500
+SeasonFlags = 0
+DisasterFlags = 18
+spriteTexture = ExtResource("2_anofy")

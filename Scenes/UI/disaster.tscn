@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d16j5oem2q3rs"]
 
 [ext_resource type="Script" path="res://Scenes/UI/disaster.cs" id="1_i7o8l"]
-[ext_resource type="PackedScene" uid="uid://ch5b42j2po0cp" path="res://Scenes/UI/disaster_animation.tscn" id="3_ois8q"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="4_1g73a"]
+[ext_resource type="PackedScene" uid="uid://ii550elalv1u" path="res://Scenes/UI/WarningAnimation.tscn" id="4_ld1vi"]
 
 [node name="Disaster" type="Control"]
 layout_mode = 3
@@ -12,15 +12,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i7o8l")
-
-[node name="DisasterAnimation" parent="." instance=ExtResource("3_ois8q")]
-layout_mode = 1
+currDisaster = 5
 
 [node name="DisplayTimer" type="Timer" parent="."]
-wait_time = 1.75
+wait_time = 4.0
 one_shot = true
 
 [node name="NextButton" type="Button" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -38,19 +37,7 @@ theme = ExtResource("4_1g73a")
 theme_override_font_sizes/font_size = 20
 text = "NEXT"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="WarningAnimation" parent="." instance=ExtResource("4_ld1vi")]
+z_index = 1
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_1g73a")
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "[center]EARTHQUAKE!!!!"
-fit_content = true
+mouse_filter = 2

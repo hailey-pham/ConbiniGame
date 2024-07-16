@@ -12,8 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://sivy414r7kf4" path="res://Assets/Music/Shop Theme.wav" id="13_e5adc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
-vertices = PackedVector2Array(162, 56, 204, 61, 204, 103, 203, 103, 59, 62, 73, 53, 162, 53, 250, 56, 250, 61, 59, 12, 73, 7, 6, 6, 9, 12, 6, 66, 9, 62, 53, 66, 203, 153, 53, 153)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 6, 0), PackedInt32Array(0, 7, 8, 1), PackedInt32Array(5, 4, 9, 10), PackedInt32Array(11, 10, 9, 12), PackedInt32Array(13, 11, 12, 14), PackedInt32Array(15, 13, 14, 4), PackedInt32Array(4, 3, 16, 17, 15)])
+vertices = PackedVector2Array(207, 148, 249, 153, 6, 153, 179, 148, 78, 148, 50, 148, 244, 47, 244, 19, 249, 7, 207, 86, 207, 58, 216, 47, 207, 47, 216, 19, 163, 7, 6, 6, 50, 120, 163, 54, 163, 36, 164, 36, 179, 47, 179, 58, 164, 20, 163, 20, 179, 19, 207, 19, 179, 86, 78, 86, 78, 58, 73, 53, 50, 58, 179, 89, 179, 117, 78, 117, 78, 89, 179, 120, 78, 120, 73, 7, 207, 120, 207, 117, 50, 117, 50, 89, 207, 89, 50, 86)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2), PackedInt32Array(5, 4, 2), PackedInt32Array(6, 7, 8, 1), PackedInt32Array(6, 1, 9, 10, 11), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 8, 7, 13), PackedInt32Array(5, 2, 15, 16), PackedInt32Array(17, 18, 19, 20, 21), PackedInt32Array(22, 23, 14, 24), PackedInt32Array(13, 12, 25), PackedInt32Array(14, 13, 25), PackedInt32Array(14, 25, 24), PackedInt32Array(22, 24, 20, 19), PackedInt32Array(20, 12, 10, 21), PackedInt32Array(17, 21, 26, 27, 28), PackedInt32Array(29, 17, 28, 30), PackedInt32Array(31, 32, 33, 34), PackedInt32Array(35, 3, 4, 36), PackedInt32Array(15, 37, 29, 30), PackedInt32Array(1, 0, 38), PackedInt32Array(39, 1, 38), PackedInt32Array(32, 39, 38, 35), PackedInt32Array(33, 32, 35, 36), PackedInt32Array(40, 33, 36, 16), PackedInt32Array(40, 16, 15), PackedInt32Array(41, 40, 15), PackedInt32Array(1, 39, 42), PackedInt32Array(9, 1, 42), PackedInt32Array(26, 9, 42, 31), PackedInt32Array(27, 26, 31, 34), PackedInt32Array(43, 27, 34, 41), PackedInt32Array(43, 41, 15), PackedInt32Array(15, 30, 43)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 159, 255, 159, 256, 1, 157, 2, 157, 48, 79, 47, 79, 2)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 6.0
@@ -804,38 +804,39 @@ sources/0 = SubResource("TileSetAtlasSource_xmuob")
 y_sort_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_y8ues")
 
 [node name="counter" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(228, 31)
+position = Vector2(193, 72)
 collision_layer = 3
 
 [node name="counter4" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(187, 31)
+position = Vector2(193, 103)
 collision_layer = 3
 
 [node name="counter2" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(34, 37)
+position = Vector2(64, 72)
 collision_layer = 3
 
 [node name="counter3" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(28, 132)
-rotation = -1.57079
+position = Vector2(64, 134)
 collision_layer = 3
 
 [node name="counter5" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(28, 91)
-rotation = -1.57079
+position = Vector2(64, 103)
 collision_layer = 3
 
 [node name="counter6" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(229, 86)
-rotation = 1.57079
+position = Vector2(193, 33)
 collision_layer = 3
 
 [node name="counter7" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(228, 128)
-rotation = 1.57079
+position = Vector2(193, 134)
+collision_layer = 3
+
+[node name="counter8" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+position = Vector2(230, 33)
 collision_layer = 3
 
 [node name="Checkout" parent="NavigationRegion2D" instance=ExtResource("6_qywxc")]
@@ -910,7 +911,7 @@ theme = ExtResource("11_il57l")
 
 [node name="storage" parent="." instance=ExtResource("13_1hsmu")]
 z_index = -1
-position = Vector2(81.895, 1.865)
+position = Vector2(50, 12)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_e5adc")

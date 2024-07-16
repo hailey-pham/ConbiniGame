@@ -1,38 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://dury0hel2kujq"]
+[gd_scene load_steps=7 format=3 uid="uid://dury0hel2kujq"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/counter.cs" id="1_fpsiv"]
-[ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="1_q77ev"]
 [ext_resource type="PackedScene" uid="uid://d0whnk0jytoo3" path="res://Scenes/Items/ItemSpawner.tscn" id="2_eykgy"]
+[ext_resource type="Texture2D" uid="uid://keyb4og5wfe" path="res://Assets/TallerCounter.png" id="2_km5ry"]
 [ext_resource type="Script" path="res://Scenes/Objects/CounterArea.cs" id="3_yqw4r"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2u0fd"]
-atlas = ExtResource("1_q77ev")
-region = Rect2(13, 161, 38, 37)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rpun"]
+size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qfgq"]
-size = Vector2(38, 38)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmy8p"]
-size = Vector2(38, 51)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6slpf"]
+size = Vector2(27.5792, 20.8612)
 
 [node name="counter" type="StaticBody2D" groups=["counters"]]
 script = ExtResource("1_fpsiv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_2u0fd")
+position = Vector2(0, 5)
+texture = ExtResource("2_km5ry")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_8qfgq")
+shape = SubResource("RectangleShape2D_0rpun")
 
 [node name="ItemSpawner" parent="." instance=ExtResource("2_eykgy")]
-position = Vector2(0, -6)
+y_sort_enabled = true
+position = Vector2(0, -9)
 
 [node name="counter_area" type="Area2D" parent="."]
 script = ExtResource("3_yqw4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="counter_area"]
-position = Vector2(0, 6.5)
-shape = SubResource("RectangleShape2D_nmy8p")
+position = Vector2(4.76837e-07, 0.5)
+scale = Vector2(1.01526, 1.00665)
+shape = SubResource("RectangleShape2D_6slpf")

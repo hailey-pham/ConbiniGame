@@ -50,6 +50,17 @@ public partial class Calendar : Node2D
         HeavySnow = 6
     }
 
+    public enum DisastersEnum
+    {
+        None,
+        Earthquake,
+        Tsunami,
+        Typhoon,
+        WildFire,
+        FlashFlood,
+        HeavySnow,
+    }
+
     public override void _Ready()
     {
         // get scenemanager
@@ -104,7 +115,7 @@ public partial class Calendar : Node2D
     public void EndDay()
     {
         IncrementDay();
-        sceneManager.ChangeScene("endofdayscene");
+        sceneManager.ChangeScene("endofdayscene", "FadeToBlack");
         EmitSignal(nameof(DisplayEndOfDayStats));
     }
     private void UpdateCalendarLabel()
@@ -176,12 +187,12 @@ public partial class Calendar : Node2D
 
         if (IsDisasterDay())
         {
-            sceneManager.ChangeScene("disasterscene");
+            sceneManager.ChangeScene("disasterscene","Sleep");
             // stats.UpdateMoney();
         }
         else
         {
-            sceneManager.ChangeScene("gamescene");
+            sceneManager.ChangeScene("gamescene","Sleep");
         }
     }
 
@@ -249,6 +260,19 @@ public partial class Calendar : Node2D
     {
         int today = (currentDay - 1) % 7;
         return weeklyDisasters[today];
+    }
+    
+    public override void _UnhandledKeyInput(InputEvent @event)
+    {
+        //only allow for debug key inputs if in debug mode
+#if DEBUG
+        if (@event.IsActionPressed("DEBUG_skip_day"))
+        {
+            timer.Stop();
+            elapsedTime = 0; // reset elapsed time
+            EndDay();
+        }
+#endif
     }
 
     /*

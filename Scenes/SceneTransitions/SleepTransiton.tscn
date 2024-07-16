@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=3 uid="uid://mv2solem7a14"]
+
+[ext_resource type="Texture2D" uid="uid://bsdx30mfo4v1w" path="res://Assets/sun.png" id="1_vtsl6"]
+[ext_resource type="Script" path="res://Scenes/SceneTransitions/SleepTransiton.cs" id="1_wbabo"]
+[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="2_qjp24"]
+
+[sub_resource type="Animation" id="Animation_q16lo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Z:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Z:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fj115"]
+resource_name = "Z"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Z:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(108, 160), Vector2(108, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Z:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjk8x"]
+_data = {
+"RESET": SubResource("Animation_q16lo"),
+"Z": SubResource("Animation_fj115")
+}
+
+[node name="SleepTransiton" type="Node"]
+script = ExtResource("1_wbabo")
+fadeToBlackTransitionPath = "res://Scenes/SceneTransitions/FadeToBlackTransition.tscn"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 54.0
+offset_bottom = 56.0
+texture = ExtResource("1_vtsl6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sjk8x")
+}
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Z" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 160.0
+offset_right = 40.0
+offset_bottom = 194.001
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+auto_translate = false
+theme = ExtResource("2_qjp24")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center][shake rate=4 level=20 connected=1]Z[/shake][/center]"
+fit_content = true
+metadata/_edit_use_anchors_ = true

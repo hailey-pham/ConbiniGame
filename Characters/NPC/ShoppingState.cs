@@ -14,7 +14,14 @@ public partial class ShoppingState : State
     [Export]
     public Timer timer;
 
-    //saves positions and 
+    //a reference to the thought bubble animation scenes
+    [Export]
+    public PackedScene WantItemScene;
+
+    //a reference to the marker where the bubble scene will be spawned in
+    private Marker2D bubbleSpawn;
+
+    //saves positions and counters
     private List<Vector2> _movementTargets = new List<Vector2>();
     private List<counter> _counters = new List<counter>();
 
@@ -66,6 +73,9 @@ public partial class ShoppingState : State
         //tell npc to move to a target position
         npcScript.MoveToPositionOffset(_movementTargets[_currentTargetIdx]);
         npcScript._navigationAgent.NavigationFinished += OnNavigationFinished;
+
+        //get a reference to where we want our speech bubble to spawn
+        bubbleSpawn = npcScript.GetNode<Marker2D>("BubbleSpawn");
     }
 
     
@@ -99,7 +109,7 @@ public partial class ShoppingState : State
     {
         //Gets a reference to the counter, its area2d code with the item logic and the item spawner itself.
         var thisCounter = _counters[_currentTargetIdx];
-        var thisItemSpawner = thisCounter.GetNode<ItemSpawner>("ItemSpawner"); // Technicall not needed anymore, maybe idk :3
+        var thisItemSpawner = thisCounter.GetNode<ItemSpawner>("ItemSpawner"); // Technically not needed anymore, maybe idk :3
 
         //check if there is an item to buy and that we want to buy
         if (thisItemSpawner.currItem != null)
@@ -109,6 +119,11 @@ public partial class ShoppingState : State
             if(rng.Randf() < buyProbability)
             {
                 npcScript.ShoppingCart.Add(thisItemSpawner.RemoveItemRes());
+            }
+            else
+            {
+                Node2D bubbleAnim = (Node2D) WantItemScene.Instantiate();
+                bubbleSpawn.AddChild(bubbleAnim);
             }
         }
 

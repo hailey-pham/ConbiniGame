@@ -7,4 +7,4 @@ script = ExtResource("1_5uh3i")
 name = "Flood Proof Doors"
 description = "Helps prevent flood damage"
 owned = false
-cost = 0
+cost = 5000

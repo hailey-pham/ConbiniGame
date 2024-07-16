@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dfpemjoqfp21k"]
+
+[ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_2hl3s"]
+[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/waterBottle.png" id="2_xnu1g"]
+
+[resource]
+script = ExtResource("1_2hl3s")
+name = "Umbrella"
+price = 700
+restockPrice = 450
+SeasonFlags = 4
+DisasterFlags = 32
+spriteTexture = ExtResource("2_xnu1g")

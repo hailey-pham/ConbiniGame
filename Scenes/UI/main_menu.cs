@@ -27,13 +27,13 @@ public partial class main_menu : Control
     private void onPlayPressed()
     {
         //change scene to game scene
-        sceneManager.ChangeScene("gamescene");
+        sceneManager.ChangeScene("gamescene", "FadeToBlack");
     }
 
     private void onCreditsPressed()
     {
         //show some credits here
-        sceneManager.ChangeScene("credits");
+        sceneManager.ChangeScene("credits", "FadeToBlack");
     }
 
     private void onQuitPressed()

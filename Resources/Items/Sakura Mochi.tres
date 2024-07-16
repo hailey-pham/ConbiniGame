@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://hudg8wr4hm48"]
+
+[ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_y36o2"]
+[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/waterBottle.png" id="2_uq0ts"]
+
+[resource]
+script = ExtResource("1_y36o2")
+name = "Sakura Mochi"
+price = 250
+restockPrice = 175
+SeasonFlags = 2
+DisasterFlags = 0
+spriteTexture = ExtResource("2_uq0ts")

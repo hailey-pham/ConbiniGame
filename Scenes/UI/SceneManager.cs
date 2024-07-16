@@ -8,8 +8,12 @@ public partial class SceneManager : Node
     [Export]
     public Dictionary scenes;
 
-    private AnimationPlayer animationPlayer;
+    [Export]
+    public Dictionary transitions;
+
     private Node sceneParent;
+    private bool transitioning = false;
+
 
     [Signal]
     public delegate void SceneChangedEventHandler(string SceneName);
@@ -18,7 +22,6 @@ public partial class SceneManager : Node
     public override void _Ready()
     {
         //load references to children components
-        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         sceneParent = GetNode<Node>("SceneParent");
 
         //load the main menu when the game starts
@@ -26,16 +29,32 @@ public partial class SceneManager : Node
 
     }
 
-    public async void ChangeScene(string sceneName)
+    public async void ChangeScene(string sceneName, string transitionName = null)
     {
-        animationPlayer.Play("fade_out");
+        if (!transitioning)
+        {
+            if (transitionName != null)
+            {
 
-        await ToSignal(animationPlayer, "animation_finished");
+                PackedScene transitionScene = LoadNewTransition(transitionName);
+                SceneTransition transition = (SceneTransition)transitionScene.Instantiate();
+                AddChild(transition);
 
-        RemoveChildScenes();
-        LoadNewScene(sceneName);
+                transitioning = true;
+                await transition.PlayOutAsync();
+                RemoveChildScenes();
+                LoadNewScene(sceneName);
+                await transition.PlayInAsync();
+                transitioning = false;
 
-        animationPlayer.Play("fade_in");
+                RemoveChild(transition);
+            }
+            else
+            {
+                RemoveChildScenes();
+                LoadNewScene(sceneName);
+            }
+        }
     }
 
     private void RemoveChildScenes()
@@ -46,6 +65,19 @@ public partial class SceneManager : Node
         }
     }
 
+    private PackedScene LoadNewTransition(string transitionName)
+    {
+        try
+        {
+            PackedScene transition = (PackedScene)GD.Load((string)transitions[transitionName]);
+            return transition;
+        }
+        catch (Exception)
+        {
+            GD.PrintErr("Transition not found!");
+            return null;
+        }
+    }
     private void LoadNewScene(string sceneName)
     {
         try

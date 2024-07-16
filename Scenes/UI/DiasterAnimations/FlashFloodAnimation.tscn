@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=3 uid="uid://dkmtqkt5pqq68"]
+
+[ext_resource type="Script" path="res://Scenes/UI/DiasterAnimations/FlashFloodAnimation.cs" id="1_mr0aa"]
+[ext_resource type="Texture2D" uid="uid://vog8f81y4ktb" path="res://Assets/storefrontPlaceholder.png" id="1_ppvnx"]
+[ext_resource type="AudioStream" uid="uid://dnbac0lpmh411" path="res://Assets/Music/Rain.wav" id="3_dbdu2"]
+[ext_resource type="AudioStream" uid="uid://dpcunerwg6k4a" path="res://Assets/Music/Thunder.wav" id="3_pauqg"]
+
+[sub_resource type="Gradient" id="Gradient_7npl2"]
+colors = PackedColorArray(0.236334, 0.236334, 0.236334, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o7cad"]
+noise_type = 3
+seed = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ctxw0"]
+width = 256
+height = 160
+color_ramp = SubResource("Gradient_7npl2")
+noise = SubResource("FastNoiseLite_o7cad")
+
+[sub_resource type="Animation" id="Animation_57i1l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.423529, 0.423529, 0.423529, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_unm4m"]
+resource_name = "lightning"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 2),
+"transitions": PackedFloat32Array(3.73213, 1, 1e-05, 0.447624, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.744181, 0.744181, 0.744181, 1), Color(0.744181, 0.744181, 0.744181, 1), Color(1, 1, 1, 1), Color(0.422371, 0.422371, 0.422371, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0uj0"]
+_data = {
+"RESET": SubResource("Animation_57i1l"),
+"lightning": SubResource("Animation_unm4m")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3l6jx"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(128, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.618069, 0.738261, 0.982142, 1)
+
+[node name="FlashFloodAnimation" type="Control"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mr0aa")
+cloudSpeed = -0.1
+
+[node name="Rain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dbdu2")
+autoplay = true
+
+[node name="Thunder" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pauqg")
+
+[node name="Clouds" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("NoiseTexture2D_ctxw0")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 160.0
+texture = ExtResource("1_ppvnx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m0uj0")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(128, -60)
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_3l6jx")
+speed_scale = 2.0
+trail_enabled = true
+trail_lifetime = 0.05
+
+[node name="Timer" type="Timer" parent="."]

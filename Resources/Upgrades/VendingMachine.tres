@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d1hax50vi001"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade.cs" id="1_8mfjk"]
+
+[resource]
+script = ExtResource("1_8mfjk")
+name = "Vending Machine"
+description = "Earn additional income every day"
+owned = false
+cost = 20000
