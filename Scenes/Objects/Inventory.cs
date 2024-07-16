@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using System.Reflection;
 
 public partial class Inventory : ItemList
@@ -13,6 +14,7 @@ public partial class Inventory : ItemList
     private player Player;
     public override void _Ready()
     {
+        SelectMode = SelectModeEnum.Single;
         Player = GetTree().GetFirstNodeInGroup("player") as player;
         playerItemSpawner = Player.GetNode<ItemSpawner>("ItemSpawner");
 
@@ -69,17 +71,22 @@ public partial class Inventory : ItemList
     private void OnItemClicked(long index, Vector2 atPosition, long mouseButtonIndex)
     {
         //get item res and give it to player
-        var itemRes = inventoryItems[(int) index];
-
-        if (itemRes != null && !playerItemSpawner.HasItem())
+        //Make it so that scrolling doesn't cause this
+        if(mouseButtonIndex == 1)
         {
-            playerItemSpawner.AddItemRes(itemRes);
-            globals.DecrementItemResStock(itemRes);
-            Player.playerFreezeState();
-            Hide();
-        }
+            var itemRes = inventoryItems[(int)index];
 
-        LoadInventory();
+            if (itemRes != null && !playerItemSpawner.HasItem())
+            {
+                playerItemSpawner.AddItemRes(itemRes);
+                globals.DecrementItemResStock(itemRes);
+                Player.playerFreezeState();
+                Hide();
+            }
+
+            LoadInventory();
+        }
+        
     }
 
 }

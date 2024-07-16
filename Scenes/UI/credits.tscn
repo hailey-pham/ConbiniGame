@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5bky6nidjsef"]
+[gd_scene load_steps=8 format=3 uid="uid://dmjeltr2ss5ng"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_jvu1w"]
 [ext_resource type="Texture2D" uid="uid://six140ru7we8" path="res://Assets/DisastoreTitle.png" id="2_c8gvx"]
