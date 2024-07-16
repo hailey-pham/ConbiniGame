@@ -78,6 +78,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3dcl4")
 script = ExtResource("2_tfuo7")
+SeasonTitles = PackedStringArray("🌸 Spring", "☀️ Summer", "🍂 Fall", "❄️ Winter")
 SpringColor = Color(0.976471, 0.831373, 0.894118, 1)
 SummerColor = Color(0.831373, 0.937255, 0.584314, 1)
 FallColor = Color(0.768627, 0.537255, 0.317647, 1)
@@ -93,26 +94,21 @@ texture = ExtResource("1_gfdno")
 [node name="SeasonName" type="RichTextLabel" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -128.0
 offset_top = -17.0
+offset_right = 128.0
 offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(1, 0.654902, 0.780392, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[center]🌸 Spring[/center]
-"
 fit_content = true
 visible_characters_behavior = 3
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

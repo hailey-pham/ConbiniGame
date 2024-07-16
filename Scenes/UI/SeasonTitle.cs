@@ -25,16 +25,22 @@ public partial class SeasonTitle : Control
     private RichTextLabel seasonName;
     private AnimationPlayer animPlayer;
     private SceneManager sceneManager;
+    private Calendar calendar;
 
     public override void _Ready()
     {
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        calendar = GetNode<Calendar>("/root/Calendar");
 
         //have to set this at runtime since we don't know what our export vars will be
         SeasonColors = new List<Color>() { SpringColor, SummerColor, FallColor, WinterColor };
         store = GetNode<TextureRect>("Store");
 
+        seasonIdx = calendar.GetCurrentSeason() - 1;
         store.Material.Set("shader_parameter/blendColor", SeasonColors[seasonIdx]);
+
+        seasonName = GetNode<RichTextLabel>("SeasonName");
+        seasonName.AppendText("[center]" + SeasonTitles[seasonIdx] + "[/center]");
 
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         PlayAnim();
