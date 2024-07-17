@@ -86,6 +86,7 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_sjk8x")
 }
+speed_scale = 2.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -103,9 +104,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = 160.0
-offset_right = 40.0
-offset_bottom = 194.001
+offset_left = -128.0
+offset_right = -88.0
+offset_bottom = 34.001
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4

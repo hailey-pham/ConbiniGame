@@ -1,134 +1,466 @@
-[gd_scene load_steps=7 format=3 uid="uid://hunt30xi3ai5"]
+[gd_scene load_steps=27 format=3 uid="uid://hunt30xi3ai5"]
 
-[ext_resource type="Script" path="res://Scripts/StockButton.cs" id="1_k14yw"]
-[ext_resource type="Script" path="res://Scripts/RestockLabelManager.cs" id="1_v4sth"]
+[ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_km65n"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_wgo4a"]
 [ext_resource type="Script" path="res://Scripts/RestockManager.cs" id="1_xufpw"]
 [ext_resource type="Texture2D" uid="uid://oolgqxqykh5i" path="res://Assets/storageGraphicLeft.png" id="2_feh7y"]
 [ext_resource type="Texture2D" uid="uid://baxh00c3uhtqa" path="res://Assets/storageGraphicRight.png" id="3_3xaio"]
+[ext_resource type="Texture2D" uid="uid://d1opb8gfc0uf4" path="res://Assets/GUI/BackButton/BackButton.png" id="4_8bpw7"]
+[ext_resource type="Texture2D" uid="uid://dfqcclaok7kc1" path="res://Assets/GUI/BackButton/BackButtonPressed.png" id="5_vdx4d"]
+[ext_resource type="Texture2D" uid="uid://cm4n55jiiud3c" path="res://Assets/GUI/BackButton/BackButtonHover.png" id="6_c0bpj"]
+[ext_resource type="Texture2D" uid="uid://crfjb33kxxpc0" path="res://Assets/ButtonBG.png" id="11_vsaxu"]
+[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/waterBottle.png" id="12_1xjkj"]
 
-[node name="Restock" type="Control" node_paths=PackedStringArray("totalCostLabel", "currentMoneyLabel")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8hc"]
+bg_color = Color(0.521569, 0.537255, 0.639216, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.521569, 0.537255, 0.639216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d37bi"]
+bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.603922, 0.615686, 0.698039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xvck"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jheef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ss7o6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wtrp"]
+
+[sub_resource type="Theme" id="Theme_qvcjm"]
+default_font_size = 10
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_km65n")
+Button/styles/disabled = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/focus = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/hover = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/normal = SubResource("StyleBoxFlat_d37bi")
+Button/styles/pressed = SubResource("StyleBoxFlat_wv8hc")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_4xvck")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_jheef")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_ss7o6")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_2wtrp")
+Label/fonts/font = ExtResource("1_km65n")
+
+[sub_resource type="Theme" id="Theme_lxfcg"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_km65n")
+Button/styles/disabled = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/focus = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/hover = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/normal = SubResource("StyleBoxFlat_d37bi")
+Button/styles/pressed = SubResource("StyleBoxFlat_wv8hc")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noy2n"]
+bg_color = Color(0.682353, 0.694118, 0.752941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tkgh"]
+bg_color = Color(0.4234, 0.44428, 0.58, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt6t3"]
+bg_color = Color(0.4234, 0.44428, 0.58, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6ks1"]
+bg_color = Color(0.4234, 0.44428, 0.58, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icfac"]
+bg_color = Color(0.4234, 0.44428, 0.58, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amdr3"]
+bg_color = Color(0.582679, 0, 0.0952075, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9021, 0.913417, 0.97, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8j66w"]
+bg_color = Color(0.901961, 0.913725, 0.968627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v17pk"]
+bg_color = Color(0.964435, 0.508877, 0.551479, 1)
+
+[node name="Restock" type="Control" node_paths=PackedStringArray("totalCostLabel")]
 layout_mode = 3
 anchors_preset = 0
-theme = ExtResource("1_wgo4a")
+theme = SubResource("Theme_qvcjm")
 script = ExtResource("1_xufpw")
-totalCostLabel = NodePath("TotalCost")
-currentMoneyLabel = NodePath("CurrentMoney")
+totalCostLabel = NodePath("FullOrder/Cost")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Visuals" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_lxfcg")
+
+[node name="BG" type="ColorRect" parent="Visuals"]
 layout_mode = 0
 offset_right = 257.0
 offset_bottom = 163.0
-color = Color(0, 0, 0, 1)
+color = Color(0.682353, 0.694118, 0.752941, 1)
 
-[node name="Boxes Left" type="TextureRect" parent="."]
+[node name="TitleBG" type="ColorRect" parent="Visuals"]
+layout_mode = 0
+offset_right = 257.0
+offset_bottom = 193.0
+scale = Vector2(1, 0.176199)
+color = Color(0.521569, 0.537255, 0.639216, 1)
+
+[node name="CurrentMoney" type="Label" parent="Visuals"]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 256.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0.682353, 0.694118, 0.752941, 1)
+text = "Current Funds: ￥100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="Visuals"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 256.0
+offset_bottom = 21.0
+theme = ExtResource("1_wgo4a")
+text = "Restock"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="Visuals"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 31.0
+offset_bottom = 29.0
+texture_normal = ExtResource("4_8bpw7")
+texture_pressed = ExtResource("5_vdx4d")
+texture_hover = ExtResource("6_c0bpj")
+stretch_mode = 4
+
+[node name="Temp" type="Control" parent="."]
+anchors_preset = 0
+offset_top = -113.0
+offset_right = 40.0
+offset_bottom = -73.0
+
+[node name="Boxes Left" type="TextureRect" parent="Temp"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -113.0
+offset_top = -40.0
 offset_right = 92.0
+offset_bottom = 73.0
 grow_vertical = 0
 texture = ExtResource("2_feh7y")
 
-[node name="Boxes Right" type="TextureRect" parent="."]
+[node name="Boxes Right" type="TextureRect" parent="Temp"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -147.0
+offset_left = -160.0
+offset_top = -74.0
+offset_right = -40.0
+offset_bottom = 73.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("3_3xaio")
+expand_mode = 3
 
-[node name="Purchase" type="Button" parent="."]
+[node name="ItemScroll" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_left = 176.0
-offset_top = 132.0
-offset_right = 252.0
-offset_bottom = 156.0
+offset_left = 2.0
+offset_top = 36.0
+offset_right = 151.0
+offset_bottom = 65.0
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ItemScroll"]
+layout_mode = 2
+
+[node name="FullOrder" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 179.0
+offset_top = 34.0
+offset_right = 219.0
+offset_bottom = 74.0
+
+[node name="FullOrderBG" type="ColorRect" parent="FullOrder"]
+layout_mode = 0
+offset_left = -30.0
+offset_right = 78.0
+offset_bottom = 129.0
+color = Color(0.603922, 0.615686, 0.698039, 1)
+
+[node name="ScrollBG" type="ColorRect" parent="FullOrder/FullOrderBG"]
+layout_mode = 0
+offset_top = 22.0
+offset_right = 108.0
+offset_bottom = 102.0
+color = Color(0.682353, 0.694118, 0.752941, 0.596078)
+
+[node name="Title" type="Label" parent="FullOrder"]
+layout_mode = 0
+offset_left = -29.0
+offset_top = 2.0
+offset_right = 76.0
+offset_bottom = 18.0
+theme = ExtResource("1_wgo4a")
+theme_override_font_sizes/font_size = 10
+text = "Order Information"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="FullOrder"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 106.0
+offset_right = 16.0
+offset_bottom = 122.0
+theme = ExtResource("1_wgo4a")
+theme_override_font_sizes/font_size = 10
+text = "￥1000"
+vertical_alignment = 1
+
+[node name="Purchase" type="Button" parent="FullOrder"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 106.0
+offset_right = 74.0
+offset_bottom = 122.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_noy2n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7tkgh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rt6t3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_v6ks1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_icfac")
 text = "Purchase"
 
-[node name="BackButton" type="Button" parent="."]
+[node name="Control" type="Control" parent="FullOrder"]
+clip_contents = true
+anchors_preset = 0
+offset_left = -30.0
+offset_top = 21.0
+offset_right = 77.0
+offset_bottom = 102.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FullOrder/Control"]
+clip_contents = false
 layout_mode = 0
-offset_left = 7.0
-offset_top = 131.0
-offset_right = 83.0
-offset_bottom = 155.0
-text = "Back"
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 107.0
+offset_bottom = 89.0
+horizontal_scroll_mode = 0
 
-[node name="Items" type="Node" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="FullOrder/Control/ScrollContainer"]
+layout_mode = 2
 
-[node name="Water" type="Label" parent="Items"]
-offset_left = 99.0
-offset_top = 68.0
-offset_right = 150.0
-offset_bottom = 91.0
+[node name="Item" type="HBoxContainer" parent="FullOrder/Control/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="FullOrder/Control/ScrollContainer/VBoxContainer/Item"]
+layout_mode = 2
+texture = ExtResource("12_1xjkj")
+
+[node name="Label" type="Label" parent="FullOrder/Control/ScrollContainer/VBoxContainer/Item"]
+layout_mode = 2
+text = "Water:       x1"
+
+[node name="ItemInformation" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="ButtonBg" type="Sprite2D" parent="ItemInformation"]
+position = Vector2(24, 97)
+scale = Vector2(2, 2)
+texture = ExtResource("11_vsaxu")
+
+[node name="ItemName" type="Label" parent="ItemInformation"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 54.0
+offset_right = 57.0
+offset_bottom = 77.0
 theme = ExtResource("1_wgo4a")
 text = "Water"
-horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("1_v4sth")
-itemName = "Water"
 
-[node name="More" type="Button" parent="Items/Water"]
+[node name="ItemSprite" type="TextureRect" parent="ItemInformation"]
 layout_mode = 0
-offset_left = 55.0
-offset_top = -3.0
-offset_right = 87.0
-offset_bottom = 28.0
-text = "+"
-script = ExtResource("1_k14yw")
-itemName = "Water"
-addButton = true
+offset_left = 8.0
+offset_top = 81.0
+offset_right = 24.0
+offset_bottom = 97.0
+scale = Vector2(2, 2)
+stretch_mode = 3
 
-[node name="Less" type="Button" parent="Items/Water"]
-layout_mode = 0
-offset_left = -41.0
-offset_top = -3.0
-offset_right = -9.0
-offset_bottom = 28.0
-text = "-"
-script = ExtResource("1_k14yw")
-itemName = "Water"
+[node name="Labels" type="Control" parent="ItemInformation"]
+anchors_preset = 0
+offset_left = -4.0
+offset_right = -4.0
 
-[node name="PurchaseAmount" type="Label" parent="Items/Water"]
+[node name="CurrentStock" type="Label" parent="ItemInformation/Labels"]
+offset_left = 53.0
+offset_top = 102.0
+offset_right = 146.0
+offset_bottom = 115.0
+text = "Current Stock:"
+vertical_alignment = 1
+
+[node name="RestockCost" type="Label" parent="ItemInformation/Labels"]
+offset_left = 53.0
+offset_top = 91.0
+offset_right = 146.0
+offset_bottom = 104.0
+text = "Restock Cost:"
+vertical_alignment = 1
+
+[node name="Sell Cost" type="Label" parent="ItemInformation/Labels"]
+offset_left = 53.0
+offset_top = 80.0
+offset_right = 146.0
+offset_bottom = 93.0
+text = "Sell Cost:"
+vertical_alignment = 1
+
+[node name="CurrentStock" type="Label" parent="ItemInformation"]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 36.0
-offset_right = 39.0
-offset_bottom = 59.0
+offset_left = 50.0
+offset_top = 102.0
+offset_right = 143.0
+offset_bottom = 115.0
 text = "0"
-
-[node name="CurrentStock" type="Label" parent="Items/Water"]
-layout_mode = 0
-offset_left = -33.0
-offset_top = -37.0
-offset_right = 82.0
-offset_bottom = -14.0
-text = "Current Stock: "
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CurrentMoney" type="Label" parent="."]
+[node name="RestockCost" type="Label" parent="ItemInformation"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 91.0
+offset_right = 143.0
+offset_bottom = 104.0
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Sell Cost" type="Label" parent="ItemInformation"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 80.0
+offset_right = 143.0
+offset_bottom = 93.0
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AmountToOrder" type="Control" parent="ItemInformation"]
+anchors_preset = 0
+offset_left = -1.0
+
+[node name="PurchaseAmountBG" type="ColorRect" parent="ItemInformation/AmountToOrder"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 129.0
+offset_right = 114.0
+offset_bottom = 155.0
+color = Color(0.521569, 0.537255, 0.639216, 1)
+
+[node name="AmountToOrder" type="Label" parent="ItemInformation/AmountToOrder"]
 layout_mode = 0
 offset_left = 5.0
-offset_top = 5.0
-offset_right = 119.0
-offset_bottom = 28.0
-text = "Current: ￥"
+offset_top = 129.0
+offset_right = 50.0
+offset_bottom = 156.0
+text = "Amount to 
+Order:"
 
-[node name="TotalCost" type="Label" parent="."]
+[node name="More" type="Button" parent="ItemInformation/AmountToOrder"]
 layout_mode = 0
-offset_left = 109.0
-offset_top = 5.0
-offset_right = 254.0
-offset_bottom = 28.0
-text = "Total Cost: ￥"
+offset_left = 118.0
+offset_top = 131.0
+offset_right = 141.0
+offset_bottom = 153.0
+text = "+"
 
-[connection signal="pressed" from="Purchase" to="." method="completePurchase"]
-[connection signal="pressed" from="Items/Water/More" to="Items/Water/More" method="onPress"]
-[connection signal="pressed" from="Items/Water/Less" to="Items/Water/Less" method="onPress"]
+[node name="Less" type="Button" parent="ItemInformation/AmountToOrder"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 131.0
+offset_right = 83.0
+offset_bottom = 153.0
+text = "-"
+
+[node name="PurchaseAmount" type="Label" parent="ItemInformation/AmountToOrder"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 131.0
+offset_right = 112.0
+offset_bottom = 153.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InsufficientFundsPopUp" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="InsufficientFundsPopUp"]
+offset_left = 44.0
+offset_top = 28.0
+offset_right = 216.0
+offset_bottom = 132.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_amdr3")
+
+[node name="InsufficientFunds" type="Label" parent="InsufficientFundsPopUp/Panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 157.0
+offset_bottom = 73.0
+theme = ExtResource("1_wgo4a")
+text = "You do not have enough funds to purchase this upgrade!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Back" type="Button" parent="InsufficientFundsPopUp/Panel"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 73.0
+offset_right = 127.0
+offset_bottom = 95.0
+theme = ExtResource("1_wgo4a")
+theme_override_colors/font_color = Color(0.258824, 0.254902, 0.337255, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_8j66w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_v17pk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v17pk")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_v17pk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_v17pk")
+text = "Back"
+
+[connection signal="pressed" from="FullOrder/Purchase" to="." method="completePurchase"]
