@@ -320,6 +320,7 @@ offset_left = -4.0
 offset_right = -4.0
 
 [node name="CurrentStock" type="Label" parent="ItemInformation/Labels"]
+layout_mode = 0
 offset_left = 53.0
 offset_top = 102.0
 offset_right = 146.0
@@ -328,6 +329,7 @@ text = "Current Stock:"
 vertical_alignment = 1
 
 [node name="RestockCost" type="Label" parent="ItemInformation/Labels"]
+layout_mode = 0
 offset_left = 53.0
 offset_top = 91.0
 offset_right = 146.0
@@ -336,6 +338,7 @@ text = "Restock Cost:"
 vertical_alignment = 1
 
 [node name="Sell Cost" type="Label" parent="ItemInformation/Labels"]
+layout_mode = 0
 offset_left = 53.0
 offset_top = 80.0
 offset_right = 146.0

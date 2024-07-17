@@ -35,11 +35,11 @@ public partial class EndOfDay : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        upgradeButton = GetNode<Button>("VBoxContainer/HBoxContainer/UpgradeButton");
+        upgradeButton = GetNode<Button>("HBoxContainer/UpgradeButton");
 
-        restockButton = GetNode<Button>("VBoxContainer/HBoxContainer/RestockButton");
+        restockButton = GetNode<Button>("HBoxContainer/RestockButton");
 
-        sleepButton = GetNode<Button>("VBoxContainer/HBoxContainer/SleepButton");
+        sleepButton = GetNode<Button>("HBoxContainer/SleepButton");
 
         upgradeButton.Pressed += OnUpgradeButtonPressed;
         restockButton.Pressed += OnRestockButtonPressed;
@@ -48,7 +48,7 @@ public partial class EndOfDay : Control
 
         customersLabel = GetNode<RichTextLabel>("VBoxContainer/Customers");
         earningsLabel = GetNode<RichTextLabel>("VBoxContainer/Cash");
-        dayLabel = GetNode<RichTextLabel>("VBoxContainer/Day");
+        dayLabel = GetNode<RichTextLabel>("Day");
         totalMoneyLabel = GetNode<RichTextLabel>("VBoxContainer/TotalMoney");
 
         itemsSoldLabel = GetNode<Label>("VBoxContainer2/ItemsSoldLabel");
@@ -97,8 +97,10 @@ public partial class EndOfDay : Control
     {
         customersLabel.Text = "Customers Serviced: " + globals.Customers.ToString();
         earningsLabel.Text = "Cash Earned: " + globals.Earnings.ToString() + " yen";
-        dayLabel.Text = "End of Day: " + globals.Day.ToString();
-        totalMoneyLabel.Text = "You now have: " + globals.Money.ToString() + " yen";
+        GD.Print("Here");
+        GD.Print(globals.Day.ToString());
+        dayLabel.Text = "End of Day " + globals.Day.ToString();
+        totalMoneyLabel.Text = "Current Funds: " + globals.Money.ToString() + " yen";
         UpdateItemsSold();
     }
 
