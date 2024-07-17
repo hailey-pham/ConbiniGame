@@ -52,7 +52,7 @@ public partial class disaster : Control
 
 		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
             if (upgrade.Value.owned) {
-                upgrade.Value.uF.onDisaster(globals, currDisaster);
+                upgrade.Value.onDisaster(globals, currDisaster);
             }
         }
 	}

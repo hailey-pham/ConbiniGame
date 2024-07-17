@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract partial class UpgradeFunction : Node
+public abstract partial class UpgradeFunction
 {
 	public abstract void onGameStart(globals Global);
 
