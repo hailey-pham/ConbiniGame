@@ -1,6 +1,7 @@
 
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class EndOfDay : Control
 {
@@ -57,6 +58,13 @@ public partial class EndOfDay : Control
         calendar = GetNode<Calendar>("/root/Calendar");
 
         DisplayEndOfDayStats();
+
+        foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
+            if (upgrade.Value.owned) {
+                upgrade.Value.uF.onDayEnd(globals);
+            }
+        }
+
     }
 
     private void OnUpgradeButtonPressed()
