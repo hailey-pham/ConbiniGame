@@ -6,17 +6,19 @@ public partial class player : CharacterBody2D
 {
 	public AnimatedSprite2D _animatedSprite;
 	public ItemSpawner _itemSpawner;
+    public ItemSpawner _itemSpawner2;
 
-	public bool IsPlayerFrozen = false;
+    public bool IsPlayerFrozen = false;
     public const float Speed = 100.0f;
 
     public override void _Ready()
     {
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_itemSpawner = GetNode<ItemSpawner>("ItemSpawner");
+        _itemSpawner2 = GetNode<ItemSpawner>("ItemSpawner2");
 
-		//set the player's held item to a water bottle by default (for testing)
-		var globals = GetNode<globals>("/root/Globals");
+        //set the player's held item to a water bottle by default (for testing)
+        var globals = GetNode<globals>("/root/Globals");
     }
 
     public override void _PhysicsProcess(double delta)
