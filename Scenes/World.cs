@@ -12,7 +12,7 @@ public partial class World : Node2D
 
 		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
             if (upgrade.Value.owned) {
-                upgrade.Value.onLevelLoad(globals);
+                upgrade.Value.onLevelLoad(globals,GetNode<Node>("."));
             }
         }
 	}
