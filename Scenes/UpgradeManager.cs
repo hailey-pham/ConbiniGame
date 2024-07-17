@@ -38,6 +38,7 @@ public partial class UpgradeManager : Control
 	private Label upgradeQuestion;
 	private CanvasLayer insufficientPopUp;
 
+
 	public override void _Ready()
 	{
 		// get nodes
@@ -57,7 +58,7 @@ public partial class UpgradeManager : Control
 		insufficientPopUp.Visible = false;
 
 		// TESTING
-		globals.Money = 10000;
+		// globals.Money = 10000;
 
 		// declare buttons and functions
 		backButton.Pressed += OnBackButtonPressed;
@@ -106,6 +107,7 @@ public partial class UpgradeManager : Control
 		upgradeNameLabel.Text = currentUpgrade.name;
 		upgradeDescriptionLabel.Text = currentUpgrade.description;
 		upgradeCostLabel.Text = "Cost: ￥"+currentUpgrade.cost;
+		purchaseButton.Disabled = false;
 	}
 
 	private void OnPurchaseButtonPressed()
@@ -117,6 +119,8 @@ public partial class UpgradeManager : Control
 		} else {
 			insufficientPopUp.Visible = true;
 		}
+		
+		
 
 		
 	}
@@ -137,6 +141,9 @@ public partial class UpgradeManager : Control
 					btn.Visible = false;
 				}
 			}
+			upgradeDescriptionLabel.Text = "You have already purchased this upgrade!";
+			purchaseButton.Disabled = true;
+
 
 			currentMoneyLabel.Text = string.Format("Current Funds: ￥"+globals.Money);
 
