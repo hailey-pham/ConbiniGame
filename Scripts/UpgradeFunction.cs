@@ -7,6 +7,8 @@ public abstract partial class UpgradeFunction : Node
 
 	public abstract void onLevelLoad(globals Global);
 
+	public abstract void onExteriorLoad(globals Global);
+
 	public abstract void onDayStart(globals Global);
 
 	public abstract void onDayEnd(globals Global);
