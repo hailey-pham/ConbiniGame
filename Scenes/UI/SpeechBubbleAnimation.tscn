@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c2bidv1rm3rwm" path="res://Assets/speechBubble.png" id="1_ip53b"]
 [ext_resource type="Script" path="res://Scenes/UI/SpeechBubbleAnimation.cs" id="1_vu4sw"]
-[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/waterBottle.png" id="2_1j0db"]
+[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/Items/waterBottle.png" id="2_1j0db"]
 
 [sub_resource type="Animation" id="Animation_7vsfv"]
 length = 0.001
