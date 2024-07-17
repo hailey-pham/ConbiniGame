@@ -154,11 +154,11 @@ public partial class RestockManager : Node
 	
 	
 	private void OnBackButtonPressed()
-    {
-        EmitSignal(nameof(BackButtonPressed));
-        var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+	{
+		EmitSignal(nameof(BackButtonPressed));
+		var sceneManager = GetNode<SceneManager>("/root/SceneManager");
 		sceneManager.ChangeScene("endofdayscene");
-    }
+	}
 
 	private void OnItemButtonPressed(string itemName)
 	{
