@@ -8,6 +8,7 @@ public partial class Inventory : ItemList
 {
     private globals globals;
     private ItemSpawner playerItemSpawner;
+    private ItemSpawner playerItemSpawner2;
 
     private List<ItemRes> inventoryItems = new List<ItemRes>();
 
@@ -17,6 +18,7 @@ public partial class Inventory : ItemList
         SelectMode = SelectModeEnum.Single;
         Player = GetTree().GetFirstNodeInGroup("player") as player;
         playerItemSpawner = Player.GetNode<ItemSpawner>("ItemSpawner");
+        playerItemSpawner2 = Player.GetNode<ItemSpawner>("ItemSpawner2");
 
         ItemClicked += OnItemClicked;
         globals = GetNode<globals>("/root/Globals");
@@ -50,7 +52,7 @@ public partial class Inventory : ItemList
 
         foreach(ItemRes item in globals.Stock.Values) {
             if (!inventoryItems.Contains(item) && item.currentStock > 0)
-                {
+            {
                 inventoryItems.Add(item);
             }
         }
@@ -76,12 +78,24 @@ public partial class Inventory : ItemList
         {
             var itemRes = inventoryItems[(int)index];
 
-            if (itemRes != null && !playerItemSpawner.HasItem())
+            if (itemRes != null)
             {
-                playerItemSpawner.AddItemRes(itemRes);
-                globals.DecrementItemResStock(itemRes);
-                Player.playerFreezeState();
-                Hide();
+                if (!playerItemSpawner.HasItem())
+                {
+                    playerItemSpawner.AddItemRes(itemRes);
+                    globals.DecrementItemResStock(itemRes);
+                    Player.playerFreezeState();
+                    Hide();
+                }
+                //false if it doesn't have an item or if it doesn't exist
+                else if (!playerItemSpawner2.HasItem() && playerItemSpawner2 != null)
+                {
+                    playerItemSpawner2.AddItemRes(itemRes);
+                    globals.DecrementItemResStock(itemRes);
+                    Player.playerFreezeState();
+                    Hide();
+                }
+                
             }
 
             LoadInventory();
