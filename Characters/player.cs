@@ -9,7 +9,7 @@ public partial class player : CharacterBody2D
     public ItemSpawner _itemSpawner2;
 
     public bool IsPlayerFrozen = false;
-    public const float Speed = 100.0f;
+    public float Speed = 100.0f;
 
     public override void _Ready()
     {
@@ -57,5 +57,9 @@ public partial class player : CharacterBody2D
         }
 
     }
+
+	public void setSpeed(float newSpeed) {
+		Speed = newSpeed;
+	}
 
 }
