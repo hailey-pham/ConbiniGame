@@ -38,11 +38,19 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+<<<<<<< Updated upstream
 offset_left = -120.0
 offset_top = -147.0
+=======
+offset_left = -161.0
+offset_top = -74.0
+offset_right = -41.0
+offset_bottom = 73.0
+>>>>>>> Stashed changes
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("3_3xaio")
+expand_mode = 3
 
 [node name="Purchase" type="Button" parent="."]
 layout_mode = 0
