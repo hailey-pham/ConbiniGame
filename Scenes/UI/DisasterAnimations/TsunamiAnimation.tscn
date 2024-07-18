@@ -4,6 +4,33 @@
 [ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="1_gx4cm"]
 [ext_resource type="Texture2D" uid="uid://b2d4rfrxnkkbg" path="res://Assets/tsunami.png" id="1_hbwog"]
 
+[sub_resource type="Animation" id="Animation_gvnkv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackWave:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7, 71.665)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FrontWave:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7, 94.625)]
+}
+
 [sub_resource type="Animation" id="Animation_ee12j"]
 resource_name = "waves"
 length = 2.0
@@ -33,40 +60,13 @@ tracks/1/keys = {
 "values": [Vector2(-7, 94.625), Vector2(-7, 82.54), Vector2(-7, 94.625)]
 }
 
-[sub_resource type="Animation" id="Animation_gvnkv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackWave:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-7, 71.665)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FrontWave:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-7, 94.625)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jk1r7"]
 _data = {
 "RESET": SubResource("Animation_gvnkv"),
 "waves": SubResource("Animation_ee12j")
 }
 
-[node name="TsunamiAnimation" type="Control"]
+[node name="TsunamiAnimation" type="Control" node_paths=PackedStringArray("waveBg", "waveFg")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,6 +74,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2jn88")
+waveSpeed = 2.0
+waveRadius = 10.0
+waveBg = NodePath("BackWave")
+waveFg = NodePath("FrontWave")
 
 [node name="BackWave" type="TextureRect" parent="."]
 layout_mode = 1
@@ -85,7 +89,7 @@ anchor_bottom = 1.0
 offset_left = -135.0
 offset_top = -88.335
 offset_right = 135.0
-offset_bottom = -8.33472
+offset_bottom = -8.33466
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_hbwog")

@@ -50,8 +50,8 @@ script = ExtResource("1_xn1he")
 
 [node name="StoreFront" parent="." instance=ExtResource("2_l7e2k")]
 layout_mode = 1
-offset_right = 768.0
-offset_bottom = 480.0
+offset_right = 1024.0
+offset_bottom = 640.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

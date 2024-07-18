@@ -37,7 +37,7 @@ public partial class FlashFloodAnimation : Control
         cloudTexture ??= (NoiseTexture2D) clouds.Texture;
 
         Vector3 offset = (Vector3) cloudTexture.Noise.Get("offset");
-        cloudTexture.Noise.Set("offset", offset + Vector3.Down * cloudSpeed);
+        cloudTexture.Noise.Set("offset", offset + Vector3.Down * cloudSpeed * (float) (delta));
     }
 
     private async void OnTimerTimeout()
