@@ -1,13 +1,60 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcfcdw8pkwlja"]
+[gd_scene load_steps=14 format=3 uid="uid://bcfcdw8pkwlja"]
 
-[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_lu53v"]
+[ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_4rgg3"]
 [ext_resource type="Script" path="res://Scenes/UI/EndOfDay.cs" id="2_xdosx"]
 
-[sub_resource type="Gradient" id="Gradient_8jyrp"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8hc"]
+bg_color = Color(0.521569, 0.537255, 0.639216, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.521569, 0.537255, 0.639216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d37bi"]
+bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.603922, 0.615686, 0.698039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xvck"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jheef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ss7o6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wtrp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocyml"]
+bg_color = Color(0.741439, 0.751633, 0.802116, 1)
+
+[sub_resource type="Theme" id="Theme_cqc3e"]
+default_font_size = 10
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_4rgg3")
+Button/styles/disabled = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/focus = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/hover = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/normal = SubResource("StyleBoxFlat_d37bi")
+Button/styles/pressed = SubResource("StyleBoxFlat_wv8hc")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_4xvck")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_jheef")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_ss7o6")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_2wtrp")
+ItemList/colors/font_color = Color(1, 1, 1, 1)
+ItemList/font_sizes/font_size = 10
+ItemList/fonts/font = ExtResource("1_4rgg3")
+ItemList/styles/panel = SubResource("StyleBoxFlat_ocyml")
+Label/fonts/font = ExtResource("1_4rgg3")
+RichTextLabel/fonts/normal_font = ExtResource("1_4rgg3")
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_753f3"]
-gradient = SubResource("Gradient_8jyrp")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8trtt"]
 
@@ -20,10 +67,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_lu53v")
+theme = SubResource("Theme_cqc3e")
 script = ExtResource("2_xdosx")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 257.0
+offset_bottom = 161.0
+color = Color(0.65098, 0.662745, 0.729412, 1)
+
+[node name="TitleBG" type="ColorRect" parent="ColorRect"]
+offset_right = 257.0
+offset_bottom = 136.0
+scale = Vector2(1, 0.176199)
+color = Color(0.521569, 0.537255, 0.639216, 1)
+
 [node name="BG" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,23 +92,27 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_753f3")
 
+[node name="Day" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 262.0
+offset_bottom = 18.0
+text = "End of Day"
+fit_content = true
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 10.0
-offset_right = 6.0
-offset_bottom = 10.0
+offset_left = 11.0
+offset_top = 33.0
+offset_right = -10.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
-
-[node name="Day" type="RichTextLabel" parent="VBoxContainer"]
-layout_mode = 2
-text = "End of day:"
-fit_content = true
 
 [node name="Cash" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
@@ -62,21 +126,25 @@ fit_content = true
 
 [node name="TotalMoney" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-text = "You now have:"
+text = "Current Funds:"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+offset_left = 6.0
+offset_top = 125.0
+offset_right = 249.0
+offset_bottom = 149.0
 
-[node name="UpgradeButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="UpgradeButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "UPGRADE"
 
-[node name="RestockButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="RestockButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "RESTOCK"
 
-[node name="SleepButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="SleepButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "SLEEP"
 
@@ -86,10 +154,10 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -110.0
-offset_top = 8.0
+offset_left = -107.0
+offset_top = 31.0
 offset_right = -10.0
-offset_bottom = -15.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 2
 

@@ -5,9 +5,13 @@ public partial class SpeechBubbleAnimation : Node2D
 {
     private AnimationPlayer animationPlayer;
     private Timer timer;
+    private Sprite2D itemSprite;
 
     public override void _Ready()
     {
+        //get reference to the sprite inside the bubble
+        itemSprite = GetNode<Sprite2D>("Bubble/ItemSprite");
+
         //play the initial bubble animation when added to scene
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         animationPlayer.Play("bubble");
@@ -16,6 +20,9 @@ public partial class SpeechBubbleAnimation : Node2D
         timer = GetNode<Timer>("Timer");
         timer.Timeout += OnTimerTimeout;
         timer.Start();
+
+        //set the bubble item texture
+        itemSprite.Texture = NPCPreferenceModifier.GetAPopularItem().spriteTexture;
     }
 
     private async void OnTimerTimeout()

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dejr0knxf2a0n"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade.cs" id="1_ltj5l"]
+
+[resource]
+script = ExtResource("1_ltj5l")
+name = "Player Stack Item"
+description = "Allows the player to hold 2 items."
+owned = false
+cost = 2500

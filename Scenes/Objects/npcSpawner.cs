@@ -42,7 +42,11 @@ public partial class npcSpawner : Node2D
             var npcScript = newNpc as npc;
             npcScript.LeftStore += OnNPCLeaveStore;
             AddChild(newNpc);
-			audioPlayer.Play();
+			if(audioPlayer.IsInsideTree())
+			{
+                audioPlayer.Play();
+            }
+
         }
     }
 

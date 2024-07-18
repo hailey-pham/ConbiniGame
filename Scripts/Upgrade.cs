@@ -7,9 +7,8 @@ public partial class Upgrade : Resource
 	[Export] public string description;
 	[Export] public bool owned; // if the upgrade is owned: true
 	[Export] public int cost;
-	public UpgradeFunction uF;
 
-	public Upgrade() : this("","",false,0) {}
+	public Upgrade() : this("", "", false, 0) { }
 	public Upgrade(String _name, String _description, bool _owned, int _cost) {
 		name = _name;
 		description = _description;
@@ -20,5 +19,13 @@ public partial class Upgrade : Resource
 	public string returnName() {
 		return name;
 	}
-	
+	public void onGameStart(globals Global) { }
+
+	public void onLevelLoad(globals Global) { } // World.cs 
+
+	public void onExteriorLoad(globals Global) { } // Storefront.cs
+
+	public void onDayEnd(globals Global) { } // EndOfDay.cs
+
+	public void onDisaster(globals Global, Calendar.DisastersEnum disaster) { } // disaster.cs
 }

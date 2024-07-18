@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class disaster : Control
 {
@@ -11,11 +12,14 @@ public partial class disaster : Control
 	private WarningAnimation warningAnimation;
 
 	private SceneManager sceneManager;
+	private Calendar calendar;
 
 	// Called when the node enters the scene tree for the first time
 
 	[Export]
-	private Calendar.DisastersEnum currDisaster = Calendar.DisastersEnum.Earthquake;
+	private Calendar.DisastersEnum currDisaster;
+
+	private globals globals;
 
 	
 	public override void _Ready()
@@ -23,13 +27,17 @@ public partial class disaster : Control
         // get scenemanager
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
 		warningAnimation = GetNode<WarningAnimation>("WarningAnimation");
+		calendar = GetNode<Calendar>("/root/Calendar");
+		globals = GetNode<globals>("/root/Globals");
+
+		currDisaster = calendar.GetCurrentDayDisaster();
 
 		//change disasters to not always be hardcoded to earthquakes
 		warningAnimation.SetDisasterType(currDisaster);
 
         //load in the disasterAnimation that matches our current enum
 
-        var disasterAnim = GD.Load<PackedScene>("res://Scenes/UI/DiasterAnimations/" + Enum.GetName(typeof(Calendar.DisastersEnum), currDisaster) + "Animation.tscn");
+        var disasterAnim = GD.Load<PackedScene>("res://Scenes/UI/DisasterAnimations/" + Enum.GetName(typeof(Calendar.DisastersEnum), currDisaster) + "Animation.tscn");
 		AddChild(disasterAnim.Instantiate());
 
         nextButton = GetNode<Button>("NextButton");
@@ -41,6 +49,12 @@ public partial class disaster : Control
 		displayTimer = GetNode<Timer>("DisplayTimer");
 		displayTimer.Timeout += OnDisplayTimerTimeout;
 		displayTimer.Start();
+
+		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
+            if (upgrade.Value.owned) {
+                upgrade.Value.onDisaster(globals, currDisaster);
+            }
+        }
 	}
 
 	private void OnNextButtonPressed()

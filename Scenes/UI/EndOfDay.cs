@@ -1,6 +1,7 @@
 
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class EndOfDay : Control
 {
@@ -31,24 +32,24 @@ public partial class EndOfDay : Control
 	private Calendar calendar;
 
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		upgradeButton = GetNode<Button>("VBoxContainer/HBoxContainer/UpgradeButton");
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        upgradeButton = GetNode<Button>("HBoxContainer/UpgradeButton");
 
-		restockButton = GetNode<Button>("VBoxContainer/HBoxContainer/RestockButton");
+        restockButton = GetNode<Button>("HBoxContainer/RestockButton");
 
-		sleepButton = GetNode<Button>("VBoxContainer/HBoxContainer/SleepButton");
+        sleepButton = GetNode<Button>("HBoxContainer/SleepButton");
 
 		upgradeButton.Pressed += OnUpgradeButtonPressed;
 		restockButton.Pressed += OnRestockButtonPressed;
 		sleepButton.Pressed += OnSleepButtonPressed;
 
 
-		customersLabel = GetNode<RichTextLabel>("VBoxContainer/Customers");
-		earningsLabel = GetNode<RichTextLabel>("VBoxContainer/Cash");
-		dayLabel = GetNode<RichTextLabel>("VBoxContainer/Day");
-		totalMoneyLabel = GetNode<RichTextLabel>("VBoxContainer/TotalMoney");
+        customersLabel = GetNode<RichTextLabel>("VBoxContainer/Customers");
+        earningsLabel = GetNode<RichTextLabel>("VBoxContainer/Cash");
+        dayLabel = GetNode<RichTextLabel>("Day");
+        totalMoneyLabel = GetNode<RichTextLabel>("VBoxContainer/TotalMoney");
 
 		itemsSoldLabel = GetNode<Label>("VBoxContainer2/ItemsSoldLabel");
 		itemsSoldList = GetNode<ItemList>("VBoxContainer2/ItemsSoldList");
@@ -56,8 +57,15 @@ public partial class EndOfDay : Control
 		globals = GetNode<globals>("/root/Globals");
 		calendar = GetNode<Calendar>("/root/Calendar");
 
-		DisplayEndOfDayStats();
-	}
+        DisplayEndOfDayStats();
+
+        foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
+            if (upgrade.Value.owned) {
+                upgrade.Value.onDayEnd(globals);
+            }
+        }
+
+    }
 
 	private void OnUpgradeButtonPressed()
 	{
@@ -85,14 +93,16 @@ public partial class EndOfDay : Control
 		calendar.DetermineNextDay();
 	}
 
-	public void DisplayEndOfDayStats()
-	{
-		customersLabel.Text = "Customers Serviced: " + globals.Customers.ToString();
-		earningsLabel.Text = "Cash Earned: " + globals.Earnings.ToString() + " yen";
-		dayLabel.Text = "End of Day: " + globals.Day.ToString();
-		totalMoneyLabel.Text = "You now have: " + globals.Money.ToString() + " yen";
-		UpdateItemsSold();
-	}
+    public void DisplayEndOfDayStats()
+    {
+        customersLabel.Text = "Customers Serviced: " + globals.Customers.ToString();
+        earningsLabel.Text = "Cash Earned: " + globals.Earnings.ToString() + " yen";
+        GD.Print("Here");
+        GD.Print(globals.Day.ToString());
+        dayLabel.Text = "End of Day " + globals.Day.ToString();
+        totalMoneyLabel.Text = "Current Funds: " + globals.Money.ToString() + " yen";
+        UpdateItemsSold();
+    }
 
 	private void UpdateItemsSold()
 	{

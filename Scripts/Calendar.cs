@@ -42,6 +42,8 @@ public partial class Calendar : Node2D
     private int[] autumnArray;
     private int[] winterArray;
 
+    public static int DayLength => dayLength;
+
     private enum DisasterType
     {
         None = 0,
@@ -77,9 +79,8 @@ public partial class Calendar : Node2D
 
         globals = GetNode<globals>("/root/Globals");
 
+        currentSeasonStr = seasons[currentSeason - 1];
         GenerateDisasterCalendar();
-
-        UpdateCurrentWeekDisasters();
 
         GD.Print("Day: " + currentDay + " Season: " + currentSeasonStr);
         GD.Print("Current day index: " + currentDayIndex);
@@ -90,7 +91,7 @@ public partial class Calendar : Node2D
     {
         elapsedTime += 1;
 
-        int newPercent = elapsedTime * 100 / dayLength;
+        int newPercent = elapsedTime * 100 / DayLength;
 
         if (newPercent != dayPercent)
         {
@@ -98,7 +99,7 @@ public partial class Calendar : Node2D
             EmitSignal(SignalName.DayPercent, dayPercent);
         }
 
-        if (elapsedTime > dayLength)
+        if (elapsedTime > DayLength)
         {
             //dont apply time when we change scenes to the next day
             timer.Stop();
@@ -180,12 +181,7 @@ public partial class Calendar : Node2D
 
     public bool IsDisasterDay()
     {
-        if (currentDayIndex < 0 || currentDayIndex >= weeklyDisasters.Length)
-        {
-            GD.PrintErr("IsDisasterDay: Index out of bounds. Current Day Index: " + currentDayIndex);
-            return false;
-        }
-        return weeklyDisasters[currentDayIndex] != (int)DisasterType.None;
+        return (DisasterType)currentDayIndex != DisasterType.None;
     }
 
     //a silly check
@@ -199,7 +195,11 @@ public partial class Calendar : Node2D
         GD.Print("Determining day...");
         var sceneManager = GetNode<SceneManager>("/root/SceneManager");
 
-        if (IsDisasterDay())
+        if (currentDay == 1)
+        {
+            sceneManager.ChangeScene("seasontitle", "Sleep");
+        }
+        else if (IsDisasterDay())
         {
             sceneManager.ChangeScene("disasterscene","Sleep");
             // stats.UpdateMoney();
@@ -390,7 +390,12 @@ public partial class Calendar : Node2D
         int today = (currentDay - 1) % seasonLength;
         int[] seasonArray = GetCurrentSeasonArray();
         return seasonArray[today];
-    }    
+    }
+    
+    public DisastersEnum GetCurrentDayDisaster()
+    {
+        return (DisastersEnum) GetCurrentDayDisasterIndex();
+    }
     public override void _UnhandledKeyInput(InputEvent @event)
     {
         //only allow for debug key inputs if in debug mode

@@ -72,11 +72,11 @@ public partial class SleepTransiton : SceneTransition
         {
             if (@event.IsPressed())
             {
-                animationPlayer.SpeedScale = 2;
+                animationPlayer.SpeedScale = 4;
             }
             else
             {
-                animationPlayer.SpeedScale = 1;
+                animationPlayer.SpeedScale = 2;
             }
             
         }
