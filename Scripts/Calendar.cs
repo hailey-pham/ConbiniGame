@@ -179,7 +179,7 @@ public partial class Calendar : Node2D
 
     public bool IsDisasterDay()
     {
-        return (DisasterType) currentDayIndex != DisasterType.None;
+        return (DisasterType)currentDayIndex != DisasterType.None;
     }
 
     //a silly check
