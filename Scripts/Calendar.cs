@@ -42,6 +42,8 @@ public partial class Calendar : Node2D
     private int[] autumnArray;
     private int[] winterArray;
 
+    public static int DayLength => dayLength;
+
     private enum DisasterType
     {
         None = 0,
@@ -89,7 +91,7 @@ public partial class Calendar : Node2D
     {
         elapsedTime += 1;
 
-        int newPercent = elapsedTime * 100 / dayLength;
+        int newPercent = elapsedTime * 100 / DayLength;
 
         if (newPercent != dayPercent)
         {
@@ -97,7 +99,7 @@ public partial class Calendar : Node2D
             EmitSignal(SignalName.DayPercent, dayPercent);
         }
 
-        if (elapsedTime > dayLength)
+        if (elapsedTime > DayLength)
         {
             //dont apply time when we change scenes to the next day
             timer.Stop();
