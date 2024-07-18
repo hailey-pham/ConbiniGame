@@ -13,6 +13,7 @@ scenes = {
 "mainmenu": "res://Scenes/UI/main_menu.tscn",
 "restock": "res://Scenes/Restock.tscn",
 "seasontitle": "res://Scenes/UI/SeasonTitle.tscn",
+"splashscreen": "res://Scenes/UI/SplashAnimation.tscn",
 "upgrade": "res://Scenes/Upgrade.tscn"
 }
 transitions = {

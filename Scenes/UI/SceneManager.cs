@@ -25,7 +25,7 @@ public partial class SceneManager : Node
 		sceneParent = GetNode<Node>("SceneParent");
 
 		//load the main menu when the game starts
-		LoadNewScene("mainmenu");
+		LoadNewScene("splashscreen");
 
 	}
 
