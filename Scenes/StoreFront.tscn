@@ -1,9 +1,48 @@
-[gd_scene format=3 uid="uid://cc5jt5uehw73i"]
+[gd_scene load_steps=7 format=3 uid="uid://cc5jt5uehw73i"]
+
+[ext_resource type="Shader" path="res://Scenes/UI/SeasonTitle.gdshader" id="1_0btbg"]
+[ext_resource type="Texture2D" uid="uid://vog8f81y4ktb" path="res://Assets/storefrontPlaceholder.png" id="1_cvr25"]
+[ext_resource type="Script" path="res://Scenes/StoreFront.cs" id="1_ihp1t"]
+[ext_resource type="Texture2D" uid="uid://bmhc8xninrclb" path="res://Assets/StoreFront/Storefront_Flag.png" id="4_5atv1"]
+[ext_resource type="Texture2D" uid="uid://cj5iiqpd718l4" path="res://Assets/StoreFront/Storefront_Vending.png" id="5_3rk8m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ro0m"]
+shader = ExtResource("1_0btbg")
+shader_parameter/blendColor = Color(1, 1, 1, 1)
 
 [node name="StoreFront" type="Control"]
+material = SubResource("ShaderMaterial_4ro0m")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ihp1t")
+SpringColor = Color(0.976471, 0.831373, 0.894118, 1)
+SummerColor = Color(0.831373, 0.937255, 0.584314, 1)
+FallColor = Color(0.768627, 0.537255, 0.317647, 1)
+WinterColor = Color(0.513726, 0.776471, 0.945098, 1)
+
+[node name="base" type="TextureRect" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_cvr25")
+
+[node name="Flag" type="TextureRect" parent="."]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_5atv1")
+
+[node name="Vending" type="TextureRect" parent="."]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_3rk8m")
