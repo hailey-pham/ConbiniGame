@@ -77,6 +77,7 @@ offset_bottom = 161.0
 color = Color(0.65098, 0.662745, 0.729412, 1)
 
 [node name="TitleBG" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
 offset_right = 257.0
 offset_bottom = 136.0
 scale = Vector2(1, 0.176199)

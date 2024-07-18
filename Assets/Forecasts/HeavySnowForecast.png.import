@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5keo3s2afxoa"
-path="res://.godot/imported/snowForecast.png-9f90af04872a394a3aa3cbabcc19f5b0.ctex"
+path="res://.godot/imported/HeavySnowForecast.png-e7169283020e6b8a70ba115b94d7ab28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Forecasts/snowForecast.png"
-dest_files=["res://.godot/imported/snowForecast.png-9f90af04872a394a3aa3cbabcc19f5b0.ctex"]
+source_file="res://Assets/Forecasts/HeavySnowForecast.png"
+dest_files=["res://.godot/imported/HeavySnowForecast.png-e7169283020e6b8a70ba115b94d7ab28.ctex"]
 
 [params]
 
