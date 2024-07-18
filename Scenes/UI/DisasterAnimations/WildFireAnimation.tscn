@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6cme468fselw"]
+[gd_scene load_steps=7 format=3 uid="uid://b6cme468fselw"]
 
+[ext_resource type="Script" path="res://Scenes/UI/DisasterAnimations/WildFireAnimation.cs" id="1_6j2os"]
 [ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="1_xu6gt"]
+
+[sub_resource type="Gradient" id="Gradient_oqubt"]
+offsets = PackedFloat32Array(0, 0.775701, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.829907, 0.829907, 0.829907, 0.829907, 0.884041, 0.331517, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_865q0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b3k82"]
+width = 256
+height = 160
+color_ramp = SubResource("Gradient_oqubt")
+noise = SubResource("FastNoiseLite_865q0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5xt60"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 120, 1)
+angle_min = -279.0
+angle_max = -237.5
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.631035, 0.631035, 0.631035, 1)
 
 [node name="WildFireAnimation" type="Control"]
 layout_mode = 3
@@ -9,18 +33,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6j2os")
+cloudSpeed = -0.1
+
+[node name="SkyColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.51, 0.1632, 0.1632, 1)
+
+[node name="Fire" type="TextureRect" parent="."]
+modulate = Color(0.622356, 0.206135, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_b3k82")
 
 [node name="StoreFront" parent="." instance=ExtResource("1_xu6gt")]
 layout_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 68)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_5xt60")
+lifetime = 15.0
+
+[node name="Tint" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-bbcode_enabled = true
-text = "[color=red]FIRE[/color]"
-fit_content = true
+color = Color(1, 0.45, 0, 0.145098)

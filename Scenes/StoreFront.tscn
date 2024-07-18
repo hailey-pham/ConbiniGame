@@ -1,14 +1,103 @@
-[gd_scene load_steps=7 format=3 uid="uid://cc5jt5uehw73i"]
+[gd_scene load_steps=20 format=3 uid="uid://cc5jt5uehw73i"]
 
 [ext_resource type="Shader" path="res://Scenes/UI/SeasonTitle.gdshader" id="1_0btbg"]
-[ext_resource type="Texture2D" uid="uid://vog8f81y4ktb" path="res://Assets/storefrontPlaceholder.png" id="1_cvr25"]
 [ext_resource type="Script" path="res://Scenes/StoreFront.cs" id="1_ihp1t"]
+[ext_resource type="Texture2D" uid="uid://nqmo0ggwvwvc" path="res://Assets/StoreFront/FallSpritesheet.png" id="3_7nty7"]
 [ext_resource type="Texture2D" uid="uid://bmhc8xninrclb" path="res://Assets/StoreFront/Storefront_Flag.png" id="4_5atv1"]
+[ext_resource type="Texture2D" uid="uid://853qqveeqs35" path="res://Assets/StoreFront/SummerSpritesheet.png" id="4_oyc81"]
 [ext_resource type="Texture2D" uid="uid://cj5iiqpd718l4" path="res://Assets/StoreFront/Storefront_Vending.png" id="5_3rk8m"]
+[ext_resource type="Texture2D" uid="uid://b7qhx0bx3jk7m" path="res://Assets/StoreFront/SpringSpritesheet.png" id="6_b3aah"]
+[ext_resource type="Texture2D" uid="uid://cdokq42h811ai" path="res://Assets/StoreFront/Storefront_Winter_Greyscale.png" id="6_q1vim"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ro0m"]
 shader = ExtResource("1_0btbg")
 shader_parameter/blendColor = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyxda"]
+atlas = ExtResource("3_7nty7")
+region = Rect2(0, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiy2v"]
+atlas = ExtResource("3_7nty7")
+region = Rect2(256, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy3ur"]
+atlas = ExtResource("3_7nty7")
+region = Rect2(512, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lchh5"]
+atlas = ExtResource("6_b3aah")
+region = Rect2(0, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wh1y"]
+atlas = ExtResource("6_b3aah")
+region = Rect2(256, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fngpy"]
+atlas = ExtResource("6_b3aah")
+region = Rect2(512, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybqcx"]
+atlas = ExtResource("4_oyc81")
+region = Rect2(0, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvp5i"]
+atlas = ExtResource("4_oyc81")
+region = Rect2(256, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi7m0"]
+atlas = ExtResource("6_q1vim")
+region = Rect2(0, 0, 256, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_68c8a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyxda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiy2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy3ur")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lchh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wh1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fngpy")
+}],
+"loop": true,
+"name": &"spring",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybqcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvp5i")
+}],
+"loop": true,
+"name": &"summer",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi7m0")
+}],
+"loop": true,
+"name": &"winter",
+"speed": 1.0
+}]
 
 [node name="StoreFront" type="Control"]
 material = SubResource("ShaderMaterial_4ro0m")
@@ -24,12 +113,11 @@ SummerColor = Color(0.831373, 0.937255, 0.584314, 1)
 FallColor = Color(0.768627, 0.537255, 0.317647, 1)
 WinterColor = Color(0.513726, 0.776471, 0.945098, 1)
 
-[node name="base" type="TextureRect" parent="."]
+[node name="store" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_cvr25")
+sprite_frames = SubResource("SpriteFrames_68c8a")
+animation = &"winter"
+centered = false
 
 [node name="Flag" type="TextureRect" parent="."]
 visible = false

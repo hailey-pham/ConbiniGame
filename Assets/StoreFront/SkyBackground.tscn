@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://r6iwguk11m2d"]
+
+[ext_resource type="Texture2D" uid="uid://dwuy4ftgjg3qv" path="res://Assets/StoreFront/Storefront_Sky.png" id="1_0o64k"]
+[ext_resource type="Texture2D" uid="uid://b20v3ek7dild3" path="res://Assets/StoreFront/Storefront_Clouds.png" id="2_ip6dj"]
+
+[node name="Sky" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_0o64k")
+
+[node name="Clouds" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 160.0
+texture = ExtResource("2_ip6dj")

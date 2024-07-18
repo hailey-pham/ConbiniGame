@@ -20,6 +20,8 @@ public partial class StoreFront : Control
     private globals globals;
     private SceneManager sceneManager;
     private Calendar calendar;
+
+    private AnimatedSprite2D store;
 	public override void _Ready()
 	{
 		globals = GetNode<globals>("/root/Globals");
@@ -38,6 +40,24 @@ public partial class StoreFront : Control
 
         seasonIdx = calendar.GetCurrentSeason() - 1;
         Material.Set("shader_parameter/blendColor", SeasonColors[seasonIdx]);
+
+        store = GetNode<AnimatedSprite2D>("store");
+        switch(seasonIdx)
+        {
+            case (0):
+                store.Play("spring");
+                break;
+            case(1):
+                store.Play("summer");
+                break;
+            case (2):
+                store.Play("fall");
+                break;
+            case (3):
+                store.Play("winter");
+                break;
+        }
+        
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
