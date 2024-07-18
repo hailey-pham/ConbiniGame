@@ -8,6 +8,8 @@ public partial class player : CharacterBody2D
 	public ItemSpawner _itemSpawner;
     public ItemSpawner _itemSpawner2;
 
+	public bool IsStackItemUpgrade;
+
     public bool IsPlayerFrozen = false;
     public float Speed = 100.0f;
 
@@ -19,7 +21,9 @@ public partial class player : CharacterBody2D
 
         //set the player's held item to a water bottle by default (for testing)
         var globals = GetNode<globals>("/root/Globals");
-    }
+
+        IsStackItemUpgrade = false;
+}
 
     public override void _PhysicsProcess(double delta)
 	{

@@ -47,8 +47,13 @@ public partial class storage : Area2D
             if (Player != null)
             {
                 //if player is currently holding an item
-                if (Player._itemSpawner.currItem != null && Player._itemSpawner2.currItem != null)
+                if (Player._itemSpawner.currItem != null && (Player._itemSpawner2.currItem != null || !Player.IsStackItemUpgrade))
                 {
+                    if(Player.IsStackItemUpgrade)
+                    {
+                        Player._itemSpawner2.currItem.ReturnItemToStock();
+                        Player._itemSpawner2.RemoveItemRes();
+                    }
                     //return it to stock and remove the item
                     Player._itemSpawner.currItem.ReturnItemToStock();
                     Player._itemSpawner.RemoveItemRes();
