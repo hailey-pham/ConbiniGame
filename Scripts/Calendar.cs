@@ -16,8 +16,8 @@ public partial class Calendar : Node2D
 
     private int dayPercent = 0;
     private int elapsedTime = 0;
-    private const int dayLength = 1 * 60;
-    private const int seasonLength = 4;
+    private const int dayLength = 2 * 60; // each day is two minutes long
+    private const int seasonLength = 3;
 
     private int currentDay = 1;
     private int currentSeason = 1;
@@ -41,6 +41,8 @@ public partial class Calendar : Node2D
     private int[] summerArray;
     private int[] autumnArray;
     private int[] winterArray;
+
+    private bool WasPreviousDayDisaster = false;
 
     public static int DayLength => dayLength;
 
@@ -165,6 +167,11 @@ public partial class Calendar : Node2D
         currentDay += 1;
         if (currentDay > seasonLength)
         {
+            if (weeklyDisasters[seasonLength - 1] != (int)DisasterType.None)
+            {
+                WasPreviousDayDisaster = true;
+            }
+          
             currentDay = 1;
             currentSeason += 1;
             OnSeasonChange(currentSeason);
@@ -182,6 +189,11 @@ public partial class Calendar : Node2D
     public bool IsDisasterDay()
     {
         return (DisasterType)currentDayIndex != DisasterType.None;
+    }
+
+    public bool IsNextDisasterDay()
+    {
+        return (DisasterType)nextDayIndex != DisasterType.None;
     }
 
     //a silly check
@@ -204,6 +216,10 @@ public partial class Calendar : Node2D
             sceneManager.ChangeScene("disasterscene","Sleep");
             // stats.UpdateMoney();
         }
+        else if (IsNextDisasterDay() && ((DisasterType)nextDayIndex != DisasterType.Earthquake) && ((DisasterType)nextDayIndex != DisasterType.Tsunami))
+        {
+            sceneManager.ChangeScene("forecastscene", "Sleep");
+        }
         else
         {
             sceneManager.ChangeScene("gamescene","Sleep");
@@ -225,11 +241,10 @@ public partial class Calendar : Node2D
     }
 
     // disaster calendar generating things
-
     private int GetSeasonProbabilities(DisasterType disaster, string season)
     {
         // create different probabilities for each disaster depending on the current season
-        int defaultProbability = 0;
+        int defaultProbability = 20;
         switch (disaster)
         {
             case DisasterType.Typhoon:
@@ -313,7 +328,7 @@ public partial class Calendar : Node2D
 
     public async void GenerateDisasterCalendar()
     {
-        // generate and output all the disaster arrays at once
+        // generate and output all the disaster arrays for the year at once
         var springTask = Task.Run(() => GenerateDisasterDays("Spring"));
         var summerTask = Task.Run(() => GenerateDisasterDays("Summer"));
         var autumnTask = Task.Run(() => GenerateDisasterDays("Autumn"));
@@ -396,6 +411,13 @@ public partial class Calendar : Node2D
     {
         return (DisastersEnum) GetCurrentDayDisasterIndex();
     }
+
+    public DisastersEnum GetNextDayDisaster()
+    {
+        return (DisastersEnum)GetNextDayDisasterIndex();
+    }
+    
+    // debuggy
     public override void _UnhandledKeyInput(InputEvent @event)
     {
         //only allow for debug key inputs if in debug mode
@@ -409,25 +431,3 @@ public partial class Calendar : Node2D
 #endif
     }
 }
-
-    /*
-     * 
-     * MULTITHREADED FOR PERFORMANT ASPECT
-     * 
-     */
-
-    //a method to return the disaster (or no disaster) occuring tomorrow
-
-    //run this once before new week starts
-    //array of possible events (0, 0, 0, 0, 0, 1, 1)
-    //get a random integer range 0-array.count
-    //get the value at array[rand] and put it in new array
-    //newarray = (0)
-    //remove value at array[rand]
-    //repeat until original array is empty.
-
-    //GetNextDayDisasterIndex -> int
-    //a method for checking tomorrow's disaster
-
-    //GetCurrentDayDisasterIndex -> int
-    //a method for checking the current day's disaster

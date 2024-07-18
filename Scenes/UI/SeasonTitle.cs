@@ -35,6 +35,15 @@ public partial class SeasonTitle : Control
         animPlayer.Play("print");
         await ToSignal(animPlayer, "animation_finished");
         await Task.Delay(4000);
-        sceneManager.ChangeScene("gamescene", "FadeToBlack");
+        // check for forecast
+        if (calendar.GetNextDayDisaster() != Calendar.DisastersEnum.None)
+        {
+            // there is disaster
+            sceneManager.ChangeScene("forecastscene", "FadeToBlack");
+        }
+        else
+        {
+            sceneManager.ChangeScene("gamescene", "FadeToBlack");
+        }
     }
 }

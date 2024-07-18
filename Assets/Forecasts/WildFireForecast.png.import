@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d267grm6xejvi"
-path="res://.godot/imported/floodForecast.png-543a81c6964bfee5332422fe32d05c03.ctex"
+uid="uid://5xugb3k0ax4d"
+path="res://.godot/imported/WildFireForecast.png-036b4ebe115e241aa5faa8b527b18958.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Forecasts/floodForecast.png"
-dest_files=["res://.godot/imported/floodForecast.png-543a81c6964bfee5332422fe32d05c03.ctex"]
+source_file="res://Assets/Forecasts/WildFireForecast.png"
+dest_files=["res://.godot/imported/WildFireForecast.png-036b4ebe115e241aa5faa8b527b18958.ctex"]
 
 [params]
 
