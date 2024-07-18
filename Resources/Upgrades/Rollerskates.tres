@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b7r1a5ne0adqv"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/Rollerskates.cs" id="1_bw833"]
+
+[resource]
+script = ExtResource("1_bw833")
+newSpeed = 140.0
+name = "Rollerskates"
+description = "Makes you move faster"
+owned = false
+cost = 5000

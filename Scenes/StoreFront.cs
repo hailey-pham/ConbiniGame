@@ -11,7 +11,7 @@ public partial class StoreFront : Control
 
 		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
             if (upgrade.Value.owned) {
-                upgrade.Value.onLevelLoad(globals);
+                upgrade.Value.onLevelLoad(globals, GetNode<Node>("."));
             }
         }
 	}
