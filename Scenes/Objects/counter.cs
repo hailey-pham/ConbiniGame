@@ -6,6 +6,7 @@ public partial class counter : StaticBody2D
     private CounterArea counterArea;
     private ItemSpawner itemSpawner;
 
+
     public override void _Ready()
     {
         counterArea = GetNode<CounterArea>("counter_area");
@@ -34,7 +35,7 @@ public partial class counter : StaticBody2D
                         //give player our itemres
                         Player._itemSpawner.AddItemRes(itemSpawner.RemoveItemRes());
                     }
-                    else if (!Player._itemSpawner2.HasItem() && Player._itemSpawner2 != null)
+                    else if (!Player._itemSpawner2.HasItem() && Player.IsStackItemUpgrade)
                     {
                         Player._itemSpawner2.AddItemRes(itemSpawner.RemoveItemRes());
                     }
@@ -42,7 +43,7 @@ public partial class counter : StaticBody2D
                 else
                 {
                     //attempt to take item from player
-                    if (Player._itemSpawner2.HasItem()&& Player._itemSpawner2 != null)
+                    if (Player._itemSpawner2.HasItem() && Player.IsStackItemUpgrade)
                     {
                         //take itemres from player
                         itemSpawner.AddItemRes(Player._itemSpawner2.RemoveItemRes());

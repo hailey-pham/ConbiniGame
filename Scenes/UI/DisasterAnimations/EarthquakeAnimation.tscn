@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch5b42j2po0cp"]
 
 [ext_resource type="Script" path="res://Scenes/UI/DisasterAnimations/EarthquakeAnimation.cs" id="1_xn1he"]
-[ext_resource type="Texture2D" uid="uid://vog8f81y4ktb" path="res://Assets/storefrontPlaceholder.png" id="2_8dvk0"]
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="2_l7e2k"]
 
 [sub_resource type="Animation" id="Animation_a7hxe"]
 length = 0.001
@@ -23,7 +23,7 @@ resource_name = "shake"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background:position")
+tracks/0/path = NodePath("StoreFront:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -48,11 +48,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xn1he")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
+[node name="StoreFront" parent="." instance=ExtResource("2_l7e2k")]
+layout_mode = 1
 offset_right = 256.0
 offset_bottom = 160.0
-texture = ExtResource("2_8dvk0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

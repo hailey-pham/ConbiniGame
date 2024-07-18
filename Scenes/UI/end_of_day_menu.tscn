@@ -120,6 +120,12 @@ layout_mode = 2
 text = "Cash earned:"
 fit_content = true
 
+[node name="VendingMachineLabel" type="RichTextLabel" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "+(￥2000 Vending Machine)"
+fit_content = true
+
 [node name="Customers" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 text = "Customers Serviced:"
