@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh4w75wyh8tcv"
-path="res://.godot/imported/Popsicle.png-1b70768a0b2d768086fadd6361064e33.ctex"
+uid="uid://cg3so55bmihia"
+path="res://.godot/imported/ToiletPaper.png-c57fae169298026885bb7d18beefb725.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Popsicle.png"
-dest_files=["res://.godot/imported/Popsicle.png-1b70768a0b2d768086fadd6361064e33.ctex"]
+source_file="res://Assets/ToiletPaper.png"
+dest_files=["res://.godot/imported/ToiletPaper.png-c57fae169298026885bb7d18beefb725.ctex"]
 
 [params]
 

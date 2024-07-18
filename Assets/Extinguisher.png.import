@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clntk0ni33f0c"
-path="res://.godot/imported/Battery.png-f27f6333339ca63bd63d2fb752327c41.ctex"
+uid="uid://depmkf23b02rp"
+path="res://.godot/imported/Extinguisher.png-0b2b5960c316c80a7993110e82e70b5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Battery.png"
-dest_files=["res://.godot/imported/Battery.png-f27f6333339ca63bd63d2fb752327c41.ctex"]
+source_file="res://Assets/Extinguisher.png"
+dest_files=["res://.godot/imported/Extinguisher.png-0b2b5960c316c80a7993110e82e70b5a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dllpm8eciob25"
-path="res://.godot/imported/Raincoat.png-392f4e850cb7d8a2be26c3f46e4b5ea7.ctex"
+uid="uid://c226esuqsx4mk"
+path="res://.godot/imported/Umbrella.png-bb1cd716ce05e29f798af804f8dc04ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Raincoat.png"
-dest_files=["res://.godot/imported/Raincoat.png-392f4e850cb7d8a2be26c3f46e4b5ea7.ctex"]
+source_file="res://Assets/Umbrella.png"
+dest_files=["res://.godot/imported/Umbrella.png-bb1cd716ce05e29f798af804f8dc04ba.ctex"]
 
 [params]
 

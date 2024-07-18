@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://28gltu4s3ec7"
-path="res://.godot/imported/SakuraMochi.png-612be85ee90b579ebb12e135eb563ad0.ctex"
+uid="uid://dllpm8eciob25"
+path="res://.godot/imported/Raincoat.png-36cdc01bbe329046f8ad89ae785f1426.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SakuraMochi.png"
-dest_files=["res://.godot/imported/SakuraMochi.png-612be85ee90b579ebb12e135eb563ad0.ctex"]
+source_file="res://Assets/Raincoat.png"
+dest_files=["res://.godot/imported/Raincoat.png-36cdc01bbe329046f8ad89ae785f1426.ctex"]
 
 [params]
 

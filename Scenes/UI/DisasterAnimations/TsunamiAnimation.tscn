@@ -1,70 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://si1mo4ugd065"]
+[gd_scene load_steps=4 format=3 uid="uid://si1mo4ugd065"]
 
 [ext_resource type="Script" path="res://Scenes/UI/DisasterAnimations/TsunamiAnimation.cs" id="1_2jn88"]
 [ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="1_gx4cm"]
-[ext_resource type="Texture2D" uid="uid://b2d4rfrxnkkbg" path="res://Assets/tsunami.png" id="1_hbwog"]
-
-[sub_resource type="Animation" id="Animation_gvnkv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackWave:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-7, 71.665)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FrontWave:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-7, 94.625)]
-}
-
-[sub_resource type="Animation" id="Animation_ee12j"]
-resource_name = "waves"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackWave:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-7, 71.665), Vector2(-7, 93.825), Vector2(-7, 71.665)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FrontWave:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-7, 94.625), Vector2(-7, 82.54), Vector2(-7, 94.625)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jk1r7"]
-_data = {
-"RESET": SubResource("Animation_gvnkv"),
-"waves": SubResource("Animation_ee12j")
-}
+[ext_resource type="Texture2D" uid="uid://c0rq6711ip4mm" path="res://Assets/Tsunami.png" id="2_tayvm"]
 
 [node name="TsunamiAnimation" type="Control" node_paths=PackedStringArray("waveBg", "waveFg")]
 layout_mode = 3
@@ -87,12 +25,13 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -135.0
-offset_top = -88.335
-offset_right = 135.0
-offset_bottom = -8.33466
+offset_top = -145.04
+offset_right = 165.0
+offset_bottom = 14.96
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("1_hbwog")
+texture = ExtResource("2_tayvm")
+stretch_mode = 1
 
 [node name="StoreFront" parent="." instance=ExtResource("1_gx4cm")]
 layout_mode = 1
@@ -105,14 +44,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -135.0
-offset_top = -65.375
-offset_right = 135.0
-offset_bottom = 14.6251
+offset_top = -130.45
+offset_right = 165.0
+offset_bottom = 29.55
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("1_hbwog")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_jk1r7")
-}
+texture = ExtResource("2_tayvm")

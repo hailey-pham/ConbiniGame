@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmcweeyk3rwy6"
-path="res://.godot/imported/Apple.png-6cd13b76053e3795414d24077e6ea26f.ctex"
+uid="uid://28gltu4s3ec7"
+path="res://.godot/imported/SakuraMochi.png-73850d3ae37266884d6399aebff45fb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Apple.png"
-dest_files=["res://.godot/imported/Apple.png-6cd13b76053e3795414d24077e6ea26f.ctex"]
+source_file="res://Assets/SakuraMochi.png"
+dest_files=["res://.godot/imported/SakuraMochi.png-73850d3ae37266884d6399aebff45fb3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg3so55bmihia"
-path="res://.godot/imported/ToiletPaper.png-02cb6300c35810ec02f542b51718c912.ctex"
+uid="uid://bvw7urh1xdihh"
+path="res://.godot/imported/YuzuDrink.png-b449b391efe9c46e2f807bb8e5b77b8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ToiletPaper.png"
-dest_files=["res://.godot/imported/ToiletPaper.png-02cb6300c35810ec02f542b51718c912.ctex"]
+source_file="res://Assets/YuzuDrink.png"
+dest_files=["res://.godot/imported/YuzuDrink.png-b449b391efe9c46e2f807bb8e5b77b8a.ctex"]
 
 [params]
 
