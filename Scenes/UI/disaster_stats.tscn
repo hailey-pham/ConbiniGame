@@ -62,6 +62,11 @@ theme_override_font_sizes/normal_font_size = 20
 text = "You now have: "
 fit_content = true
 
+[node name="ItemsLost" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+text = "You lost: "
+fit_content = true
+
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -78,3 +83,17 @@ grow_vertical = 0
 scale = Vector2(0.613048, 0.634291)
 theme_override_font_sizes/font_size = 20
 text = "CONTINUE"
+
+[node name="RestockButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.5
+offset_top = -20.0
+offset_right = 21.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "RESTOCK"
