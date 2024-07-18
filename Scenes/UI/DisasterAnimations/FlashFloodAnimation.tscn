@@ -108,3 +108,4 @@ trail_enabled = true
 trail_lifetime = 0.05
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0

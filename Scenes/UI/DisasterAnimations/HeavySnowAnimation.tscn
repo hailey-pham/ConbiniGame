@@ -1,4 +1,31 @@
-[gd_scene format=3 uid="uid://b1hyx6k8pssfx"]
+[gd_scene load_steps=7 format=3 uid="uid://b1hyx6k8pssfx"]
+
+[ext_resource type="Script" path="res://Scenes/UI/DisasterAnimations/HeavySnowAnimation.cs" id="1_oia56"]
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="1_qnvg7"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q7rx1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(256, 1, 1)
+direction = Vector3(1, -1, 0)
+spread = 10.0
+initial_velocity_min = -200.0
+initial_velocity_max = -200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+
+[sub_resource type="Gradient" id="Gradient_ed7g0"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tb5ex"]
+noise_type = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3gul8"]
+width = 256
+height = 160
+color_ramp = SubResource("Gradient_ed7g0")
+noise = SubResource("FastNoiseLite_tb5ex")
 
 [node name="HeavySnowAnimation" type="Control"]
 layout_mode = 3
@@ -7,16 +34,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oia56")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="StoreFront" parent="." instance=ExtResource("1_qnvg7")]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(128, 0)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_q7rx1")
+lifetime = 1.5
+
+[node name="Tint" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Heavy Snow"
-fit_content = true
+color = Color(0.984314, 1, 1, 0.309804)
+
+[node name="Clouds" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("NoiseTexture2D_3gul8")

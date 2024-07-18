@@ -23,7 +23,6 @@ public partial class FlashFloodAnimation : Control
         rainSound = GetNode<AudioStreamPlayer>("Rain");
         timer = GetNode<Timer>("Timer");
 
-        timer.WaitTime = rng.RandfRange(6f, 15f);
         timer.Timeout += OnTimerTimeout;
         timer.Start();
 
@@ -43,9 +42,11 @@ public partial class FlashFloodAnimation : Control
 
     private async void OnTimerTimeout()
     {
+        timer.Stop();
+        timer.WaitTime = rng.RandfRange(10f, 15f);
         animPlayer.Play("lightning");
         await ToSignal(animPlayer, "animation_finished");
         thunderSound.Play();
-        timer.WaitTime = rng.RandfRange(6f, 15f);
+        timer.Start();
     }
 }
