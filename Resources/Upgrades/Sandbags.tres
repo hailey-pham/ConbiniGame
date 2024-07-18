@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dh7qwo8ivj0ck"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/Sandbags.cs" id="1_k0vpk"]
+
+[resource]
+script = ExtResource("1_k0vpk")
+protection = 30
+name = "Sandbags"
+description = "Protects from Tsunami damage (ONE TIME USE)"
+owned = false
+cost = 2500

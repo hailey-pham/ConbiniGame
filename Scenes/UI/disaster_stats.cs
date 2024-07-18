@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class disaster_stats : Control
 {
@@ -19,6 +20,11 @@ public partial class disaster_stats : Control
     private int currentMoney;
     private int totalMoney;
 
+    private int disasterProtection = 0;
+
+    private Calendar calendar;
+
+    Random rnd = new Random();
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -32,6 +38,17 @@ public partial class disaster_stats : Control
 
         globals = GetNode<globals>("/root/Globals");
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        calendar = GetNode<Calendar>("/root/Calendar");
+
+        globals = GetNode<globals>("/root/Globals");
+
+        disasterProtection = 0;
+
+		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
+            if (upgrade.Value.owned) {
+                upgrade.Value.onDisasterStats(globals,this, calendar.GetCurrentDayDisaster());
+            }
+        }
 
         DisplayDisasterStats();
 
@@ -55,15 +72,16 @@ public partial class disaster_stats : Control
 
         LoseMoney();
         CurrentMoney();
-        disasterLabel.Text = "Oh no! Disaster occured!";
-        messageLabel.Text = "You lost a portion of your resources.";
+        disasterLabel.Text = "Disaster has struck your store. You have lost a portion of your resources...";
+        // messageLabel.Text = "You lost a portion of your resources.";
         statsLabel.Text = "Money lost:  " + newMoney.ToString() + " yen";
-        currentStatsLabel.Text = "You now have: " + globals.Money.ToString() + " yen";
+        currentStatsLabel.Text = "Curent Funds: " + globals.Money.ToString() + " yen";
     }
 
     private int LoseMoney()
     {
-        newMoney = globals.Money / 3;
+        
+        newMoney = globals.Money - (globals.Money / rnd.Next(10+disasterProtection, 100)); // lose 1-10% of your money, 
         return newMoney;
     }
 
@@ -83,5 +101,11 @@ public partial class disaster_stats : Control
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
+	}
+
+    public int DisasterProtection
+	{
+		get { return disasterProtection; }
+		set { disasterProtection = value; }
 	}
 }

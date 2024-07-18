@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bx5dch2keo0y7" path="res://Components/auto_animator.tscn" id="4_1men2"]
 [ext_resource type="Script" path="res://Scripts/StateMachine.cs" id="5_rvei0"]
 [ext_resource type="Script" path="res://Characters/NPC/ShoppingState.cs" id="6_7k7ox"]
-[ext_resource type="PackedScene" uid="uid://dxq51tf2xffeo" path="res://Scenes/UI/SpeechBubbleAnimation.tscn" id="7_qe6mu"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/SpeechBubbleAnimation.tscn" id="7_qe6mu"]
 [ext_resource type="Script" path="res://Characters/NPC/IdleState.cs" id="7_rotgl"]
 [ext_resource type="Script" path="res://Characters/NPC/CheckoutState.cs" id="8_oj45i"]
 [ext_resource type="Script" path="res://Characters/NPC/LeaveState.cs" id="9_67rdb"]

@@ -1,10 +1,12 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://5fgg51wwhxfa"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrade.cs" id="1_5uh3i"]
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/FloodProofDoors.cs" id="1_fxvh1"]
 
 [resource]
-script = ExtResource("1_5uh3i")
+script = ExtResource("1_fxvh1")
+highProtection = 20
+lowProtection = 10
 name = "Flood Proof Doors"
-description = "Helps prevent flood damage"
+description = "Reduces damage in water based disasters"
 owned = false
-cost = 5000
+cost = 10000

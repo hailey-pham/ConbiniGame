@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bby46atdx7x1r"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/Advertisement.cs" id="1_p6oh0"]
+
+[resource]
+script = ExtResource("1_p6oh0")
+curveIncrease = 0.3
+name = "Advertisement"
+description = "Put a banner outside your store to draw in more customers"
+owned = true
+cost = 5000

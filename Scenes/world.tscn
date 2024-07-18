@@ -859,16 +859,6 @@ layer_1/tile_data = PackedInt32Array(65535, 458752, 1342177281, 131071, 458752, 
 unique_name_in_owner = true
 position = Vector2(120, 8)
 
-[node name="npcSpawner" parent="." groups=["spawner"] instance=ExtResource("9_w4hoi")]
-z_index = -1
-y_sort_enabled = true
-position = Vector2(128, 142)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="npcSpawner"]
-stream = ExtResource("9_wpaow")
-volume_db = -4.0
-max_polyphony = 2
-
 [node name="UI" type="Control" parent="."]
 z_index = 1
 z_as_relative = false
@@ -910,6 +900,16 @@ offset_top = 148.0
 offset_right = 42.0
 offset_bottom = 171.0
 theme = ExtResource("11_il57l")
+
+[node name="npcSpawner" parent="." groups=["spawner"] instance=ExtResource("9_w4hoi")]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(128, 142)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="npcSpawner"]
+stream = ExtResource("9_wpaow")
+volume_db = -4.0
+max_polyphony = 2
 
 [node name="storage" parent="." instance=ExtResource("13_1hsmu")]
 z_index = -1

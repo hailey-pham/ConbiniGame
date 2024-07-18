@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://3u4tcm3xqsp3"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/Decorations.cs" id="1_vb6v4"]
+
+[resource]
+script = ExtResource("1_vb6v4")
+extendedWaitTime = 60
+name = "Decorations"
+description = "Add decorations to your store (NPCs will wait longer before leaving)"
+owned = false
+cost = 10000

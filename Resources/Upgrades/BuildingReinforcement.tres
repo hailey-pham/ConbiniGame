@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://baoehflu05k54"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/BuildingReinforcement.cs" id="1_v25jj"]
+
+[resource]
+script = ExtResource("1_v25jj")
+highProtection = 40
+lowProtection = 20
+name = "Building Reinforcement"
+description = "Reinforces building foundations. Helps prevent damage in earthquakes, floods, and strong wind conditions."
+owned = false
+cost = 10000

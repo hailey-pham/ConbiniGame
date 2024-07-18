@@ -28,4 +28,6 @@ public partial class Upgrade : Resource
 	public virtual void onDayEnd(globals Global, Node root) { } // EndOfDay.cs
 
 	public virtual void onDisaster(globals Global, Node root, Calendar.DisastersEnum disaster) { } // disaster.cs
+
+	public virtual void onDisasterStats(globals Global, disaster_stats root, Calendar.DisastersEnum disaster) { } // disaster_stats.cs
 }

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public partial class npcSpawner : Node2D
 {
+	[Export] 
+	public int npcWaitTime = 20;
+
 	[Export]
 	public PackedScene npcScene;
 
@@ -42,6 +45,7 @@ public partial class npcSpawner : Node2D
             var npcScript = newNpc as npc;
             npcScript.LeftStore += OnNPCLeaveStore;
             AddChild(newNpc);
+			newNpc.GetNode<Timer>("StateMachine/CheckoutState/Timer").WaitTime = npcWaitTime;
 			if(audioPlayer.IsInsideTree())
 			{
                 audioPlayer.Play();

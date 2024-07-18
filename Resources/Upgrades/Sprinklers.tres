@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ca52buym7rge5"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/Sprinklers.cs" id="1_2n5f1"]
+
+[resource]
+script = ExtResource("1_2n5f1")
+protection = 10
+name = "Sprinklers"
+description = "Protect your building in the case of wildfires"
+owned = false
+cost = 0
