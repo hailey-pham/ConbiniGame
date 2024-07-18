@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyp87s5feh44v"
-path="res://.godot/imported/tsunamiForecast.png-ab2998cad4b6ddf4f694da8d1b03bc35.ctex"
+uid="uid://i5k314vwvb0j"
+path="res://.godot/imported/Pills2.png-5c4dda2bf7b201830183e6ff423e57c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Forecasts/tsunamiForecast.png"
-dest_files=["res://.godot/imported/tsunamiForecast.png-ab2998cad4b6ddf4f694da8d1b03bc35.ctex"]
+source_file="res://Pills2.png"
+dest_files=["res://.godot/imported/Pills2.png-5c4dda2bf7b201830183e6ff423e57c9.ctex"]
 
 [params]
 
