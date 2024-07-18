@@ -61,7 +61,7 @@ public partial class EndOfDay : Control
 
         foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
             if (upgrade.Value.owned) {
-                upgrade.Value.onDayEnd(globals);
+                upgrade.Value.onDayEnd(globals,GetNode<Node>("."));
             }
         }
 

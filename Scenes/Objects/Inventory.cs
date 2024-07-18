@@ -23,6 +23,7 @@ public partial class Inventory : ItemList
         ItemClicked += OnItemClicked;
         globals = GetNode<globals>("/root/Globals");
         Hide();
+
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -88,7 +89,7 @@ public partial class Inventory : ItemList
                     Hide();
                 }
                 //false if it doesn't have an item or if it doesn't exist
-                else if (!playerItemSpawner2.HasItem() && playerItemSpawner2 != null)
+                else if (!playerItemSpawner2.HasItem() && Player.IsStackItemUpgrade)
                 {
                     playerItemSpawner2.AddItemRes(itemRes);
                     globals.DecrementItemResStock(itemRes);

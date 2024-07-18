@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=24 format=3 uid="uid://c7rjtc6wfqbbo"]
 
+[ext_resource type="Script" path="res://Scenes/World.cs" id="1_msxpb"]
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
@@ -941,6 +942,7 @@ _data = {
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_msxpb")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 y_sort_enabled = true

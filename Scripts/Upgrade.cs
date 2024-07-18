@@ -19,13 +19,13 @@ public partial class Upgrade : Resource
 	public string returnName() {
 		return name;
 	}
-	public void onGameStart(globals Global) { }
+	public virtual void onGameStart(globals Global, Node root) { }
 
-	public void onLevelLoad(globals Global) { } // World.cs 
+	public virtual void onLevelLoad(globals Global, Node root) { } // World.cs 
 
-	public void onExteriorLoad(globals Global) { } // Storefront.cs
+	public virtual void onExteriorLoad(globals Global, Node root) { } // Storefront.cs
 
-	public void onDayEnd(globals Global) { } // EndOfDay.cs
+	public virtual void onDayEnd(globals Global, Node root) { } // EndOfDay.cs
 
-	public void onDisaster(globals Global, Calendar.DisastersEnum disaster) { } // disaster.cs
+	public virtual void onDisaster(globals Global, Node root, Calendar.DisastersEnum disaster) { } // disaster.cs
 }
