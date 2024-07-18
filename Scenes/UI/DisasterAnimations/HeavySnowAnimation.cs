@@ -10,10 +10,15 @@ public partial class HeavySnowAnimation : Control
     private NoiseTexture2D cloudTexture;
 
     private RandomNumberGenerator rng = new();
+    private AudioStreamPlayer player;
 
     public override void _Ready()
     {
         clouds = GetNode<TextureRect>("Clouds");
+        player.Finished += () =>
+        {
+            player.Play();
+        };
     }
 
     public override void _Process(double delta)
