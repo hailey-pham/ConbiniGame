@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/UI/disaster.cs" id="1_i7o8l"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="4_1g73a"]
-[ext_resource type="PackedScene" uid="uid://ii550elalv1u" path="res://Scenes/UI/WarningAnimation.tscn" id="4_ld1vi"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/WarningAnimation.tscn" id="4_ld1vi"]
 
 [node name="Disaster" type="Control"]
 layout_mode = 3

@@ -29,3 +29,7 @@ _animatedSprite = NodePath("../AnimatedSprite2D")
 [node name="ItemSpawner" parent="." instance=ExtResource("5_51nma")]
 z_index = 1
 position = Vector2(0, -20)
+
+[node name="ItemSpawner2" parent="." instance=ExtResource("5_51nma")]
+z_index = 1
+position = Vector2(0, -36)

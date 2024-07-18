@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class disaster : Control
 {
@@ -18,6 +19,8 @@ public partial class disaster : Control
 	[Export]
 	private Calendar.DisastersEnum currDisaster;
 
+	private globals globals;
+
 	
 	public override void _Ready()
 	{
@@ -25,6 +28,7 @@ public partial class disaster : Control
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
 		warningAnimation = GetNode<WarningAnimation>("WarningAnimation");
 		calendar = GetNode<Calendar>("/root/Calendar");
+		globals = GetNode<globals>("/root/Globals");
 
 		currDisaster = calendar.GetCurrentDayDisaster();
 
@@ -45,6 +49,12 @@ public partial class disaster : Control
 		displayTimer = GetNode<Timer>("DisplayTimer");
 		displayTimer.Timeout += OnDisplayTimerTimeout;
 		displayTimer.Start();
+
+		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
+            if (upgrade.Value.owned) {
+                upgrade.Value.onDisaster(globals, currDisaster);
+            }
+        }
 	}
 
 	private void OnNextButtonPressed()

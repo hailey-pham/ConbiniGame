@@ -9,6 +9,7 @@ public partial class counter : StaticBody2D
     public override void _Ready()
     {
         counterArea = GetNode<CounterArea>("counter_area");
+        //Item Spawner for the counter
         itemSpawner = GetNode<ItemSpawner>("ItemSpawner");
 
         var sceneManager = GetNode<SceneManager>("/root/SceneManager");
@@ -28,17 +29,26 @@ public partial class counter : StaticBody2D
                     //attempt to transfer current item to player
 
                     //if player currently doesn't have an item
-                    if(!Player._itemSpawner.HasItem())
+                    if (!Player._itemSpawner.HasItem())
                     {
                         //give player our itemres
                         Player._itemSpawner.AddItemRes(itemSpawner.RemoveItemRes());
                     }
-                } else
+                    else if (!Player._itemSpawner2.HasItem() && Player._itemSpawner2 != null)
+                    {
+                        Player._itemSpawner2.AddItemRes(itemSpawner.RemoveItemRes());
+                    }
+                } 
+                else
                 {
                     //attempt to take item from player
-                    if (Player._itemSpawner.HasItem())
+                    if (Player._itemSpawner2.HasItem()&& Player._itemSpawner2 != null)
                     {
                         //take itemres from player
+                        itemSpawner.AddItemRes(Player._itemSpawner2.RemoveItemRes());
+                    }
+                    else if (Player._itemSpawner.HasItem())
+                    {
                         itemSpawner.AddItemRes(Player._itemSpawner.RemoveItemRes());
                     }
                 }
