@@ -6,5 +6,5 @@
 script = ExtResource("1_5bwu6")
 name = "Player Stack Item"
 description = "Allows the player to hold 2 items."
-owned = true
+owned = false
 cost = 2500
