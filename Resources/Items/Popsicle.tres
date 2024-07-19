@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://5peiqhqai8cp"]
 
 [ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_2rlsm"]
-[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/Items/waterBottle.png" id="2_78ivb"]
+[ext_resource type="Texture2D" uid="uid://bh4w75wyh8tcv" path="res://Assets/Items/Popsicle.png" id="2_pcfnc"]
 
 [resource]
 script = ExtResource("1_2rlsm")
@@ -10,4 +10,4 @@ price = 150
 restockPrice = 50
 SeasonFlags = 4
 DisasterFlags = 0
-spriteTexture = ExtResource("2_78ivb")
+spriteTexture = ExtResource("2_pcfnc")

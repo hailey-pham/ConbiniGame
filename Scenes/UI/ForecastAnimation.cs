@@ -30,7 +30,7 @@ public partial class ForecastAnimation : Control
 
 	private void LoadDisasterForecastTexture()
 	{
-		if (_nextDisaster != 0 && Enum.GetName(typeof(Calendar.DisastersEnum), _nextDisaster) != "Earthquake" && Enum.GetName(typeof(Calendar.DisastersEnum), _nextDisaster) != "Tsunami")
+		if (_nextDisaster != 0)
 		{
 			GD.Print("Disaster: " + _nextDisaster);
             var image = GD.Load<CompressedTexture2D>("res://Assets/Forecasts/" + Enum.GetName(typeof(Calendar.DisastersEnum), _nextDisaster) + "Forecast.png");

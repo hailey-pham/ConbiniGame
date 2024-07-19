@@ -398,7 +398,16 @@ public partial class Calendar : Node2D
     {
         int nextDay = (currentDay % seasonLength);
         int[] seasonArray = GetCurrentSeasonArray();
-        return seasonArray[nextDay];
+        int disasterIndex = seasonArray[nextDay];
+
+        //if there is no disaster, earthquake, or tsunami...
+        if(disasterIndex <= 2)
+        {
+            //report no disaster
+            return 0;
+        }
+
+        return disasterIndex;
     }
 
     public int GetCurrentDayDisasterIndex()
