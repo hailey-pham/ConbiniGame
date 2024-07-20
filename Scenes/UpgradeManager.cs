@@ -71,6 +71,9 @@ public partial class UpgradeManager : Control
 		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
 			if(!upgrade.Value.owned) {
 				temp = new Button();
+				temp.CustomMinimumSize = new Vector2(95,0);
+				temp.ClipText = true;
+				temp.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
 				gridContainer.AddChild(temp);
 				upgradeButtons.Add(temp);
 				upgradeButtons[^1].Text = upgrade.Value.name;

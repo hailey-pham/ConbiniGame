@@ -51,7 +51,7 @@ public partial class RestockManager : Node
 		// declare nodes
 		globals = GetNode<globals>("/root/Globals");
 		backButton = GetNode<TextureButton>("Visuals/BackButton");
-		itemContainer = GetNode<HBoxContainer>("ItemScroll/HBoxContainer");
+		itemContainer = GetNode<HBoxContainer>("VBoxContainer/ItemScroll/HBoxContainer");
 		currentMoneyLabel = GetNode<Label>("Visuals/CurrentMoney");
 		purchasedItemContainer = GetNode<VBoxContainer>("FullOrder/Control/ScrollContainer/VBoxContainer");
 		insufficientPopUp = GetNode<CanvasLayer>("InsufficientFundsPopUp");
@@ -74,6 +74,9 @@ public partial class RestockManager : Node
 		addButton.Pressed += OnAddButtonPressed;
 		subtractButton.Pressed += OnSubtractButtonPressed;
 		insufficientBackButton.Pressed += OnInsufficientBackButtonPressed;
+
+		// link scroll bars
+		GetNode<ScrollContainer>("VBoxContainer/ItemScroll").GetHScrollBar().Share(GetNode<HScrollBar>("VBoxContainer/HScrollBar"));
 
 		TextureButton temp;
 		TextureRect tempTexture;

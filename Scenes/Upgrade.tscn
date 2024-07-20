@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dmagua8ojxkjr"]
+[gd_scene load_steps=28 format=3 uid="uid://dmagua8ojxkjr"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_titit"]
 [ext_resource type="Script" path="res://Scenes/UpgradeManager.cs" id="1_w8qvw"]
@@ -7,27 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://dfqcclaok7kc1" path="res://Assets/GUI/BackButton/BackButtonPressed.png" id="7_qfgsn"]
 [ext_resource type="Texture2D" uid="uid://cm4n55jiiud3c" path="res://Assets/GUI/BackButton/BackButtonHover.png" id="8_r3wi8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
-bg_color = Color(0.603922, 0.615686, 0.698039, 1)
-corner_detail = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c65jm"]
+bg_color = Color(0.582679, 0, 0.0952075, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9021, 0.913417, 0.97, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy2c7"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pd7v1"]
+bg_color = Color(0.901961, 0.913725, 0.968627, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmgsf"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2u8v"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwjt7"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Theme" id="Theme_7xpo3"]
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dmgsf")
-VScrollBar/styles/scroll = SubResource("StyleBoxFlat_h2u8v")
-VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_mwjt7")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ig4"]
+bg_color = Color(0.964435, 0.508877, 0.551479, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8hc"]
 bg_color = Color(0.521569, 0.537255, 0.639216, 1)
@@ -57,20 +49,6 @@ Button/styles/focus = SubResource("StyleBoxFlat_wv8hc")
 Button/styles/hover = SubResource("StyleBoxFlat_wv8hc")
 Button/styles/normal = SubResource("StyleBoxFlat_d37bi")
 Button/styles/pressed = SubResource("StyleBoxFlat_wv8hc")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c65jm"]
-bg_color = Color(0.582679, 0, 0.0952075, 0.8)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.9021, 0.913417, 0.97, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pd7v1"]
-bg_color = Color(0.901961, 0.913725, 0.968627, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ig4"]
-bg_color = Color(0.964435, 0.508877, 0.551479, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2fps"]
 bg_color = Color(0.296217, 0.289313, 0.39811, 0.8)
@@ -107,13 +85,37 @@ bg_color = Color(0.3976, 0.419253, 0.56, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2enus"]
 bg_color = Color(0.2745, 0.300825, 0.45, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
+bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy2c7"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmgsf"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oghr"]
+bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+border_width_left = 5
+border_color = Color(0.882279, 0.887367, 0.912046, 1)
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_7xpo3"]
+ScrollContainer/styles/panel = null
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dmgsf")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
+
 [node name="Upgrade" type="Control" node_paths=PackedStringArray("currentMoneyLabel", "gridContainer", "upgradeNameLabel", "upgradeDescriptionLabel", "upgradeCostLabel")]
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_titit")
 script = ExtResource("1_w8qvw")
 currentMoneyLabel = NodePath("CurrentMoney")
-gridContainer = NodePath("ScrollContainer/GridContainer")
+gridContainer = NodePath("Control/ScrollContainer/GridContainer")
 upgradeNameLabel = NodePath("UpgradeInfo/UpgradeName")
 upgradeDescriptionLabel = NodePath("UpgradeInfo/UpgradeDescription")
 upgradeCostLabel = NodePath("UpgradeInfo/UpgradeCost")
@@ -150,20 +152,6 @@ theme = ExtResource("1_titit")
 text = "Upgrades"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 2
-offset_left = 10.0
-offset_top = 40.0
-offset_right = 108.0
-offset_bottom = 163.0
-theme = SubResource("Theme_7xpo3")
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
-layout_mode = 2
-theme = SubResource("Theme_3o58g")
 
 [node name="InsufficientFundsPopUp" type="CanvasLayer" parent="."]
 visible = false
@@ -352,3 +340,35 @@ texture_normal = ExtResource("6_1ybc3")
 texture_pressed = ExtResource("7_qfgsn")
 texture_hover = ExtResource("8_r3wi8")
 stretch_mode = 4
+
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 34.0
+offset_right = 108.0
+offset_bottom = 160.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+clip_contents = false
+layout_direction = 3
+layout_mode = 2
+offset_left = 1.0
+offset_top = 6.0
+offset_right = 100.0
+offset_bottom = 121.0
+theme = SubResource("Theme_7xpo3")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+theme = SubResource("Theme_3o58g")
+
+[node name="Button" type="Button" parent="Control/ScrollContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "aaaaaaaaaaaaaaaaaaaaaaa"
+text_overrun_behavior = 3
+clip_text = true

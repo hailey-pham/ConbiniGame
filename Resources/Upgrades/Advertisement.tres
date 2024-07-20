@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_p6oh0")
-curveIncrease = 0.3
+curveIncrease = 0.1
 name = "Advertisement"
 description = "Put a banner outside your store to draw in more customers"
-owned = true
+owned = false
 cost = 5000

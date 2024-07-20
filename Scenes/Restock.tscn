@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://hunt30xi3ai5"]
+[gd_scene load_steps=34 format=3 uid="uid://hunt30xi3ai5"]
 
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_km65n"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_wgo4a"]
@@ -67,6 +67,41 @@ Button/styles/hover = SubResource("StyleBoxFlat_wv8hc")
 Button/styles/normal = SubResource("StyleBoxFlat_d37bi")
 Button/styles/pressed = SubResource("StyleBoxFlat_wv8hc")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
+bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy2c7"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmgsf"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydne1"]
+bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+border_width_top = 5
+border_color = Color(0.882279, 0.887367, 0.912046, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oghr"]
+bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+border_width_left = 5
+border_color = Color(0.882279, 0.887367, 0.912046, 1)
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_rlaxc"]
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dmgsf")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_ydne1")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_ydne1")
+ScrollContainer/styles/panel = null
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dmgsf")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noy2n"]
 bg_color = Color(0.682353, 0.694118, 0.752941, 1)
 
@@ -81,6 +116,14 @@ bg_color = Color(0.4234, 0.44428, 0.58, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icfac"]
 bg_color = Color(0.4234, 0.44428, 0.58, 1)
+
+[sub_resource type="Theme" id="Theme_0qi1k"]
+ScrollContainer/styles/panel = null
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dmgsf")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amdr3"]
 bg_color = Color(0.582679, 0, 0.0952075, 0.8)
@@ -186,16 +229,23 @@ grow_vertical = 0
 texture = ExtResource("3_3xaio")
 expand_mode = 3
 
-[node name="ItemScroll" type="ScrollContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 36.0
-offset_right = 151.0
-offset_bottom = 65.0
-horizontal_scroll_mode = 2
+offset_top = 34.0
+offset_right = 149.0
+offset_bottom = 74.0
+
+[node name="HScrollBar" type="HScrollBar" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_rlaxc")
+
+[node name="ItemScroll" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_rlaxc")
+horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ItemScroll"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ItemScroll"]
 layout_mode = 2
 
 [node name="FullOrder" type="Control" parent="."]
@@ -270,6 +320,7 @@ offset_left = 1.0
 offset_top = 4.0
 offset_right = 107.0
 offset_bottom = 89.0
+theme = SubResource("Theme_0qi1k")
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FullOrder/Control/ScrollContainer"]
@@ -290,34 +341,36 @@ text = "Water:       x1"
 [node name="ItemInformation" type="Control" parent="."]
 anchors_preset = 0
 
-[node name="ButtonBg" type="Sprite2D" parent="ItemInformation"]
-position = Vector2(24, 97)
-scale = Vector2(2, 2)
-texture = ExtResource("11_vsaxu")
-
 [node name="ItemName" type="Label" parent="ItemInformation"]
 layout_mode = 0
 offset_left = 6.0
-offset_top = 54.0
+offset_top = 61.0
 offset_right = 57.0
-offset_bottom = 77.0
+offset_bottom = 84.0
 theme = ExtResource("1_wgo4a")
 text = "Water"
 vertical_alignment = 1
 
+[node name="ButtonBg" type="Sprite2D" parent="ItemInformation"]
+position = Vector2(24, 102)
+scale = Vector2(2, 2)
+texture = ExtResource("11_vsaxu")
+
 [node name="ItemSprite" type="TextureRect" parent="ItemInformation"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 81.0
+offset_top = 86.0
 offset_right = 24.0
-offset_bottom = 97.0
+offset_bottom = 102.0
 scale = Vector2(2, 2)
 stretch_mode = 3
 
 [node name="Labels" type="Control" parent="ItemInformation"]
 anchors_preset = 0
 offset_left = -4.0
+offset_top = 5.0
 offset_right = -4.0
+offset_bottom = 5.0
 
 [node name="CurrentStock" type="Label" parent="ItemInformation/Labels"]
 layout_mode = 0
@@ -349,9 +402,9 @@ vertical_alignment = 1
 [node name="CurrentStock" type="Label" parent="ItemInformation"]
 layout_mode = 0
 offset_left = 50.0
-offset_top = 102.0
+offset_top = 107.0
 offset_right = 143.0
-offset_bottom = 115.0
+offset_bottom = 120.0
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -359,9 +412,9 @@ vertical_alignment = 1
 [node name="RestockCost" type="Label" parent="ItemInformation"]
 layout_mode = 0
 offset_left = 50.0
-offset_top = 91.0
+offset_top = 96.0
 offset_right = 143.0
-offset_bottom = 104.0
+offset_bottom = 109.0
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -369,9 +422,9 @@ vertical_alignment = 1
 [node name="Sell Cost" type="Label" parent="ItemInformation"]
 layout_mode = 0
 offset_left = 50.0
-offset_top = 80.0
+offset_top = 85.0
 offset_right = 143.0
-offset_bottom = 93.0
+offset_bottom = 98.0
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
