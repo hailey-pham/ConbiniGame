@@ -146,6 +146,11 @@ offset_right = 245.0
 offset_bottom = 124.0
 color = Color(0.501961, 0.513726, 0.588235, 0.32549)
 
+[node name="ItemsLost" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+text = "You lost: "
+fit_content = true
+
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -178,3 +183,16 @@ flip_h = true
 [node name="SmallArrow2" type="Sprite2D" parent="."]
 position = Vector2(251, 107)
 texture = ExtResource("4_eqbh4")
+[node name="RestockButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.5
+offset_top = -20.0
+offset_right = 21.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "RESTOCK"

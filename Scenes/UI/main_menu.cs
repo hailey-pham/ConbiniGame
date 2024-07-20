@@ -14,10 +14,10 @@ public partial class main_menu : Control
         //get referenes to all the things instatiated at runtime
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
 
-        var vbox = GetNode<VBoxContainer>("VBoxContainer");
-        playButton = vbox.GetNode<Button>("PlayButton");
-        creditsButton = vbox.GetNode<Button>("CreditsButton");
-        quitButton = vbox.GetNode<Button>("QuitButton");
+        var hbox = GetNode<HBoxContainer>("HBoxContainer");
+        playButton = hbox.GetNode<Button>("PlayButton");
+        creditsButton = hbox.GetNode<Button>("CreditsButton");
+        quitButton = hbox.GetNode<Button>("QuitButton");
 
         playButton.Pressed += onPlayPressed;
         creditsButton.Pressed += onCreditsPressed;

@@ -1,11 +1,7 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://vnugc1mlppri"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://vnugc1mlppri"]
 
 [ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_u3g8x"]
-[ext_resource type="Texture2D" uid="uid://3fln6dv5lukx" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_j2cwm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dlne5"]
-atlas = ExtResource("2_j2cwm")
-region = Rect2(17, 855, 14, 18)
+[ext_resource type="Texture2D" uid="uid://bmcweeyk3rwy6" path="res://Assets/Items/Apple.png" id="2_uyswx"]
 
 [resource]
 script = ExtResource("1_u3g8x")
@@ -14,4 +10,4 @@ price = 600
 restockPrice = 300
 SeasonFlags = 4
 DisasterFlags = 0
-spriteTexture = SubResource("AtlasTexture_dlne5")
+spriteTexture = ExtResource("2_uyswx")

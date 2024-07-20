@@ -1,13 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://5gs4rhtq40fw"]
+[gd_scene load_steps=8 format=3 uid="uid://5gs4rhtq40fw"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_3dcl4"]
-[ext_resource type="Texture2D" uid="uid://vog8f81y4ktb" path="res://Assets/storefrontPlaceholder.png" id="1_gfdno"]
-[ext_resource type="Shader" path="res://Scenes/UI/SeasonTitle.gdshader" id="2_n5ykt"]
 [ext_resource type="Script" path="res://Scenes/UI/SeasonTitle.cs" id="2_tfuo7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vwk7"]
-shader = ExtResource("2_n5ykt")
-shader_parameter/blendColor = Color(1, 1, 1, 1)
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="3_n3vvf"]
+[ext_resource type="PackedScene" uid="uid://r6iwguk11m2d" path="res://Assets/StoreFront/SkyBackground.tscn" id="3_nyanh"]
 
 [sub_resource type="Animation" id="Animation_1470l"]
 length = 0.001
@@ -79,17 +75,12 @@ grow_vertical = 2
 theme = ExtResource("1_3dcl4")
 script = ExtResource("2_tfuo7")
 SeasonTitles = PackedStringArray("🌸 Spring", "☀️ Summer", "🍂 Fall", "❄️ Winter")
-SpringColor = Color(0.976471, 0.831373, 0.894118, 1)
-SummerColor = Color(0.831373, 0.937255, 0.584314, 1)
-FallColor = Color(0.768627, 0.537255, 0.317647, 1)
-WinterColor = Color(0.513726, 0.776471, 0.945098, 1)
 
-[node name="Store" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_6vwk7")
+[node name="Sky" parent="." instance=ExtResource("3_nyanh")]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_gfdno")
+
+[node name="StoreFront" parent="." instance=ExtResource("3_n3vvf")]
+layout_mode = 1
 
 [node name="SeasonName" type="RichTextLabel" parent="."]
 modulate = Color(1, 1, 1, 0)

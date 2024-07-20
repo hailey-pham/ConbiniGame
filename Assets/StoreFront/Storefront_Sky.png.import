@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5keo3s2afxoa"
-path="res://.godot/imported/snowForecast.png-9f90af04872a394a3aa3cbabcc19f5b0.ctex"
+uid="uid://dwuy4ftgjg3qv"
+path="res://.godot/imported/Storefront_Sky.png-547393c69b052cfc9d12b283292a5847.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Forecasts/snowForecast.png"
-dest_files=["res://.godot/imported/snowForecast.png-9f90af04872a394a3aa3cbabcc19f5b0.ctex"]
+source_file="res://Assets/StoreFront/Storefront_Sky.png"
+dest_files=["res://.godot/imported/Storefront_Sky.png-547393c69b052cfc9d12b283292a5847.ctex"]
 
 [params]
 

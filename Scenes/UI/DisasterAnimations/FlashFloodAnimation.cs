@@ -23,7 +23,6 @@ public partial class FlashFloodAnimation : Control
         rainSound = GetNode<AudioStreamPlayer>("Rain");
         timer = GetNode<Timer>("Timer");
 
-        timer.WaitTime = rng.RandfRange(6f, 15f);
         timer.Timeout += OnTimerTimeout;
         timer.Start();
 
@@ -38,14 +37,16 @@ public partial class FlashFloodAnimation : Control
         cloudTexture ??= (NoiseTexture2D) clouds.Texture;
 
         Vector3 offset = (Vector3) cloudTexture.Noise.Get("offset");
-        cloudTexture.Noise.Set("offset", offset + Vector3.Down * cloudSpeed);
+        cloudTexture.Noise.Set("offset", offset + Vector3.Down * cloudSpeed * (float) (delta));
     }
 
     private async void OnTimerTimeout()
     {
+        timer.Stop();
+        timer.WaitTime = rng.RandfRange(10f, 15f);
         animPlayer.Play("lightning");
         await ToSignal(animPlayer, "animation_finished");
         thunderSound.Play();
-        timer.WaitTime = rng.RandfRange(6f, 15f);
+        timer.Start();
     }
 }

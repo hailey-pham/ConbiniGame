@@ -1,16 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=24 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Script" path="res://Scenes/World.cs" id="1_msxpb"]
 [ext_resource type="Texture2D" uid="uid://dt7jx1rlf0mo3" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png" id="2_sc8nt"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
 [ext_resource type="PackedScene" uid="uid://byaiw4cj1167a" path="res://Scenes/Objects/checkout.tscn" id="6_qywxc"]
+[ext_resource type="Texture2D" uid="uid://csy0sypjbladf" path="res://Assets/DayProgress/DayBar.png" id="9_s2yos"]
 [ext_resource type="PackedScene" uid="uid://4kb8ht7abd6i" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
 [ext_resource type="AudioStream" uid="uid://dud835hk2ffu6" path="res://Assets/Music/Irrashaimase.wav" id="9_wpaow"]
+[ext_resource type="Script" path="res://Scenes/ProgressBar.cs" id="10_mtv6v"]
+[ext_resource type="Texture2D" uid="uid://n8cnrduam8pc" path="res://Assets/DayProgress/SunIcon1.png" id="10_nt7tu"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="11_il57l"]
+[ext_resource type="Texture2D" uid="uid://dnf5nb8gl5ayc" path="res://Assets/DayProgress/SunIcon2.png" id="11_mjb8g"]
+[ext_resource type="Texture2D" uid="uid://dahltneidfja4" path="res://Assets/DayProgress/SunIcon3.png" id="12_aqrn2"]
 [ext_resource type="Script" path="res://Scenes/MoneyLabel.cs" id="12_qyo2m"]
 [ext_resource type="PackedScene" uid="uid://vit6v1iaab2a" path="res://Scenes/Objects/storage.tscn" id="13_1hsmu"]
 [ext_resource type="AudioStream" uid="uid://sivy414r7kf4" path="res://Assets/Music/Shop Theme.wav" id="13_e5adc"]
+[ext_resource type="Texture2D" uid="uid://b1dgiug6vjg6a" path="res://Assets/DayProgress/SunIcon4.png" id="13_o4atj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(207, 148, 249, 153, 6, 153, 179, 148, 78, 148, 50, 148, 244, 47, 244, 19, 249, 7, 207, 86, 207, 58, 216, 47, 207, 47, 216, 19, 163, 7, 6, 6, 50, 120, 163, 54, 163, 36, 164, 36, 179, 47, 179, 58, 164, 20, 163, 20, 179, 19, 207, 19, 179, 86, 78, 86, 78, 58, 73, 53, 50, 58, 179, 89, 179, 117, 78, 117, 78, 89, 179, 120, 78, 120, 73, 7, 207, 120, 207, 117, 50, 117, 50, 89, 207, 89, 50, 86)
@@ -801,6 +807,139 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_xmuob")
 
+[sub_resource type="Animation" id="Animation_o8rbh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(239, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Morning:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Afternoon:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Evening:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Night:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lm3oi"]
+resource_name = "dayProgress"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, 3), Vector2(248, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Morning:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 12, 12.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Afternoon:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 12, 12.1, 36.1, 36.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Evening:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 36.1, 36.2, 48.7, 48.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Night:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 48.7, 48.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c32fq"]
+_data = {
+"RESET": SubResource("Animation_o8rbh"),
+"dayProgress": SubResource("Animation_lm3oi")
+}
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_msxpb")
@@ -863,16 +1002,20 @@ position = Vector2(120, 8)
 z_index = 1
 z_as_relative = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 256.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MoneyLabel" type="RichTextLabel" parent="UI"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 1.0
+offset_top = 12.62
 offset_right = 110.0
-offset_bottom = 41.0
+offset_bottom = 46.51
 theme = ExtResource("11_il57l")
 theme_override_colors/default_color = Color(0, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -910,6 +1053,59 @@ position = Vector2(128, 142)
 stream = ExtResource("9_wpaow")
 volume_db = -4.0
 max_polyphony = 2
+[node name="ProgressBar" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -9.0
+offset_right = -9.0
+offset_bottom = 16.0
+grow_horizontal = 2
+texture = ExtResource("9_s2yos")
+script = ExtResource("10_mtv6v")
+
+[node name="Suns" type="Control" parent="UI/ProgressBar"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 239.0
+offset_top = 3.0
+offset_right = 279.002
+offset_bottom = 43.0
+mouse_filter = 2
+
+[node name="Morning" type="TextureRect" parent="UI/ProgressBar/Suns"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_nt7tu")
+
+[node name="Afternoon" type="TextureRect" parent="UI/ProgressBar/Suns"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_mjb8g")
+
+[node name="Evening" type="TextureRect" parent="UI/ProgressBar/Suns"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_aqrn2")
+
+[node name="Night" type="TextureRect" parent="UI/ProgressBar/Suns"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("13_o4atj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ProgressBar"]
+root_node = NodePath("../Suns")
+libraries = {
+"": SubResource("AnimationLibrary_c32fq")
+}
 
 [node name="storage" parent="." instance=ExtResource("13_1hsmu")]
 z_index = -1

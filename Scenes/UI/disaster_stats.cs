@@ -6,14 +6,20 @@ public partial class disaster_stats : Control
 {
     [Signal]
     public delegate void DisasterScreenEndedEventHandler();
+    [Signal]
+    public delegate void RestockButtonPressedEventHandler();
 
-	private RichTextLabel disasterLabel;
+
+    private RichTextLabel disasterLabel;
     private RichTextLabel messageLabel;
     private RichTextLabel statsLabel;
     private RichTextLabel currentStatsLabel;
-	private Button continueButton;
+    private RichTextLabel itemsLostLabel;
 
-	private globals globals;
+    private Button continueButton;
+    private Button restockButton;
+
+    private globals globals;
     private SceneManager sceneManager;
 
     private int newMoney;
@@ -30,11 +36,14 @@ public partial class disaster_stats : Control
     {
         continueButton = GetNode<Button>("ContinueButton");
         continueButton.Pressed += OnContinueButtonPressed;
+        restockButton = GetNode<Button>("RestockButton");
+        restockButton.Pressed += OnRestockButtonPressed;
 
         disasterLabel = GetNode<RichTextLabel>("VBoxContainer/UhOh");
         messageLabel = GetNode<RichTextLabel>("VBoxContainer/Message");
         statsLabel = GetNode<RichTextLabel>("VBoxContainer/Stats");
         currentStatsLabel = GetNode<RichTextLabel>("VBoxContainer/CurrentStats");
+        itemsLostLabel = GetNode<RichTextLabel>("VBoxContainer/ItemsLost");
 
         globals = GetNode<globals>("/root/Globals");
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
@@ -66,6 +75,15 @@ public partial class disaster_stats : Control
         GD.Print("Transitioning to main game...");
         sceneManager.ChangeScene("gamescene");
     }
+
+    private void OnRestockButtonPressed()
+    {
+        GD.Print("Restock button pressed!");
+        EmitSignal(nameof(RestockButtonPressed));
+
+        // logic here later i dont want to mess up the game
+    }
+
     public void DisplayDisasterStats()
     {
         var globals = GetNode<globals>("/root/Globals");
@@ -75,7 +93,8 @@ public partial class disaster_stats : Control
         disasterLabel.Text = "Disaster has struck your store. You have lost a portion of your resources...";
         // messageLabel.Text = "You lost a portion of your resources.";
         statsLabel.Text = "Money lost:  " + newMoney.ToString() + " yen";
-        currentStatsLabel.Text = "Curent Funds: " + globals.Money.ToString() + " yen";
+        currentStatsLabel.Text = "You now have: " + globals.Money.ToString() + " yen";
+        itemsLostLabel.Text = "You lost: " + (globals.stockLosePercentage * 100) + "% of each item";
     }
 
     private int LoseMoney()

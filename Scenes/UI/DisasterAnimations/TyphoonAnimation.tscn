@@ -1,4 +1,31 @@
-[gd_scene format=3 uid="uid://l0u2c2ypktmq"]
+[gd_scene load_steps=8 format=3 uid="uid://l0u2c2ypktmq"]
+
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="1_ljfjc"]
+[ext_resource type="Script" path="res://Scenes/UI/DisasterAnimations/TyphoonAnimation.cs" id="1_r7pp6"]
+[ext_resource type="AudioStream" uid="uid://b64f6fbu6f6rn" path="res://Assets/Music/Typhoon.wav" id="1_wu5ek"]
+
+[sub_resource type="Gradient" id="Gradient_2t0wj"]
+colors = PackedColorArray(0.270222, 0.270222, 0.270222, 1, 0.523781, 0.523781, 0.523781, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iqndm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m7er0"]
+width = 256
+height = 160
+color_ramp = SubResource("Gradient_2t0wj")
+noise = SubResource("FastNoiseLite_iqndm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5fhlf"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(256, 1, 1)
+direction = Vector3(-0.5, 1, 0)
+spread = 0.0
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.618069, 0.738261, 0.982142, 1)
 
 [node name="Typhoon" type="Control"]
 layout_mode = 3
@@ -7,16 +34,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r7pp6")
+cloudSpeed = 10.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Clouds" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Tyhpoon"
-fit_content = true
+texture = SubResource("NoiseTexture2D_m7er0")
+
+[node name="Rain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_wu5ek")
+autoplay = true
+
+[node name="StoreFront" parent="." instance=ExtResource("1_ljfjc")]
+modulate = Color(0.63648, 0.63648, 0.63648, 1)
+layout_mode = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(128, -60)
+amount = 130
+process_material = SubResource("ParticleProcessMaterial_5fhlf")
+speed_scale = 2.0
+trail_enabled = true
+trail_lifetime = 0.05

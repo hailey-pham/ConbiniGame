@@ -115,14 +115,15 @@ public partial class ShoppingState : State
         if (thisItemSpawner.currItem != null)
         {
             modifier ??= GetNode<NPCPreferenceModifier>("/root/NpcPreferenceModifier");
-            buyProbability = modifier.ItemBuyProbability(thisItemSpawner.currItem);
+            ItemRes currItem = thisItemSpawner.currItem;
+            buyProbability = modifier.ItemBuyProbability(currItem);
             if(rng.Randf() < buyProbability)
             {
                 npcScript.ShoppingCart.Add(thisItemSpawner.RemoveItemRes());
             }
             else
             {
-                Node2D bubbleAnim = (Node2D) WantItemScene.Instantiate();
+                SpeechBubbleAnimation bubbleAnim = (SpeechBubbleAnimation) WantItemScene.Instantiate();
                 bubbleSpawn.AddChild(bubbleAnim);
             }
         }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5xugb3k0ax4d"
-path="res://.godot/imported/fireForecast.png-327d204091a144f5b2a2332b44a5ec23.ctex"
+uid="uid://bvw7urh1xdihh"
+path="res://.godot/imported/YuzuDrink.png-d90c3e25b35eee355b393ca95a1bd03a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Forecasts/fireForecast.png"
-dest_files=["res://.godot/imported/fireForecast.png-327d204091a144f5b2a2332b44a5ec23.ctex"]
+source_file="res://Assets/Items/YuzuDrink.png"
+dest_files=["res://.godot/imported/YuzuDrink.png-d90c3e25b35eee355b393ca95a1bd03a.ctex"]
 
 [params]
 
