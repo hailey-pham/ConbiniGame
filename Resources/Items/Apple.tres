@@ -12,6 +12,6 @@ script = ExtResource("1_u3g8x")
 name = "Apple"
 price = 600
 restockPrice = 300
-SeasonFlags = 4
+SeasonFlags = 8
 DisasterFlags = 0
 spriteTexture = SubResource("AtlasTexture_dlne5")

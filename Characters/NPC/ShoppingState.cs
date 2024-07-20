@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 public partial class ShoppingState : State
 {
+    //the fractional probability that a bubble shows on a bad or empty purchase
+    [Export]
+    private float bubbleShowProbablilty = 0.2f;
+
     [Export]
     private float buyProbability = 0.5f;
 
@@ -31,6 +35,9 @@ public partial class ShoppingState : State
     private NPCPreferenceModifier modifier;
     private npc npcScript;
     private Dictionary message;
+
+    //list of the items the NPC has asked for (through speech bubbles)
+    private List<ItemRes> askedItems = new();
 
     private static RandomNumberGenerator rng = new RandomNumberGenerator();
     public override void _Enter(Dictionary message)
@@ -105,6 +112,20 @@ public partial class ShoppingState : State
 
     }
 
+    private void SpawnBubbleWithProbability()
+    {
+        if(rng.Randf() < bubbleShowProbablilty)
+        {
+            SpeechBubbleAnimation bubbleAnim = (SpeechBubbleAnimation)WantItemScene.Instantiate();
+            bubbleSpawn.AddChild(bubbleAnim);
+            var askedItem = bubbleAnim.GetItem();
+            if (!askedItems.Contains(askedItem))
+            {
+                askedItems.Add(askedItem);
+            }
+        }
+    }
+
     private void Timer_Timeout()
     {
         //Gets a reference to the counter, its area2d code with the item logic and the item spawner itself.
@@ -114,18 +135,34 @@ public partial class ShoppingState : State
         //check if there is an item to buy and that we want to buy
         if (thisItemSpawner.currItem != null)
         {
+            //calculate buy probability
             modifier ??= GetNode<NPCPreferenceModifier>("/root/NpcPreferenceModifier");
             ItemRes currItem = thisItemSpawner.currItem;
-            buyProbability = modifier.ItemBuyProbability(currItem);
+
+            //if we have asked for this item before, we are now guaranteed to buy it
+            if (askedItems.Contains(currItem))
+            {
+                buyProbability = 1f;
+            }
+            else
+            {
+                buyProbability = modifier.ItemBuyProbability(currItem);
+            }
+            //if buy probability is greater than random num
             if(rng.Randf() < buyProbability)
             {
                 npcScript.ShoppingCart.Add(thisItemSpawner.RemoveItemRes());
             }
             else
             {
-                SpeechBubbleAnimation bubbleAnim = (SpeechBubbleAnimation) WantItemScene.Instantiate();
-                bubbleSpawn.AddChild(bubbleAnim);
+                //if the transaction was unsuccessful, try and spawn the bubble
+                SpawnBubbleWithProbability();
             }
+        }
+        else
+        {
+            //if there is no item out, spawn bubble based on probability
+            SpawnBubbleWithProbability();
         }
 
         if (_counterNum <= _maxCounters)

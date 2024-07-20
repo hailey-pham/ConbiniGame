@@ -12,6 +12,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u6xcp")
 
+[node name="Sky" parent="." instance=ExtResource("2_35pms")]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 160.0
+
+[node name="StoreFront" parent="." instance=ExtResource("3_ipr4b")]
+layout_mode = 1
+
 [node name="DisplayTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
