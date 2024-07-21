@@ -30,7 +30,11 @@ public partial class disaster : Control
 		calendar = GetNode<Calendar>("/root/Calendar");
 		globals = GetNode<globals>("/root/Globals");
 
-		currDisaster = calendar.GetCurrentDayDisaster();
+		if (currDisaster.Equals(Calendar.DisastersEnum.None))
+		{
+            currDisaster = calendar.GetCurrentDayDisaster();
+        }
+		
 
 		//change disasters to not always be hardcoded to earthquakes
 		warningAnimation.SetDisasterType(currDisaster);
@@ -38,7 +42,9 @@ public partial class disaster : Control
         //load in the disasterAnimation that matches our current enum
 
         var disasterAnim = GD.Load<PackedScene>("res://Scenes/UI/DisasterAnimations/" + Enum.GetName(typeof(Calendar.DisastersEnum), currDisaster) + "Animation.tscn");
-		AddChild(disasterAnim.Instantiate());
+		var disasterAnimInstance = disasterAnim.Instantiate();
+
+        AddChild(disasterAnimInstance);
 
         nextButton = GetNode<Button>("NextButton");
 		//we have to move button in front of animation to get it to register inputs

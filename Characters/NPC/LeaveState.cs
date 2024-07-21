@@ -54,6 +54,25 @@ public partial class LeaveState : State
     {
         //once we make it out the door, kill ourselves
         npcScript.OnLeaveStore();
-        npcScript.QueueFree();
+        var speechBubble = GetSpeechBubble();
+        //if there's no speechBubble, no need to wait
+        if (speechBubble == null)
+        {
+            npcScript.QueueFree();
+        }
+        else
+        {
+            //wait for the speech bubble animation to finish and then leave
+            var animationPlayer = speechBubble.GetNode<AnimationPlayer>("AnimationPlayer");
+            animationPlayer.AnimationFinished += (StringName animName) =>
+            {
+                npcScript.QueueFree();
+            };
+        }
+    }
+
+    private SpeechBubbleAnimation GetSpeechBubble()
+    {
+        return npcScript.GetNodeOrNull<SpeechBubbleAnimation>("BubbleSpawn/SpeechBubbleAnimation");
     }
 }

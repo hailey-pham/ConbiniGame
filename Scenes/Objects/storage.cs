@@ -20,7 +20,7 @@ public partial class storage : Area2D
         //unique naming that can access a node anywhere
         //playerItemSpawnerParent = 
 
-        Inventory = GetNode<Inventory>("Inventory");
+        Inventory = GetNode<Inventory>("Control/Inventory");
     }
 
     public void OnBodyEntered(Node2D body)

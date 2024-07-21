@@ -116,7 +116,7 @@ WinterColor = Color(0.513726, 0.776471, 0.945098, 1)
 [node name="store" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_68c8a")
-animation = &"winter"
+animation = &"fall"
 centered = false
 
 [node name="Flag" type="TextureRect" parent="."]

@@ -106,6 +106,11 @@ public partial class Calendar : Node2D
             //dont apply time when we change scenes to the next day
             timer.Stop();
             elapsedTime = 0; // reset elapsed time
+
+            if(npcSpawner.IsStoreEmpty())
+            {
+                EndDay();
+            }
         }
         else
         {

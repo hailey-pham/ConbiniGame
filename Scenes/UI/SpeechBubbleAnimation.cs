@@ -1,11 +1,15 @@
+using ConbiniGame.Scripts;
 using Godot;
 using System;
+using System.Diagnostics;
+using Debug = ConbiniGame.Scripts.Debug;
 
 public partial class SpeechBubbleAnimation : Node2D
 {
     private AnimationPlayer animationPlayer;
     private Timer timer;
     private Sprite2D itemSprite;
+    private ItemRes item;
 
     public override void _Ready()
     {
@@ -22,9 +26,17 @@ public partial class SpeechBubbleAnimation : Node2D
         timer.Start();
 
         //set the bubble item texture
-        itemSprite.Texture = NPCPreferenceModifier.GetAPopularItem().spriteTexture;
+        item = NPCPreferenceModifier.GetAPopularItem();
+        itemSprite.Texture = item.spriteTexture;
     }
-
+    
+    
+    public ItemRes GetItem()
+    {
+        //since the item is initialized after the scene is added to the tree, only call this method after we've entered tree
+        Debug.Assert(IsInsideTree(),"Accessed speech bubble item before entering frame");
+        return item;
+    }
     private async void OnTimerTimeout()
     {
         animationPlayer.PlayBackwards("bubble");

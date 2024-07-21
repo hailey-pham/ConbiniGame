@@ -15,6 +15,7 @@ public partial class HeavySnowAnimation : Control
     public override void _Ready()
     {
         clouds = GetNode<TextureRect>("Clouds");
+        player = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
         player.Finished += () =>
         {
             player.Play();
