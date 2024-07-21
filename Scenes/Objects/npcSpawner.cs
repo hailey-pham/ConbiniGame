@@ -17,6 +17,8 @@ public partial class npcSpawner : Node2D
 
 	private RandomNumberGenerator random = new RandomNumberGenerator();
 
+	private static int npcCount = 0;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -46,8 +48,8 @@ public partial class npcSpawner : Node2D
 			{
                 audioPlayer.Play();
             }
-
         }
+		npcCount++;
     }
 
     public void _on_calendar_day_percent(int percent)
@@ -63,17 +65,9 @@ public partial class npcSpawner : Node2D
 
 	private void OnNPCLeaveStore()
 	{
-		int npcCount = 0;
+		npcCount--;
 
-		foreach (var child in GetChildren())
-		{
-			if (child is npc)
-			{
-				npcCount++;
-			}
-		}
-
-		if(npcCount == 1)
+		if(IsStoreEmpty())
 		{
 			//we close the store if the day is up
 			var calendar = GetNode<Calendar>("/root/Calendar");
@@ -82,5 +76,10 @@ public partial class npcSpawner : Node2D
 				calendar.EndDay();
 			}
 		}
+	}
+
+	public static bool IsStoreEmpty()
+	{
+		return npcCount == 0;
 	}
 }
