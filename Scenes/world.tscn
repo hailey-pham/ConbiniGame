@@ -19,8 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://b1dgiug6vjg6a" path="res://Assets/DayProgress/SunIcon4.png" id="13_o4atj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
-vertices = PackedVector2Array(207, 148, 249, 153, 6, 153, 179, 148, 78, 148, 50, 148, 240, 58, 240, 30, 249, 7, 207, 86, 212, 58, 207, 89, 207, 30, 212, 30, 207, 117, 207, 120, 163, 7, 179, 30, 163, 54, 179, 86, 158, 71, 158, 53, 78, 86, 99, 71, 179, 89, 78, 89, 78, 58, 99, 53, 73, 53, 50, 58, 6, 6, 50, 120, 179, 117, 78, 117, 50, 86, 50, 89, 179, 120, 78, 120, 73, 7, 50, 117)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2), PackedInt32Array(5, 4, 2), PackedInt32Array(6, 7, 8, 1), PackedInt32Array(9, 10, 6, 11), PackedInt32Array(10, 9, 12, 13), PackedInt32Array(14, 6, 1, 15), PackedInt32Array(6, 14, 11), PackedInt32Array(16, 8, 7, 13), PackedInt32Array(16, 13, 12), PackedInt32Array(16, 12, 17), PackedInt32Array(18, 16, 17, 19), PackedInt32Array(20, 21, 18, 19), PackedInt32Array(22, 23, 20, 19, 24, 25), PackedInt32Array(23, 22, 26, 27), PackedInt32Array(28, 27, 26, 29), PackedInt32Array(5, 2, 30, 31), PackedInt32Array(19, 9, 11, 24), PackedInt32Array(24, 32, 33, 25), PackedInt32Array(34, 22, 25, 35), PackedInt32Array(36, 3, 4, 37), PackedInt32Array(30, 38, 28, 29), PackedInt32Array(1, 0, 15), PackedInt32Array(32, 14, 15, 36), PackedInt32Array(33, 32, 36, 37), PackedInt32Array(39, 33, 37, 31), PackedInt32Array(39, 31, 30), PackedInt32Array(35, 39, 30), PackedInt32Array(34, 35, 30), PackedInt32Array(30, 29, 34)])
+vertices = PackedVector2Array(207, 148, 234, 153, 22, 153, 179, 148, 78, 148, 50, 148, 207, 117, 234, 58, 207, 120, 207, 89, 212, 58, 158, 71, 158, 53, 163, 54, 179, 86, 22, 38, 50, 120, 73, 53, 99, 53, 99, 71, 78, 58, 163, 38, 179, 38, 78, 86, 179, 89, 78, 89, 50, 58, 207, 86, 207, 38, 212, 38, 179, 117, 78, 117, 50, 86, 50, 89, 179, 120, 78, 120, 73, 38, 50, 117)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2), PackedInt32Array(5, 4, 2), PackedInt32Array(6, 7, 1, 8), PackedInt32Array(7, 6, 9, 10), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(5, 2, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(13, 21, 22, 14), PackedInt32Array(23, 19, 11, 14, 24, 25), PackedInt32Array(19, 23, 20), PackedInt32Array(17, 20, 26, 15), PackedInt32Array(27, 28, 29, 10), PackedInt32Array(27, 10, 9), PackedInt32Array(14, 27, 9, 24), PackedInt32Array(24, 30, 31, 25), PackedInt32Array(32, 23, 25, 33), PackedInt32Array(34, 3, 4, 35), PackedInt32Array(15, 36, 17), PackedInt32Array(1, 0, 8), PackedInt32Array(30, 6, 8, 34), PackedInt32Array(31, 30, 34, 35), PackedInt32Array(37, 31, 35, 16), PackedInt32Array(37, 16, 15), PackedInt32Array(33, 37, 15), PackedInt32Array(32, 33, 15), PackedInt32Array(15, 26, 32)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 159, 255, 159, 256, 1, 157, 2, 157, 48, 79, 47, 79, 2)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 6.0
@@ -292,9 +292,7 @@ collision_layer = 3
 [node name="Checkout" parent="NavigationRegion2D" instance=ExtResource("6_qywxc")]
 position = Vector2(128, 57)
 
-[node name="Tilemaps" type="Node2D" parent="."]
-
-[node name="NewStore" type="TileMap" parent="Tilemaps"]
+[node name="NewStore" type="TileMap" parent="NavigationRegion2D"]
 z_index = -1
 tile_set = SubResource("TileSet_l72md")
 format = 2
