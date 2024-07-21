@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dmagua8ojxkjr"]
+[gd_scene load_steps=36 format=3 uid="uid://dmagua8ojxkjr"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_titit"]
 [ext_resource type="Script" path="res://Scenes/UpgradeManager.cs" id="1_w8qvw"]
@@ -7,8 +7,52 @@
 [ext_resource type="Texture2D" uid="uid://dfqcclaok7kc1" path="res://Assets/GUI/BackButton/BackButtonPressed.png" id="7_qfgsn"]
 [ext_resource type="Texture2D" uid="uid://cm4n55jiiud3c" path="res://Assets/GUI/BackButton/BackButtonHover.png" id="8_r3wi8"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqmef"]
+bg_color = Color(0.66858, 0.533531, 0.501091, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.666667, 0.533333, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1mxr"]
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.788235, 0.67451, 0.647059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwy37"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqfbc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy7gg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4t8e"]
+
+[sub_resource type="Theme" id="Theme_jb3a3"]
+default_font_size = 10
+Button/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_focus_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_hover_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_hover_pressed_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_pressed_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/fonts/font = ExtResource("3_7friw")
+Button/styles/disabled = SubResource("StyleBoxFlat_cqmef")
+Button/styles/focus = SubResource("StyleBoxFlat_cqmef")
+Button/styles/hover = SubResource("StyleBoxFlat_cqmef")
+Button/styles/normal = SubResource("StyleBoxFlat_y1mxr")
+Button/styles/pressed = SubResource("StyleBoxFlat_cqmef")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_kwy37")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_lqfbc")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy7gg")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_j4t8e")
+Label/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
+Label/fonts/font = ExtResource("3_7friw")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c65jm"]
-bg_color = Color(0.582679, 0, 0.0952075, 0.8)
+bg_color = Color(0.458824, 0.12549, 0.0941176, 0.8)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -21,7 +65,7 @@ bg_color = Color(0.901961, 0.913725, 0.968627, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ig4"]
 bg_color = Color(0.964435, 0.508877, 0.551479, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8hc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v02u"]
 bg_color = Color(0.521569, 0.537255, 0.639216, 1)
 border_width_left = 5
 border_width_top = 5
@@ -29,7 +73,7 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.521569, 0.537255, 0.639216, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d37bi"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe75q"]
 bg_color = Color(0.603922, 0.615686, 0.698039, 1)
 border_width_left = 5
 border_width_top = 5
@@ -44,14 +88,14 @@ Button/colors/font_hover_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/fonts/font = ExtResource("3_7friw")
-Button/styles/disabled = SubResource("StyleBoxFlat_wv8hc")
-Button/styles/focus = SubResource("StyleBoxFlat_wv8hc")
-Button/styles/hover = SubResource("StyleBoxFlat_wv8hc")
-Button/styles/normal = SubResource("StyleBoxFlat_d37bi")
-Button/styles/pressed = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/disabled = SubResource("StyleBoxFlat_1v02u")
+Button/styles/focus = SubResource("StyleBoxFlat_1v02u")
+Button/styles/hover = SubResource("StyleBoxFlat_1v02u")
+Button/styles/normal = SubResource("StyleBoxFlat_oe75q")
+Button/styles/pressed = SubResource("StyleBoxFlat_1v02u")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2fps"]
-bg_color = Color(0.296217, 0.289313, 0.39811, 0.8)
+bg_color = Color(0.356863, 0.247059, 0.219608, 0.862745)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -76,43 +120,45 @@ bg_color = Color(0.682353, 0.694118, 0.752941, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu0ry"]
 bg_color = Color(0.682353, 0.694118, 0.752941, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ww4cm"]
-bg_color = Color(0.521569, 0.537255, 0.639216, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noy2n"]
+bg_color = Color(0.192157, 0.164706, 0.164706, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb088"]
-bg_color = Color(0.3976, 0.419253, 0.56, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7v28g"]
+bg_color = Color(0.117882, 0.0985077, 0.0985093, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2enus"]
-bg_color = Color(0.2745, 0.300825, 0.45, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_corio"]
+bg_color = Color(0.117882, 0.0985077, 0.0985093, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekbna"]
+bg_color = Color(0.117882, 0.0985077, 0.0985093, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hhns"]
+bg_color = Color(0.117882, 0.0985077, 0.0985093, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
-bg_color = Color(0.603922, 0.615686, 0.698039, 1)
-corner_detail = 1
+bg_color = Color(0.835294, 0.74902, 0.72549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy2c7"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmgsf"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oghr"]
-bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+bg_color = Color(0.945098, 0.878431, 0.862745, 1)
 border_width_left = 5
-border_color = Color(0.882279, 0.887367, 0.912046, 1)
+border_color = Color(0.945098, 0.878431, 0.862745, 1)
 corner_detail = 1
 
-[sub_resource type="Theme" id="Theme_7xpo3"]
+[sub_resource type="Theme" id="Theme_y1bp3"]
 ScrollContainer/styles/panel = null
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dmgsf")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
 
 [node name="Upgrade" type="Control" node_paths=PackedStringArray("currentMoneyLabel", "gridContainer", "upgradeNameLabel", "upgradeDescriptionLabel", "upgradeCostLabel")]
 layout_mode = 3
 anchors_preset = 0
-theme = ExtResource("1_titit")
+theme = SubResource("Theme_jb3a3")
 script = ExtResource("1_w8qvw")
 currentMoneyLabel = NodePath("CurrentMoney")
 gridContainer = NodePath("Control/ScrollContainer/GridContainer")
@@ -124,21 +170,21 @@ upgradeCostLabel = NodePath("UpgradeInfo/UpgradeCost")
 layout_mode = 0
 offset_right = 257.0
 offset_bottom = 163.0
-color = Color(0.682353, 0.694118, 0.752941, 1)
+color = Color(0.890196, 0.803922, 0.780392, 1)
 
 [node name="TitleBG" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 257.0
 offset_bottom = 193.0
 scale = Vector2(1, 0.176199)
-color = Color(0.521569, 0.537255, 0.639216, 1)
+color = Color(0.192157, 0.164706, 0.164706, 1)
 
 [node name="CurrentMoney" type="Label" parent="."]
 layout_mode = 0
 offset_top = 18.0
 offset_right = 256.0
 offset_bottom = 35.0
-theme_override_colors/font_color = Color(0.682353, 0.694118, 0.752941, 1)
+theme_override_colors/font_color = Color(0.890196, 0.803922, 0.780392, 1)
 text = "Current Funds: ￥100"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -149,6 +195,7 @@ offset_top = 1.0
 offset_right = 256.0
 offset_bottom = 21.0
 theme = ExtResource("1_titit")
+theme_override_colors/font_color = Color(0.945098, 0.878431, 0.862745, 1)
 text = "Upgrades"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -280,13 +327,13 @@ offset_left = 114.0
 offset_top = 40.0
 offset_right = 251.0
 offset_bottom = 156.0
-color = Color(0.603922, 0.615686, 0.698039, 1)
+color = Color(0.835294, 0.74902, 0.72549, 1)
 
 [node name="NameBG" type="ColorRect" parent="UpgradeInfo/BG"]
 layout_mode = 0
 offset_right = 137.0
 offset_bottom = 15.0
-color = Color(0.521569, 0.537255, 0.639216, 1)
+color = Color(0.788235, 0.67451, 0.647059, 1)
 
 [node name="UpgradeName" type="Label" parent="UpgradeInfo"]
 layout_mode = 0
@@ -304,7 +351,6 @@ offset_left = 118.0
 offset_top = 57.0
 offset_right = 247.0
 offset_bottom = 117.0
-theme_override_colors/font_color = Color(0.8008, 0.814, 0.88, 1)
 text = "Click on an upgrade to see more details!"
 autowrap_mode = 2
 
@@ -325,9 +371,17 @@ offset_top = 132.0
 offset_right = 247.0
 offset_bottom = 152.0
 theme = SubResource("Theme_3o58g")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ww4cm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_tb088")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2enus")
+theme_override_colors/font_color = Color(0.945098, 0.878431, 0.862745, 1)
+theme_override_colors/font_pressed_color = Color(0.945098, 0.878431, 0.862745, 1)
+theme_override_colors/font_hover_color = Color(0.945098, 0.878431, 0.862745, 1)
+theme_override_colors/font_focus_color = Color(0.945098, 0.878431, 0.862745, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.945098, 0.878431, 0.862745, 1)
+theme_override_colors/font_disabled_color = Color(0.788235, 0.67451, 0.647059, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_noy2n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7v28g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_corio")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ekbna")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4hhns")
 text = "Purchase"
 
 [node name="BackButton" type="TextureButton" parent="."]
@@ -357,13 +411,12 @@ offset_left = 1.0
 offset_top = 6.0
 offset_right = 100.0
 offset_bottom = 121.0
-theme = SubResource("Theme_7xpo3")
+theme = SubResource("Theme_y1bp3")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="Control/ScrollContainer"]
 layout_mode = 2
-theme = SubResource("Theme_3o58g")
 
 [node name="Button" type="Button" parent="Control/ScrollContainer/GridContainer"]
 visible = false

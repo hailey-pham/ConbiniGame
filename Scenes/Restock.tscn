@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://hunt30xi3ai5"]
+[gd_scene load_steps=32 format=3 uid="uid://hunt30xi3ai5"]
 
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_km65n"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_wgo4a"]
@@ -9,49 +9,49 @@
 [ext_resource type="Texture2D" uid="uid://dfqcclaok7kc1" path="res://Assets/GUI/BackButton/BackButtonPressed.png" id="5_vdx4d"]
 [ext_resource type="Texture2D" uid="uid://cm4n55jiiud3c" path="res://Assets/GUI/BackButton/BackButtonHover.png" id="6_c0bpj"]
 [ext_resource type="Texture2D" uid="uid://crfjb33kxxpc0" path="res://Assets/ButtonBG.png" id="11_vsaxu"]
-[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/Items/waterBottle.png" id="12_1xjkj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8hc"]
-bg_color = Color(0.521569, 0.537255, 0.639216, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqmef"]
+bg_color = Color(0.66858, 0.533531, 0.501091, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.521569, 0.537255, 0.639216, 1)
+border_color = Color(0.666667, 0.533333, 0.501961, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d37bi"]
-bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1mxr"]
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.603922, 0.615686, 0.698039, 1)
+border_color = Color(0.788235, 0.67451, 0.647059, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xvck"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwy37"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jheef"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqfbc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ss7o6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy7gg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wtrp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4t8e"]
 
 [sub_resource type="Theme" id="Theme_qvcjm"]
 default_font_size = 10
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_focus_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_focus_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_hover_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_hover_pressed_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_pressed_color = Color(0.192157, 0.164706, 0.164706, 1)
 Button/fonts/font = ExtResource("1_km65n")
-Button/styles/disabled = SubResource("StyleBoxFlat_wv8hc")
-Button/styles/focus = SubResource("StyleBoxFlat_wv8hc")
-Button/styles/hover = SubResource("StyleBoxFlat_wv8hc")
-Button/styles/normal = SubResource("StyleBoxFlat_d37bi")
-Button/styles/pressed = SubResource("StyleBoxFlat_wv8hc")
-HScrollBar/styles/grabber = SubResource("StyleBoxFlat_4xvck")
-HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_jheef")
-HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_ss7o6")
-HScrollBar/styles/scroll = SubResource("StyleBoxFlat_2wtrp")
+Button/styles/disabled = SubResource("StyleBoxFlat_cqmef")
+Button/styles/focus = SubResource("StyleBoxFlat_cqmef")
+Button/styles/hover = SubResource("StyleBoxFlat_cqmef")
+Button/styles/normal = SubResource("StyleBoxFlat_y1mxr")
+Button/styles/pressed = SubResource("StyleBoxFlat_cqmef")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_kwy37")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_lqfbc")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy7gg")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_j4t8e")
+Label/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
 Label/fonts/font = ExtResource("1_km65n")
 
 [sub_resource type="Theme" id="Theme_lxfcg"]
@@ -61,67 +61,63 @@ Button/colors/font_hover_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/fonts/font = ExtResource("1_km65n")
-Button/styles/disabled = SubResource("StyleBoxFlat_wv8hc")
-Button/styles/focus = SubResource("StyleBoxFlat_wv8hc")
-Button/styles/hover = SubResource("StyleBoxFlat_wv8hc")
-Button/styles/normal = SubResource("StyleBoxFlat_d37bi")
-Button/styles/pressed = SubResource("StyleBoxFlat_wv8hc")
+Button/styles/disabled = SubResource("StyleBoxFlat_cqmef")
+Button/styles/focus = SubResource("StyleBoxFlat_cqmef")
+Button/styles/hover = SubResource("StyleBoxFlat_cqmef")
+Button/styles/normal = SubResource("StyleBoxFlat_y1mxr")
+Button/styles/pressed = SubResource("StyleBoxFlat_cqmef")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
-bg_color = Color(0.603922, 0.615686, 0.698039, 1)
-corner_detail = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nuyb"]
+bg_color = Color(0.835294, 0.74902, 0.72549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy2c7"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmgsf"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydne1"]
-bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+bg_color = Color(0.945098, 0.878431, 0.862745, 1)
 border_width_top = 5
-border_color = Color(0.882279, 0.887367, 0.912046, 1)
+border_color = Color(0.945098, 0.878431, 0.862745, 1)
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu5ur"]
+bg_color = Color(0.835294, 0.74902, 0.72549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfk0o"]
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oghr"]
-bg_color = Color(0.603922, 0.615686, 0.698039, 1)
+bg_color = Color(0.945098, 0.878431, 0.862745, 1)
 border_width_left = 5
-border_color = Color(0.882279, 0.887367, 0.912046, 1)
+border_color = Color(0.945098, 0.878431, 0.862745, 1)
 corner_detail = 1
 
 [sub_resource type="Theme" id="Theme_rlaxc"]
-HScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_5nuyb")
 HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
-HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dmgsf")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
 HScrollBar/styles/scroll = SubResource("StyleBoxFlat_ydne1")
 HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_ydne1")
 ScrollContainer/styles/panel = null
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dmgsf")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_eu5ur")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_gfk0o")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noy2n"]
-bg_color = Color(0.682353, 0.694118, 0.752941, 1)
+bg_color = Color(0.192157, 0.164706, 0.164706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tkgh"]
-bg_color = Color(0.4234, 0.44428, 0.58, 1)
+bg_color = Color(0.117882, 0.0985077, 0.0985093, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt6t3"]
-bg_color = Color(0.4234, 0.44428, 0.58, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6ks1"]
-bg_color = Color(0.4234, 0.44428, 0.58, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icfac"]
-bg_color = Color(0.4234, 0.44428, 0.58, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
+bg_color = Color(0.835294, 0.74902, 0.72549, 1)
 
 [sub_resource type="Theme" id="Theme_0qi1k"]
 ScrollContainer/styles/panel = null
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dmgsf")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
 
@@ -156,21 +152,21 @@ theme = SubResource("Theme_lxfcg")
 layout_mode = 0
 offset_right = 257.0
 offset_bottom = 163.0
-color = Color(0.682353, 0.694118, 0.752941, 1)
+color = Color(0.890196, 0.803922, 0.780392, 1)
 
 [node name="TitleBG" type="ColorRect" parent="Visuals"]
 layout_mode = 0
 offset_right = 257.0
 offset_bottom = 193.0
 scale = Vector2(1, 0.176199)
-color = Color(0.521569, 0.537255, 0.639216, 1)
+color = Color(0.192157, 0.164706, 0.164706, 1)
 
 [node name="CurrentMoney" type="Label" parent="Visuals"]
 layout_mode = 0
 offset_top = 18.0
 offset_right = 256.0
 offset_bottom = 35.0
-theme_override_colors/font_color = Color(0.682353, 0.694118, 0.752941, 1)
+theme_override_colors/font_color = Color(0.788235, 0.67451, 0.647059, 1)
 text = "Current Funds: ￥100"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -181,6 +177,7 @@ offset_top = 1.0
 offset_right = 256.0
 offset_bottom = 21.0
 theme = ExtResource("1_wgo4a")
+theme_override_colors/font_color = Color(0.890196, 0.803922, 0.780392, 1)
 text = "Restock"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -260,14 +257,14 @@ layout_mode = 0
 offset_left = -30.0
 offset_right = 78.0
 offset_bottom = 129.0
-color = Color(0.603922, 0.615686, 0.698039, 1)
+color = Color(0.787661, 0.675869, 0.645385, 1)
 
 [node name="ScrollBG" type="ColorRect" parent="FullOrder/FullOrderBG"]
 layout_mode = 0
 offset_top = 22.0
 offset_right = 108.0
 offset_bottom = 102.0
-color = Color(0.682353, 0.694118, 0.752941, 0.596078)
+color = Color(1, 1, 1, 0.223529)
 
 [node name="Title" type="Label" parent="FullOrder"]
 layout_mode = 0
@@ -298,45 +295,56 @@ offset_left = 24.0
 offset_top = 106.0
 offset_right = 74.0
 offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.945098, 0.878431, 0.862745, 1)
+theme_override_colors/font_pressed_color = Color(0.945098, 0.878431, 0.862745, 1)
+theme_override_colors/font_hover_color = Color(0.945098, 0.878431, 0.862745, 1)
+theme_override_colors/font_focus_color = Color(0.945098, 0.878431, 0.862745, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.945098, 0.878431, 0.862745, 1)
+theme_override_colors/font_disabled_color = Color(0.788235, 0.67451, 0.647059, 1)
+theme_override_colors/font_outline_color = Color(0.945098, 0.878431, 0.862745, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_noy2n")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7tkgh")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rt6t3")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_v6ks1")
-theme_override_styles/focus = SubResource("StyleBoxFlat_icfac")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7tkgh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7tkgh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7tkgh")
 text = "Purchase"
 
 [node name="Control" type="Control" parent="FullOrder"]
 clip_contents = true
 anchors_preset = 0
 offset_left = -30.0
-offset_top = 21.0
+offset_top = 22.0
 offset_right = 77.0
 offset_bottom = 102.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullOrder/Control"]
+visible = false
+layout_mode = 2
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 40.0
+
+[node name="Item" type="HBoxContainer" parent="FullOrder/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="Item2" type="HBoxContainer" parent="FullOrder/Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="FullOrder/Control"]
 clip_contents = false
 layout_mode = 0
 offset_left = 1.0
-offset_top = 4.0
 offset_right = 107.0
-offset_bottom = 89.0
+offset_bottom = 80.0
 theme = SubResource("Theme_0qi1k")
-horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FullOrder/Control/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="FullOrder/Control/ScrollContainer"]
 layout_mode = 2
 
-[node name="Item" type="HBoxContainer" parent="FullOrder/Control/ScrollContainer/VBoxContainer"]
-visible = false
+[node name="Top Margin" type="Control" parent="FullOrder/Control/ScrollContainer/GridContainer"]
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="FullOrder/Control/ScrollContainer/VBoxContainer/Item"]
-layout_mode = 2
-texture = ExtResource("12_1xjkj")
-
-[node name="Label" type="Label" parent="FullOrder/Control/ScrollContainer/VBoxContainer/Item"]
-layout_mode = 2
-text = "Water:       x1"
 
 [node name="ItemInformation" type="Control" parent="."]
 anchors_preset = 0
@@ -439,7 +447,7 @@ offset_left = 87.0
 offset_top = 129.0
 offset_right = 114.0
 offset_bottom = 155.0
-color = Color(0.521569, 0.537255, 0.639216, 1)
+color = Color(0.788235, 0.67451, 0.647059, 1)
 
 [node name="AmountToOrder" type="Label" parent="ItemInformation/AmountToOrder"]
 layout_mode = 0
@@ -468,10 +476,10 @@ text = "-"
 
 [node name="PurchaseAmount" type="Label" parent="ItemInformation/AmountToOrder"]
 layout_mode = 0
-offset_left = 89.0
-offset_top = 131.0
-offset_right = 112.0
-offset_bottom = 153.0
+offset_left = 87.0
+offset_top = 129.0
+offset_right = 114.0
+offset_bottom = 155.0
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -518,5 +526,3 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_v17pk")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_v17pk")
 theme_override_styles/focus = SubResource("StyleBoxFlat_v17pk")
 text = "Back"
-
-[connection signal="pressed" from="FullOrder/Purchase" to="." method="completePurchase"]

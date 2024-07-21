@@ -38,7 +38,7 @@ public partial class RestockManager : Node
 
 	private HBoxContainer itemContainer;
 
-	private VBoxContainer purchasedItemContainer;
+	private GridContainer purchasedItemContainer;
 
 	private List<TextureButton> itemButtons = new List<TextureButton>();
 
@@ -53,7 +53,7 @@ public partial class RestockManager : Node
 		backButton = GetNode<TextureButton>("Visuals/BackButton");
 		itemContainer = GetNode<HBoxContainer>("VBoxContainer/ItemScroll/HBoxContainer");
 		currentMoneyLabel = GetNode<Label>("Visuals/CurrentMoney");
-		purchasedItemContainer = GetNode<VBoxContainer>("FullOrder/Control/ScrollContainer/VBoxContainer");
+		purchasedItemContainer = GetNode<GridContainer>("FullOrder/Control/ScrollContainer/GridContainer");
 		insufficientPopUp = GetNode<CanvasLayer>("InsufficientFundsPopUp");
 		insufficientBackButton = GetNode<Button>("InsufficientFundsPopUp/Panel/Back");
 
@@ -102,6 +102,8 @@ public partial class RestockManager : Node
 				// add to purchase list
 				purchaseList.Add(new OrderInformation(item.Value));
 				purchasedItemContainer.AddChild(purchaseList[^1].parent);
+				// purchaseList[^1].sendOffChildren(purchasedItemContainer);
+				
 		}
 
 		
@@ -173,10 +175,13 @@ public partial class RestockManager : Node
 
 	private void OnAddButtonPressed() 
 	{
-		globals.Stock[currentItem.name].restockAmount += 1;
-		globals._purchaseCost += globals.Stock[currentItem.name].restockPrice;
-		updateTotalItemList();
-		currentItemPurchaseAmount.Text = ""+currentItem.restockAmount;
+		if(globals.Stock[currentItem.name].restockAmount < 99) {
+			globals.Stock[currentItem.name].restockAmount += 1;
+			globals._purchaseCost += globals.Stock[currentItem.name].restockPrice;
+			updateTotalItemList();
+			currentItemPurchaseAmount.Text = ""+currentItem.restockAmount;
+		}
+		
 	}
 
 	private void OnSubtractButtonPressed()

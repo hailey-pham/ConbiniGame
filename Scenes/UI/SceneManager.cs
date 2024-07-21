@@ -14,7 +14,6 @@ public partial class SceneManager : Node
 	private Node sceneParent;
 	private bool transitioning = false;
 
-
 	[Signal]
 	public delegate void SceneChangedEventHandler(string SceneName);
 

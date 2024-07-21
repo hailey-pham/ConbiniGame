@@ -16,6 +16,10 @@ public partial class CreditsPlayer : AnimationPlayer
         if (@event.IsActionPressed("Interact"))
         {
             SpeedScale = speedUp;
+        } else if (@event.IsActionPressed("Exit"))
+        {
+            var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+		    sceneManager.ChangeScene("mainmenu","FadeToBlack");
         }
 
         if (@event.IsActionReleased("Interact"))

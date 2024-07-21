@@ -1,18 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://dg5o4x6g8clfy"]
+[gd_scene load_steps=15 format=3 uid="uid://dg5o4x6g8clfy"]
 
 [ext_resource type="Script" path="res://Scenes/UI/disaster_stats.cs" id="1_27r56"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_chri5"]
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="3_0wvdm"]
-[ext_resource type="Texture2D" uid="uid://cu668byqr7t7h" path="res://Assets/GUI/SmallArrow.png" id="4_eqbh4"]
-
-[sub_resource type="Gradient" id="Gradient_0o67u"]
-colors = PackedColorArray(0.207843, 0.215686, 0.286275, 1, 0.20642, 0.215534, 0.288228, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_h813w"]
-gradient = SubResource("Gradient_0o67u")
+[ext_resource type="Texture2D" path="res://Assets/GUI/SmallArrow.png" id="4_eqbh4"]
 
 [sub_resource type="Theme" id="Theme_hyko5"]
-RichTextLabel/colors/default_color = Color(0.5015, 0.514775, 0.59, 1)
+RichTextLabel/colors/default_color = Color(0.890196, 0.803922, 0.780392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8hc"]
 bg_color = Color(0.521569, 0.537255, 0.639216, 1)
@@ -57,10 +51,10 @@ HScrollBar/styles/scroll = SubResource("StyleBoxFlat_2wtrp")
 Label/fonts/font = ExtResource("3_0wvdm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ai2eh"]
-bg_color = Color(0.301961, 0.313726, 0.384314, 1)
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl4lj"]
-bg_color = Color(0.326429, 0.34303, 0.441443, 1)
+bg_color = Color(0.719969, 0.589882, 0.558569, 1)
 
 [node name="DisasterStats" type="Control"]
 layout_mode = 3
@@ -72,14 +66,11 @@ grow_vertical = 2
 theme = ExtResource("1_chri5")
 script = ExtResource("1_27r56")
 
-[node name="BG" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture1D_h813w")
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 163.0
+color = Color(0.206668, 0.0905366, 0.0834602, 1)
 
 [node name="VBoxContainer" type="Control" parent="."]
 layout_mode = 1
@@ -107,28 +98,37 @@ fit_content = true
 [node name="Stats" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 2.0
-offset_top = 34.0
+offset_top = 32.0
 offset_right = 243.0
-offset_bottom = 46.0
-text = "Money Lost:"
+offset_bottom = 44.0
+text = "Money Lost: ￥"
 fit_content = true
 
 [node name="CurrentStats" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 2.0
-offset_top = 47.0
+offset_top = 45.0
 offset_right = 243.0
-offset_bottom = 59.0
-text = "Current Funds: "
+offset_bottom = 57.0
+text = "Current Funds: ￥"
 fit_content = true
 
 [node name="ResourcesLost" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 2.0
-offset_top = 66.0
+offset_top = 75.0
 offset_right = 243.0
-offset_bottom = 78.0
+offset_bottom = 87.0
 text = "Stock Lost:"
+fit_content = true
+
+[node name="ItemsLost" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 57.0
+offset_right = 238.0
+offset_bottom = 69.0
+text = "You lost --% of each stock"
 fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -138,19 +138,6 @@ offset_top = 87.0
 offset_right = 245.0
 offset_bottom = 124.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 2
-offset_left = 11.0
-offset_top = 87.0
-offset_right = 245.0
-offset_bottom = 124.0
-color = Color(0.501961, 0.513726, 0.588235, 0.32549)
-
-[node name="ItemsLost" type="RichTextLabel" parent="VBoxContainer"]
-layout_mode = 2
-text = "You lost: "
-fit_content = true
-
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -159,14 +146,13 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -71.0
-offset_top = -27.0
+offset_top = -25.0
 offset_right = 33.0
-offset_bottom = 4.0
+offset_bottom = 6.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.613048, 0.634291)
 theme = SubResource("Theme_5twva")
-theme_override_fonts/font = ExtResource("3_0wvdm")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_ai2eh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fl4lj")
@@ -175,24 +161,42 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_fl4lj")
 theme_override_styles/focus = SubResource("StyleBoxFlat_fl4lj")
 text = "CONTINUE"
 
+[node name="RestockButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -25.0
+offset_right = -35.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.613048, 0.634291)
+theme = SubResource("Theme_5twva")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ai2eh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fl4lj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fl4lj")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_fl4lj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fl4lj")
+text = "RESTOCK"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = 11.0
+offset_top = 92.0
+offset_right = 245.0
+offset_bottom = 129.0
+color = Color(0.501961, 0.513726, 0.588235, 0.32549)
+
 [node name="SmallArrow" type="Sprite2D" parent="."]
-position = Vector2(5, 107)
+position = Vector2(5, 112)
 texture = ExtResource("4_eqbh4")
 flip_h = true
 
 [node name="SmallArrow2" type="Sprite2D" parent="."]
-position = Vector2(251, 107)
+position = Vector2(251, 112)
 texture = ExtResource("4_eqbh4")
-[node name="RestockButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -21.5
-offset_top = -20.0
-offset_right = 21.5
-grow_horizontal = 2
-grow_vertical = 0
-text = "RESTOCK"

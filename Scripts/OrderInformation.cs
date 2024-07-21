@@ -23,21 +23,41 @@ public partial class OrderInformation : Node
 		itemCount = new Label();
 
 		texture.Texture = item.spriteTexture;
+		texture.CustomMinimumSize = new Vector2(16,0);
+		texture.StretchMode = TextureRect.StretchModeEnum.KeepCentered;
 		itemLabel.Text = item.name;
+		itemLabel.CustomMinimumSize = new Vector2(60,0);
+		itemLabel.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
 		itemCount.Text = "x"+item.restockAmount;
 		
 		parent.AddChild(texture);
 		parent.AddChild(itemLabel);
 		parent.AddChild(itemCount);
+		GD.Print("Finished");
 	}
 
 	public void updateInformation() {
 		itemCount.Text = "x"+item.restockAmount;
-		if(item.currentStock <= 0) {
+		if(item.currentStock < 0) {
 			parent.Visible = false;
+			texture.Visible = false;
+			itemLabel.Visible = false;
+			itemCount.Visible = false;
 		} else {
 			parent.Visible = true;
+			texture.Visible = true;
+			itemLabel.Visible = true;
+			itemCount.Visible = true;
 		}
+
+	}
+
+	public void sendOffChildren(Control node) {
+		node.AddChild(texture);
+		node.AddChild(itemLabel);
+		node.AddChild(itemCount);
+		GD.Print(node.GetChildren());
+		GD.Print("Bye bye!");
 	}
 	
 }

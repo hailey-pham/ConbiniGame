@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcfcdw8pkwlja"]
+[gd_scene load_steps=21 format=3 uid="uid://bcfcdw8pkwlja"]
 
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_4rgg3"]
 [ext_resource type="Script" path="res://Scenes/UI/EndOfDay.cs" id="2_xdosx"]
@@ -28,7 +28,7 @@ border_color = Color(0.603922, 0.615686, 0.698039, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wtrp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocyml"]
-bg_color = Color(0.741439, 0.751633, 0.802116, 1)
+bg_color = Color(0.835294, 0.74902, 0.72549, 1)
 
 [sub_resource type="Theme" id="Theme_cqc3e"]
 default_font_size = 10
@@ -52,9 +52,55 @@ ItemList/font_sizes/font_size = 10
 ItemList/fonts/font = ExtResource("1_4rgg3")
 ItemList/styles/panel = SubResource("StyleBoxFlat_ocyml")
 Label/fonts/font = ExtResource("1_4rgg3")
+RichTextLabel/colors/default_color = Color(0.192157, 0.164706, 0.164706, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
 RichTextLabel/fonts/normal_font = ExtResource("1_4rgg3")
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_753f3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqmef"]
+bg_color = Color(0.66858, 0.533531, 0.501091, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.666667, 0.533333, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1mxr"]
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.788235, 0.67451, 0.647059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwy37"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqfbc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy7gg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4t8e"]
+
+[sub_resource type="Theme" id="Theme_norjd"]
+default_font_size = 10
+Button/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_focus_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_hover_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_hover_pressed_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_pressed_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/fonts/font = ExtResource("1_4rgg3")
+Button/styles/disabled = SubResource("StyleBoxFlat_cqmef")
+Button/styles/focus = SubResource("StyleBoxFlat_cqmef")
+Button/styles/hover = SubResource("StyleBoxFlat_cqmef")
+Button/styles/normal = SubResource("StyleBoxFlat_y1mxr")
+Button/styles/pressed = SubResource("StyleBoxFlat_cqmef")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_kwy37")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_lqfbc")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy7gg")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_j4t8e")
+Label/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
+Label/fonts/font = ExtResource("1_4rgg3")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8trtt"]
 
@@ -74,14 +120,14 @@ script = ExtResource("2_xdosx")
 layout_mode = 0
 offset_right = 257.0
 offset_bottom = 161.0
-color = Color(0.65098, 0.662745, 0.729412, 1)
+color = Color(0.890196, 0.803922, 0.780392, 1)
 
 [node name="TitleBG" type="ColorRect" parent="ColorRect"]
 layout_mode = 0
 offset_right = 257.0
 offset_bottom = 136.0
 scale = Vector2(1, 0.176199)
-color = Color(0.521569, 0.537255, 0.639216, 1)
+color = Color(0.192157, 0.164706, 0.164706, 1)
 
 [node name="BG" type="TextureRect" parent="."]
 visible = false
@@ -99,6 +145,7 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 262.0
 offset_bottom = 18.0
+theme_override_colors/default_color = Color(0.890196, 0.803922, 0.780392, 1)
 text = "End of Day"
 fit_content = true
 
@@ -117,7 +164,7 @@ theme_override_constants/separation = 10
 
 [node name="Cash" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-text = "Cash earned:"
+text = "Cash earned: ￥"
 fit_content = true
 
 [node name="VendingMachineLabel" type="RichTextLabel" parent="VBoxContainer"]
@@ -128,12 +175,12 @@ fit_content = true
 
 [node name="Customers" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-text = "Customers Serviced:"
+text = "Customers Serviced: "
 fit_content = true
 
 [node name="TotalMoney" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-text = "Current Funds:"
+text = "Current Funds: ￥"
 fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -142,6 +189,7 @@ offset_left = 6.0
 offset_top = 125.0
 offset_right = 249.0
 offset_bottom = 149.0
+theme = SubResource("Theme_norjd")
 
 [node name="UpgradeButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
@@ -170,6 +218,7 @@ grow_vertical = 2
 
 [node name="ItemsSoldLabel" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
 text = "Items sold:"
 
 [node name="ItemsSoldList" type="ItemList" parent="VBoxContainer2"]

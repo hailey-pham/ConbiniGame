@@ -67,20 +67,20 @@ public partial class disaster_stats : Control
     {
         GD.Print("Continue button pressed!");
         EmitSignal(nameof(DisasterScreenEnded));
-        sceneManager.ChangeScene("gamescene");
+        sceneManager.ChangeScene("gamescene", "FadeToBlack");
     }
 
     private void OnDisasterScreenEnded()
     {
         GD.Print("Transitioning to main game...");
-        sceneManager.ChangeScene("gamescene");
+        sceneManager.ChangeScene("gamescene", "FadeToBlack");
     }
 
     private void OnRestockButtonPressed()
     {
         GD.Print("Restock button pressed!");
         EmitSignal(nameof(RestockButtonPressed));
-
+        sceneManager.ChangeScene("restock");
         // logic here later i dont want to mess up the game
     }
 
@@ -92,9 +92,9 @@ public partial class disaster_stats : Control
         CurrentMoney();
         disasterLabel.Text = "Disaster has struck your store. You have lost a portion of your resources...";
         // messageLabel.Text = "You lost a portion of your resources.";
-        statsLabel.Text = "Money lost:  " + newMoney.ToString() + " yen";
-        currentStatsLabel.Text = "You now have: " + globals.Money.ToString() + " yen";
-        itemsLostLabel.Text = "You lost: " + (globals.stockLosePercentage * 100) + "% of each item";
+        statsLabel.Text = "Money lost:  ￥" + newMoney.ToString();
+        currentStatsLabel.Text = "Current funds: ￥" + globals.Money.ToString();
+        itemsLostLabel.Text = "You lost " + (globals.stockLosePercentage * 100) + "% of each item";
     }
 
     private int LoseMoney()
