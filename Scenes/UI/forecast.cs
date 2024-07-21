@@ -27,9 +27,6 @@ public partial class forecast : Control
 
         forecastAnimation.SetDisasterType(nextDisaster);
 
-        var forecastAnim = GD.Load<PackedScene>("res://Scenes/UI/ForecastAnimation.tscn");
-        AddChild(forecastAnim.Instantiate());
-
         displayTimer = GetNode<Timer>("DisplayTimer");
         displayTimer.Timeout += OnDisplayTimerTimeout;
         displayTimer.Start();
@@ -38,6 +35,6 @@ public partial class forecast : Control
     public void OnDisplayTimerTimeout()
     {
         displayTimer.Stop();
-        sceneManager.ChangeScene("gamescene");
+        sceneManager.ChangeScene("gamescene", "FadeToBlack");
     }
 }

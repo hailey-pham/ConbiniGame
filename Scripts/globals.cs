@@ -17,6 +17,8 @@ public partial class globals : Node
 	private static List<ItemRes> _itemsSoldToday = new();
 	public static int _day = 0;
 
+	public static double stockLosePercentage = 0.1; // make randomizing function for this l8r
+
 	public static Dictionary<string, Upgrade> _upgrades = new Dictionary<string, Upgrade>();
 
 	//signal to tell money GUI to update
@@ -158,5 +160,20 @@ public partial class globals : Node
 		{
 			ItemsSoldToday.Add(item);
 		}
+    }
+
+	public void LoseStock()
+	{
+		foreach (var item in stock.Values)
+		{
+			int lossAmount = GetLossAmount(item);
+			// cant let stock go negative
+			item.currentStock = Math.Max(0, item.currentStock - lossAmount);
+		}
+    }
+
+	public static int GetLossAmount(ItemRes item) // for use later but might not work
+	{
+		return (int)Math.Ceiling(item.currentStock * stockLosePercentage);
     }
 }

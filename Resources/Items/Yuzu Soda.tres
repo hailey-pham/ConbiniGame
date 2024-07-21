@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bnx6sck8wqhk8"]
 
 [ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_ikcgd"]
-[ext_resource type="Texture2D" uid="uid://kg81pcdhx0xd" path="res://Assets/Items/waterBottle.png" id="2_tg8pe"]
+[ext_resource type="Texture2D" uid="uid://bvw7urh1xdihh" path="res://Assets/Items/YuzuDrink.png" id="2_yji4n"]
 
 [resource]
 script = ExtResource("1_ikcgd")
@@ -10,4 +10,4 @@ price = 150
 restockPrice = 85
 SeasonFlags = 16
 DisasterFlags = 0
-spriteTexture = ExtResource("2_tg8pe")
+spriteTexture = ExtResource("2_yji4n")

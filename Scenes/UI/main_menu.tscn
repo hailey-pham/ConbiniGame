@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cva2ki3loidwk"]
+[gd_scene load_steps=12 format=3 uid="uid://cva2ki3loidwk"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_8t4c0"]
 [ext_resource type="Script" path="res://Scenes/UI/main_menu.cs" id="2_3nljo"]
-[ext_resource type="Texture2D" uid="uid://six140ru7we8" path="res://Assets/DisastoreTitle.png" id="3_eg3ap"]
+[ext_resource type="PackedScene" uid="uid://r6iwguk11m2d" path="res://Assets/StoreFront/SkyBackground.tscn" id="3_32f1q"]
 [ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="3_ho7gn"]
+[ext_resource type="Texture2D" uid="uid://cbua6umy1pad1" path="res://Assets/GUI/DisastoreTitleScreenSign.png" id="4_giwet"]
 [ext_resource type="AudioStream" uid="uid://dw6hl7yh61gpd" path="res://Assets/Music/Chill.mp3" id="5_wopo5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jftsj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ba8o4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fvbl4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3tqms"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kdil"]
 
 [node name="MainMenu" type="Control"]
 texture_filter = 1
@@ -17,48 +28,73 @@ grow_vertical = 2
 theme = ExtResource("1_8t4c0")
 script = ExtResource("2_3nljo")
 
+[node name="Sky" parent="." instance=ExtResource("3_32f1q")]
+layout_mode = 0
+
 [node name="StoreFront" parent="." instance=ExtResource("3_ho7gn")]
 layout_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -92.0
-offset_right = 60.0
+offset_top = -14.955
+offset_bottom = -2.955
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 45
+alignment = 1
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.890196, 0.803922, 0.780392, 1)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jftsj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ba8o4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fvbl4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3tqms")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6kdil")
 text = "Play"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.890196, 0.803922, 0.780392, 1)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jftsj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ba8o4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fvbl4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3tqms")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6kdil")
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.890196, 0.803922, 0.780392, 1)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jftsj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ba8o4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fvbl4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3tqms")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6kdil")
 text = "Quit"
 
 [node name="Title" type="TextureRect" parent="."]
-modulate = Color(0, 0.466667, 1, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -115.5
-offset_right = 115.5
-offset_bottom = 52.0
+offset_left = -128.0
+offset_top = 0.12
+offset_right = 128.0
+offset_bottom = 160.12
 grow_horizontal = 2
-texture = ExtResource("3_eg3ap")
+mouse_filter = 2
+texture = ExtResource("4_giwet")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_wopo5")
