@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 public partial class Calendar : Node2D
@@ -331,9 +332,10 @@ public partial class Calendar : Node2D
         });
         return await Task.FromResult(weeklyDisasters);
     }
-
     public async void GenerateDisasterCalendar()
     {
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
         // generate and output all the disaster arrays for the year at once
         var springTask = Task.Run(() => GenerateDisasterDays("Spring"));
         var summerTask = Task.Run(() => GenerateDisasterDays("Summer"));
@@ -351,6 +353,8 @@ public partial class Calendar : Node2D
         GD.Print("Winter events: " + string.Join(",", winterArray));
 
         UpdateCurrentWeekDisasters();
+        stopwatch.Stop();
+        GD.Print($"Time to generate disaster calendar in ms: {stopwatch.ElapsedMilliseconds}");
     }
 
 
