@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dkjtyrm6h0n4j"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 255.0
+offset_bottom = 160.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.305
+anchor_top = 0.225
+anchor_right = 0.793
+anchor_bottom = 0.475
+offset_left = -3.08
+offset_top = 3.0
+offset_right = -3.00804
+offset_bottom = 3.0
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+text = "GAME OVER"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.324
+anchor_top = 0.544
+anchor_right = 0.66
+anchor_bottom = 0.737
+offset_left = 0.0559998
+offset_top = -0.0400085
+offset_right = 0.0399933
+offset_bottom = 0.0799942
+action_mode = 0
+text = "Continue?"
+flat = true

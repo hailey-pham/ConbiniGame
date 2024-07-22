@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/UI/disaster_stats.cs" id="1_27r56"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_chri5"]
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="3_0wvdm"]
-[ext_resource type="Texture2D" path="res://Assets/GUI/SmallArrow.png" id="4_eqbh4"]
+[ext_resource type="Texture2D" uid="uid://cu668byqr7t7h" path="res://Assets/GUI/SmallArrow.png" id="4_eqbh4"]
 
 [sub_resource type="Theme" id="Theme_hyko5"]
 RichTextLabel/colors/default_color = Color(0.890196, 0.803922, 0.780392, 1)
@@ -70,7 +70,7 @@ script = ExtResource("1_27r56")
 layout_mode = 0
 offset_right = 260.0
 offset_bottom = 163.0
-color = Color(0.206668, 0.0905366, 0.0834602, 1)
+color = Color(0.137255, 0.117647, 0.117647, 1)
 
 [node name="VBoxContainer" type="Control" parent="."]
 layout_mode = 1

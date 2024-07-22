@@ -19,8 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://b1dgiug6vjg6a" path="res://Assets/DayProgress/SunIcon4.png" id="13_o4atj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
-vertices = PackedVector2Array(207, 148, 234, 153, 22, 153, 179, 148, 78, 148, 50, 148, 207, 117, 234, 58, 207, 120, 207, 89, 212, 58, 158, 71, 158, 53, 163, 54, 179, 86, 22, 38, 50, 120, 73, 53, 99, 53, 99, 71, 78, 58, 163, 38, 179, 38, 78, 86, 179, 89, 78, 89, 50, 58, 207, 86, 207, 38, 212, 38, 179, 117, 78, 117, 50, 86, 50, 89, 179, 120, 78, 120, 73, 38, 50, 117)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2), PackedInt32Array(5, 4, 2), PackedInt32Array(6, 7, 1, 8), PackedInt32Array(7, 6, 9, 10), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(5, 2, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(13, 21, 22, 14), PackedInt32Array(23, 19, 11, 14, 24, 25), PackedInt32Array(19, 23, 20), PackedInt32Array(17, 20, 26, 15), PackedInt32Array(27, 28, 29, 10), PackedInt32Array(27, 10, 9), PackedInt32Array(14, 27, 9, 24), PackedInt32Array(24, 30, 31, 25), PackedInt32Array(32, 23, 25, 33), PackedInt32Array(34, 3, 4, 35), PackedInt32Array(15, 36, 17), PackedInt32Array(1, 0, 8), PackedInt32Array(30, 6, 8, 34), PackedInt32Array(31, 30, 34, 35), PackedInt32Array(37, 31, 35, 16), PackedInt32Array(37, 16, 15), PackedInt32Array(33, 37, 15), PackedInt32Array(32, 33, 15), PackedInt32Array(15, 26, 32)])
+vertices = PackedVector2Array(207, 149, 234, 153, 22, 153, 179, 149, 78, 149, 50, 149, 207, 82, 207, 54, 234, 38, 163, 38, 179, 54, 163, 54, 179, 82, 158, 71, 158, 53, 22, 38, 50, 121, 78, 88, 78, 82, 99, 71, 179, 88, 78, 54, 99, 53, 73, 53, 50, 54, 179, 116, 78, 116, 179, 121, 78, 121, 73, 38, 207, 121, 207, 116, 50, 116, 50, 88, 50, 82, 207, 88)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2), PackedInt32Array(5, 4, 2), PackedInt32Array(6, 7, 8, 1), PackedInt32Array(9, 8, 7, 10), PackedInt32Array(11, 9, 10, 12), PackedInt32Array(13, 14, 11, 12), PackedInt32Array(5, 2, 15, 16), PackedInt32Array(17, 18, 19, 13, 12, 20), PackedInt32Array(19, 18, 21, 22), PackedInt32Array(23, 22, 21, 24), PackedInt32Array(20, 25, 26, 17), PackedInt32Array(27, 3, 4, 28), PackedInt32Array(15, 29, 23, 24), PackedInt32Array(1, 0, 30), PackedInt32Array(31, 1, 30), PackedInt32Array(25, 31, 30, 27), PackedInt32Array(26, 25, 27, 28), PackedInt32Array(32, 26, 28, 16), PackedInt32Array(32, 16, 15), PackedInt32Array(33, 32, 15), PackedInt32Array(15, 24, 34), PackedInt32Array(33, 15, 34), PackedInt32Array(33, 34, 18, 17), PackedInt32Array(20, 12, 6, 35), PackedInt32Array(35, 6, 1), PackedInt32Array(35, 1, 31)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 159, 255, 159, 256, 1, 157, 2, 157, 48, 79, 47, 79, 2)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 6.0
@@ -258,35 +258,27 @@ y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_y8ues")
 
 [node name="counter" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(193, 72)
-collision_layer = 3
-
-[node name="counter4" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(193, 103)
+position = Vector2(193, 68)
 collision_layer = 3
 
 [node name="counter2" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(64, 72)
+position = Vector2(193, 102)
 collision_layer = 3
 
 [node name="counter3" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(64, 134)
+position = Vector2(193, 135)
+collision_layer = 3
+
+[node name="counter4" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+position = Vector2(64, 68)
 collision_layer = 3
 
 [node name="counter5" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(64, 103)
+position = Vector2(64, 102)
 collision_layer = 3
 
 [node name="counter6" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(193, 44)
-collision_layer = 3
-
-[node name="counter7" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(193, 134)
-collision_layer = 3
-
-[node name="counter8" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
-position = Vector2(226, 44)
+position = Vector2(64, 135)
 collision_layer = 3
 
 [node name="Checkout" parent="NavigationRegion2D" instance=ExtResource("6_qywxc")]

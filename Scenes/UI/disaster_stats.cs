@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 public partial class disaster_stats : Control
@@ -65,6 +66,25 @@ public partial class disaster_stats : Control
 
     private void OnContinueButtonPressed()
     {
+        //Theoretically if you start the day without items or stock you will lose the game :3
+        bool emptyStock = true;
+        if(globals.Money == 0)
+        {
+            foreach (var item in globals.Stock.Values)
+            {
+                if(item.currentStock != 0)
+                {
+                    emptyStock = false;
+                }
+            }
+            if(emptyStock)
+            {
+                GD.Print("Game Over!");
+                EmitSignal(nameof(DisasterScreenEnded));
+                sceneManager.ChangeScene("gameover", "FadeToBlack");
+                return;
+            }
+        }
         GD.Print("Continue button pressed!");
         EmitSignal(nameof(DisasterScreenEnded));
         sceneManager.ChangeScene("gamescene", "FadeToBlack");
