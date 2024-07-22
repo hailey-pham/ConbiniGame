@@ -27,7 +27,7 @@ public partial class main_menu : Control
     private void onPlayPressed()
     {
         //change scene to game scene
-        sceneManager.ChangeScene("seasontitle", "FadeToBlack");
+        sceneManager.ChangeScene("storyline", "FadeToBlack");
     }
 
     private void onCreditsPressed()

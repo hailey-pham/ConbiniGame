@@ -16,6 +16,7 @@ scenes = {
 "restock": "res://Scenes/Restock.tscn",
 "seasontitle": "res://Scenes/UI/SeasonTitle.tscn",
 "splashscreen": "res://Scenes/UI/SplashAnimation.tscn",
+"storyline": "res://Scenes/UI/storyline.tscn",
 "upgrade": "res://Scenes/Upgrade.tscn"
 }
 transitions = {

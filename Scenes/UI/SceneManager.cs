@@ -81,11 +81,23 @@ public partial class SceneManager : Node
 	{
 		try
 		{
-			PackedScene scene = (PackedScene)GD.Load((string)scenes[sceneName]);
-			sceneParent.AddChild(scene.Instantiate());
-			//announce what scene we've changed to
-			//calendar uses this
-			EmitSignal(nameof(SceneChanged), sceneName);
+            PackedScene scene = (PackedScene)GD.Load((string)scenes[sceneName]);
+            Node instance = scene.Instantiate();
+            sceneParent.AddChild(instance);
+
+            if (sceneName == "storyline")
+            {
+                var storylineInstance = instance as storyline;
+                if (storylineInstance != null)
+                {
+                    string[] dialogueLines = GetDialogueLinesForStoryline();
+                    storylineInstance.SetDialogue(dialogueLines);
+                    storylineInstance.DialogueFinished += () => ChangeScene("seasontitle", "FadeToBlack");
+                }
+            }
+            //announce what scene we've changed to
+            //calendar uses this
+            EmitSignal(nameof(SceneChanged), sceneName);
 		}
 		catch (Exception)
 		{
@@ -93,4 +105,14 @@ public partial class SceneManager : Node
 			GD.PrintErr("Scene not found!");
 		}
 	}
+    private string[] GetDialogueLinesForStoryline()
+    {
+        // Return the dialogue lines for the storyline scene
+        return new string[]
+        {
+            "Welcome to the story. Press the spacebar btw,",
+            "My grandpa died and i got the store blahblah.",
+            "This is the last line so the game should continue after this."
+        };
+    }
 }

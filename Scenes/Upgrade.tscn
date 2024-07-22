@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_titit"]
 [ext_resource type="Script" path="res://Scenes/UpgradeManager.cs" id="1_w8qvw"]
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="3_7friw"]
-[ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="4_hafs3"]
+[ext_resource type="Theme" uid="uid://bave6qih56tgq" path="res://Scenes/UI/DarkerButtons.tres" id="4_hafs3"]
 [ext_resource type="Texture2D" uid="uid://d1opb8gfc0uf4" path="res://Assets/GUI/BackButton/BackButton.png" id="6_1ybc3"]
 [ext_resource type="Texture2D" uid="uid://dfqcclaok7kc1" path="res://Assets/GUI/BackButton/BackButtonPressed.png" id="7_qfgsn"]
 [ext_resource type="Texture2D" uid="uid://cm4n55jiiud3c" path="res://Assets/GUI/BackButton/BackButtonHover.png" id="8_r3wi8"]
