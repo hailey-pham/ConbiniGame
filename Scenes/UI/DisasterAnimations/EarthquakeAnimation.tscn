@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ch5b42j2po0cp"]
 
 [ext_resource type="Script" path="res://Scenes/UI/DisasterAnimations/EarthquakeAnimation.cs" id="1_xn1he"]
-[ext_resource type="PackedScene" path="res://Assets/StoreFront/SkyBackground.tscn" id="2_12ieo"]
+[ext_resource type="PackedScene" uid="uid://r6iwguk11m2d" path="res://Assets/StoreFront/SkyBackground.tscn" id="2_12ieo"]
 [ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="2_l7e2k"]
 
 [sub_resource type="Animation" id="Animation_a7hxe"]

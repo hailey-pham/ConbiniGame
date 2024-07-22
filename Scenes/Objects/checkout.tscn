@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scenes/Objects/checkout.cs" id="1_m18t2"]
 [ext_resource type="PackedScene" uid="uid://d0xhd3com77f6" path="res://Scenes/UI/sell_animation.tscn" id="2_5r7tm"]
-[ext_resource type="Texture2D" uid="uid://cniv4tia6sm8q" path="res://Assets/DisastoreInteriorTilemapV1.png" id="3_gtfv1"]
+[ext_resource type="Texture2D" uid="uid://bpccdhn7cdrum" path="res://Assets/DisastoreInteriorTilemapV2.png" id="3_hwqs3"]
 [ext_resource type="AudioStream" uid="uid://b1xakyg6pd1pb" path="res://Assets/Music/Beep.wav" id="4_w8tre"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q2hcq"]
-atlas = ExtResource("3_gtfv1")
-region = Rect2(113, 0, 46, 15)
+atlas = ExtResource("3_hwqs3")
+region = Rect2(113, 0, 46, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ya7dp"]
 size = Vector2(47, 11)
@@ -24,6 +24,7 @@ sellAnimation = ExtResource("2_5r7tm")
 texture = SubResource("AtlasTexture_q2hcq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_ya7dp")
 

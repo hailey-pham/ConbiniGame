@@ -70,7 +70,7 @@ script = ExtResource("1_27r56")
 layout_mode = 0
 offset_right = 260.0
 offset_bottom = 163.0
-color = Color(0.206668, 0.0905366, 0.0834602, 1)
+color = Color(0.137255, 0.117647, 0.117647, 1)
 
 [node name="VBoxContainer" type="Control" parent="."]
 layout_mode = 1

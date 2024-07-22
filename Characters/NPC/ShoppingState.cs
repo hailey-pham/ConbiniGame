@@ -1,16 +1,22 @@
+using ConbiniGame.Scripts;
 using Godot;
 using Godot.Collections;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Debug = ConbiniGame.Scripts.Debug;
 
 public partial class ShoppingState : State
 {
     //the fractional probability that a bubble shows on a bad or empty purchase
     [Export]
     private float bubbleShowProbablilty = 0.2f;
-
+    
+    //the minimum and maximum number of items the NPC will have on their shopping list, including duplica
     [Export]
-    private float buyProbability = 0.5f;
+    private int shoppingListMinimumItems = 2;
+    [Export]
+    private int shoppingListMaximumItems = 5;
 
     [Export]
     public int _maxCounters = 3;
@@ -25,19 +31,20 @@ public partial class ShoppingState : State
     //a reference to the marker where the bubble scene will be spawned in
     private Marker2D bubbleSpawn;
 
-    //saves positions and counters
-    private List<Vector2> _movementTargets = new List<Vector2>();
+    //saves counters
     private List<counter> _counters = new List<counter>();
 
+    //number of counters we've been to
     private int _counterNum = 0;
-    private int _currentTargetIdx = 0;
+    //counter we're currently at/trying to go to
+    private counter currCounter;
 
     private NPCPreferenceModifier modifier;
     private npc npcScript;
     private Dictionary message;
 
-    //list of the items the NPC has asked for (through speech bubbles)
-    private List<ItemRes> askedItems = new();
+    //shopping list of items the NPC wants to buy (generated at ready)
+    private List<ItemRes> shoppingList = new();
 
     private static RandomNumberGenerator rng = new RandomNumberGenerator();
     public override void _Enter(Dictionary message)
@@ -56,33 +63,42 @@ public partial class ShoppingState : State
             }
         }
 
+        //get a reference to the location where we spawn speech bubbles 
+        bubbleSpawn = npcScript.GetNode<Marker2D>("BubbleSpawn");
+
         //link our timer callback to the timeout signal of the timer
         timer.Timeout += Timer_Timeout;
+
+        //link our navigation callback to the navigate agent of the npc script
+        npcScript._navigationAgent.NavigationFinished += OnNavigationFinished;
 
         //get all the counters in the store and save their positions for later
         foreach (Node counter in GetTree().GetNodesInGroup("counters"))
         {
-            Marker2D marker2D = counter.GetNode<Marker2D>("Marker2D");
-
-            if (marker2D != null)
-            {
-                _movementTargets.Add(marker2D.GlobalPosition);
-                _counters.Add(counter as counter);
-            }
+            _counters.Add(counter as counter);
         }
 
-        //pick a random target to go to
-        _currentTargetIdx = rng.RandiRange(0, _movementTargets.Count - 1);
+        GenerateShoppingList();
+        GoToACounter();
+    }
 
-        //keep track of how many counters we've been to so far
-        _counterNum++;
+    //fills the shopping list with the popular items of the day, called at enter
+    private void GenerateShoppingList()
+    {
+        int shoppingListSize = rng.RandiRange(shoppingListMinimumItems, shoppingListMaximumItems);
 
-        //tell npc to move to a target position
-        npcScript.MoveToPositionOffset(_movementTargets[_currentTargetIdx]);
-        npcScript._navigationAgent.NavigationFinished += OnNavigationFinished;
+        for (int i = 0; i < shoppingListSize; i++)
+        {
+            var item = NPCPreferenceModifier.GetAPopularItem();
+            shoppingList.Add(item);
+        }
+    }
 
-        //get a reference to where we want our speech bubble to spawn
-        bubbleSpawn = npcScript.GetNode<Marker2D>("BubbleSpawn");
+    private ItemRes GetRandomShoppingListItem()
+    {
+        Debug.Assert(shoppingList.Count > 0, "Shopping Cart is empty! No random item!");
+
+        return shoppingList[rng.RandiRange(0,shoppingList.Count-1)];
     }
 
     
@@ -114,22 +130,29 @@ public partial class ShoppingState : State
 
     private void SpawnBubbleWithProbability()
     {
+        //cases where we don't want bubbles to show
+        if(shoppingList.Count == 0)
+        {
+            return;
+        }
+
+        if (_counterNum > _maxCounters)
+        {
+            return;
+        }
+
         if(rng.Randf() < bubbleShowProbablilty)
         {
             SpeechBubbleAnimation bubbleAnim = (SpeechBubbleAnimation)WantItemScene.Instantiate();
+            bubbleAnim.SetItem(GetRandomShoppingListItem());
             bubbleSpawn.AddChild(bubbleAnim);
-            var askedItem = bubbleAnim.GetItem();
-            if (!askedItems.Contains(askedItem))
-            {
-                askedItems.Add(askedItem);
-            }
         }
     }
 
     private void Timer_Timeout()
     {
         //Gets a reference to the counter, its area2d code with the item logic and the item spawner itself.
-        var thisCounter = _counters[_currentTargetIdx];
+        var thisCounter = currCounter;
         var thisItemSpawner = thisCounter.GetNode<ItemSpawner>("ItemSpawner"); // Technically not needed anymore, maybe idk :3
 
         //check if there is an item to buy and that we want to buy
@@ -138,9 +161,11 @@ public partial class ShoppingState : State
             //calculate buy probability
             modifier ??= GetNode<NPCPreferenceModifier>("/root/NpcPreferenceModifier");
             ItemRes currItem = thisItemSpawner.currItem;
+            //the probability that the NPC will buy the item on this table
+            var buyProbability = 0f;
 
             //if we have asked for this item before, we are now guaranteed to buy it
-            if (askedItems.Contains(currItem))
+            if (shoppingList.Contains(currItem))
             {
                 buyProbability = 1f;
             }
@@ -148,10 +173,18 @@ public partial class ShoppingState : State
             {
                 buyProbability = modifier.ItemBuyProbability(currItem);
             }
+
             //if buy probability is greater than random num
             if(rng.Randf() < buyProbability)
             {
+                //removes the item from the counter and gives it to the NPC's shopping cart
                 npcScript.ShoppingCart.Add(thisItemSpawner.RemoveItemRes());
+
+                //if this was on our list, take it off.
+                if(shoppingList.Contains(currItem))
+                {
+                    shoppingList.Remove(currItem);
+                }
             }
             else
             {
@@ -169,18 +202,29 @@ public partial class ShoppingState : State
         {
             _counterNum++;
 
-            //a simple but effective way to prevevnt picking the same table twice
+            //a simple but effective way to prevent picking the same table twice
 
-            var newTargetIdx = _currentTargetIdx;
+            var newCounter = currCounter;
 
-            while (newTargetIdx == _currentTargetIdx)
+            while (newCounter == currCounter)
             {
-                newTargetIdx = rng.RandiRange(0, _movementTargets.Count - 1);
+                newCounter = _counters[rng.RandiRange(0, _counters.Count - 1)];
             }
 
-            _currentTargetIdx = newTargetIdx;
+            currCounter = newCounter;
 
-            npcScript.MoveToPositionOffset(_movementTargets[newTargetIdx]);
+            //if there are items we currently want
+            if(shoppingList.Count > 0)
+            {
+                var targetCounter = GetCounterWithShoppingListItem();
+                //if there's a counter with an item on it that we want
+                if(targetCounter != null)
+                {
+                    newCounter = targetCounter;
+                }
+            }
+
+            npcScript.MoveToPositionOffset(newCounter.GetMarkerPosition());
         }
         else
         {
@@ -195,5 +239,85 @@ public partial class ShoppingState : State
             }
             
         }
+    }
+
+    //returns a reference to any counter with an item currently on our asked list, chosen at random
+    //if there are no items on our asked list, return null
+    private counter GetCounterWithShoppingListItem()
+    {
+        if(shoppingList.Count == 0)
+        {
+            return null;
+        }
+
+        List<counter> counterCandidates = new();
+
+        foreach (var item in shoppingList)
+        {
+            var counter = GetCounterWithItem(item);
+            if(counter != null)
+            {
+                counterCandidates.Add(counter);
+            }
+        }
+
+        if (counterCandidates.Count == 0)
+        {
+            return null;
+        }
+
+        return counterCandidates[rng.RandiRange(0, counterCandidates.Count - 1)];
+    }
+
+    //loops through all loaded counters and returns a reference to any with a matching itemres
+    //if there are multiple matches, it will return a random matchine counter
+    //if there are no matches, it will return null
+    private counter GetCounterWithItem(ItemRes item)
+    {
+        counter targetCounter = null;
+        List<counter> counterCandidates = new();
+        foreach(var counter in _counters)
+        {
+            //if the item in the counter matches the item we're looking for
+            if(counter.GetNode<ItemSpawner>("ItemSpawner").currItem == item)
+            {
+                counterCandidates.Add(counter);
+            }
+        }
+        
+        //if there are no counter candidates, return null
+        if(counterCandidates.Count == 0)
+        {
+            return null;
+        }
+
+        //gets a random counter from the list of candidate counters
+        targetCounter = counterCandidates[rng.RandiRange(0, counterCandidates.Count - 1)];
+        return targetCounter;
+    }
+
+    //tells the NPC to go to a counter, prioritizing items currently on its shopping list
+    private void GoToACounter()
+    {
+        counter targetCounter;
+        var counter = GetCounterWithShoppingListItem();
+
+        //if we can't find a counter with an item in our shopping list
+        if (counter == null)
+        {
+            //go to a random counter
+            targetCounter = _counters[rng.RandiRange(0, _counters.Count - 1)];
+        }
+        else
+        {
+            targetCounter = counter;
+        }
+
+        //keep track of our current counter
+        currCounter = targetCounter;
+        //increment the number of counters we've navigated to
+        _counterNum++;
+        //move to the damn counter
+        npcScript.MoveToPositionOffset(currCounter.GetMarkerPosition());
     }
 }

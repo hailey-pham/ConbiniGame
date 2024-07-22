@@ -14,6 +14,9 @@ public partial class SceneManager : Node
 	private Node sceneParent;
 	private bool transitioning = false;
 
+	private string prevScene;
+	private string currScene;
+
 	[Signal]
 	public delegate void SceneChangedEventHandler(string SceneName);
 
@@ -24,6 +27,7 @@ public partial class SceneManager : Node
 		sceneParent = GetNode<Node>("SceneParent");
 
 		//load the main menu when the game starts
+		currScene = "splashscreen";
 		LoadNewScene("splashscreen");
 
 	}
@@ -95,9 +99,11 @@ public partial class SceneManager : Node
                     storylineInstance.DialogueFinished += () => ChangeScene("seasontitle", "FadeToBlack");
                 }
             }
-            //announce what scene we've changed to
-            //calendar uses this
-            EmitSignal(nameof(SceneChanged), sceneName);
+			//announce what scene we've changed to
+			//calendar uses this
+			EmitSignal(nameof(SceneChanged), sceneName);
+			prevScene = currScene;
+			currScene = sceneName;
 		}
 		catch (Exception)
 		{
@@ -115,4 +121,6 @@ public partial class SceneManager : Node
             "This is the last line so the game should continue after this."
         };
     }
+
+	public string PrevScene { get => prevScene; set => prevScene = value; }
 }
