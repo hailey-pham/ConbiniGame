@@ -5,7 +5,10 @@ public partial class VendingMachine : Upgrade
 {
 	Random rnd = new Random();
 	globals globals;
-	public void onExteriorLoad(globals Global) { } // Storefront.cs
+	public override void onExteriorLoad(globals Global, Node root) {
+		TextureRect vending = (TextureRect)root.GetTree().GetFirstNodeInGroup("Vending");
+		vending.Visible = true;
+	} // Storefront.cs
 	
 
 	public override void onDayEnd(globals Global, Node root) { // There is no additional UI for this, help	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://hunt30xi3ai5"]
+[gd_scene load_steps=31 format=3 uid="uid://hunt30xi3ai5"]
 
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_km65n"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_wgo4a"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1opb8gfc0uf4" path="res://Assets/GUI/BackButton/BackButton.png" id="4_8bpw7"]
 [ext_resource type="Texture2D" uid="uid://dfqcclaok7kc1" path="res://Assets/GUI/BackButton/BackButtonPressed.png" id="5_vdx4d"]
 [ext_resource type="Texture2D" uid="uid://cm4n55jiiud3c" path="res://Assets/GUI/BackButton/BackButtonHover.png" id="6_c0bpj"]
+[ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="9_j8lql"]
 [ext_resource type="Texture2D" uid="uid://crfjb33kxxpc0" path="res://Assets/ButtonBG.png" id="11_vsaxu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqmef"]
@@ -39,7 +40,7 @@ default_font_size = 10
 Button/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
 Button/colors/font_focus_color = Color(0.192157, 0.164706, 0.164706, 1)
 Button/colors/font_hover_color = Color(0.192157, 0.164706, 0.164706, 1)
-Button/colors/font_hover_pressed_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_hover_pressed_color = Color(0.0864423, 0.0705497, 0.0705515, 1)
 Button/colors/font_pressed_color = Color(0.192157, 0.164706, 0.164706, 1)
 Button/fonts/font = ExtResource("1_km65n")
 Button/styles/disabled = SubResource("StyleBoxFlat_cqmef")
@@ -103,12 +104,6 @@ VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_gfk0o")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noy2n"]
-bg_color = Color(0.192157, 0.164706, 0.164706, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tkgh"]
-bg_color = Color(0.117882, 0.0985077, 0.0985093, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
 bg_color = Color(0.835294, 0.74902, 0.72549, 1)
@@ -295,18 +290,7 @@ offset_left = 24.0
 offset_top = 106.0
 offset_right = 74.0
 offset_bottom = 122.0
-theme_override_colors/font_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_colors/font_pressed_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_colors/font_hover_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_colors/font_focus_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_colors/font_disabled_color = Color(0.788235, 0.67451, 0.647059, 1)
-theme_override_colors/font_outline_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_noy2n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7tkgh")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7tkgh")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_7tkgh")
-theme_override_styles/focus = SubResource("StyleBoxFlat_7tkgh")
+theme = ExtResource("9_j8lql")
 text = "Purchase"
 
 [node name="Control" type="Control" parent="FullOrder"]

@@ -39,7 +39,7 @@ public partial class SeasonTitle : Control
         if (calendar.GetNextDayDisaster() != Calendar.DisastersEnum.None)
         {
             // there is disaster
-            sceneManager.ChangeScene("forecastscene", "FadeToBlack");
+            sceneManager.ChangeScene("forecastscene");
         }
         else
         {

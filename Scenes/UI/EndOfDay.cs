@@ -48,7 +48,7 @@ public partial class EndOfDay : Control
 
         customersLabel = GetNode<RichTextLabel>("VBoxContainer/Customers");
         earningsLabel = GetNode<RichTextLabel>("VBoxContainer/Cash");
-        dayLabel = GetNode<RichTextLabel>("Day");
+        dayLabel = GetNode<RichTextLabel>("VBoxContainer/EndOfDay");
         totalMoneyLabel = GetNode<RichTextLabel>("VBoxContainer/TotalMoney");
 
 		itemsSoldLabel = GetNode<Label>("VBoxContainer2/ItemsSoldLabel");
@@ -96,17 +96,20 @@ public partial class EndOfDay : Control
     public void DisplayEndOfDayStats()
     {
         customersLabel.Text = "Customers Serviced: " + globals.Customers.ToString();
-        earningsLabel.Text = "Cash Earned: " + globals.Earnings.ToString() + " yen";
+        earningsLabel.Text = "Cash Earned: ￥" + globals.Earnings.ToString();
         GD.Print("Here");
         GD.Print(globals.Day.ToString());
         dayLabel.Text = "End of Day " + globals.Day.ToString();
-        totalMoneyLabel.Text = "Current Funds: " + globals.Money.ToString() + " yen";
+        totalMoneyLabel.Text = "Current Funds: ￥" + globals.Money.ToString();
         UpdateItemsSold();
     }
 
 	private void UpdateItemsSold()
 	{
+
 		var itemsSoldToday = globals.ItemsSoldToday;
+		
+
 
 		foreach (var item in itemsSoldToday)
 		{

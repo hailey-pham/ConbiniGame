@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d16j5oem2q3rs"]
+[gd_scene load_steps=5 format=3 uid="uid://d16j5oem2q3rs"]
 
+[ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="1_1gnwd"]
 [ext_resource type="Script" path="res://Scenes/UI/disaster.cs" id="1_i7o8l"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="4_1g73a"]
-[ext_resource type="PackedScene" uid="uid://ii550elalv1u" path="res://Scenes/UI/WarningAnimation.tscn" id="4_ld1vi"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/WarningAnimation.tscn" id="4_ld1vi"]
 
 [node name="Disaster" type="Control"]
 layout_mode = 3
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_1gnwd")
 script = ExtResource("1_i7o8l")
 
 [node name="DisplayTimer" type="Timer" parent="."]
