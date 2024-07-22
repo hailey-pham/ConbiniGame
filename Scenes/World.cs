@@ -10,10 +10,13 @@ public partial class World : Node2D
 	{
 		globals = GetNode<globals>("/root/Globals");
 
-		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
-            if (upgrade.Value.owned) {
-                upgrade.Value.onLevelLoad(globals,GetNode<Node>("."));
-            }
-        }
+		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades)
+		{
+			if (upgrade.Value.owned)
+			{
+				upgrade.Value.onLevelLoad(globals, GetNode<Node>("."));
+			}
+		}
 	}
+
 }
