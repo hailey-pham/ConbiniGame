@@ -1,7 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://bcfcdw8pkwlja"]
+[gd_scene load_steps=23 format=3 uid="uid://bcfcdw8pkwlja"]
 
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_4rgg3"]
 [ext_resource type="Script" path="res://Scenes/UI/EndOfDay.cs" id="2_xdosx"]
+[ext_resource type="Texture2D" uid="uid://f3k6l6ykd7k5" path="res://Assets/GUI/EndOfDayBanner.png" id="3_dscy2"]
+[ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="3_ppul3"]
+[ext_resource type="Texture2D" uid="uid://i1agevnvawql" path="res://Assets/GUI/Items Sold Box.png" id="3_xnkck"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8hc"]
 bg_color = Color(0.521569, 0.537255, 0.639216, 1)
@@ -102,9 +105,16 @@ HScrollBar/styles/scroll = SubResource("StyleBoxFlat_j4t8e")
 Label/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
 Label/fonts/font = ExtResource("1_4rgg3")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8trtt"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_622dd"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fdb3g"]
+content_margin_left = 5.0
+content_margin_top = 12.0
+content_margin_right = 5.0
+content_margin_bottom = 12.0
+texture = ExtResource("3_xnkck")
+texture_margin_left = 5.0
+texture_margin_top = 12.0
+texture_margin_right = 5.0
+texture_margin_bottom = 12.0
 
 [node name="EndOfDayMenu" type="Control"]
 layout_mode = 3
@@ -118,14 +128,15 @@ script = ExtResource("2_xdosx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 257.0
+offset_right = 256.0
 offset_bottom = 161.0
 color = Color(0.890196, 0.803922, 0.780392, 1)
 
 [node name="TitleBG" type="ColorRect" parent="ColorRect"]
+visible = false
 layout_mode = 0
 offset_right = 257.0
-offset_bottom = 136.0
+offset_bottom = 267.0
 scale = Vector2(1, 0.176199)
 color = Color(0.192157, 0.164706, 0.164706, 1)
 
@@ -139,28 +150,23 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_753f3")
 
-[node name="Day" type="RichTextLabel" parent="."]
-layout_mode = 2
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 262.0
-offset_bottom = 18.0
-theme_override_colors/default_color = Color(0.890196, 0.803922, 0.780392, 1)
-text = "End of Day"
-fit_content = true
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = 33.0
-offset_right = -10.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
+offset_left = 10.0
+offset_top = 56.0
+offset_right = 143.0
+offset_bottom = 130.0
+theme_override_constants/separation = 2
+
+[node name="EndOfDay" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+text = "End of Day "
+fit_content = true
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.192157, 0.164706, 0.164706, 1)
 
 [node name="Cash" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
@@ -168,7 +174,6 @@ text = "Cash earned: ￥"
 fit_content = true
 
 [node name="VendingMachineLabel" type="RichTextLabel" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "+(￥2000 Vending Machine)"
 fit_content = true
@@ -185,22 +190,25 @@ fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 6.0
-offset_top = 125.0
+offset_left = 8.0
+offset_top = 133.0
 offset_right = 249.0
-offset_bottom = 149.0
+offset_bottom = 154.0
 theme = SubResource("Theme_norjd")
 
 [node name="UpgradeButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_ppul3")
 text = "UPGRADE"
 
 [node name="RestockButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_ppul3")
 text = "RESTOCK"
 
 [node name="SleepButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_ppul3")
 text = "SLEEP"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
@@ -209,20 +217,36 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -107.0
-offset_top = 31.0
-offset_right = -10.0
-offset_bottom = -10.0
+offset_left = -104.0
+offset_top = 53.0
+offset_right = -8.0
+offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="ItemsSoldLabel" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
 text = "Items sold:"
+horizontal_alignment = 1
 
 [node name="ItemsSoldList" type="ItemList" parent="VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8trtt")
-theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_622dd")
+theme_override_colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
+theme_override_colors/font_hovered_color = Color(0.192157, 0.164706, 0.164706, 1)
+theme_override_colors/font_selected_color = Color(0.192157, 0.164706, 0.164706, 1)
+theme_override_colors/guide_color = Color(0.192157, 0.164706, 0.164706, 1)
+theme_override_styles/panel = SubResource("StyleBoxTexture_fdb3g")
+theme_override_styles/focus = SubResource("StyleBoxTexture_fdb3g")
+theme_override_styles/selected_focus = SubResource("StyleBoxTexture_fdb3g")
+
+[node name="EndOfDayBanner" type="Sprite2D" parent="."]
+position = Vector2(128, 27)
+texture = ExtResource("3_dscy2")
+
+[node name="ItemsSoldBox" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(200, 109)
+texture = ExtResource("3_xnkck")

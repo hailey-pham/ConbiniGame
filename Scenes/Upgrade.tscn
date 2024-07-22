@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://dmagua8ojxkjr"]
+[gd_scene load_steps=32 format=3 uid="uid://dmagua8ojxkjr"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_titit"]
 [ext_resource type="Script" path="res://Scenes/UpgradeManager.cs" id="1_w8qvw"]
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="3_7friw"]
+[ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="4_hafs3"]
 [ext_resource type="Texture2D" uid="uid://d1opb8gfc0uf4" path="res://Assets/GUI/BackButton/BackButton.png" id="6_1ybc3"]
 [ext_resource type="Texture2D" uid="uid://dfqcclaok7kc1" path="res://Assets/GUI/BackButton/BackButtonPressed.png" id="7_qfgsn"]
 [ext_resource type="Texture2D" uid="uid://cm4n55jiiud3c" path="res://Assets/GUI/BackButton/BackButtonHover.png" id="8_r3wi8"]
@@ -119,21 +120,6 @@ bg_color = Color(0.682353, 0.694118, 0.752941, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu0ry"]
 bg_color = Color(0.682353, 0.694118, 0.752941, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noy2n"]
-bg_color = Color(0.192157, 0.164706, 0.164706, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7v28g"]
-bg_color = Color(0.117882, 0.0985077, 0.0985093, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_corio"]
-bg_color = Color(0.117882, 0.0985077, 0.0985093, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekbna"]
-bg_color = Color(0.117882, 0.0985077, 0.0985093, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hhns"]
-bg_color = Color(0.117882, 0.0985077, 0.0985093, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
 bg_color = Color(0.835294, 0.74902, 0.72549, 1)
@@ -370,18 +356,7 @@ offset_left = 199.0
 offset_top = 132.0
 offset_right = 247.0
 offset_bottom = 152.0
-theme = SubResource("Theme_3o58g")
-theme_override_colors/font_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_colors/font_pressed_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_colors/font_hover_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_colors/font_focus_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.945098, 0.878431, 0.862745, 1)
-theme_override_colors/font_disabled_color = Color(0.788235, 0.67451, 0.647059, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_noy2n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7v28g")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_corio")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_ekbna")
-theme_override_styles/focus = SubResource("StyleBoxFlat_4hhns")
+theme = ExtResource("4_hafs3")
 text = "Purchase"
 
 [node name="BackButton" type="TextureButton" parent="."]
