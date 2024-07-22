@@ -109,6 +109,7 @@ public partial class RestockManager : Node
 		
 
 		updateItemInfo();
+		updateTotalItemList();
 		currentMoneyLabel.Text = string.Format("Current Funds: ￥"+globals.Money);
 
 	}

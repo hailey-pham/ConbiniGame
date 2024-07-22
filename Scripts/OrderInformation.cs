@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class OrderInformation : Node
 {
@@ -14,7 +15,6 @@ public partial class OrderInformation : Node
 	}
 
 	public OrderInformation(ItemRes _item) {
-		GD.Print("Order Information: "+_item.name);
 		item = _item;
 
 		parent = new BoxContainer();
@@ -33,12 +33,11 @@ public partial class OrderInformation : Node
 		parent.AddChild(texture);
 		parent.AddChild(itemLabel);
 		parent.AddChild(itemCount);
-		GD.Print("Finished");
 	}
 
 	public void updateInformation() {
 		itemCount.Text = "x"+item.restockAmount;
-		if(item.currentStock < 0) {
+		if(item.restockAmount <= 0) {
 			parent.Visible = false;
 			texture.Visible = false;
 			itemLabel.Visible = false;
