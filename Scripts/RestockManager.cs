@@ -16,11 +16,15 @@ public partial class RestockManager : Node
 
 	 [Signal] public delegate void InsufficientBackButtonPressedEventHandler();
 
+	 [Signal] public delegate void PurchaseButtonPressedEventHandler();
+
 	private TextureButton backButton;
 
 	private Button insufficientBackButton;
 
 	private CanvasLayer insufficientPopUp;
+
+	private Button purchaseButton;
 	
 
 	[Export] Label totalCostLabel;
@@ -56,6 +60,7 @@ public partial class RestockManager : Node
 		purchasedItemContainer = GetNode<GridContainer>("FullOrder/Control/ScrollContainer/GridContainer");
 		insufficientPopUp = GetNode<CanvasLayer>("InsufficientFundsPopUp");
 		insufficientBackButton = GetNode<Button>("InsufficientFundsPopUp/Panel/Back");
+		purchaseButton = GetNode<Button>("FullOrder/Purchase");
 
 		currentItemLabel = GetNode<Label>("ItemInformation/ItemName");
 		currentItemSprite = GetNode<TextureRect>("ItemInformation/ItemSprite");
@@ -74,6 +79,7 @@ public partial class RestockManager : Node
 		addButton.Pressed += OnAddButtonPressed;
 		subtractButton.Pressed += OnSubtractButtonPressed;
 		insufficientBackButton.Pressed += OnInsufficientBackButtonPressed;
+		purchaseButton.Pressed += OnPurchaseButtonPressed;
 
 		// link scroll bars
 		GetNode<ScrollContainer>("VBoxContainer/ItemScroll").GetHScrollBar().Share(GetNode<HScrollBar>("VBoxContainer/HScrollBar"));
@@ -164,7 +170,7 @@ public partial class RestockManager : Node
 	{
 		EmitSignal(nameof(BackButtonPressed));
 		var sceneManager = GetNode<SceneManager>("/root/SceneManager");
-		sceneManager.ChangeScene("endofdayscene");
+		sceneManager.ChangeScene(sceneManager.PrevScene);
 	}
 
 	private void OnItemButtonPressed(string itemName)
@@ -199,5 +205,11 @@ public partial class RestockManager : Node
 	{
 		EmitSignal(nameof(InsufficientBackButtonPressed));
 		insufficientPopUp.Visible = false;
+	}
+
+	private void OnPurchaseButtonPressed()
+	{
+		EmitSignal(nameof(PurchaseButtonPressed));
+		completePurchase();
 	}
 }
