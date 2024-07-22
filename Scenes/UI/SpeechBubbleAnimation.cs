@@ -25,12 +25,15 @@ public partial class SpeechBubbleAnimation : Node2D
         timer.Timeout += OnTimerTimeout;
         timer.Start();
 
-        //set the bubble item texture
-        item = NPCPreferenceModifier.GetAPopularItem();
+        Debug.Assert(item != null, "SpeechBubble spawned without setting an item! " +
+            "Call SetItem() from the instantiating script before letting the Speech Bubble enter tree!");
         itemSprite.Texture = item.spriteTexture;
     }
     
-    
+    public void SetItem(ItemRes item)
+    {
+        this.item = item;
+    }
     public ItemRes GetItem()
     {
         //since the item is initialized after the scene is added to the tree, only call this method after we've entered tree
