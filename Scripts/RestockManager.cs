@@ -73,7 +73,7 @@ public partial class RestockManager : Node
 		subtractButton = GetNode<Button>("ItemInformation/AmountToOrder/Less");
 		insufficientPopUp.Visible = false;
 
-		currentItem = globals.Stock["Water"];
+		currentItem = globals.Stock["Apple"];
 
 		backButton.Pressed += OnBackButtonPressed;
 		addButton.Pressed += OnAddButtonPressed;

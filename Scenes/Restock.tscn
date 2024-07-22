@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://hunt30xi3ai5"]
+[gd_scene load_steps=30 format=3 uid="uid://hunt30xi3ai5"]
 
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_km65n"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_wgo4a"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dfqcclaok7kc1" path="res://Assets/GUI/BackButton/BackButtonPressed.png" id="5_vdx4d"]
 [ext_resource type="Texture2D" uid="uid://cm4n55jiiud3c" path="res://Assets/GUI/BackButton/BackButtonHover.png" id="6_c0bpj"]
 [ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="9_j8lql"]
+[ext_resource type="Theme" uid="uid://bwipxteyboj02" path="res://Scenes/VScroll.tres" id="10_ep5wf"]
 [ext_resource type="Texture2D" uid="uid://crfjb33kxxpc0" path="res://Assets/ButtonBG.png" id="11_vsaxu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqmef"]
@@ -101,17 +102,6 @@ HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_ydne1")
 ScrollContainer/styles/panel = null
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_eu5ur")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_gfk0o")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
-VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
-VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
-bg_color = Color(0.835294, 0.74902, 0.72549, 1)
-
-[sub_resource type="Theme" id="Theme_0qi1k"]
-ScrollContainer/styles/panel = null
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
@@ -322,7 +312,7 @@ layout_mode = 0
 offset_left = 1.0
 offset_right = 107.0
 offset_bottom = 80.0
-theme = SubResource("Theme_0qi1k")
+theme = ExtResource("10_ep5wf")
 
 [node name="GridContainer" type="GridContainer" parent="FullOrder/Control/ScrollContainer"]
 layout_mode = 2

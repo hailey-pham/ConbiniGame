@@ -7,7 +7,9 @@ public partial class storage : Area2D
     public delegate void FreezePlayerEventHandler();
 
     public player Player = null;
-    private Inventory Inventory;
+    private InventoryUI Inventory;
+
+    private NinePatchRect BG;
     //public ItemSpawner playerItemSpawnerParent;
 
     private List<ItemRes> inventoryItems = new List<ItemRes>();
@@ -20,7 +22,10 @@ public partial class storage : Area2D
         //unique naming that can access a node anywhere
         //playerItemSpawnerParent = 
 
-        Inventory = GetNode<Inventory>("Control/Inventory");
+        Inventory = GetNode<InventoryUI>("Control/InventoryUI");
+        BG = GetNode<NinePatchRect>("Control/NinePatchRect");
+        Inventory.Visible = false;
+        BG.Visible = false;
     }
 
     public void OnBodyEntered(Node2D body)
@@ -59,14 +64,17 @@ public partial class storage : Area2D
                     Player._itemSpawner.RemoveItemRes();
                 }
                 
-                if (Inventory.IsVisibleInTree())
+                // if (Inventory.IsVisibleInTree())
+                if(Inventory.Visible)
                 {
-                    Inventory.Hide();
+                    Inventory.Visible = false;
+                    BG.Visible = false;
                 }
                 else
                 {
-                    Inventory.LoadInventory();
-                    Inventory.Show();
+                    Inventory.ReloadItemList();
+                    Inventory.Visible = true;
+                    BG.Visible = true;
                 }
 
                 Player.playerFreezeState();

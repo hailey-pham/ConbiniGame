@@ -13,7 +13,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_pressed("Interact"):
+		animPlayer.play("slide")
+		animPlayer.advance(8)
+		on_anim_finished("")
 	pass
 
 func on_anim_finished(animName : String):
 	sceneManager.ChangeScene("mainmenu","FadeToBlack")
+
+

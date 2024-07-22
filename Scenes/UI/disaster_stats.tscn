@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dg5o4x6g8clfy"]
+[gd_scene load_steps=14 format=3 uid="uid://dg5o4x6g8clfy"]
 
 [ext_resource type="Script" path="res://Scenes/UI/disaster_stats.cs" id="1_27r56"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_chri5"]
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="3_0wvdm"]
-[ext_resource type="Texture2D" uid="uid://cu668byqr7t7h" path="res://Assets/GUI/SmallArrow.png" id="4_eqbh4"]
 
 [sub_resource type="Theme" id="Theme_hyko5"]
 RichTextLabel/colors/default_color = Color(0.890196, 0.803922, 0.780392, 1)
@@ -68,8 +67,8 @@ script = ExtResource("1_27r56")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 260.0
-offset_bottom = 163.0
+offset_right = 257.0
+offset_bottom = 161.0
 color = Color(0.137255, 0.117647, 0.117647, 1)
 
 [node name="VBoxContainer" type="Control" parent="."]
@@ -98,31 +97,32 @@ fit_content = true
 [node name="Stats" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 2.0
-offset_top = 32.0
+offset_top = 39.0
 offset_right = 243.0
-offset_bottom = 44.0
+offset_bottom = 51.0
 text = "Money Lost: ￥"
 fit_content = true
 
 [node name="CurrentStats" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 2.0
-offset_top = 45.0
+offset_top = 52.0
 offset_right = 243.0
-offset_bottom = 57.0
+offset_bottom = 64.0
 text = "Current Funds: ￥"
 fit_content = true
 
 [node name="ResourcesLost" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 2.0
-offset_top = 75.0
+offset_top = 71.0
 offset_right = 243.0
-offset_bottom = 87.0
+offset_bottom = 83.0
 text = "Stock Lost:"
 fit_content = true
 
 [node name="ItemsLost" type="RichTextLabel" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 offset_left = 2.0
 offset_top = 57.0
@@ -186,17 +186,8 @@ text = "RESTOCK"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
-offset_left = 11.0
-offset_top = 92.0
-offset_right = 245.0
-offset_bottom = 129.0
-color = Color(0.501961, 0.513726, 0.588235, 0.32549)
-
-[node name="SmallArrow" type="Sprite2D" parent="."]
-position = Vector2(5, 112)
-texture = ExtResource("4_eqbh4")
-flip_h = true
-
-[node name="SmallArrow2" type="Sprite2D" parent="."]
-position = Vector2(251, 112)
-texture = ExtResource("4_eqbh4")
+offset_left = 8.0
+offset_top = 88.0
+offset_right = 248.0
+offset_bottom = 125.0
+color = Color(0.788235, 0.67451, 0.647059, 0.196078)

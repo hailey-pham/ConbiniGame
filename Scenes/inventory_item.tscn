@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://demewmfqirvib"]
+
+[ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_lu5w4"]
+[ext_resource type="Texture2D" uid="uid://depmkf23b02rp" path="res://Assets/Items/Extinguisher.png" id="2_ncm1j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqmef"]
+bg_color = Color(0.66858, 0.533531, 0.501091, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.666667, 0.533333, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1mxr"]
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.788235, 0.67451, 0.647059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwy37"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqfbc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy7gg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4t8e"]
+
+[sub_resource type="Theme" id="Theme_njysh"]
+default_font_size = 10
+Button/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_focus_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_hover_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_hover_pressed_color = Color(0.0864423, 0.0705497, 0.0705515, 1)
+Button/colors/font_pressed_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/fonts/font = ExtResource("1_lu5w4")
+Button/styles/disabled = SubResource("StyleBoxFlat_cqmef")
+Button/styles/focus = SubResource("StyleBoxFlat_cqmef")
+Button/styles/hover = SubResource("StyleBoxFlat_cqmef")
+Button/styles/normal = SubResource("StyleBoxFlat_y1mxr")
+Button/styles/pressed = SubResource("StyleBoxFlat_cqmef")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_kwy37")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_lqfbc")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy7gg")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_j4t8e")
+Label/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
+Label/fonts/font = ExtResource("1_lu5w4")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q0gxn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8s4qr"]
+bg_color = Color(0.788235, 0.67451, 0.647059, 0.541176)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46q0c"]
+bg_color = Color(0.67638, 0.54174, 0.509389, 0.541176)
+
+[node name="InventoryItem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -256.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_njysh")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_right = 224.0
+offset_bottom = 23.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q0gxn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8s4qr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46q0c")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_46q0c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8s4qr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Button"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 200.0
+offset_bottom = 23.0
+
+[node name="TextureRect" type="TextureRect" parent="Button/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2_ncm1j")
+stretch_mode = 3
+
+[node name="ItemLabel" type="Label" parent="Button/HBoxContainer"]
+custom_minimum_size = Vector2(165, 0)
+layout_mode = 2
+text = "Fire Extinguisher"
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Button/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "x999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 224.0
+offset_bottom = 24.0
+color = Color(0.192157, 0.164706, 0.164706, 1)
