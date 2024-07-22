@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_8t4c0"]
 [ext_resource type="Script" path="res://Scenes/UI/main_menu.cs" id="2_3nljo"]
-[ext_resource type="PackedScene" uid="uid://r6iwguk11m2d" path="res://Assets/StoreFront/SkyBackground.tscn" id="3_32f1q"]
+[ext_resource type="PackedScene" path="res://Assets/StoreFront/SkyBackground.tscn" id="3_32f1q"]
 [ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="3_ho7gn"]
 [ext_resource type="Texture2D" uid="uid://cbua6umy1pad1" path="res://Assets/GUI/DisastoreTitleScreenSign.png" id="4_giwet"]
 [ext_resource type="AudioStream" uid="uid://dw6hl7yh61gpd" path="res://Assets/Music/Chill.mp3" id="5_wopo5"]

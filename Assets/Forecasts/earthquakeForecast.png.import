@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctid4rjxh0ki3"
-path="res://.godot/imported/earthquakeForecast.png-c8cba07f5f98327196bc5dc92d96d25d.ctex"
+path="res://.godot/imported/EarthquakeForecast.png-c16c1ec402b5b7e8ebc688515ab2190a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Forecasts/earthquakeForecast.png"
-dest_files=["res://.godot/imported/earthquakeForecast.png-c8cba07f5f98327196bc5dc92d96d25d.ctex"]
+source_file="res://Assets/Forecasts/EarthquakeForecast.png"
+dest_files=["res://.godot/imported/EarthquakeForecast.png-c16c1ec402b5b7e8ebc688515ab2190a.ctex"]
 
 [params]
 

@@ -348,15 +348,6 @@ offset_right = 42.0
 offset_bottom = 171.0
 theme = ExtResource("11_il57l")
 
-[node name="npcSpawner" parent="." groups=["spawner"] instance=ExtResource("9_w4hoi")]
-z_index = -1
-y_sort_enabled = true
-position = Vector2(128, 142)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="npcSpawner"]
-stream = ExtResource("9_wpaow")
-volume_db = -4.0
-max_polyphony = 2
 [node name="ProgressBar" type="TextureRect" parent="UI"]
 layout_mode = 1
 anchors_preset = 10
@@ -410,6 +401,16 @@ root_node = NodePath("../Suns")
 libraries = {
 "": SubResource("AnimationLibrary_c32fq")
 }
+
+[node name="npcSpawner" parent="." groups=["spawner"] instance=ExtResource("9_w4hoi")]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(128, 142)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="npcSpawner"]
+stream = ExtResource("9_wpaow")
+volume_db = -4.0
+max_polyphony = 2
 
 [node name="storage" parent="." instance=ExtResource("13_1hsmu")]
 z_index = -1
