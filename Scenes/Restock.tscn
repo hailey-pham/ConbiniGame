@@ -510,3 +510,5 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_v17pk")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_v17pk")
 theme_override_styles/focus = SubResource("StyleBoxFlat_v17pk")
 text = "Back"
+
+[connection signal="pressed" from="FullOrder/Purchase" to="." method="_on_purchase_pressed"]

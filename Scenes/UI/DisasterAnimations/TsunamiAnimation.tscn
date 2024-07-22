@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/UI/DisasterAnimations/TsunamiAnimation.cs" id="1_2jn88"]
 [ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="1_gx4cm"]
-[ext_resource type="Texture2D" uid="uid://c0rq6711ip4mm" path="res://Assets/Tsunami.png" id="2_tayvm"]
-[ext_resource type="PackedScene" uid="uid://r6iwguk11m2d" path="res://Assets/StoreFront/SkyBackground.tscn" id="2_wjn7s"]
+[ext_resource type="Texture2D" uid="uid://c0rq6711ip4mm" path="res://Assets/tsunami.png" id="2_tayvm"]
+[ext_resource type="PackedScene" path="res://Assets/StoreFront/SkyBackground.tscn" id="2_wjn7s"]
 
 [node name="TsunamiAnimation" type="Control" node_paths=PackedStringArray("waveBg", "waveFg")]
 layout_mode = 3

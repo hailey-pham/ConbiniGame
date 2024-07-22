@@ -67,4 +67,9 @@ public partial class counter : StaticBody2D
             }
         }
     }
+
+    public Vector2 GetMarkerPosition()
+    {
+        return GetNode<Marker2D>("Marker2D").GlobalPosition;
+    }
 }

@@ -17,6 +17,8 @@ public partial class globals : Node
 	private static List<ItemRes> _itemsSoldToday = new();
 	public static int _day = 0;
 
+	private int itemProtection = 0;
+
 	public static double stockLosePercentage = 0.1; // make randomizing function for this l8r
 
 	public static Dictionary<string, Upgrade> _upgrades = new Dictionary<string, Upgrade>();
@@ -24,6 +26,8 @@ public partial class globals : Node
 	//signal to tell money GUI to update
 	[Signal]
 	public delegate void MoneyUpdatedEventHandler(int money);
+
+	private disaster_stats disasterstats;
 
     public int Money
 	{
@@ -68,7 +72,9 @@ public partial class globals : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-		string path = "res://Resources/Items/";
+		itemProtection = 0;
+
+        string path = "res://Resources/Items/";
 		var dir = DirAccess.Open(path);
 
 		string[] fileNames = dir.GetFiles();
@@ -158,17 +164,19 @@ public partial class globals : Node
 
 	public void LoseStock()
 	{
-		foreach (var item in stock.Values)
+        Random rnd = new Random();
+
+        foreach (var item in stock.Values)
 		{
-			int lossAmount = GetLossAmount(item);
-			// cant let stock go negative
-			item.currentStock = Math.Max(0, item.currentStock - lossAmount);
+            int lossAmount = (item.currentStock / rnd.Next(10+itemProtection, 100));
+            // cant let stock go negative
+            item.currentStock = Math.Max(0, item.currentStock - lossAmount);
 		}
     }
-
-	public static int GetLossAmount(ItemRes item) // for use later but might not work
-	{
-		return (int)Math.Ceiling(item.currentStock * stockLosePercentage);
+    public int ItemProtection
+    {
+        get { return itemProtection; }
+        set { itemProtection = value; }
     }
 
 	public void ResetGame()

@@ -17,3 +17,5 @@ spawnCurve = SubResource("Curve_icla7")
 rotation = -1.5708
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_2fi0q")
+
+[node name="FirstNPCTimer" type="Timer" parent="."]
