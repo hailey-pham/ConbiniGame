@@ -157,6 +157,7 @@ public partial class RestockManager : Node
 				item.Value.restockAmount = 0;
 			}
 			updateItemInfo();
+			updateTotalItemList();
 			currentMoneyLabel.Text = string.Format("Current Funds: ￥"+globals.Money);
 			
 		} else {
