@@ -110,13 +110,7 @@ public partial class globals : Node
 			_upgrades.Add(resourceU.name, resourceU);
 		}
 
-		//sets water stock to five if we're in debug mode
-#if DEBUG
-		foreach (var item in stock.Values)
-		{
-			item.currentStock = 999;
-		}
-#endif
+		ResetGame();
 	}
 
     private void ResetEarnings()
@@ -175,5 +169,32 @@ public partial class globals : Node
 	public static int GetLossAmount(ItemRes item) // for use later but might not work
 	{
 		return (int)Math.Ceiling(item.currentStock * stockLosePercentage);
+    }
+
+	public void ResetGame()
+	{
+		GD.Print("SetGame!");
+        foreach (var item in stock.Values)
+        {
+            item.currentStock = 0;
+        }
+		
+        Money = 500;
+		for (int i = 0; i < 20;i++)
+		{
+			if (i < 5)
+			{
+				IncrementItemResStock(stock["Sakura Mochi"]);
+            }
+            IncrementItemResStock(stock["Water"]);
+            IncrementItemResStock(stock["Toilet Paper"]);
+        }
+#if DEBUG
+        foreach (var item in stock.Values)
+        {
+            item.currentStock = 999;
+        }
+#endif
+		
     }
 }
