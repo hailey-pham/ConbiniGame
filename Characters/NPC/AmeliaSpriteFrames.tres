@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=51 format=3 uid="uid://dptoav56nygca"]
+[gd_resource type="SpriteFrames" load_steps=51 format=3 uid="uid://cthr1s7ur5rcn"]
 
 [ext_resource type="Texture2D" uid="uid://bp8fd78k4r4dh" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Amelia_idle_anim_16x16.png" id="1_3kn2p"]
 [ext_resource type="Texture2D" uid="uid://b66uaft3t6eb" path="res://Assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Amelia_run_16x16.png" id="2_tf3c7"]

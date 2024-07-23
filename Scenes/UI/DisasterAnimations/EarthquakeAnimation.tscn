@@ -54,8 +54,8 @@ layout_mode = 0
 
 [node name="StoreFront" parent="." instance=ExtResource("2_l7e2k")]
 layout_mode = 1
-offset_right = 2304.0
-offset_bottom = 1440.0
+offset_right = 2816.0
+offset_bottom = 1760.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
