@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dvf8kxmq3w1lt" path="res://Scenes/Objects/inventory.tscn" id="2_xnbmo"]
 [ext_resource type="Script" path="res://Scenes/Objects/storage.cs" id="2_yhkxo"]
 [ext_resource type="Script" path="res://Scripts/InventoryUI.cs" id="12_4veed"]
-[ext_resource type="PackedScene" uid="uid://demewmfqirvib" path="res://Scenes/inventory_item.tscn" id="13_kifw7"]
+[ext_resource type="PackedScene" path="res://Scenes/inventory_item.tscn" id="13_kifw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfu4v"]
 size = Vector2(58, 20)
@@ -56,7 +56,6 @@ position = Vector2(0, 10.57)
 shape = SubResource("RectangleShape2D_gfu4v")
 
 [node name="Control" type="Control" parent="."]
-visible = false
 top_level = true
 z_index = 10
 layout_mode = 3
