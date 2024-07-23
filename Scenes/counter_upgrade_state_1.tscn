@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cl8e50dilm7oa" path="res://Scenes/Objects/squarecounter.tscn" id="1_ihn81"]
 
 [node name="CounterUpgradeState1" type="Node2D" groups=["counterstate1"]]
-visible = false
 y_sort_enabled = true
 
 [node name="squarecounter" parent="." instance=ExtResource("1_ihn81")]
