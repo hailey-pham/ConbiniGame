@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cftcofgmgag7y"
-path="res://.godot/imported/SeasonIcons2.png-5964681228930859f52999e5d88016f1.ctex"
+uid="uid://b5e36vtq3dqbj"
+path="res://.godot/imported/FallIcon.png-2a1d6a7ffb8bd81f609b32e1e5f55413.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SeasonIcons/SeasonIcons2.png"
-dest_files=["res://.godot/imported/SeasonIcons2.png-5964681228930859f52999e5d88016f1.ctex"]
+source_file="res://Assets/SeasonIcons/FallIcon.png"
+dest_files=["res://.godot/imported/FallIcon.png-2a1d6a7ffb8bd81f609b32e1e5f55413.ctex"]
 
 [params]
 

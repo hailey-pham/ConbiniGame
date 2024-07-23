@@ -30,6 +30,10 @@ public partial class globals : Node
 	[Signal]
 	public delegate void MoneyUpdatedEventHandler(int money);
 
+    //emited by load game when all resources and items have been loaded
+    [Signal]
+    public delegate void GameLoadedEventHandler();
+
 	private disaster_stats disasterstats;
 
     public int Money
@@ -81,69 +85,7 @@ public partial class globals : Node
 		Stopwatch stopwatch = new Stopwatch();
 		stopwatch.Start();
 
-		var t = Task.Run(() =>
-		{
-            string path = "res://Resources/Items/";
-            var dir = DirAccess.Open(path);
-
-            string[] fileNames = dir.GetFiles();
-            GD.Print("Getting items...");
-
-			Parallel.ForEach(fileNames, filename =>
-			{
-                string tempFileName;
-                char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
-
-                if (filename.Contains(".tres.remap"))
-                {
-                    tempFileName = filename.TrimEnd(remap);
-                    // GD.Print("TFN: "+tempFileName);
-                }
-                else
-                {
-                    tempFileName = filename;
-                }
-                ItemRes resource = GD.Load<ItemRes>(path + tempFileName);
-                // GD.Print(resource.name);
-                if (resource == null)
-                {
-                    throw new Exception($"Resource at {path + tempFileName} failed to load!");
-                }
-
-                Stock.Add(resource.name, resource);
-				GD.Print($"Added resource (item): {resource.name}");
-            });
-        });
-
-        var u = Task.Run(() =>
-        {
-            string pathU = "res://Resources/Upgrades/";
-            var dirU = DirAccess.Open(pathU);
-
-            string[] fileNamesU = dirU.GetFiles();
-            GD.Print("Getting upgrades...");
-            
-            Parallel.ForEach(fileNamesU, fileName =>
-            {
-                string tempFileName;
-                char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
-
-                if (fileName.Contains(".tres.remap"))
-                {
-                    tempFileName = fileName.TrimEnd(remap);
-
-                }
-                else
-                {
-                    tempFileName = fileName;
-                }
-
-                // GD.Print("Adding resource (item)...");
-                Upgrade resourceU = GD.Load<Upgrade>(pathU + tempFileName);
-                _upgrades.Add(resourceU.name, resourceU);
-                GD.Print("Added resource (upgrade): " + resourceU.name);
-            });
-        });
+		LoadGameData();
 
         stopwatch.Stop();
         GD.Print($"Resource loading took: {stopwatch.ElapsedMilliseconds} ms");
@@ -245,5 +187,77 @@ public partial class globals : Node
         {
             ResetGame();
         }
+    }
+
+    private async void LoadGameData()
+    {
+        var t = Task.Run(() =>
+        {
+            string path = "res://Resources/Items/";
+            var dir = DirAccess.Open(path);
+
+            string[] fileNames = dir.GetFiles();
+            GD.Print("Getting items...");
+
+            Parallel.ForEach(fileNames, filename =>
+            {
+                string tempFileName;
+                char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
+
+                if (filename.Contains(".tres.remap"))
+                {
+                    tempFileName = filename.TrimEnd(remap);
+                    // GD.Print("TFN: "+tempFileName);
+                }
+                else
+                {
+                    tempFileName = filename;
+                }
+                ItemRes resource = GD.Load<ItemRes>(path + tempFileName);
+                // GD.Print(resource.name);
+                if (resource == null)
+                {
+                    throw new Exception($"Resource at {path + tempFileName} failed to load!");
+                }
+
+                Stock.Add(resource.name, resource);
+                GD.Print($"Added resource (item): {resource.name}");
+            });
+        });
+
+        var u = Task.Run(() =>
+        {
+            string pathU = "res://Resources/Upgrades/";
+            var dirU = DirAccess.Open(pathU);
+
+            string[] fileNamesU = dirU.GetFiles();
+            GD.Print("Getting upgrades...");
+
+            Parallel.ForEach(fileNamesU, fileName =>
+            {
+                string tempFileName;
+                char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
+
+                if (fileName.Contains(".tres.remap"))
+                {
+                    tempFileName = fileName.TrimEnd(remap);
+
+                }
+                else
+                {
+                    tempFileName = fileName;
+                }
+
+                // GD.Print("Adding resource (item)...");
+                Upgrade resourceU = GD.Load<Upgrade>(pathU + tempFileName);
+                _upgrades.Add(resourceU.name, resourceU);
+                GD.Print("Added resource (upgrade): " + resourceU.name);
+            });
+        });
+
+        await t;
+        await u;
+
+        EmitSignal(nameof(GameLoaded));
     }
 }
