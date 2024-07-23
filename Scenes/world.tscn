@@ -337,7 +337,7 @@ layer_2/tile_data = PackedInt32Array(589831, 458753, 2, 589832, 524289, 2)
 [node name="Checkout" parent="NavigationRegion2D" instance=ExtResource("6_qywxc")]
 position = Vector2(128, 57)
 
-[node name="CounterUpgradeState0" type="Node2D" parent="NavigationRegion2D"]
+[node name="CounterUpgradeState0" type="Node2D" parent="NavigationRegion2D" groups=["counterstate0"]]
 y_sort_enabled = true
 
 [node name="counter" parent="NavigationRegion2D/CounterUpgradeState0" instance=ExtResource("6_jsvja")]
@@ -360,7 +360,7 @@ z_as_relative = false
 position = Vector2(194, 118)
 collision_layer = 3
 
-[node name="CounterUpgradeState1" type="Node2D" parent="NavigationRegion2D"]
+[node name="CounterUpgradeState1" type="Node2D" parent="NavigationRegion2D" groups=["counterstate1"]]
 visible = false
 y_sort_enabled = true
 
@@ -404,7 +404,7 @@ z_as_relative = false
 position = Vector2(210, 118)
 collision_layer = 3
 
-[node name="CounterUpgradeState2" type="Node2D" parent="NavigationRegion2D"]
+[node name="CounterUpgradeState2" type="Node2D" parent="NavigationRegion2D" groups=["counterstate2"]]
 visible = false
 y_sort_enabled = true
 

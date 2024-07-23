@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 public partial class World : Node2D
 {
@@ -10,6 +11,8 @@ public partial class World : Node2D
 
 	Calendar calendar;
 	CalendarUI calendarUI;
+
+	public int counterState = 0;
 
 	Label dayLabel;
 	public override void _Ready()
@@ -34,7 +37,35 @@ public partial class World : Node2D
 			if (upgrade.Value.owned)
 			{
 				upgrade.Value.onLevelLoad(globals, GetNode<Node>("."));
-			}
-		}
+            }
+        }
+
+        switch (counterState)
+        {
+            case 0:
+                // code block
+                DestroyCounterState(1);
+                DestroyCounterState(2);
+				break;
+            case 1:
+				// code block
+				DestroyCounterState(0);
+				DestroyCounterState(2);
+                break;
+            case 2:
+                // code block
+                DestroyCounterState(0);
+				DestroyCounterState(1);
+                break;
+        }
+
+
+
 	}
+    void DestroyCounterState(int state)
+    {
+		GetTree().GetFirstNodeInGroup("counterstate" + state.ToString()).QueueFree();
+
+    }
 }
+
