@@ -308,6 +308,28 @@ public partial class Calendar : Node2D
         return DisasterType.None;
     }
 
+    private int[] GenerateDisasterDaysSynchronous(string season)
+    {
+        int[] weeklyDisasters = new int[seasonLength];
+
+        Random random = new Random();
+
+        int randIndex = random.Next(1, seasonLength); // choose a random day, except first
+
+        // assign a random disaster to the chosen day
+        weeklyDisasters[randIndex] = (int)AssignRandomDisaster(random, season);
+
+        // assign 0 (no disaster) to the rest of the days
+        for (int i = 0; i < weeklyDisasters.Length; i++)
+        {
+            if (weeklyDisasters[i] == 0)
+            {
+                weeklyDisasters[i] = (int)DisasterType.None;
+            }
+        }
+
+        return weeklyDisasters;
+    }
     private async Task<int[]> GenerateDisasterDays(string season)
     {
         int[] weeklyDisasters = new int[seasonLength];
@@ -332,20 +354,16 @@ public partial class Calendar : Node2D
         });
         return await Task.FromResult(weeklyDisasters);
     }
-    public async void GenerateDisasterCalendar()
+    public void GenerateDisasterCalendar()
     {
         var stopwatch = new Stopwatch();
         stopwatch.Start();
         // generate and output all the disaster arrays for the year at once
-        var springTask = Task.Run(() => GenerateDisasterDays("Spring"));
-        var summerTask = Task.Run(() => GenerateDisasterDays("Summer"));
-        var autumnTask = Task.Run(() => GenerateDisasterDays("Autumn"));
-        var winterTask = Task.Run(() => GenerateDisasterDays("Winter"));
 
-        springArray = await springTask;
-        summerArray = await summerTask;
-        autumnArray = await autumnTask;
-        winterArray = await winterTask;
+        springArray = GenerateDisasterDaysSynchronous("Spring");
+        summerArray = GenerateDisasterDaysSynchronous("Summer");
+        autumnArray = GenerateDisasterDaysSynchronous("Autumn");
+        winterArray = GenerateDisasterDaysSynchronous("Winter");
 
         GD.Print("Spring events: " + string.Join(",", springArray));
         GD.Print("Summer events: " + string.Join(",", summerArray));

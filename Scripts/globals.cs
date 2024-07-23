@@ -1,8 +1,10 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 
 public partial class globals : Node
@@ -74,50 +76,72 @@ public partial class globals : Node
 	{
 		itemProtection = 0;
 
-        string path = "res://Resources/Items/";
-		var dir = DirAccess.Open(path);
+		Stopwatch stopwatch = new Stopwatch();
+		stopwatch.Start();
 
-		string[] fileNames = dir.GetFiles();
-		// GD.Print("Getting resources...");
+		var t = Task.Run(() =>
+		{
+            string path = "res://Resources/Items/";
+            var dir = DirAccess.Open(path);
 
-		string tempFileName;
-		char[] remap = {'.','r','e','m','a','p'};
-		foreach (string fileName in fileNames) {
-			// GD.Print("Adding resource (item)...");
-			if (fileName.Contains(".tres.remap")) { 
-    			tempFileName = fileName.TrimEnd(remap);
-				// GD.Print("TFN: "+tempFileName);
-			} else {
-				tempFileName = fileName;
-			}
-			ItemRes resource = GD.Load<ItemRes>(path+tempFileName);
-			// GD.Print(resource.name);
-			Stock.Add(resource.name, resource);
-		}
+            string[] fileNames = dir.GetFiles();
+            GD.Print("Getting items...");
 
-		string pathU = "res://Resources/Upgrades/";
-		var dirU = DirAccess.Open(pathU);
+            string tempFileName;
+            char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
+			Parallel.ForEach(fileNames, filename =>
+			{
+                if (filename.Contains(".tres.remap"))
+                {
+                    tempFileName = filename.TrimEnd(remap);
+                    // GD.Print("TFN: "+tempFileName);
+                }
+                else
+                {
+                    tempFileName = filename;
+                }
+                ItemRes resource = GD.Load<ItemRes>(path + tempFileName);
+                // GD.Print(resource.name);
+                Stock.Add(resource.name, resource);
+				GD.Print($"Added resource (item): {resource.name}");
+            });
+        });
 
-		string[] fileNamesU = dirU.GetFiles();
-		// GD.Print(pathU);
-		// GD.Print("Getting resources...");
+        var u = Task.Run(() =>
+        {
+            string pathU = "res://Resources/Upgrades/";
+            var dirU = DirAccess.Open(pathU);
 
-		foreach (string fileName in fileNamesU) {
-			if (fileName.Contains(".tres.remap")) { 
-    			tempFileName = fileName.TrimEnd(remap);
-				
-			} else {
-				tempFileName = fileName;
-			}
+            string[] fileNamesU = dirU.GetFiles();
+            GD.Print("Getting upgrades...");
 
-			// GD.Print("Adding resource (item)...");
-			Upgrade resourceU = GD.Load<Upgrade>(pathU+tempFileName);
-			// GD.Print(resourceU.name);
-			_upgrades.Add(resourceU.name, resourceU);
-		}
+            string tempFileName;
+            char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
+            Parallel.ForEach(fileNamesU, fileName =>
+            {
+                if (fileName.Contains(".tres.remap"))
+                {
+                    tempFileName = fileName.TrimEnd(remap);
 
-		ResetGame();
-	}
+                }
+                else
+                {
+                    tempFileName = fileName;
+                }
+
+                // GD.Print("Adding resource (item)...");
+                Upgrade resourceU = GD.Load<Upgrade>(pathU + tempFileName);
+                _upgrades.Add(resourceU.name, resourceU);
+                GD.Print("Added resource (upgrade): " + resourceU.name);
+            });
+        });
+
+        stopwatch.Stop();
+        GD.Print($"Resource loading took: {stopwatch.ElapsedMilliseconds} ms");
+
+        SceneManager sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        sceneManager.SceneChanged += OnSceneChanged;
+    }
 
     private void ResetEarnings()
     {
@@ -204,5 +228,13 @@ public partial class globals : Node
         }
 #endif
 		
+    }
+
+    private void OnSceneChanged(string sceneName)
+    {
+        if(sceneName == "mainmenu")
+        {
+            ResetGame();
+        }
     }
 }
