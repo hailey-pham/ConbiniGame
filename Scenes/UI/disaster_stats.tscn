@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dg5o4x6g8clfy"]
+[gd_scene load_steps=22 format=3 uid="uid://dg5o4x6g8clfy"]
 
 [ext_resource type="Script" path="res://Scenes/UI/disaster_stats.cs" id="1_27r56"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_chri5"]
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="3_0wvdm"]
+[ext_resource type="PackedScene" uid="uid://md50y6c3w2kw" path="res://Scenes/lost_item.tscn" id="4_wgsda"]
 
 [sub_resource type="Theme" id="Theme_hyko5"]
 RichTextLabel/colors/default_color = Color(0.890196, 0.803922, 0.780392, 1)
@@ -55,6 +56,43 @@ bg_color = Color(0.788235, 0.67451, 0.647059, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl4lj"]
 bg_color = Color(0.719969, 0.589882, 0.558569, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nuyb"]
+bg_color = Color(0.835294, 0.74902, 0.72549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy2c7"]
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydne1"]
+bg_color = Color(0.945098, 0.878431, 0.862745, 1)
+border_width_top = 5
+border_color = Color(0.945098, 0.878431, 0.862745, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu5ur"]
+bg_color = Color(0.835294, 0.74902, 0.72549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfk0o"]
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oghr"]
+bg_color = Color(0.945098, 0.878431, 0.862745, 1)
+border_width_left = 5
+border_color = Color(0.945098, 0.878431, 0.862745, 1)
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_2ckhi"]
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_5nuyb")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_ydne1")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_ydne1")
+ScrollContainer/styles/panel = null
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_eu5ur")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_gfk0o")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
+
 [node name="DisasterStats" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -64,6 +102,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_chri5")
 script = ExtResource("1_27r56")
+LostItemContainer = ExtResource("4_wgsda")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
@@ -131,13 +170,6 @@ offset_bottom = 69.0
 text = "You lost --% of each stock"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 87.0
-offset_right = 245.0
-offset_bottom = 124.0
-
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -191,3 +223,21 @@ offset_top = 88.0
 offset_right = 248.0
 offset_bottom = 125.0
 color = Color(0.788235, 0.67451, 0.647059, 0.196078)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 88.0
+offset_right = 248.0
+offset_bottom = 126.0
+theme = SubResource("Theme_2ckhi")
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LostItem" parent="ScrollContainer/HBoxContainer" instance=ExtResource("4_wgsda")]
+visible = false
+layout_mode = 2

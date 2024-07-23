@@ -55,32 +55,45 @@ public partial class storage : Area2D
             if (Player != null)
             {
                 //if player is currently holding an item
-                if (Player._itemSpawner.currItem != null && (Player._itemSpawner2.currItem != null || !Player.IsStackItemUpgrade))
-                {
-                    if(Player.IsStackItemUpgrade)
-                    {
-                        Player._itemSpawner2.currItem.ReturnItemToStock();
-                        Player._itemSpawner2.RemoveItemRes();
-                    }
-                    //return it to stock and remove the item
-                    Player._itemSpawner.currItem.ReturnItemToStock();
-                    Player._itemSpawner.RemoveItemRes();
-                }
+                // if (Player._itemSpawner.currItem != null && (Player._itemSpawner2.currItem != null || !Player.IsStackItemUpgrade))
+                // {
+                //     if(Player.IsStackItemUpgrade)
+                //     {
+                //         // Player._itemSpawner2.currItem.ReturnItemToStock();
+                        
+                //     }
+                //     //return it to stock and remove the item
+                //     // Player._itemSpawner.currItem.ReturnItemToStock();
+                    
+                // }
                 
                 // if (Inventory.IsVisibleInTree())
-                if(Inventory.Visible)
+                if(Inventory.Visible) // when inventory is closed
                 {
                     Inventory.Visible = false;
                     BG.Visible = false;
+                    Player.playerFreezeState();
                 }
-                else
+                else // when inventory is opened
                 {
+                    if (Player._itemSpawner.currItem != null && (Player._itemSpawner2.currItem != null || !Player.IsStackItemUpgrade))
+                    {
+                        Player._itemSpawner.currItem.ReturnItemToStock();
+                        Player._itemSpawner.RemoveItemRes();
+                        if(Player.IsStackItemUpgrade)
+                        { 
+                            Player._itemSpawner2.currItem.ReturnItemToStock();
+                            Player._itemSpawner2.RemoveItemRes();
+                        }
+                    }
+
                     Inventory.ReloadItemList();
                     Inventory.Visible = true;
                     BG.Visible = true;
+                    Player.playerFreezeState();
                 }
 
-                Player.playerFreezeState();
+                
                 
             }
 

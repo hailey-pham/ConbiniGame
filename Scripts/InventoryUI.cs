@@ -66,8 +66,10 @@ public partial class InventoryUI : Control
 	public void LoadItemList()
 	{
 		Node container;
+		int count = 0;
 		foreach (ItemRes item in inventoryItems)
         {
+			// GD.Print(count+item.name+item.currentStock);
 			inventoryIcons.Add((Control)inventoryIcon.Instantiate());
 			GetChild<VBoxContainer>(0).AddChild(inventoryIcons[^1]);
 
@@ -80,7 +82,13 @@ public partial class InventoryUI : Control
 			container.GetChild<Label>(2).Text = "x"+item.currentStock;
 			
 			inventoryButtons[^1].Pressed += () =>  OnItemClicked(item.name);
+			count++;
         }
+		
+#if DEBUG
+		GetChild<VBoxContainer>(0).AddChild((Control)inventoryIcon.Instantiate());
+#endif
+		
 	}
 	private void OnItemClicked(string itemName)
     {
@@ -94,18 +102,18 @@ public partial class InventoryUI : Control
 			{
 				playerItemSpawner.AddItemRes(itemRes);
 				globals.DecrementItemResStock(itemRes);
-				Player.playerFreezeState();
-				this.Visible = false;
-				BG.Visible = false;
+				// Player.playerFreezeState();
+				// this.Visible = false;
+				// BG.Visible = false;
 			}
 			//false if it doesn't have an item or if it doesn't exist
 			else if (!playerItemSpawner2.HasItem() && Player.IsStackItemUpgrade)
 			{
 				playerItemSpawner2.AddItemRes(itemRes);
 				globals.DecrementItemResStock(itemRes);
-				Player.playerFreezeState();
-				this.Visible = false;
-				BG.Visible = false;
+				// Player.playerFreezeState();
+				// this.Visible = false;
+				// BG.Visible = false;
 			}
 			
 		}

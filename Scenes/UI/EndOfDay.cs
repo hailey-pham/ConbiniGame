@@ -95,7 +95,7 @@ public partial class EndOfDay : Control
 
     public void DisplayEndOfDayStats()
     {
-        customersLabel.Text = "Customers Serviced: " + globals.Customers.ToString();
+        customersLabel.Text = "Customers Serviced: " + globals.CustomersServed.ToString();
         earningsLabel.Text = "Cash Earned: ￥" + globals.Earnings.ToString();
         GD.Print("Here");
         GD.Print(globals.Day.ToString());

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cc5jt5uehw73i"]
+[gd_scene load_steps=23 format=3 uid="uid://cc5jt5uehw73i"]
 
 [ext_resource type="Shader" path="res://Scenes/UI/SeasonTitle.gdshader" id="1_0btbg"]
 [ext_resource type="Script" path="res://Scenes/StoreFront.cs" id="1_ihp1t"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cj5iiqpd718l4" path="res://Assets/StoreFront/Storefront_Vending.png" id="5_3rk8m"]
 [ext_resource type="Texture2D" uid="uid://b7qhx0bx3jk7m" path="res://Assets/StoreFront/SpringSpritesheet.png" id="6_b3aah"]
 [ext_resource type="Texture2D" uid="uid://cdokq42h811ai" path="res://Assets/StoreFront/Storefront_Winter_Greyscale.png" id="6_q1vim"]
+[ext_resource type="Texture2D" uid="uid://d0vhoettp2vs7" path="res://Storefront_Boards.png" id="10_hu5c2"]
+[ext_resource type="Texture2D" uid="uid://bqseti4puoiwd" path="res://Storefront_Bags.png" id="11_qi50v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ro0m"]
 shader = ExtResource("1_0btbg")
@@ -136,3 +138,19 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_3rk8m")
+
+[node name="Boards" type="TextureRect" parent="." groups=["Boards"]]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_hu5c2")
+
+[node name="Sandbags" type="TextureRect" parent="." groups=["Sandbags"]]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("11_qi50v")

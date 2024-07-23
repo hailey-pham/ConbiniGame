@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_2n5f1")
-protection = 10
+protection = 1
 name = "Sprinklers"
 description = "Protect your building in the case of wildfires"
 owned = false
-cost = 10000
+cost = 5000

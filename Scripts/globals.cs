@@ -14,12 +14,14 @@ public partial class globals : Node
     public static int _purchaseCost;
 
 	//daily properties
-	public static int _customers;
+	public static int _customersServed;
 	public static int _earnings;
 	private static List<ItemRes> _itemsSoldToday = new();
 	public static int _day = 0;
 
 	private int itemProtection = 0;
+
+	private int _customersEntered = 0;
 
 	public static double stockLosePercentage = 0.1; // make randomizing function for this l8r
 
@@ -28,6 +30,10 @@ public partial class globals : Node
 	//signal to tell money GUI to update
 	[Signal]
 	public delegate void MoneyUpdatedEventHandler(int money);
+
+    //emited by load game when all resources and items have been loaded
+    [Signal]
+    public delegate void GameLoadedEventHandler();
 
 	private disaster_stats disasterstats;
 
@@ -40,10 +46,16 @@ public partial class globals : Node
         }
 	}
 
-	public int Customers
+	public int CustomersServed
 	{
-		get { return _customers; }
-		set { _customers = value; }
+		get { return _customersServed; }
+		set { _customersServed = value; }
+	}
+
+	public int CustomersEntered
+	{
+		get { return _customersEntered; }
+		set { _customersEntered = value; }
 	}
     public static int Day
     {
@@ -79,67 +91,7 @@ public partial class globals : Node
 		Stopwatch stopwatch = new Stopwatch();
 		stopwatch.Start();
 
-		var t = Task.Run(() =>
-		{
-            string path = "res://Resources/Items/";
-            var dir = DirAccess.Open(path);
-
-            string[] fileNames = dir.GetFiles();
-            GD.Print("Getting items...");
-
-            string tempFileName;
-            char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
-			Parallel.ForEach(fileNames, filename =>
-			{
-                if (filename.Contains(".tres.remap"))
-                {
-                    tempFileName = filename.TrimEnd(remap);
-                    // GD.Print("TFN: "+tempFileName);
-                }
-                else
-                {
-                    tempFileName = filename;
-                }
-                ItemRes resource = GD.Load<ItemRes>(path + tempFileName);
-                // GD.Print(resource.name);
-                if (resource == null)
-                {
-                    throw new Exception($"Resource at {path + tempFileName} failed to load!");
-                }
-
-                Stock.Add(resource.name, resource);
-				GD.Print($"Added resource (item): {resource.name}");
-            });
-        });
-
-        var u = Task.Run(() =>
-        {
-            string pathU = "res://Resources/Upgrades/";
-            var dirU = DirAccess.Open(pathU);
-
-            string[] fileNamesU = dirU.GetFiles();
-            GD.Print("Getting upgrades...");
-
-            string tempFileName;
-            char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
-            Parallel.ForEach(fileNamesU, fileName =>
-            {
-                if (fileName.Contains(".tres.remap"))
-                {
-                    tempFileName = fileName.TrimEnd(remap);
-
-                }
-                else
-                {
-                    tempFileName = fileName;
-                }
-
-                // GD.Print("Adding resource (item)...");
-                Upgrade resourceU = GD.Load<Upgrade>(pathU + tempFileName);
-                _upgrades.Add(resourceU.name, resourceU);
-                GD.Print("Added resource (upgrade): " + resourceU.name);
-            });
-        });
+		LoadGameData();
 
         stopwatch.Stop();
         GD.Print($"Resource loading took: {stopwatch.ElapsedMilliseconds} ms");
@@ -155,7 +107,7 @@ public partial class globals : Node
 	
 	private void ResetCustomers()
 	{
-		Customers = 0;
+		CustomersServed = 0;
 	}
     public static void IncrementDay()
     {
@@ -197,7 +149,18 @@ public partial class globals : Node
 
         foreach (var item in stock.Values)
 		{
-            int lossAmount = (item.currentStock / rnd.Next(10+itemProtection, 100));
+			int minLoss = 1+Day*2;
+
+        	int percentLoss = Money / rnd.Next(2+itemProtection, 10);
+
+			int lossAmount;
+			if (minLoss > percentLoss) {
+				lossAmount = minLoss;
+			} else {
+				lossAmount = percentLoss;
+			}
+
+			item.LossAmount = lossAmount;
             // cant let stock go negative
             item.currentStock = Math.Max(0, item.currentStock - lossAmount);
 		}
@@ -241,5 +204,77 @@ public partial class globals : Node
         {
             ResetGame();
         }
+    }
+
+    private async void LoadGameData()
+    {
+        var t = Task.Run(() =>
+        {
+            string path = "res://Resources/Items/";
+            var dir = DirAccess.Open(path);
+
+            string[] fileNames = dir.GetFiles();
+            GD.Print("Getting items...");
+
+            Parallel.ForEach(fileNames, filename =>
+            {
+                string tempFileName;
+                char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
+
+                if (filename.Contains(".tres.remap"))
+                {
+                    tempFileName = filename.TrimEnd(remap);
+                    // GD.Print("TFN: "+tempFileName);
+                }
+                else
+                {
+                    tempFileName = filename;
+                }
+                ItemRes resource = GD.Load<ItemRes>(path + tempFileName);
+                // GD.Print(resource.name);
+                if (resource == null)
+                {
+                    throw new Exception($"Resource at {path + tempFileName} failed to load!");
+                }
+
+                Stock.Add(resource.name, resource);
+                GD.Print($"Added resource (item): {resource.name}");
+            });
+        });
+
+        var u = Task.Run(() =>
+        {
+            string pathU = "res://Resources/Upgrades/";
+            var dirU = DirAccess.Open(pathU);
+
+            string[] fileNamesU = dirU.GetFiles();
+            GD.Print("Getting upgrades...");
+
+            Parallel.ForEach(fileNamesU, fileName =>
+            {
+                string tempFileName;
+                char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
+
+                if (fileName.Contains(".tres.remap"))
+                {
+                    tempFileName = fileName.TrimEnd(remap);
+
+                }
+                else
+                {
+                    tempFileName = fileName;
+                }
+
+                // GD.Print("Adding resource (item)...");
+                Upgrade resourceU = GD.Load<Upgrade>(pathU + tempFileName);
+                _upgrades.Add(resourceU.name, resourceU);
+                GD.Print("Added resource (upgrade): " + resourceU.name);
+            });
+        });
+
+        await t;
+        await u;
+
+        EmitSignal(nameof(GameLoaded));
     }
 }

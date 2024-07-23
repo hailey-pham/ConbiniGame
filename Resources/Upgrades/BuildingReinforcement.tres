@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_v25jj")
-highProtection = 40
-lowProtection = 20
+highProtection = 2
+lowProtection = 1
 name = "Building Reinforcement"
 description = "Reinforces building foundations. Helps prevent damage in earthquakes, floods, and strong wind conditions."
 owned = false

@@ -8,6 +8,8 @@ public partial class ItemRes : Resource
 	[Export] public int price;
 	[Export] public int restockPrice;
 
+    private int lossAmount;
+
     //flags to designate seasonal items
     [Flags]
     public enum SeasonsEnum
@@ -55,6 +57,12 @@ public partial class ItemRes : Resource
         //add one back to the global stock
         globals.Stock[name].currentStock++;
     }
+
+    public int LossAmount
+	{
+		get { return lossAmount; }
+		set { lossAmount = value; }
+	}
 
     public string GetTagsAsEmoji()
     {

@@ -105,7 +105,7 @@ public partial class checkout : StaticBody2D
 				SellItem(item);
 				if(npc.ShoppingCart.Count == 0)
 				{
-                    globals.Customers += 1;
+                    globals.CustomersServed += 1;
                     //we have sold everything in the npc's cart
                     npcs.RemoveAt(0);
                     npc.stateMachine.TransitionTo("LeaveState");
