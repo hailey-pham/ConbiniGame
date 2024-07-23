@@ -102,6 +102,11 @@ public partial class globals : Node
                 }
                 ItemRes resource = GD.Load<ItemRes>(path + tempFileName);
                 // GD.Print(resource.name);
+                if (resource == null)
+                {
+                    throw new Exception($"Resource at {path + tempFileName} failed to load!");
+                }
+
                 Stock.Add(resource.name, resource);
 				GD.Print($"Added resource (item): {resource.name}");
             });
