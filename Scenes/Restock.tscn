@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dfqcclaok7kc1" path="res://Assets/GUI/BackButton/BackButtonPressed.png" id="5_vdx4d"]
 [ext_resource type="Texture2D" uid="uid://cm4n55jiiud3c" path="res://Assets/GUI/BackButton/BackButtonHover.png" id="6_c0bpj"]
 [ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="9_j8lql"]
-[ext_resource type="Theme" uid="uid://bwipxteyboj02" path="res://Scenes/VScroll.tres" id="10_ep5wf"]
+[ext_resource type="Theme" uid="uid://bk6yoil5hcrkt" path="res://Scenes/VScroll.tres" id="10_ep5wf"]
 [ext_resource type="Texture2D" uid="uid://crfjb33kxxpc0" path="res://Assets/ButtonBG.png" id="11_vsaxu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqmef"]
