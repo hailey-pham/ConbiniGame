@@ -74,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3dcl4")
 script = ExtResource("2_tfuo7")
-SeasonTitles = PackedStringArray("🌸 Spring", "☀️ Summer", "🍂 Fall", "❄️ Winter")
+SeasonTitles = PackedStringArray("[img=32x32]res://Assets/SeasonIcons/SpringIcon.png[/img] Spring", "[img=32x32]res://Assets/SeasonIcons/SummerIcon.png[/img] Summer", "[img=32x32]res://Assets/SeasonIcons/FallIcon.png[/img] Fall", "[img=32x32]res://Assets/SeasonIcons/WinterIcon.png[/img] Winter")
 
 [node name="Sky" parent="." instance=ExtResource("3_nyanh")]
 layout_mode = 0
@@ -90,9 +90,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 63.0
-offset_right = 256.0
-offset_bottom = 97.0
+offset_left = -128.0
+offset_top = -17.0
+offset_right = 128.0
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 30
