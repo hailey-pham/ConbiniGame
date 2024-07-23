@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cf7tdv1dbxi2k"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 159.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 43.0
+bbcode_enabled = true
+text = "[center]Victory!!!! 
+
+
+
+Congrats :3[/center]"
+fit_content = true

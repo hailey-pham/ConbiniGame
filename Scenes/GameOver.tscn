@@ -33,19 +33,34 @@ bbcode_enabled = true
 text = "[center]GAME OVER[/center]"
 fit_content = true
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]A Disaster has left Connie without money and stock, Thus she has to sorrofully sell her Grandfather's store. [/center]"
+fit_content = true
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -26.5
-offset_top = -10.0
-offset_right = 26.5
-offset_bottom = 10.0
+anchors_preset = -1
+anchor_left = 0.672
+anchor_top = 0.744
+anchor_right = 0.98
+anchor_bottom = 0.952
+offset_left = -0.0320129
+offset_top = -0.0400009
+offset_right = -0.880005
+offset_bottom = -2.32001
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.01262, 1.0762)
-text = "Continue?"
+theme_override_font_sizes/font_size = 20
+text = "Restart"
 flat = true
