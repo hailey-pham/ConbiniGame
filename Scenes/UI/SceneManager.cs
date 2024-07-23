@@ -13,6 +13,7 @@ public partial class SceneManager : Node
 
 	private Node sceneParent;
 	private bool transitioning = false;
+	private bool tutorialShowing = false;
 
 	private string prevScene;
 	private string currScene;
@@ -89,6 +90,7 @@ public partial class SceneManager : Node
             Node instance = scene.Instantiate();
             sceneParent.AddChild(instance);
 
+
             if (sceneName == "storyline")
             {
                 var storylineInstance = instance as storyline;
@@ -107,20 +109,22 @@ public partial class SceneManager : Node
 		}
 		catch (Exception)
 		{
-
 			GD.PrintErr("Scene not found!");
 		}
 	}
     private string[] GetDialogueLinesForStoryline()
     {
-        // Return the dialogue lines for the storyline scene
-        return new string[]
-        {
-            "Welcome to the story. Press the spacebar btw,",
-            "My grandpa died and i got the store blahblah.",
-            "This is the last line so the game should continue after this."
+		//return the dialogue lines for the storyline scene
+		return new string[]
+		{
+			"Grandpa passed away in the winter.",
+			"He owned this store, DisaStore...",
+			"Apparently I'm the one to inherit it.",
+			"We live in a village prone to disasters. I'm sure something's going to happen soon...",
+			"I should get straight to work!"
         };
     }
 
-	public string PrevScene { get => prevScene; set => prevScene = value; }
+ 
+    public string PrevScene { get => prevScene; set => prevScene = value; }
 }

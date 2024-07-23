@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctid4rjxh0ki3"
-path="res://.godot/imported/EarthquakeForecast.png-c16c1ec402b5b7e8ebc688515ab2190a.ctex"
+uid="uid://cmyjcjjovj44"
+path="res://.godot/imported/Shovel.png-572db5585e403398bec32e87726401f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Forecasts/EarthquakeForecast.png"
-dest_files=["res://.godot/imported/EarthquakeForecast.png-c16c1ec402b5b7e8ebc688515ab2190a.ctex"]
+source_file="res://Assets/Items/Shovel.png"
+dest_files=["res://.godot/imported/Shovel.png-572db5585e403398bec32e87726401f2.ctex"]
 
 [params]
 

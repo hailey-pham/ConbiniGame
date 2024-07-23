@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dmw1qtnv1wce4"]
+
+[ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_h86wd"]
+[ext_resource type="Texture2D" uid="uid://cmyjcjjovj44" path="res://Assets/Items/Shovel.png" id="2_hr06e"]
+
+[resource]
+script = ExtResource("1_h86wd")
+name = "Shovel"
+price = 2000
+restockPrice = 1400
+SeasonFlags = 0
+DisasterFlags = 64
+spriteTexture = ExtResource("2_hr06e")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctid4rjxh0ki3"
-path="res://.godot/imported/EarthquakeForecast.png-c16c1ec402b5b7e8ebc688515ab2190a.ctex"
+uid="uid://c1ky3e8shekjc"
+path="res://.godot/imported/Flashlight.png-c8db76b74e0491d954e16b168dac707d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Forecasts/EarthquakeForecast.png"
-dest_files=["res://.godot/imported/EarthquakeForecast.png-c16c1ec402b5b7e8ebc688515ab2190a.ctex"]
+source_file="res://Flashlight.png"
+dest_files=["res://.godot/imported/Flashlight.png-c8db76b74e0491d954e16b168dac707d.ctex"]
 
 [params]
 
