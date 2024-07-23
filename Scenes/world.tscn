@@ -523,6 +523,7 @@ volume_db = -4.0
 max_polyphony = 2
 
 [node name="storage" parent="." instance=ExtResource("13_1hsmu")]
+visible = false
 position = Vector2(57, 29)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
