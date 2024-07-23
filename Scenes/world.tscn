@@ -313,7 +313,7 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y6eec"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=["THEWORLD"]]
 y_sort_enabled = true
 script = ExtResource("1_msxpb")
 

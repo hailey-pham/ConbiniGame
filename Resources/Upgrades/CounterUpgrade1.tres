@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bn7lcdm7h5s7i"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/CounterUpgrade1.cs" id="1_gq8t2"]
+
+[resource]
+script = ExtResource("1_gq8t2")
+name = "More Counter Space"
+description = "Get Double the Counter Space!"
+owned = true
+cost = 3000

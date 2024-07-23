@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using static Godot.WebSocketPeer;
 
 public partial class World : Node2D
 {
@@ -12,12 +13,13 @@ public partial class World : Node2D
 	Calendar calendar;
 	CalendarUI calendarUI;
 
-	public int counterState = 0;
+	public int counterState;
 
 	Label dayLabel;
 	public override void _Ready()
 	{
-		calendar = GetNode<Calendar>("/root/Calendar");
+		counterState = 0;
+        calendar = GetNode<Calendar>("/root/Calendar");
 		calendarUI = GetNode<CalendarUI>("UI/CalendarUI");
 		dayLabel = GetNode<Label>("UI/DayLabel");
 		audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
@@ -40,25 +42,29 @@ public partial class World : Node2D
             }
         }
 
+        Node2D currCounter = (Node2D)GetTree().GetFirstNodeInGroup("counterstate" + counterState.ToString());
         switch (counterState)
         {
             case 0:
                 // code block
                 DestroyCounterState(1);
                 DestroyCounterState(2);
-				break;
+				currCounter.Visible = true;
+                break;
             case 1:
 				// code block
 				DestroyCounterState(0);
 				DestroyCounterState(2);
+                currCounter.Visible = true;
                 break;
             case 2:
                 // code block
                 DestroyCounterState(0);
 				DestroyCounterState(1);
+                currCounter.Visible = true;
                 break;
         }
-
+		GetChild<NavigationRegion2D>(0).BakeNavigationPolygon();
 
 
 	}
