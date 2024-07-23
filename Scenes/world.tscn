@@ -1,12 +1,14 @@
-[gd_scene load_steps=34 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=36 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Script" path="res://Scenes/World.cs" id="1_msxpb"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="Texture2D" uid="uid://bpccdhn7cdrum" path="res://Assets/DisastoreInteriorTilemapV2.png" id="4_1jcc4"]
+[ext_resource type="PackedScene" uid="uid://cl8e50dilm7oa" path="res://Scenes/Objects/squarecounter.tscn" id="5_l0gdg"]
 [ext_resource type="Texture2D" uid="uid://bwx1l3mn5dd05" path="res://Assets/GUI/MoneyBG.png" id="6_2v7vn"]
 [ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
 [ext_resource type="PackedScene" uid="uid://byaiw4cj1167a" path="res://Scenes/Objects/checkout.tscn" id="6_qywxc"]
 [ext_resource type="Texture2D" uid="uid://cycxxpq3u6wpb" path="res://Assets/GUI/Calendar/CalendarSpring.png" id="6_uemoo"]
+[ext_resource type="PackedScene" uid="uid://4mnchpygh12q" path="res://Scenes/Objects/largecounter.tscn" id="6_un807"]
 [ext_resource type="Script" path="res://Scenes/CalendarUI.cs" id="7_8yfgc"]
 [ext_resource type="Texture2D" uid="uid://w1v4qstoclyb" path="res://Assets/GUI/Calendar/CalendarSummer.png" id="8_5a4tn"]
 [ext_resource type="Texture2D" uid="uid://u8mpnmxntjad" path="res://Assets/GUI/Calendar/CalendarFall.png" id="9_d5nkg"]
@@ -364,94 +366,60 @@ collision_layer = 3
 visible = false
 y_sort_enabled = true
 
-[node name="counter" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(62, 72)
-collision_layer = 3
+[node name="squarecounter" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("5_l0gdg")]
+position = Vector2(62, 83)
 
-[node name="counter2" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(62, 118)
-collision_layer = 3
+[node name="squarecounter2" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("5_l0gdg")]
+position = Vector2(46, 83)
 
-[node name="counter3" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(194, 72)
-collision_layer = 3
+[node name="squarecounter3" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("5_l0gdg")]
+position = Vector2(62, 129)
 
-[node name="counter4" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(194, 118)
-collision_layer = 3
+[node name="squarecounter4" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("5_l0gdg")]
+position = Vector2(193, 83)
 
-[node name="counter5" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(46, 72)
-collision_layer = 3
+[node name="squarecounter5" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("5_l0gdg")]
+position = Vector2(46, 129)
 
-[node name="counter6" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(46, 118)
-collision_layer = 3
+[node name="squarecounter6" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("5_l0gdg")]
+position = Vector2(209, 83)
 
-[node name="counter7" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(210, 72)
-collision_layer = 3
+[node name="squarecounter7" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("5_l0gdg")]
+position = Vector2(194, 129)
 
-[node name="counter8" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(210, 118)
-collision_layer = 3
+[node name="squarecounter8" parent="NavigationRegion2D/CounterUpgradeState1" instance=ExtResource("5_l0gdg")]
+position = Vector2(210, 129)
 
 [node name="CounterUpgradeState2" type="Node2D" parent="NavigationRegion2D" groups=["counterstate2"]]
 visible = false
 y_sort_enabled = true
 
-[node name="counter" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(62, 72)
-collision_layer = 3
+[node name="squarecounter" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("5_l0gdg")]
+position = Vector2(62, 83)
 
-[node name="counter2" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(62, 118)
-collision_layer = 3
+[node name="squarecounter2" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("5_l0gdg")]
+position = Vector2(46, 83)
 
-[node name="counter3" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(194, 72)
-collision_layer = 3
+[node name="squarecounter3" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("5_l0gdg")]
+position = Vector2(62, 129)
 
-[node name="counter4" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(194, 118)
-collision_layer = 3
+[node name="squarecounter4" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("5_l0gdg")]
+position = Vector2(193, 83)
 
-[node name="counter5" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(46, 72)
-collision_layer = 3
+[node name="squarecounter5" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("5_l0gdg")]
+position = Vector2(46, 129)
 
-[node name="counter6" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(46, 118)
-collision_layer = 3
+[node name="squarecounter6" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("5_l0gdg")]
+position = Vector2(209, 83)
 
-[node name="counter7" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(210, 72)
-collision_layer = 3
+[node name="squarecounter7" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("5_l0gdg")]
+position = Vector2(194, 129)
 
-[node name="counter8" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(210, 118)
-collision_layer = 3
+[node name="squarecounter8" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("5_l0gdg")]
+position = Vector2(210, 129)
 
-[node name="counter9" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("6_jsvja")]
-z_as_relative = false
-position = Vector2(128, 95)
-collision_layer = 3
+[node name="largecounter" parent="NavigationRegion2D/CounterUpgradeState2" instance=ExtResource("6_un807")]
+position = Vector2(128, 101)
 
 [node name="Player" parent="." instance=ExtResource("3_gm0l6")]
 unique_name_in_owner = true

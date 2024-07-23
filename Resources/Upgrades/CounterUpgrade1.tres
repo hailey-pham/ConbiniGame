@@ -6,5 +6,5 @@
 script = ExtResource("1_gq8t2")
 name = "More Counter Space"
 description = "Get Double the Counter Space!"
-owned = true
+owned = false
 cost = 3000

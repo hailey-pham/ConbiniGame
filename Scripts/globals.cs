@@ -19,9 +19,10 @@ public partial class globals : Node
 	private static List<ItemRes> _itemsSoldToday = new();
 	public static int _day = 0;
 
-	private int itemProtection = 0;
+    private int itemProtection = 0;
+    
 
-	public static double stockLosePercentage = 0.1; // make randomizing function for this l8r
+    public static double stockLosePercentage = 0.1; // make randomizing function for this l8r
 
 	public static Dictionary<string, Upgrade> _upgrades = new Dictionary<string, Upgrade>();
 
@@ -75,6 +76,7 @@ public partial class globals : Node
     public override void _Ready()
 	{
 		itemProtection = 0;
+
 
 		Stopwatch stopwatch = new Stopwatch();
 		stopwatch.Start();

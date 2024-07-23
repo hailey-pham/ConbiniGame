@@ -6,5 +6,5 @@
 script = ExtResource("1_pcesh")
 name = "Extra Valuable Counter!"
 description = "Gain an extra valuable counter that improves how much items sell!"
-owned = true
+owned = false
 cost = 5000

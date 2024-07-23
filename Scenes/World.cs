@@ -14,11 +14,13 @@ public partial class World : Node2D
 	CalendarUI calendarUI;
 
 	public int counterState;
+    public bool bothCounterUpgrades;
 
-	Label dayLabel;
+    Label dayLabel;
 	public override void _Ready()
 	{
 		counterState = 0;
+		bothCounterUpgrades = false;
         calendar = GetNode<Calendar>("/root/Calendar");
 		calendarUI = GetNode<CalendarUI>("UI/CalendarUI");
 		dayLabel = GetNode<Label>("UI/DayLabel");
@@ -42,6 +44,11 @@ public partial class World : Node2D
             }
         }
 
+
+		if(bothCounterUpgrades)
+		{
+			counterState = 2;
+		}
         Node2D currCounter = (Node2D)GetTree().GetFirstNodeInGroup("counterstate" + counterState.ToString());
         switch (counterState)
         {

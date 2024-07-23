@@ -7,5 +7,6 @@ public partial class CounterUpgrade2 : Upgrade
     {
         World World = (World)root.GetTree().GetFirstNodeInGroup("THEWORLD");
         World.counterState = 2;
+        World.bothCounterUpgrades = true;
     }
 }
