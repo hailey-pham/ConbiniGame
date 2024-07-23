@@ -1,9 +1,13 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
 public partial class npcSpawner : Node2D
 {
+	[Export]
+	Array<SpriteFrames> npcSprites;
+
 	[Export]
 	private int minNPCsInStore = 1;
 	[Export]
@@ -59,8 +63,13 @@ public partial class npcSpawner : Node2D
             newNpc.Set("z_as_relative", false);
             var npcScript = newNpc as npc;
             npcScript.LeftStore += OnNPCLeaveStore;
+
             AddChild(newNpc);
-			newNpc.GetNode<Timer>("StateMachine/CheckoutState/Timer").WaitTime = npcWaitTime;
+
+            //sets the npc's sprite frames to a random one from the exported array
+            var rng = new RandomNumberGenerator();
+            npcScript.SetSpriteFrames(npcSprites[rng.RandiRange(0, npcSprites.Count - 1)]);
+            newNpc.GetNode<Timer>("StateMachine/CheckoutState/Timer").WaitTime = npcWaitTime;
 			if(audioPlayer.IsInsideTree())
 			{
                 audioPlayer.Play();

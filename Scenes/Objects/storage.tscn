@@ -1,13 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://vit6v1iaab2a"]
+[gd_scene load_steps=13 format=3 uid="uid://vit6v1iaab2a"]
 
+[ext_resource type="PackedScene" uid="uid://dvf8kxmq3w1lt" path="res://Scenes/Objects/inventory.tscn" id="2_xnbmo"]
 [ext_resource type="Script" path="res://Scenes/Objects/storage.cs" id="2_yhkxo"]
-[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="3_n3ugu"]
-[ext_resource type="Script" path="res://Scenes/Objects/Inventory.cs" id="4_aw73v"]
+[ext_resource type="Script" path="res://Scripts/InventoryUI.cs" id="12_4veed"]
+[ext_resource type="PackedScene" path="res://Scenes/inventory_item.tscn" id="13_kifw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfu4v"]
 size = Vector2(58, 20)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
+bg_color = Color(0.835294, 0.74902, 0.72549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy2c7"]
+bg_color = Color(0.788235, 0.67451, 0.647059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vn6g"]
+bg_color = Color(0.945098, 0.878431, 0.862745, 1)
+border_width_left = 5
+border_color = Color(0.945098, 0.878431, 0.862745, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dy5g8"]
+bg_color = Color(0.945098, 0.878431, 0.862745, 1)
+border_width_left = 3
+border_color = Color(0.945098, 0.878431, 0.862745, 1)
+
+[sub_resource type="Theme" id="Theme_lltay"]
+ScrollContainer/styles/panel = null
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_6vn6g")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_dy5g8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5cpn"]
+bg_color = Color(0.945098, 0.878431, 0.862745, 1)
+border_width_left = 4
+border_color = Color(0.945098, 0.878431, 0.862745, 1)
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_5nc2q"]
+ScrollContainer/styles/panel = null
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_y5cpn")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_y5cpn")
+
 [node name="storage" type="Area2D"]
+z_index = -1
 script = ExtResource("2_yhkxo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -16,6 +57,7 @@ shape = SubResource("RectangleShape2D_gfu4v")
 
 [node name="Control" type="Control" parent="."]
 top_level = true
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,21 +66,42 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = SubResource("Theme_lltay")
 
-[node name="Inventory" type="ItemList" parent="Control"]
-z_index = 2
-z_as_relative = false
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 10.0
-offset_top = -70.0
-offset_right = -10.0
-offset_bottom = 70.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_n3ugu")
-max_text_lines = 2
-script = ExtResource("4_aw73v")
+[node name="NinePatchRect" parent="Control" instance=ExtResource("2_xnbmo")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 244.0
+offset_bottom = 150.0
+
+[node name="InventoryUI" type="ScrollContainer" parent="Control" node_paths=PackedStringArray("BG")]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 238.0
+offset_bottom = 142.0
+theme = SubResource("Theme_5nc2q")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+script = ExtResource("12_4veed")
+inventoryIcon = ExtResource("13_kifw7")
+BG = NodePath("../NinePatchRect")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/InventoryUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="InventoryItem" parent="Control/InventoryUI/VBoxContainer" instance=ExtResource("13_kifw7")]
+visible = false
+layout_mode = 2
+
+[node name="InventoryItem2" parent="Control/InventoryUI/VBoxContainer" instance=ExtResource("13_kifw7")]
+visible = false
+layout_mode = 2
+
+[node name="InventoryItem3" parent="Control/InventoryUI/VBoxContainer" instance=ExtResource("13_kifw7")]
+visible = false
+layout_mode = 2

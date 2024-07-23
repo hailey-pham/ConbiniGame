@@ -15,7 +15,7 @@ public partial class disaster_stats : Control
     private RichTextLabel messageLabel;
     private RichTextLabel statsLabel;
     private RichTextLabel currentStatsLabel;
-    private RichTextLabel itemsLostLabel;
+    // private RichTextLabel itemsLostLabel;
 
     private Button continueButton;
     private Button restockButton;
@@ -44,7 +44,7 @@ public partial class disaster_stats : Control
         messageLabel = GetNode<RichTextLabel>("VBoxContainer/Message");
         statsLabel = GetNode<RichTextLabel>("VBoxContainer/Stats");
         currentStatsLabel = GetNode<RichTextLabel>("VBoxContainer/CurrentStats");
-        itemsLostLabel = GetNode<RichTextLabel>("VBoxContainer/ItemsLost");
+        // itemsLostLabel = GetNode<RichTextLabel>("VBoxContainer/ItemsLost");
 
         globals = GetNode<globals>("/root/Globals");
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
@@ -114,7 +114,7 @@ public partial class disaster_stats : Control
         // messageLabel.Text = "You lost a portion of your resources.";
         statsLabel.Text = "Money lost:  ￥" + newMoney.ToString();
         currentStatsLabel.Text = "Current funds: ￥" + globals.Money.ToString();
-        itemsLostLabel.Text = "You lost " + (globals.stockLosePercentage * 100) + "% of each item";
+        // itemsLostLabel.Text = "You lost " + (globals.stockLosePercentage * 100) + "% of each item";
     }
 
     private int LoseMoney()

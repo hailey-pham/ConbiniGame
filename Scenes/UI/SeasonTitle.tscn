@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_3dcl4"]
 [ext_resource type="Script" path="res://Scenes/UI/SeasonTitle.cs" id="2_tfuo7"]
 [ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="3_n3vvf"]
-[ext_resource type="PackedScene" path="res://Assets/StoreFront/SkyBackground.tscn" id="3_nyanh"]
+[ext_resource type="PackedScene" uid="uid://r6iwguk11m2d" path="res://Assets/StoreFront/SkyBackground.tscn" id="3_nyanh"]
 
 [sub_resource type="Animation" id="Animation_1470l"]
 length = 0.001

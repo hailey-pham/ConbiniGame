@@ -1,6 +1,9 @@
+using ConbiniGame.Scripts;
 using Godot;
 using Godot.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Debug = ConbiniGame.Scripts.Debug;
 
 public partial class npc : CharacterBody2D
 {
@@ -25,6 +28,8 @@ public partial class npc : CharacterBody2D
 
     public NavigationAgent2D _navigationAgent;
 
+    private AnimatedSprite2D _animatedSprite;
+
     //using a private variable and a public property in case I want to change it down the line
     private List<ItemRes> shoppingCart = new List<ItemRes>();
     public List<ItemRes> ShoppingCart { get => shoppingCart; set => shoppingCart = value; }
@@ -45,6 +50,7 @@ public partial class npc : CharacterBody2D
         stateMachine = GetNode("StateMachine") as StateMachine;
 
         Callable.From(ActorSetup).CallDeferred();
+        _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
     }
 
     public override void _Process(double delta)
@@ -98,5 +104,11 @@ public partial class npc : CharacterBody2D
 
         //transition to our shopping state
         stateMachine.TransitionTo("ShoppingState", message);
+    }
+
+    public void SetSpriteFrames(SpriteFrames spriteFrames)
+    {
+        Debug.Assert(spriteFrames != null,"Tried to change sprite frames before entering tree!");
+        _animatedSprite.SpriteFrames = spriteFrames;
     }
 }

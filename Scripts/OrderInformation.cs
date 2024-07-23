@@ -10,11 +10,13 @@ public partial class OrderInformation : Node
 	TextureRect texture;
 	Label itemLabel;
 	Label itemCount;
+
+	private int labelSize = 60;
 	public OrderInformation() {
 
 	}
 
-	public OrderInformation(ItemRes _item) {
+	public OrderInformation(ItemRes _item, int _labelSize = 60) {
 		item = _item;
 
 		parent = new BoxContainer();
@@ -26,7 +28,7 @@ public partial class OrderInformation : Node
 		texture.CustomMinimumSize = new Vector2(16,0);
 		texture.StretchMode = TextureRect.StretchModeEnum.KeepCentered;
 		itemLabel.Text = item.name;
-		itemLabel.CustomMinimumSize = new Vector2(60,0);
+		itemLabel.CustomMinimumSize = new Vector2(_labelSize,0);
 		itemLabel.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
 		itemCount.Text = "x"+item.restockAmount;
 		
