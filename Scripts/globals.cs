@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 
 public partial class globals : Node
 {
-	private static int _money;
+    //emited by load game when all resources and items have been loaded
+    [Signal]
+    public delegate void GameLoadedEventHandler();
+
+    private static int _money;
     private static Dictionary<string, ItemRes> stock = new Dictionary<string, ItemRes>();
     public static int _purchaseCost;
 
@@ -30,9 +34,7 @@ public partial class globals : Node
 	[Signal]
 	public delegate void MoneyUpdatedEventHandler(int money);
 
-    //emited by load game when all resources and items have been loaded
-    [Signal]
-    public delegate void GameLoadedEventHandler();
+    
 
 	private disaster_stats disasterstats;
 
@@ -250,6 +252,12 @@ public partial class globals : Node
 
                 // GD.Print("Adding resource (item)...");
                 Upgrade resourceU = GD.Load<Upgrade>(pathU + tempFileName);
+
+                if (resourceU == null)
+                {
+                    throw new Exception($"Resource at {pathU + tempFileName} failed to load!");
+                }
+
                 _upgrades.Add(resourceU.name, resourceU);
                 GD.Print("Added resource (upgrade): " + resourceU.name);
             });
