@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 public partial class Calendar : Node2D
 {
@@ -46,6 +47,12 @@ public partial class Calendar : Node2D
     private bool WasPreviousDayDisaster = false;
 
     public static int DayLength => dayLength;
+
+    [Export]
+    private int[] firstSpringArray;
+    private bool firstSpringPassed = false;
+
+    private bool tutorialShowing = false;
 
     private enum DisasterType
     {
@@ -190,6 +197,22 @@ public partial class Calendar : Node2D
         GD.Print("Day: " + currentDay + " Season: " + currentSeasonStr);
         GD.Print("Current day index: " + currentDayIndex);
         GD.Print("Next day index: " + nextDayIndex);
+
+        if (!firstSpringPassed && !tutorialShowing)
+        {
+            ShowTutorial();
+            tutorialShowing = true;
+        }
+        else if (firstSpringPassed)
+        {
+            tutorialShowing = false;
+        }
+    }
+
+    private void ShowTutorial()
+    {
+        var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        sceneManager.ChangeScene("tutorial");
     }
 
     public bool IsDisasterDay()
@@ -358,9 +381,18 @@ public partial class Calendar : Node2D
     {
         var stopwatch = new Stopwatch();
         stopwatch.Start();
+
+        if (!firstSpringPassed && firstSpringArray != null && firstSpringArray.Length > 0)
+        {
+            springArray = firstSpringArray;
+            firstSpringPassed = true;
+        }
+        else
+        {
+            springArray = GenerateDisasterDaysSynchronous("Spring");
+        }
         // generate and output all the disaster arrays for the year at once
 
-        springArray = GenerateDisasterDaysSynchronous("Spring");
         summerArray = GenerateDisasterDaysSynchronous("Summer");
         autumnArray = GenerateDisasterDaysSynchronous("Autumn");
         winterArray = GenerateDisasterDaysSynchronous("Winter");
