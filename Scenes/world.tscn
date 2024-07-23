@@ -331,38 +331,40 @@ layer_1/tile_data = PackedInt32Array(7, 458753, 3, 65543, 458753, 4, 8, 524289, 
 layer_2/name = "light"
 layer_2/tile_data = PackedInt32Array(589831, 458753, 2, 589832, 524289, 2)
 
-[node name="counter" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+[node name="Checkout" parent="NavigationRegion2D" instance=ExtResource("6_qywxc")]
+position = Vector2(128, 57)
+
+[node name="Unupgraded Counters" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="counter" parent="NavigationRegion2D/Unupgraded Counters" instance=ExtResource("6_jsvja")]
 z_as_relative = false
 position = Vector2(193, 68)
 collision_layer = 3
 
-[node name="counter2" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+[node name="counter2" parent="NavigationRegion2D/Unupgraded Counters" instance=ExtResource("6_jsvja")]
 z_as_relative = false
 position = Vector2(193, 102)
 collision_layer = 3
 
-[node name="counter3" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+[node name="counter3" parent="NavigationRegion2D/Unupgraded Counters" instance=ExtResource("6_jsvja")]
 z_as_relative = false
 position = Vector2(193, 135)
 collision_layer = 3
 
-[node name="counter4" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+[node name="counter4" parent="NavigationRegion2D/Unupgraded Counters" instance=ExtResource("6_jsvja")]
 z_as_relative = false
 position = Vector2(64, 68)
 collision_layer = 3
 
-[node name="counter5" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+[node name="counter5" parent="NavigationRegion2D/Unupgraded Counters" instance=ExtResource("6_jsvja")]
 z_as_relative = false
 position = Vector2(64, 102)
 collision_layer = 3
 
-[node name="counter6" parent="NavigationRegion2D" instance=ExtResource("6_jsvja")]
+[node name="counter6" parent="NavigationRegion2D/Unupgraded Counters" instance=ExtResource("6_jsvja")]
 z_as_relative = false
 position = Vector2(64, 135)
 collision_layer = 3
-
-[node name="Checkout" parent="NavigationRegion2D" instance=ExtResource("6_qywxc")]
-position = Vector2(128, 57)
 
 [node name="Player" parent="." instance=ExtResource("3_gm0l6")]
 unique_name_in_owner = true

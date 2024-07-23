@@ -4,6 +4,9 @@ extends Node2D
 var animPlayer = $AnimationPlayer
 
 @onready
+var audio = $AudioStreamPlayer
+
+@onready
 var sceneManager = $/root/SceneManager
 
 # Called when the node enters the scene tree for the first time.
@@ -16,6 +19,7 @@ func _process(_delta):
 	if Input.is_action_pressed("Interact"):
 		animPlayer.play("slide")
 		animPlayer.advance(8)
+		audio.stop()
 		on_anim_finished("")
 	pass
 
