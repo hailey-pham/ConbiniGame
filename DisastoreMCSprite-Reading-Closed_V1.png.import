@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqakq5bw6638u"
-path="res://.godot/imported/Storefront_Vending.png-3523b0d735d520582099da36f0a4f784.ctex"
+uid="uid://c8crwx3c01qq6"
+path="res://.godot/imported/DisastoreMCSprite-Reading-Closed_V1.png-f0a17a1a573a8dda99ccff0788c8efee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Storefront_Vending.png"
-dest_files=["res://.godot/imported/Storefront_Vending.png-3523b0d735d520582099da36f0a4f784.ctex"]
+source_file="res://DisastoreMCSprite-Reading-Closed_V1.png"
+dest_files=["res://.godot/imported/DisastoreMCSprite-Reading-Closed_V1.png-f0a17a1a573a8dda99ccff0788c8efee.ctex"]
 
 [params]
 

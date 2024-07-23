@@ -108,7 +108,7 @@ public partial class npc : CharacterBody2D
 
     public void SetSpriteFrames(SpriteFrames spriteFrames)
     {
-        Debug.Assert(spriteFrames != null,"Tried to change sprite frames before entering tree!");
+        Debug.Assert(_animatedSprite != null,"Tried to change sprite frames before entering tree!");
         _animatedSprite.SpriteFrames = spriteFrames;
     }
 }

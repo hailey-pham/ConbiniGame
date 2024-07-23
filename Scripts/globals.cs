@@ -87,10 +87,11 @@ public partial class globals : Node
             string[] fileNames = dir.GetFiles();
             GD.Print("Getting items...");
 
-            string tempFileName;
-            char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
 			Parallel.ForEach(fileNames, filename =>
 			{
+                string tempFileName;
+                char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
+
                 if (filename.Contains(".tres.remap"))
                 {
                     tempFileName = filename.TrimEnd(remap);
@@ -119,11 +120,12 @@ public partial class globals : Node
 
             string[] fileNamesU = dirU.GetFiles();
             GD.Print("Getting upgrades...");
-
-            string tempFileName;
-            char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
+            
             Parallel.ForEach(fileNamesU, fileName =>
             {
+                string tempFileName;
+                char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
+
                 if (fileName.Contains(".tres.remap"))
                 {
                     tempFileName = fileName.TrimEnd(remap);

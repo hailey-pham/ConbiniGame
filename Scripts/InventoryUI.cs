@@ -32,10 +32,10 @@ public partial class InventoryUI : Control
 		GD.Print("Loading Inventory");
 
         foreach(ItemRes item in globals.Stock.Values) {
-            if (!inventoryItems.Contains(item))
-            {
+            // if (!inventoryItems.Contains(item))
+            // {
                 inventoryItems.Add(item);
-            }
+            // }
         }
 
 		LoadItemList();
@@ -52,7 +52,7 @@ public partial class InventoryUI : Control
 				inventoryIcons[counter].Visible = false;
 			} else {
 				inventoryIcons[counter].Visible = true;
-				container = inventoryButtons[^1].GetChild(0);
+				container = inventoryButtons[counter].GetChild(0);
 				container.GetChild<TextureRect>(0).Texture = item.spriteTexture;
 				container.GetChild<Label>(1).Text = item.name;
 				container.GetChild<Label>(2).Text = "x"+item.currentStock;
