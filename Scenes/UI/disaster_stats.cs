@@ -29,6 +29,8 @@ public partial class disaster_stats : Control
 
     private int disasterProtection = 0;
 
+    private int moneyLost = 0;
+
     private Calendar calendar;
 
     Random rnd = new Random();
@@ -112,21 +114,21 @@ public partial class disaster_stats : Control
         CurrentMoney();
         disasterLabel.Text = "Disaster has struck your store. You have lost a portion of your resources...";
         // messageLabel.Text = "You lost a portion of your resources.";
-        statsLabel.Text = "Money lost:  ￥" + newMoney.ToString();
+        statsLabel.Text = "Money lost:  ￥" + moneyLost.ToString();
         currentStatsLabel.Text = "Current funds: ￥" + globals.Money.ToString();
         // itemsLostLabel.Text = "You lost " + (globals.stockLosePercentage * 100) + "% of each item";
     }
 
     private int LoseMoney()
     {
-        
-        newMoney = globals.Money - (globals.Money / rnd.Next(10+disasterProtection, 100)); // lose 1-10% of your money, 
+        moneyLost = globals.Money / rnd.Next(10+disasterProtection, 100);
+        newMoney = globals.Money - moneyLost; // lose 1-10% of your money, 
         return newMoney;
     }
 
     private int CurrentMoney()
     {
-        globals.Money = globals.Money - newMoney;
+        globals.Money = newMoney;
         return globals.Money;
     }
 

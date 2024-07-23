@@ -66,8 +66,10 @@ public partial class InventoryUI : Control
 	public void LoadItemList()
 	{
 		Node container;
+		int count = 0;
 		foreach (ItemRes item in inventoryItems)
         {
+			// GD.Print(count+item.name+item.currentStock);
 			inventoryIcons.Add((Control)inventoryIcon.Instantiate());
 			GetChild<VBoxContainer>(0).AddChild(inventoryIcons[^1]);
 
@@ -80,7 +82,9 @@ public partial class InventoryUI : Control
 			container.GetChild<Label>(2).Text = "x"+item.currentStock;
 			
 			inventoryButtons[^1].Pressed += () =>  OnItemClicked(item.name);
+			count++;
         }
+		GetChild<VBoxContainer>(0).AddChild((Control)inventoryIcon.Instantiate());
 	}
 	private void OnItemClicked(string itemName)
     {

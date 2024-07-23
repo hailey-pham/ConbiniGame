@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dvf8kxmq3w1lt" path="res://Scenes/Objects/inventory.tscn" id="2_xnbmo"]
 [ext_resource type="Script" path="res://Scenes/Objects/storage.cs" id="2_yhkxo"]
 [ext_resource type="Script" path="res://Scripts/InventoryUI.cs" id="12_4veed"]
-[ext_resource type="PackedScene" uid="uid://demewmfqirvib" path="res://Scenes/inventory_item.tscn" id="13_kifw7"]
+[ext_resource type="PackedScene" uid="uid://c4j5rlbk2gvqb" path="res://Scenes/inventory_item.tscn" id="13_kifw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfu4v"]
 size = Vector2(58, 20)
@@ -62,25 +62,24 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 19.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 theme = SubResource("Theme_lltay")
 
 [node name="NinePatchRect" parent="Control" instance=ExtResource("2_xnbmo")]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 10.0
+offset_top = -8.0
 offset_right = 244.0
-offset_bottom = 150.0
+offset_bottom = 132.0
 
 [node name="InventoryUI" type="ScrollContainer" parent="Control" node_paths=PackedStringArray("BG")]
 layout_mode = 0
 offset_left = 18.0
-offset_top = 18.0
 offset_right = 238.0
-offset_bottom = 142.0
+offset_bottom = 124.0
 theme = SubResource("Theme_5nc2q")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
@@ -90,8 +89,6 @@ BG = NodePath("../NinePatchRect")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/InventoryUI"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 theme_override_constants/separation = 24
 
 [node name="InventoryItem" parent="Control/InventoryUI/VBoxContainer" instance=ExtResource("13_kifw7")]
