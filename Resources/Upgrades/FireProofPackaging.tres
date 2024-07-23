@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://tg1di5bahpfx"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/FireProofPackaging.cs" id="1_b0sv0"]
+
+[resource]
+script = ExtResource("1_b0sv0")
+protection = 2
+name = "Fire Proof Packaging"
+description = "Reduces amount of items lost in a wild fire"
+owned = false
+cost = 5000

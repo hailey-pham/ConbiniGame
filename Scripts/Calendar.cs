@@ -219,7 +219,6 @@ public partial class Calendar : Node2D
         }
         else if (IsDisasterDay())
         {
-            globals.LoseStock();
             sceneManager.ChangeScene("disasterscene","Sleep");
             // stats.UpdateMoney();
         }

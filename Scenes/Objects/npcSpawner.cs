@@ -38,6 +38,8 @@ public partial class npcSpawner : Node2D
 
 	private Timer firstNPCTimer;
 
+	private globals global;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -47,6 +49,7 @@ public partial class npcSpawner : Node2D
 
         //connects NPC spawner to spawn npcs when day increments a percent
         Calendar calendar = GetNode<Calendar>("/root/Calendar");
+		global = GetNode<globals>("/root/Globals");
         calendar.DayPercent += _on_calendar_day_percent;
     }
 
@@ -75,6 +78,7 @@ public partial class npcSpawner : Node2D
                 audioPlayer.Play();
             }
             npcCount++;
+			global.CustomersEntered += 1;
         }
 
     }

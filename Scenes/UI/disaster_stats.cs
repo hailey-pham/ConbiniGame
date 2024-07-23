@@ -10,6 +10,8 @@ public partial class disaster_stats : Control
     [Signal]
     public delegate void RestockButtonPressedEventHandler();
 
+    [Export] private PackedScene LostItemContainer;
+
 
     private RichTextLabel disasterLabel;
     private RichTextLabel messageLabel;
@@ -22,6 +24,8 @@ public partial class disaster_stats : Control
 
     private globals globals;
     private SceneManager sceneManager;
+
+    private HBoxContainer hbox;
 
     private int newMoney;
     private int currentMoney;
@@ -42,6 +46,7 @@ public partial class disaster_stats : Control
         restockButton = GetNode<Button>("RestockButton");
         restockButton.Pressed += OnRestockButtonPressed;
 
+        hbox = GetNode<HBoxContainer>("ScrollContainer/HBoxContainer");
         disasterLabel = GetNode<RichTextLabel>("VBoxContainer/UhOh");
         messageLabel = GetNode<RichTextLabel>("VBoxContainer/Message");
         statsLabel = GetNode<RichTextLabel>("VBoxContainer/Stats");
@@ -55,6 +60,7 @@ public partial class disaster_stats : Control
         globals = GetNode<globals>("/root/Globals");
 
         disasterProtection = 0;
+        globals.ItemProtection = 0;
 
 		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades) {
             if (upgrade.Value.owned) {
@@ -111,18 +117,37 @@ public partial class disaster_stats : Control
         var globals = GetNode<globals>("/root/Globals");
 
         LoseMoney();
+        globals.LoseStock();
         CurrentMoney();
         disasterLabel.Text = "Disaster has struck your store. You have lost a portion of your resources...";
         // messageLabel.Text = "You lost a portion of your resources.";
         statsLabel.Text = "Money lost:  ￥" + moneyLost.ToString();
         currentStatsLabel.Text = "Current funds: ￥" + globals.Money.ToString();
         // itemsLostLabel.Text = "You lost " + (globals.stockLosePercentage * 100) + "% of each item";
+        Node tempItem;
+        foreach(KeyValuePair<string,ItemRes> item in globals.Stock) {
+            if(item.Value.LossAmount > 0) {
+                tempItem = LostItemContainer.Instantiate();
+                tempItem.GetChild<TextureRect>(0).Texture = item.Value.spriteTexture;
+                tempItem.GetChild<Label>(1).Text = "x"+item.Value.LossAmount.ToString();
+                hbox.AddChild(tempItem);
+            }
+            
+        }
     }
 
     private int LoseMoney()
     {
-        moneyLost = globals.Money / rnd.Next(10+disasterProtection, 100);
-        newMoney = globals.Money - moneyLost; // lose 1-10% of your money, 
+        int minLoss = 100+globals.Day*200;
+        int percentLoss = globals.Money / rnd.Next(2+disasterProtection, 10); // lose 10-50% of your money, 
+
+        if (minLoss > percentLoss) {
+            moneyLost = minLoss;
+        } else {
+            moneyLost = percentLoss;
+        }
+
+        newMoney = globals.Money - moneyLost; 
         return newMoney;
     }
 

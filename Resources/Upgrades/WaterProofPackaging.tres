@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bj0pji3y08hdi"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/WaterProofPackaging.cs" id="1_irf6w"]
+
+[resource]
+script = ExtResource("1_irf6w")
+protection = 2
+name = "Water Proof Packaging"
+description = "Reduces items lost in water based disasters"
+owned = false
+cost = 5000

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c0yq2nxkp11ii"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/ReinforcedGlass.cs" id="1_f2x4j"]
+
+[resource]
+script = ExtResource("1_f2x4j")
+itemProtection = 1
+moneyProtection = 1
+name = "Reinforced Glass"
+description = "Helps reduce damage in earthquakes and typhoons"
+owned = false
+cost = 5000

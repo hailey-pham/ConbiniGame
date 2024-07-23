@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c2ign4xinryom"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade Scripts/BetterHeating.cs" id="1_2jptx"]
+
+[resource]
+script = ExtResource("1_2jptx")
+protection = 3
+name = "Better Heating"
+description = "Reduces items lost in heavy snow"
+owned = false
+cost = 7500

@@ -14,12 +14,14 @@ public partial class globals : Node
     public static int _purchaseCost;
 
 	//daily properties
-	public static int _customers;
+	public static int _customersServed;
 	public static int _earnings;
 	private static List<ItemRes> _itemsSoldToday = new();
 	public static int _day = 0;
 
 	private int itemProtection = 0;
+
+	private int _customersEntered = 0;
 
 	public static double stockLosePercentage = 0.1; // make randomizing function for this l8r
 
@@ -44,10 +46,16 @@ public partial class globals : Node
         }
 	}
 
-	public int Customers
+	public int CustomersServed
 	{
-		get { return _customers; }
-		set { _customers = value; }
+		get { return _customersServed; }
+		set { _customersServed = value; }
+	}
+
+	public int CustomersEntered
+	{
+		get { return _customersEntered; }
+		set { _customersEntered = value; }
 	}
     public static int Day
     {
@@ -99,7 +107,7 @@ public partial class globals : Node
 	
 	private void ResetCustomers()
 	{
-		Customers = 0;
+		CustomersServed = 0;
 	}
     public static void IncrementDay()
     {
@@ -141,7 +149,18 @@ public partial class globals : Node
 
         foreach (var item in stock.Values)
 		{
-            int lossAmount = (item.currentStock / rnd.Next(10+itemProtection, 100));
+			int minLoss = 1+Day*2;
+
+        	int percentLoss = Money / rnd.Next(2+itemProtection, 10);
+
+			int lossAmount;
+			if (minLoss > percentLoss) {
+				lossAmount = minLoss;
+			} else {
+				lossAmount = percentLoss;
+			}
+
+			item.LossAmount = lossAmount;
             // cant let stock go negative
             item.currentStock = Math.Max(0, item.currentStock - lossAmount);
 		}

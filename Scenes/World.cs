@@ -31,7 +31,8 @@ public partial class World : Node2D
 		globals = GetNode<globals>("/root/Globals");
 
 		calendarUI.switchTexture(calendar.GetCurrentSeason());
-		dayLabel.Text = calendar.CurrentDay.ToString();
+		dayLabel.Text = globals.Day.ToString();
+		globals.CustomersEntered = 0;
 
 
         foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades)

@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_k0vpk")
-protection = 30
+protection = 3
 name = "Sandbags"
 description = "Protects from Tsunami damage (ONE TIME USE)"
 owned = false
-cost = 2500
+cost = 3500

@@ -84,7 +84,11 @@ public partial class InventoryUI : Control
 			inventoryButtons[^1].Pressed += () =>  OnItemClicked(item.name);
 			count++;
         }
+		
+#if DEBUG
 		GetChild<VBoxContainer>(0).AddChild((Control)inventoryIcon.Instantiate());
+#endif
+		
 	}
 	private void OnItemClicked(string itemName)
     {
@@ -98,18 +102,18 @@ public partial class InventoryUI : Control
 			{
 				playerItemSpawner.AddItemRes(itemRes);
 				globals.DecrementItemResStock(itemRes);
-				Player.playerFreezeState();
-				this.Visible = false;
-				BG.Visible = false;
+				// Player.playerFreezeState();
+				// this.Visible = false;
+				// BG.Visible = false;
 			}
 			//false if it doesn't have an item or if it doesn't exist
 			else if (!playerItemSpawner2.HasItem() && Player.IsStackItemUpgrade)
 			{
 				playerItemSpawner2.AddItemRes(itemRes);
 				globals.DecrementItemResStock(itemRes);
-				Player.playerFreezeState();
-				this.Visible = false;
-				BG.Visible = false;
+				// Player.playerFreezeState();
+				// this.Visible = false;
+				// BG.Visible = false;
 			}
 			
 		}

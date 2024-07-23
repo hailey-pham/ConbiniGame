@@ -12,7 +12,8 @@ public partial class VendingMachine : Upgrade
 	
 
 	public override void onDayEnd(globals Global, Node root) { // There is no additional UI for this, help	
-		int vendingRevenue  = rnd.Next(1000, 5000);
+		int vendingCustomers = rnd.Next(5,(int)(globals.CustomersEntered/5.0));
+		int vendingRevenue  = vendingCustomers*100;
 		Global.Money += vendingRevenue;
 		// Node vendingMachineNode = Global.FindChild("VendingMachineLabel", true);
 		RichTextLabel vendingMachineLabel = (RichTextLabel)root.GetTree().GetFirstNodeInGroup("VendingLabel");
