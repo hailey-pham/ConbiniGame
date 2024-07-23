@@ -14,13 +14,24 @@ public partial class World : Node2D
 	CalendarUI calendarUI;
 
 	public int counterState;
+	public int prevCounterState;
     public bool bothCounterUpgrades;
+	PackedScene scene;
+	Node instance;
 
     Label dayLabel;
-	public override void _Ready()
+	
+
+    public override void _Ready()
 	{
-		counterState = 0;
+        DestroyCounterState(0);
+        DestroyCounterState(1);
+        DestroyCounterState(2);
+        counterState = 0;
 		bothCounterUpgrades = false;
+        NavigationRegion2D navMesh = GetNode<NavigationRegion2D>("NavigationRegion2D");
+
+
         calendar = GetNode<Calendar>("/root/Calendar");
 		calendarUI = GetNode<CalendarUI>("UI/CalendarUI");
 		dayLabel = GetNode<Label>("UI/DayLabel");
@@ -36,49 +47,57 @@ public partial class World : Node2D
 		dayLabel.Text = calendar.CurrentDay.ToString();
 
 
-        foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades)
+		foreach (KeyValuePair<string, Upgrade> upgrade in globals.Upgrades)
 		{
 			if (upgrade.Value.owned)
 			{
 				upgrade.Value.onLevelLoad(globals, GetNode<Node>("."));
-            }
-        }
-
-
-		if(bothCounterUpgrades)
+			}
+		}
+		if (bothCounterUpgrades)
 		{
 			counterState = 2;
 		}
         Node2D currCounter = (Node2D)GetTree().GetFirstNodeInGroup("counterstate" + counterState.ToString());
+            
         switch (counterState)
         {
             case 0:
                 // code block
-                DestroyCounterState(1);
-                DestroyCounterState(2);
-				currCounter.Visible = true;
+                scene = GD.Load<PackedScene>("res://Scenes/counter_upgrade_state_0.tscn");
+				instance = scene.Instantiate();
+				navMesh.AddChild(instance);
+                //currCounter.Visible = true;
                 break;
             case 1:
-				// code block
-				DestroyCounterState(0);
-				DestroyCounterState(2);
-                currCounter.Visible = true;
+                // code block
+                scene = GD.Load<PackedScene>("res://Scenes/counter_upgrade_state_1.tscn");
+                instance = scene.Instantiate();
+                navMesh.AddChild(instance);
+                //currCounter.Visible = true;
                 break;
             case 2:
                 // code block
-                DestroyCounterState(0);
-				DestroyCounterState(1);
-                currCounter.Visible = true;
+                scene = GD.Load<PackedScene>("res://Scenes/counter_upgrade_state_2.tscn");
+                instance = scene.Instantiate();
+                navMesh.AddChild(instance);
+                //currCounter.Visible = true;
                 break;
         }
-		GetChild<NavigationRegion2D>(0).BakeNavigationPolygon();
+        navMesh.BakeNavigationPolygon();
+        
 
-
+		prevCounterState = counterState;
 	}
     void DestroyCounterState(int state)
     {
 		GetTree().GetFirstNodeInGroup("counterstate" + state.ToString()).QueueFree();
 
     }
+
+	void LoadCounters()
+	{
+
+	}
 }
 

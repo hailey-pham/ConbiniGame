@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b44a0wi06mle0"]
+
+[ext_resource type="PackedScene" uid="uid://cl8e50dilm7oa" path="res://Scenes/Objects/squarecounter.tscn" id="1_4lugl"]
+[ext_resource type="PackedScene" uid="uid://4mnchpygh12q" path="res://Scenes/Objects/largecounter.tscn" id="2_3xsbf"]
+
+[node name="CounterUpgradeState2" type="Node2D" groups=["counterstate2"]]
+visible = false
+y_sort_enabled = true
+
+[node name="squarecounter" parent="." instance=ExtResource("1_4lugl")]
+position = Vector2(62, 83)
+
+[node name="squarecounter2" parent="." instance=ExtResource("1_4lugl")]
+position = Vector2(46, 83)
+
+[node name="squarecounter3" parent="." instance=ExtResource("1_4lugl")]
+position = Vector2(62, 129)
+
+[node name="squarecounter4" parent="." instance=ExtResource("1_4lugl")]
+position = Vector2(193, 83)
+
+[node name="squarecounter5" parent="." instance=ExtResource("1_4lugl")]
+position = Vector2(46, 129)
+
+[node name="squarecounter6" parent="." instance=ExtResource("1_4lugl")]
+position = Vector2(209, 83)
+
+[node name="squarecounter7" parent="." instance=ExtResource("1_4lugl")]
+position = Vector2(194, 129)
+
+[node name="squarecounter8" parent="." instance=ExtResource("1_4lugl")]
+position = Vector2(210, 129)
+
+[node name="largecounter" parent="." instance=ExtResource("2_3xsbf")]
+position = Vector2(128, 101)
