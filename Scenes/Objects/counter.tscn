@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dury0hel2kujq"]
+[gd_scene load_steps=10 format=3 uid="uid://dury0hel2kujq"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/counter.cs" id="1_fpsiv"]
 [ext_resource type="PackedScene" uid="uid://d0whnk0jytoo3" path="res://Scenes/Items/ItemSpawner.tscn" id="2_eykgy"]
@@ -7,7 +7,15 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vr7k5"]
 atlas = ExtResource("2_qq6g5")
+region = Rect2(80, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sfto"]
+atlas = ExtResource("2_qq6g5")
 region = Rect2(96, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v6db"]
+atlas = ExtResource("2_qq6g5")
+region = Rect2(80, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rpun"]
 size = Vector2(16, 14)
@@ -18,9 +26,17 @@ size = Vector2(27.5792, 20.8612)
 [node name="counter" type="StaticBody2D" groups=["counters"]]
 script = ExtResource("1_fpsiv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="RoundTable" type="Sprite2D" parent="."]
 position = Vector2(0, 12)
 texture = SubResource("AtlasTexture_vr7k5")
+
+[node name="SquareTable" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_3sfto")
+
+[node name="LargeTable" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_8v6db")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 18)

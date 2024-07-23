@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://4kb8ht7abd6i"]
+[gd_scene load_steps=4 format=3 uid="uid://4kb8ht7abd6i"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/npcSpawner.cs" id="1_tl1os"]
 [ext_resource type="PackedScene" uid="uid://cq6fojlwfxlai" path="res://Characters/NPC/npc.tscn" id="2_oe3xl"]
-[ext_resource type="SpriteFrames" uid="uid://bvptwfwfig0e2" path="res://Characters/NPC/AlexSpriteFrames.tres" id="2_oeefj"]
-[ext_resource type="SpriteFrames" uid="uid://dptoav56nygca" path="res://Characters/NPC/AmeliaSpriteFrames.tres" id="3_hb78x"]
-[ext_resource type="SpriteFrames" uid="uid://ca68ckiavb0kr" path="res://Characters/NPC/BobSpriteFrames.tres" id="4_2uee1"]
 
 [sub_resource type="Curve" id="Curve_icla7"]
 _data = [Vector2(0, 0.100612), 0.0, 0.0362008, 0, 1, Vector2(1, 0.136813), -1.95307, 0.0, 0, 0]
@@ -12,7 +9,6 @@ point_count = 2
 
 [node name="npcSpawner" type="Node2D"]
 script = ExtResource("1_tl1os")
-npcSprites = Array[SpriteFrames]([ExtResource("2_oeefj"), ExtResource("3_hb78x"), ExtResource("4_2uee1")])
 npcScene = ExtResource("2_oe3xl")
 spawnCurve = SubResource("Curve_icla7")
 
