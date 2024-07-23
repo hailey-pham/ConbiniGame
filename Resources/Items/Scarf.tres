@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://wvgqfrbug6xk"]
+
+[ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_kucvi"]
+[ext_resource type="Texture2D" uid="uid://da3724qoqf1xy" path="res://Scarf.png" id="2_d3glo"]
+
+[resource]
+script = ExtResource("1_kucvi")
+name = "Scarf"
+price = 850
+restockPrice = 450
+SeasonFlags = 16
+DisasterFlags = 64
+spriteTexture = ExtResource("2_d3glo")

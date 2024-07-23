@@ -7,7 +7,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vr7k5"]
 atlas = ExtResource("2_qq6g5")
-region = Rect2(80, 32, 16, 32)
+region = Rect2(96, 32, 16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rpun"]
 size = Vector2(16, 14)
@@ -19,7 +19,7 @@ size = Vector2(27.5792, 20.8612)
 script = ExtResource("1_fpsiv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 12)
 texture = SubResource("AtlasTexture_vr7k5")
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -31,7 +31,7 @@ shape = SubResource("RectangleShape2D_0rpun")
 
 [node name="ItemSpawner" parent="." instance=ExtResource("2_eykgy")]
 y_sort_enabled = true
-position = Vector2(0, -7)
+position = Vector2(0, -3)
 
 [node name="counter_area" type="Area2D" parent="."]
 script = ExtResource("3_yqw4r")

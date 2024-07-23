@@ -70,16 +70,16 @@ theme = SubResource("Theme_lltay")
 
 [node name="NinePatchRect" parent="Control" instance=ExtResource("2_xnbmo")]
 layout_mode = 0
-offset_left = 10.0
+offset_left = 12.0
 offset_top = 10.0
-offset_right = 246.0
+offset_right = 244.0
 offset_bottom = 150.0
 
 [node name="InventoryUI" type="ScrollContainer" parent="Control" node_paths=PackedStringArray("BG")]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 18.0
 offset_top = 18.0
-offset_right = 240.0
+offset_right = 238.0
 offset_bottom = 142.0
 theme = SubResource("Theme_5nc2q")
 horizontal_scroll_mode = 0

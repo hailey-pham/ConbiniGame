@@ -1,15 +1,20 @@
-[gd_scene load_steps=25 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=31 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Script" path="res://Scenes/World.cs" id="1_msxpb"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="Texture2D" uid="uid://bpccdhn7cdrum" path="res://Assets/DisastoreInteriorTilemapV2.png" id="4_1jcc4"]
+[ext_resource type="Texture2D" uid="uid://bwx1l3mn5dd05" path="res://Assets/GUI/MoneyBG.png" id="6_2v7vn"]
 [ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="6_jsvja"]
 [ext_resource type="PackedScene" uid="uid://byaiw4cj1167a" path="res://Scenes/Objects/checkout.tscn" id="6_qywxc"]
-[ext_resource type="Texture2D" uid="uid://csy0sypjbladf" path="res://Assets/DayProgress/DayBar.png" id="9_s2yos"]
+[ext_resource type="Texture2D" uid="uid://cycxxpq3u6wpb" path="res://Assets/GUI/Calendar/CalendarSpring.png" id="6_uemoo"]
+[ext_resource type="Script" path="res://Scenes/CalendarUI.cs" id="7_8yfgc"]
+[ext_resource type="Texture2D" uid="uid://w1v4qstoclyb" path="res://Assets/GUI/Calendar/CalendarSummer.png" id="8_5a4tn"]
+[ext_resource type="Texture2D" uid="uid://u8mpnmxntjad" path="res://Assets/GUI/Calendar/CalendarFall.png" id="9_d5nkg"]
 [ext_resource type="PackedScene" uid="uid://4kb8ht7abd6i" path="res://Scenes/Objects/npcSpawner.tscn" id="9_w4hoi"]
 [ext_resource type="AudioStream" uid="uid://dud835hk2ffu6" path="res://Assets/Music/Irrashaimase.wav" id="9_wpaow"]
 [ext_resource type="Script" path="res://Scenes/ProgressBar.cs" id="10_mtv6v"]
 [ext_resource type="Texture2D" uid="uid://n8cnrduam8pc" path="res://Assets/DayProgress/SunIcon1.png" id="10_nt7tu"]
+[ext_resource type="Texture2D" uid="uid://bb57uggi5hibd" path="res://Assets/GUI/Calendar/CalendarWinter.png" id="10_qh888"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="11_il57l"]
 [ext_resource type="Texture2D" uid="uid://dnf5nb8gl5ayc" path="res://Assets/DayProgress/SunIcon2.png" id="11_mjb8g"]
 [ext_resource type="Texture2D" uid="uid://dahltneidfja4" path="res://Assets/DayProgress/SunIcon3.png" id="12_aqrn2"]
@@ -17,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://vit6v1iaab2a" path="res://Scenes/Objects/storage.tscn" id="13_1hsmu"]
 [ext_resource type="AudioStream" uid="uid://sivy414r7kf4" path="res://Assets/Music/Shop Theme.wav" id="13_e5adc"]
 [ext_resource type="Texture2D" uid="uid://b1dgiug6vjg6a" path="res://Assets/DayProgress/SunIcon4.png" id="13_o4atj"]
+[ext_resource type="Texture2D" uid="uid://ca0rme5bji3ko" path="res://Assets/DayProgress/NewProgressBar.png" id="14_q5fq6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(207, 89, 207, 63, 234, 38, 234, 154, 163, 38, 179, 63, 163, 54, 158, 71, 158, 53, 179, 89, 78, 97, 78, 89, 99, 71, 179, 97, 78, 63, 99, 53, 73, 53, 50, 63, 179, 123, 78, 123, 207, 154, 207, 130, 207, 123, 179, 130, 142, 154, 113, 155, 78, 130, 179, 154, 142, 198, 113, 198, 78, 155, 50, 123, 50, 130, 50, 155, 22, 155, 22, 38, 50, 97, 73, 38, 50, 89, 207, 97)
@@ -242,10 +248,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 60),
+"times": PackedFloat32Array(0.4, 59.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(16, 3), Vector2(248, 3)]
+"values": [Vector2(3, 2), Vector2(3, 148)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -266,10 +272,10 @@ tracks/2/path = NodePath("Afternoon:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 12, 12.1, 36.1, 36.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 12, 12.1, 27.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, false, true, true, false]
+"values": [false, false, true, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -278,10 +284,10 @@ tracks/3/path = NodePath("Evening:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 36.1, 36.2, 48.7, 48.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 27.5, 43),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, false, true, true, false]
+"values": [false, true, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -290,10 +296,10 @@ tracks/4/path = NodePath("Night:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 48.7, 48.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 43),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, false, true]
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c32fq"]
@@ -374,49 +380,93 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MoneyLabel" type="RichTextLabel" parent="UI"]
+[node name="CalendarUI" type="TextureRect" parent="UI"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 12.62
-offset_right = 110.0
-offset_bottom = 46.51
+offset_left = 223.0
+offset_right = 255.0
+offset_bottom = 32.0
+texture = ExtResource("6_uemoo")
+stretch_mode = 3
+script = ExtResource("7_8yfgc")
+spring = ExtResource("6_uemoo")
+summer = ExtResource("8_5a4tn")
+fall = ExtResource("9_d5nkg")
+winter = ExtResource("10_qh888")
+
+[node name="DayLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 18.0
+offset_right = 250.0
+offset_bottom = 30.0
 theme = ExtResource("11_il57l")
-theme_override_colors/default_color = Color(0, 1, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.305882, 0.211765, 0.184314, 1)
+text = "999"
+horizontal_alignment = 1
+
+[node name="MoneyBg" type="Sprite2D" parent="UI"]
+position = Vector2(190, 12)
+texture = ExtResource("6_2v7vn")
+
+[node name="Yen Symbol" type="RichTextLabel" parent="UI"]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 7.0
+offset_right = 218.0
+offset_bottom = 19.0
+theme = ExtResource("11_il57l")
+theme_override_colors/default_color = Color(0.128235, 0.371173, 0.276872, 1)
 theme_override_constants/shadow_outline_size = 0
 bbcode_enabled = true
-text = "￥:0"
+text = "￥"
 fit_content = true
 scroll_active = false
+autowrap_mode = 2
+
+[node name="MoneyLabel" type="RichTextLabel" parent="UI"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 7.0
+offset_right = 218.0
+offset_bottom = 19.0
+theme = ExtResource("11_il57l")
+theme_override_colors/default_color = Color(0.128235, 0.371173, 0.276872, 1)
+theme_override_constants/shadow_outline_size = 0
+bbcode_enabled = true
+text = "[right]9999999999"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
 script = ExtResource("12_qyo2m")
 
 [node name="CalendarLabel" type="Label" parent="UI"]
 z_index = 1
 layout_mode = 0
-offset_left = 2.0
-offset_top = 139.0
-offset_right = 42.0
-offset_bottom = 162.0
+offset_left = -1.0
+offset_top = 172.0
+offset_right = 39.0
+offset_bottom = 195.0
 theme = ExtResource("11_il57l")
 
 [node name="TimeLabel" type="Label" parent="UI"]
 z_index = 1
 layout_mode = 0
-offset_left = 2.0
-offset_top = 148.0
-offset_right = 42.0
-offset_bottom = 171.0
+offset_left = -1.0
+offset_top = 181.0
+offset_right = 39.0
+offset_bottom = 204.0
 theme = ExtResource("11_il57l")
 
 [node name="ProgressBar" type="TextureRect" parent="UI"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -9.0
-offset_right = -9.0
-offset_bottom = 16.0
+offset_left = -1.0
+offset_right = -241.0
+offset_bottom = 160.0
 grow_horizontal = 2
-texture = ExtResource("9_s2yos")
+texture = ExtResource("14_q5fq6")
+stretch_mode = 3
 script = ExtResource("10_mtv6v")
 
 [node name="Suns" type="Control" parent="UI/ProgressBar"]
@@ -425,7 +475,7 @@ anchors_preset = 0
 offset_left = 239.0
 offset_top = 3.0
 offset_right = 279.002
-offset_bottom = 43.0
+offset_bottom = 42.9996
 mouse_filter = 2
 
 [node name="Morning" type="TextureRect" parent="UI/ProgressBar/Suns"]
@@ -440,14 +490,14 @@ layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("11_mjb8g")
+texture = ExtResource("12_aqrn2")
 
 [node name="Evening" type="TextureRect" parent="UI/ProgressBar/Suns"]
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("12_aqrn2")
+texture = ExtResource("11_mjb8g")
 
 [node name="Night" type="TextureRect" parent="UI/ProgressBar/Suns"]
 layout_mode = 1

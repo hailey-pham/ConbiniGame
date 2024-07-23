@@ -15,6 +15,7 @@ public partial class MoneyLabel : RichTextLabel
 
     public void UpdateMoneyLabel(int money)
     {
-        Text = Text.Substring(0,Text.Find(":") + 1) + money;
+        // Text = Text.Substring(0,Text.Find(":") + 1) + money;
+        Text = "[right]"+money;
     }
 }

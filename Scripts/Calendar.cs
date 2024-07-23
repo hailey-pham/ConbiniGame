@@ -453,6 +453,8 @@ public partial class Calendar : Node2D
     {
         return (DisastersEnum)GetNextDayDisasterIndex();
     }
+
+    public int CurrentDay { get => currentDay; set => currentDay = value; }
     
     // debuggy
     public override void _UnhandledKeyInput(InputEvent @event)
