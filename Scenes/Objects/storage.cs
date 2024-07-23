@@ -22,6 +22,9 @@ public partial class storage : Area2D
         //unique naming that can access a node anywhere
         //playerItemSpawnerParent = 
 
+        //force self to be visible
+        Visible = true;
+
         Inventory = GetNode<InventoryUI>("Control/InventoryUI");
         BG = GetNode<NinePatchRect>("Control/NinePatchRect");
         Inventory.Visible = false;
