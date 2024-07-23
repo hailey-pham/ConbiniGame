@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dews1sdh5cm40"
-path="res://.godot/imported/BatteryV2.png-39651876031d15b4442347740e2958ff.ctex"
+uid="uid://b1yiqhfg2opgw"
+path="res://.godot/imported/Scarf.png-d42cc11cd3740cd228a7430ab56ef0f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BatteryV2.png"
-dest_files=["res://.godot/imported/BatteryV2.png-39651876031d15b4442347740e2958ff.ctex"]
+source_file="res://Scarf.png"
+dest_files=["res://.godot/imported/Scarf.png-d42cc11cd3740cd228a7430ab56ef0f5.ctex"]
 
 [params]
 
