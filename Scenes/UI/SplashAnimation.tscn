@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dq27k8jqqll6d"]
+[gd_scene load_steps=14 format=3 uid="uid://d2iy0bjxjq2ca"]
 
 [ext_resource type="Script" path="res://Scenes/UI/SplashAnimation.gd" id="1_k63x8"]
 [ext_resource type="Texture2D" uid="uid://gkxu2b8y1w6o" path="res://Assets/SplashAssets/slotbacks.png" id="1_yj0be"]

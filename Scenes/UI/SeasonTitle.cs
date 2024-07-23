@@ -44,6 +44,8 @@ public partial class SeasonTitle : Control
         else
         {
             sceneManager.ChangeScene("gamescene", "FadeToBlack");
-        }
+        }  
+        
+        
     }
 }

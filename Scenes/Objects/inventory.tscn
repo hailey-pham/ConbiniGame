@@ -1,14 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://corj4vn4m6apw"]
+[gd_scene load_steps=6 format=3 uid="uid://dvf8kxmq3w1lt"]
 
-[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_jk50i"]
+[ext_resource type="Texture2D" uid="uid://bjeiks3y5mbkl" path="res://Assets/GUI/InventoryBG.png" id="1_0sc0f"]
 [ext_resource type="Script" path="res://Scenes/Objects/Inventory.cs" id="2_at01a"]
+[ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="2_dnxd4"]
 
-[node name="Inventory" type="ItemList"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wr2kw"]
+
+[sub_resource type="Theme" id="Theme_lesee"]
+default_font = ExtResource("2_dnxd4")
+default_font_size = 10
+Button/font_sizes/font_size = 10
+ItemList/styles/focus = SubResource("StyleBoxEmpty_wr2kw")
+ItemList/styles/hovered = SubResource("StyleBoxEmpty_wr2kw")
+ItemList/styles/panel = SubResource("StyleBoxEmpty_wr2kw")
+ItemList/styles/selected = SubResource("StyleBoxEmpty_wr2kw")
+ItemList/styles/selected_focus = SubResource("StyleBoxEmpty_wr2kw")
+
+[node name="NinePatchRect" type="NinePatchRect"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 239.0
+offset_bottom = 74.0
+texture = ExtResource("1_0sc0f")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
+
+[node name="Inventory" type="ItemList" parent="."]
 z_index = 1
-offset_left = -72.895
-offset_top = 58.135
-offset_right = 167.105
-offset_bottom = 133.135
-theme = ExtResource("1_jk50i")
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 239.0
+offset_bottom = 74.0
+theme = SubResource("Theme_lesee")
 max_text_lines = 2
 script = ExtResource("2_at01a")
