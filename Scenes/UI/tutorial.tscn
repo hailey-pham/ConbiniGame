@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://Scenes/UI/tutorial.cs" id="1_4kg1w"]
 [ext_resource type="Texture2D" uid="uid://dkhiucorhkwnl" path="res://Assets/GUI/DialogueBox.png" id="1_7klqx"]
-[ext_resource type="Texture2D" uid="uid://be6dmbyrr6syb" path="res://DisastoreMCSprite-Concerned-Open_V1.png" id="4_61eel"]
-[ext_resource type="Theme" uid="uid://c32s5u87njpgh" path="res://Scenes/Dialogue.tres" id="5_8xphf"]
-[ext_resource type="Texture2D" uid="uid://dyw0hcsigilbb" path="res://DisastoreMCSprite-Concerned-Closed_V1.png" id="5_y18pq"]
-[ext_resource type="Texture2D" uid="uid://cm368vxlblcxx" path="res://DisastoreMCSprite-Reading-Open_V1.png" id="6_bgfbu"]
-[ext_resource type="Texture2D" uid="uid://c8crwx3c01qq6" path="res://DisastoreMCSprite-Reading-Closed_V1.png" id="7_gd0kn"]
-[ext_resource type="Texture2D" uid="uid://yomq6fote17p" path="res://DisastoreMCSprite-Happy-Grin_V2.png" id="8_fd0xs"]
-[ext_resource type="Texture2D" uid="uid://cgjt7k8rxcgc3" path="res://DisastoreMCSprite-Happy-Open_V2.png" id="9_uu12k"]
-[ext_resource type="Texture2D" uid="uid://dgtkf6xnkbksj" path="res://DisastoreMCSprite-Happy-Closed_V2.png" id="10_p0qqr"]
+[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="2_bnqub"]
+[ext_resource type="Texture2D" uid="uid://bco68s4lro64s" path="res://DisastoreMCSprite-Concerned-Open_V1.png" id="4_61eel"]
+[ext_resource type="Texture2D" uid="uid://bjcu57yusybiq" path="res://DisastoreMCSprite-Concerned-Closed_V1.png" id="5_y18pq"]
+[ext_resource type="Texture2D" uid="uid://bs7bipejchoqo" path="res://DisastoreMCSprite-Reading-Open_V1.png" id="6_bgfbu"]
+[ext_resource type="Texture2D" uid="uid://bxd37nlafd7aw" path="res://DisastoreMCSprite-Reading-Closed_V1.png" id="7_gd0kn"]
+[ext_resource type="Texture2D" uid="uid://cvbe82mjt03ln" path="res://DisastoreMCSprite-Happy-Grin_V2.png" id="8_fd0xs"]
+[ext_resource type="Texture2D" uid="uid://du74unwgj1bei" path="res://DisastoreMCSprite-Happy-Open_V2.png" id="9_uu12k"]
+[ext_resource type="Texture2D" uid="uid://dvgrlwi4s5apb" path="res://DisastoreMCSprite-Happy-Closed_V2.png" id="10_p0qqr"]
 [ext_resource type="AudioStream" uid="uid://bxgung04eue6v" path="res://Assets/Music/Voice.wav" id="11_m7peg"]
 
 [sub_resource type="Animation" id="Animation_esomi"]
@@ -226,6 +226,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4kg1w")
 
+[node name="ConcernedMC" type="TextureRect" parent="."]
+visible = false
+z_index = 9
+layout_mode = 0
+offset_left = -19.0
+offset_top = 8.0
+offset_right = 237.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("4_61eel")
+
+[node name="ConcernedMCClosed" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -72.0
+offset_right = 237.0
+offset_bottom = 88.0
+grow_vertical = 2
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("5_y18pq")
+
 [node name="DialogueBox" type="TextureRect" parent="."]
 z_index = 10
 layout_mode = 1
@@ -235,13 +260,11 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -128.0
-offset_top = -46.0
+offset_top = -48.0
 offset_right = 128.0
-offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_7klqx")
-stretch_mode = 3
 
 [node name="TutorialText" type="RichTextLabel" parent="."]
 z_index = 10
@@ -251,16 +274,14 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 22.0
-offset_top = -42.0
+offset_top = -45.0
 offset_right = -27.0
-offset_bottom = -1.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("5_8xphf")
+theme = ExtResource("2_bnqub")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "Text
-Text
-Text"
 fit_content = true
 scroll_active = false
 
@@ -268,69 +289,55 @@ scroll_active = false
 wait_time = 2.0
 one_shot = true
 
-[node name="ConcernedMC" type="TextureRect" parent="."]
-visible = false
-z_index = 9
-layout_mode = 0
-offset_left = -3.0
-offset_right = 253.0
-offset_bottom = 160.0
-texture = ExtResource("4_61eel")
-stretch_mode = 3
-
-[node name="ConcernedMCClosed" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -3.0
-offset_right = 253.0
-offset_bottom = 160.0
-texture = ExtResource("5_y18pq")
-stretch_mode = 3
-
 [node name="ReadingMC" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
 offset_left = -3.0
+offset_top = 8.0
 offset_right = 253.0
-offset_bottom = 160.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
 texture = ExtResource("6_bgfbu")
-stretch_mode = 3
 
 [node name="ReadingMCClosed" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
 offset_left = -3.0
+offset_top = 8.0
 offset_right = 253.0
-offset_bottom = 160.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
 texture = ExtResource("7_gd0kn")
-stretch_mode = 3
 
 [node name="GrinningMC" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -3.0
-offset_right = 253.0
-offset_bottom = 160.0
+offset_left = -10.0
+offset_top = 8.0
+offset_right = 246.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
 texture = ExtResource("8_fd0xs")
-stretch_mode = 3
 
 [node name="GrinningMCOpen" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -3.0
-offset_right = 253.0
-offset_bottom = 160.0
+offset_left = -10.0
+offset_top = 8.0
+offset_right = 246.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
 texture = ExtResource("9_uu12k")
-stretch_mode = 3
 
 [node name="GrinningMCCLosed" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -3.0
-offset_right = 253.0
-offset_bottom = 160.0
+offset_left = -10.0
+offset_top = 8.0
+offset_right = 246.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
 texture = ExtResource("10_p0qqr")
-stretch_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
