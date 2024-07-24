@@ -8,4 +8,4 @@ protection = 3
 name = "Better Heating"
 description = "Reduces items lost in heavy snow"
 owned = false
-cost = 30000
+cost = 12000
