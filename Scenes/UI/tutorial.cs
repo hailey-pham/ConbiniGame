@@ -25,6 +25,7 @@ public partial class tutorial : Control
     private bool isTutorialPlaying = false;
     private bool isFirstCounterStocked = false;
     private bool isFirstTimeInventory = false;
+    private bool isFirstTimeEndOfDay = false;
     private bool isFirstDay = true;
 
     private SceneManager sceneManager;
@@ -261,8 +262,12 @@ public partial class tutorial : Control
 
     private async void OnEndOfDaySceneLoaded()
     {
-        await ToSignal(GetTree().CreateTimer(1), "timeout");
-        StartTutorial("endofday");
+        if (!isFirstTimeEndOfDay)
+        {
+            isFirstTimeEndOfDay = true;
+            await ToSignal(GetTree().CreateTimer(1), "timeout");
+            StartTutorial("endofday");
+        }
     }
 
     private void OnDisasterStatsSceneLoaded()
