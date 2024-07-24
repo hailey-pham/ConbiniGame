@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dge26oo0wcr1c"]
+[gd_scene load_steps=17 format=3 uid="uid://dge26oo0wcr1c"]
 
 [ext_resource type="Script" path="res://Scenes/UI/tutorial.cs" id="1_4kg1w"]
 [ext_resource type="Texture2D" uid="uid://dkhiucorhkwnl" path="res://Assets/GUI/DialogueBox.png" id="1_7klqx"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="2_bnqub"]
 [ext_resource type="Texture2D" uid="uid://bco68s4lro64s" path="res://DisastoreMCSprite-Concerned-Open_V1.png" id="4_61eel"]
 [ext_resource type="Texture2D" uid="uid://bjcu57yusybiq" path="res://DisastoreMCSprite-Concerned-Closed_V1.png" id="5_y18pq"]
+[ext_resource type="Texture2D" uid="uid://bs7bipejchoqo" path="res://DisastoreMCSprite-Reading-Open_V1.png" id="6_bgfbu"]
+[ext_resource type="Texture2D" uid="uid://bxd37nlafd7aw" path="res://DisastoreMCSprite-Reading-Closed_V1.png" id="7_gd0kn"]
+[ext_resource type="Texture2D" uid="uid://cvbe82mjt03ln" path="res://DisastoreMCSprite-Happy-Grin_V2.png" id="8_fd0xs"]
+[ext_resource type="Texture2D" uid="uid://du74unwgj1bei" path="res://DisastoreMCSprite-Happy-Open_V2.png" id="9_uu12k"]
+[ext_resource type="Texture2D" uid="uid://dvgrlwi4s5apb" path="res://DisastoreMCSprite-Happy-Closed_V2.png" id="10_p0qqr"]
 
 [sub_resource type="Animation" id="Animation_esomi"]
 length = 0.001
@@ -27,6 +32,66 @@ tracks/1/path = NodePath("ConcernedMCClosed:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ReadingMC:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ReadingMCClosed:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GrinningMCOpen:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GrinningMCCLosed:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GrinningMC:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -62,10 +127,88 @@ tracks/1/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_e6t6d"]
+resource_name = "talking_reading"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReadingMC:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ReadingMCClosed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_us5u3"]
+resource_name = "talking_grinning"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GrinningMCOpen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GrinningMCCLosed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_vx82s"]
+resource_name = "grinning"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GrinningMC:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db3uj"]
 _data = {
 "RESET": SubResource("Animation_esomi"),
-"talking_concerned": SubResource("Animation_emaqx")
+"grinning": SubResource("Animation_vx82s"),
+"talking_concerned": SubResource("Animation_emaqx"),
+"talking_grinning": SubResource("Animation_us5u3"),
+"talking_reading": SubResource("Animation_e6t6d")
 }
 
 [node name="Tutorial" type="Control"]
@@ -144,3 +287,49 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_db3uj")
 }
+
+[node name="ReadingMC" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 8.0
+offset_right = 253.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("6_bgfbu")
+
+[node name="ReadingMCClosed" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 8.0
+offset_right = 253.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("7_gd0kn")
+
+[node name="GrinningMC" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 8.0
+offset_right = 246.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("8_fd0xs")
+
+[node name="GrinningMCOpen" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 8.0
+offset_right = 246.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("9_uu12k")
+
+[node name="GrinningMCCLosed" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -10.0
+offset_top = 8.0
+offset_right = 246.0
+offset_bottom = 168.0
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("10_p0qqr")
