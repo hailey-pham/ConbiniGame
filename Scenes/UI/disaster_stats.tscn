@@ -136,18 +136,18 @@ fit_content = true
 [node name="Original Money" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 160.0
-offset_top = 31.0
+offset_top = 32.0
 offset_right = 300.0
-offset_bottom = 43.0
+offset_bottom = 44.0
 text = "000"
 fit_content = true
 
 [node name="Stats" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 160.0
-offset_top = 44.0
+offset_top = 45.0
 offset_right = 300.0
-offset_bottom = 56.0
+offset_bottom = 57.0
 theme_override_colors/default_color = Color(0.95, 0.2755, 0.2755, 1)
 text = "000"
 fit_content = true
@@ -155,18 +155,18 @@ fit_content = true
 [node name="CurrentStats" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 160.0
-offset_top = 61.0
+offset_top = 62.0
 offset_right = 304.0
-offset_bottom = 73.0
+offset_bottom = 74.0
 text = "000"
 fit_content = true
 
 [node name="MoneyLabels" type="Control" parent="VBoxContainer"]
 anchors_preset = 0
 offset_left = 69.0
-offset_top = 70.0
+offset_top = 71.0
 offset_right = 69.0
-offset_bottom = 70.0
+offset_bottom = 71.0
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/MoneyLabels"]
 layout_mode = 0
@@ -177,6 +177,7 @@ offset_bottom = -12.0
 color = Color(0.945098, 0.878431, 0.862745, 1)
 
 [node name="Original Money" type="RichTextLabel" parent="VBoxContainer/MoneyLabels"]
+layout_mode = 0
 offset_top = -39.0
 offset_right = 86.0
 offset_bottom = -27.0
@@ -184,6 +185,7 @@ text = "Money Lost:    ￥"
 fit_content = true
 
 [node name="Stats" type="RichTextLabel" parent="VBoxContainer/MoneyLabels"]
+layout_mode = 0
 offset_top = -26.0
 offset_right = 96.0
 offset_bottom = -14.0
@@ -192,6 +194,7 @@ text = "               ￥-"
 fit_content = true
 
 [node name="CurrentStats" type="RichTextLabel" parent="VBoxContainer/MoneyLabels"]
+layout_mode = 0
 offset_top = -9.0
 offset_right = 89.0
 offset_bottom = 3.0
