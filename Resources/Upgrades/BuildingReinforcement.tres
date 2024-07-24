@@ -9,4 +9,4 @@ lowProtection = 1
 name = "Building Reinforcement"
 description = "Reinforces building foundations. Helps prevent damage in earthquakes, floods, and strong wind conditions."
 owned = false
-cost = 10000
+cost = 50000

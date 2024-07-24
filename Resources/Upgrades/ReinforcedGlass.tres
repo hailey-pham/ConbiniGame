@@ -9,4 +9,4 @@ moneyProtection = 1
 name = "Reinforced Glass"
 description = "Helps reduce damage in earthquakes and typhoons"
 owned = false
-cost = 5000
+cost = 25000
