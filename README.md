@@ -23,5 +23,5 @@
 https://github.com/hailey-pham/ConbiniGame
 ^General repository that you are on
 
-[https://github.com/hailey-pham/ConbiniGame/releases/tag/1.0.1](https://github.com/hailey-pham/ConbiniGame/releases/tag/v1.0.3-Open-Alpha)
+[Open Alpha Release Build!](https://github.com/hailey-pham/ConbiniGame/releases/tag/v1.0.3-Open-Alpha)
 ^You can install a working version here very easy :34
