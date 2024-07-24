@@ -211,8 +211,6 @@ public partial class ShoppingState : State
                 newCounter = _counters[rng.RandiRange(0, _counters.Count - 1)];
             }
 
-            currCounter = newCounter;
-
             //if there are items we currently want
             if(shoppingList.Count > 0)
             {
@@ -223,6 +221,8 @@ public partial class ShoppingState : State
                     newCounter = targetCounter;
                 }
             }
+
+            currCounter = newCounter;
 
             npcScript.MoveToPositionOffset(newCounter.GetMarkerPosition());
         }

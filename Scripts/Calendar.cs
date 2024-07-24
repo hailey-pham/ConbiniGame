@@ -133,6 +133,12 @@ public partial class Calendar : Node2D
             currentCycle += 1;
             sceneManager.ChangeScene("victory", "FadeToBlack");
         }
+
+        if (IsNextDisasterDay() && ((DisasterType)nextDayIndex != DisasterType.Earthquake) && ((DisasterType)nextDayIndex != DisasterType.Tsunami))
+        {
+            sceneManager.ChangeScene("forecastscene", "FadeToBlack");
+        }
+
         sceneManager.ChangeScene("endofdayscene", "FadeToBlack");
         EmitSignal(nameof(DisplayEndOfDayStats));
     }
@@ -229,10 +235,6 @@ public partial class Calendar : Node2D
         {
             sceneManager.ChangeScene("disasterscene","Sleep");
             // stats.UpdateMoney();
-        }
-        else if (IsNextDisasterDay() && ((DisasterType)nextDayIndex != DisasterType.Earthquake) && ((DisasterType)nextDayIndex != DisasterType.Tsunami))
-        {
-            sceneManager.ChangeScene("forecastscene", "Sleep");
         }
         else
         {

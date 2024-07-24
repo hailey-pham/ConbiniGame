@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Enumeration;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
@@ -37,6 +38,8 @@ public partial class globals : Node
 	public delegate void MoneyUpdatedEventHandler(int money);
 
 	private disaster_stats disasterstats;
+
+    private bool lostMoneyToday = false;
 
     public int Money
 	{
@@ -121,6 +124,7 @@ public partial class globals : Node
 		ResetCustomers();
 		ResetEarnings();
 		ItemsSoldToday.Clear();
+        MoneyLostToday = false;
 	}
 
 	public static void DecrementItemResStock(ItemRes itemRes)
@@ -173,7 +177,9 @@ public partial class globals : Node
         set { itemProtection = value; }
     }
 
-	public void ResetGame()
+    public bool MoneyLostToday { get => lostMoneyToday; set => lostMoneyToday = value; }
+
+    public void ResetGame()
 	{
 		GD.Print("SetGame!");
         foreach (var item in stock.Values)
@@ -211,13 +217,15 @@ public partial class globals : Node
     {
         var t = Task.Run(() =>
         {
+            stock.Clear();
+
             string path = "res://Resources/Items/";
             var dir = DirAccess.Open(path);
 
             string[] fileNames = dir.GetFiles();
             GD.Print("Getting items...");
 
-            Parallel.ForEach(fileNames, filename =>
+            foreach(var filename in fileNames)
             {
                 string tempFileName;
                 char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
@@ -240,18 +248,20 @@ public partial class globals : Node
 
                 Stock.Add(resource.name, resource);
                 GD.Print($"Added resource (item): {resource.name}");
-            });
+            }
         });
 
         var u = Task.Run(() =>
         {
+            Upgrades.Clear();
+
             string pathU = "res://Resources/Upgrades/";
             var dirU = DirAccess.Open(pathU);
 
             string[] fileNamesU = dirU.GetFiles();
             GD.Print("Getting upgrades...");
 
-            Parallel.ForEach(fileNamesU, fileName =>
+            foreach(var fileName in fileNamesU)
             {
                 string tempFileName;
                 char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
@@ -276,7 +286,7 @@ public partial class globals : Node
 
                 _upgrades.Add(resourceU.name, resourceU);
                 GD.Print("Added resource (upgrade): " + resourceU.name);
-            });
+            }
         });
 
         await t;
