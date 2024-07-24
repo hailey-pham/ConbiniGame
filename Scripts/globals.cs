@@ -124,6 +124,7 @@ public partial class globals : Node
 
 	public void ResetDayStats()
 	{
+        npcSpawner.npcCount = 0;
 		ResetCustomers();
 		ResetEarnings();
 		ItemsSoldToday.Clear();

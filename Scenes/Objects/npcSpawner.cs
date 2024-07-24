@@ -32,7 +32,7 @@ public partial class npcSpawner : Node2D
 
 	private RandomNumberGenerator random = new RandomNumberGenerator();
 
-	private static int npcCount = 0;
+	public static int npcCount = 0;
 
 	private Calendar calendar;
 
@@ -120,10 +120,6 @@ public partial class npcSpawner : Node2D
 			if (calendar.IsDayOver())
 			{
 				calendar.EndDay();
-			}
-			else
-			{
-				AddNPCIfEmpty();
 			}
 		}
 	}
