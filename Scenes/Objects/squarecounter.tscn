@@ -21,7 +21,7 @@ region = Rect2(80, 0, 32, 32)
 size = Vector2(16, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6slpf"]
-size = Vector2(15.7595, 23.8415)
+size = Vector2(19.6994, 23.8415)
 
 [node name="squarecounter" type="StaticBody2D" groups=["counters"]]
 collision_layer = 2
@@ -56,6 +56,6 @@ position = Vector2(0, -8)
 script = ExtResource("4_8felv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="counter_area"]
-position = Vector2(2.38419e-07, -2)
+position = Vector2(0, -2)
 scale = Vector2(1.01526, 1.00665)
 shape = SubResource("RectangleShape2D_6slpf")

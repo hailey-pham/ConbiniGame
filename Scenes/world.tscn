@@ -344,6 +344,7 @@ position = Vector2(128, 57)
 [node name="CounterUpgradeState1" parent="NavigationRegion2D" instance=ExtResource("5_ig0bw")]
 
 [node name="CounterUpgradeState2" parent="NavigationRegion2D" instance=ExtResource("6_xhk7m")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("3_gm0l6")]
 unique_name_in_owner = true
