@@ -1,16 +1,18 @@
 
+using ConbiniGame.Scripts;
 using Godot;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Timer = Godot.Timer;
 
 public partial class tutorial : Control
 {
     private RichTextLabel tutorialText;
-    private string[] tutorialDialogue;
     private int currentStepIndex = 0;
+    private string currentTutorialName = "opening";
 
     private Timer tutorialTimer;
 
@@ -34,6 +36,9 @@ public partial class tutorial : Control
 
     public override void _Ready()
     {
+        //this must be called before the script is read from.
+        BuildScript();
+
         Hide();
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
         sceneManager.SceneChanged += OnSceneChanged;
@@ -46,15 +51,50 @@ public partial class tutorial : Control
         AddChild(tutorialTimer);
 
         ProcessMode = ProcessModeEnum.Always;
-        TutorialFinished += OnTutorialFinished;
+    }
 
-        SubscribeToCounterSignal();
+    //adds all the text to our script dictionary
+    private void BuildScript()
+    {
+        var opening = new string[]
+        {
+            "Grandpa passed away in the winter.",
+            "He owned this store...",
+            "Apparently I'm the one to inherit it.",
+            "He lived in this village, prone to disasters. I'm sure something's going to happen soon...",
+            "I should get straight to work!"
+        };
 
+        script.Add(nameof(opening), opening);
+
+        var openshop = new string[]
+        {
+            "If I remember correctly, there's a storage in the back...",
+            "I can press space to interact.",
+        };
+
+        script.Add(nameof(openshop), openshop);
+
+        var openinventory = new string[]
+        {
+            "Grandpa must have been preparing for the spring. Customers will have a seasonal preference for sakura mochi.",
+            "Let's get those in stock."
+        };
+
+        script.Add(nameof(openinventory), openinventory);
+
+        var placeitem = new string[]
+        {
+            "Great! I should keep restocking throughout the day so everyone can get what they need.",
+            "Once someone is done shopping, I need to go to the register to check them out."
+        };
+
+        script.Add(nameof(placeitem), placeitem);
     }
 
     private void OnTutorialTimerTimeout()
     {
-        ShowTutorial();
+        StartTutorial("openshop");
     } 
         
     private async void OnInteractPressed()
@@ -62,7 +102,7 @@ public partial class tutorial : Control
         if (isTyping)
         {
             isTyping = false;
-            tutorialText.Text = tutorialDialogue[currentStepIndex];
+            tutorialText.Text = script[currentTutorialName][currentStepIndex];
         }
         else
         {
@@ -84,14 +124,16 @@ public partial class tutorial : Control
 
     private async Task ShowTutorialStep()
     {
-        if (currentStepIndex < tutorialDialogue.Length)
+        Debug.Assert(script.ContainsKey(currentTutorialName), $"There is no tutorial with the name: {currentTutorialName}");
+        if (currentStepIndex < script[currentTutorialName].Length)
         {
-            string line = tutorialDialogue[currentStepIndex];
+            string line = script[currentTutorialName][currentStepIndex];
             await TypeText(line);
         }
         else
         {
-            EmitSignal(nameof(TutorialFinished));
+            GetTree().Paused = false;
+            EndTutorial();
         }
     }
 
@@ -99,15 +141,29 @@ public partial class tutorial : Control
 
     private void OnSceneChanged(string sceneName)
     {
-        if (sceneName == "gamescene")
+        switch (sceneName)
         {
-            tutorialTimer.Start();
-            storage = (storage)GetTree().GetFirstNodeInGroup("storage");
-            storage.InventoryOpened += OnInventoryOpened;
+            case "gamescene":
+                OnGameSceneLoaded();
+                break;
+            case "seasontitle":
+                OnSeasonSceneLoaded();
+                break;
         }
-
     }
 
+    private async void OnSeasonSceneLoaded()
+    {
+        await ToSignal(GetTree().CreateTimer(3), "timeout");
+        StartTutorial("opening");
+    }
+    private void OnGameSceneLoaded()
+    {
+        SubscribeToCounterSignal();
+        tutorialTimer.Start();
+        storage = (storage)GetTree().GetFirstNodeInGroup("storage");
+        storage.InventoryOpened += OnInventoryOpened;
+    }
     private void SubscribeToCounterSignal()
     {
        var counters = GetTree().GetNodesInGroup("counters");
@@ -124,7 +180,7 @@ public partial class tutorial : Control
         {
             GetTree().Paused = true;
             isFirstCounterStocked = true;
-            ShowTutorial();
+            StartTutorial("placeitem");
         }
     }
 
@@ -134,50 +190,31 @@ public partial class tutorial : Control
         {
             GetTree().Paused = true;
             isFirstTimeInventory = true;
-            ShowTutorial();
+            StartTutorial("openinventory");
         }
     }
 
-    private void OnTutorialFinished()
+    private void EndTutorial()
     {
-        part++;
+        EmitSignal(nameof(TutorialFinished));
+
         GetTree().Paused = false;
         isTutorialPlaying = false;
         Hide();
     }
 
-    public void StartTutorial(int part)
+    public void StartTutorial(string tutorialName)
     {
-        GD.Print("Starting tutorial. Part: " + part);
-        this.part = part;
-          switch (part)
-        {
-            case 1:
-                tutorialDialogue = new string[]
-                {
-                    "If I remember correctly, there's a storage in the back...",
-                    "I can press space to interact.",
-                };
-                break;
-            case 2:
-                tutorialDialogue = new string[]
-                {
-                    "Grandpa must have been preparing for the spring. Customers will have a seasonal preference for sakura mochi.",
-                    "Let's get those in stock."
-                };
-                break;
-            case 3:
-                tutorialDialogue = new string[]
-                {
-                    "Great! I should keep restocking throughout the day so everyone can get what they need.",
-                    "Once someone is done shopping, I need to go to the register to check them out."
-                };
-                break;
-        }
+        GetTree().Paused = true;
+        isTutorialPlaying = true;
+
         currentStepIndex = 0;
+        GD.Print("Starting tutorial. Name: " + tutorialName);
+        currentTutorialName = tutorialName;
         Show();
         ShowTutorialStep();
     }
+
     private async Task TypeText(string text)
     {
         tutorialText.Text = "";
@@ -193,21 +230,4 @@ public partial class tutorial : Control
 
         isTyping = false;
     }
-
-    private void ShowTutorial()
-    {
-        isTutorialPlaying = true;
-        GetTree().Paused = true;
-
-        var tutorialScene = GD.Load<PackedScene>("res://Scenes/UI/tutorial.tscn");
-        var tutorialInstance = tutorialScene.Instantiate<tutorial>();
-
-        tutorialInstance.TutorialFinished += OnTutorialFinished;
-
-        GetTree().Root.CallDeferred("add_child", tutorialInstance);
-
-        StartTutorial(part);
-    }
-
-   
 } 
