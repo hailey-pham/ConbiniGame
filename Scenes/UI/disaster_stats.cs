@@ -17,6 +17,8 @@ public partial class disaster_stats : Control
     private RichTextLabel disasterLabel;
     private RichTextLabel statsLabel;
     private RichTextLabel currentStatsLabel;
+
+    private RichTextLabel previousMoneyLabel;
     // private RichTextLabel itemsLostLabel;
 
     private Button continueButton;
@@ -47,6 +49,7 @@ public partial class disaster_stats : Control
         restockButton.Pressed += OnRestockButtonPressed;
 
         hbox = GetNode<HBoxContainer>("ScrollContainer/HBoxContainer");
+        previousMoneyLabel = GetNode<RichTextLabel>("VBoxContainer/Original Money");
         disasterLabel = GetNode<RichTextLabel>("VBoxContainer/UhOh");
         statsLabel = GetNode<RichTextLabel>("VBoxContainer/Stats");
         currentStatsLabel = GetNode<RichTextLabel>("VBoxContainer/CurrentStats");
@@ -119,12 +122,14 @@ public partial class disaster_stats : Control
             GD.Print(sceneManager.PrevScene);
             LoseMoney();
             globals.LoseStock();
-            CurrentMoney();
+            // CurrentMoney();
         }
         
         disasterLabel.Text = "Disaster has struck your store. You have lost a portion of your resources...";
-        statsLabel.Text = "Money lost:  ￥" + moneyLost.ToString();
-        currentStatsLabel.Text = "Current funds: ￥" + globals.Money.ToString();
+        int prevMoney = globals._holdMoneyLost+globals.Money;
+        previousMoneyLabel.Text = prevMoney.ToString();
+        statsLabel.Text = globals._holdMoneyLost.ToString();
+        currentStatsLabel.Text = globals.Money.ToString();
         // itemsLostLabel.Text = "You lost " + (globals.stockLosePercentage * 100) + "% of each item";
         Node tempItem;
         foreach(KeyValuePair<string,ItemRes> item in globals.Stock) {
@@ -150,12 +155,13 @@ public partial class disaster_stats : Control
             if (minLoss > percentLoss)
             {
                 moneyLost = minLoss;
+                
             }
             else
             {
                 moneyLost = percentLoss;
             }
-
+            globals._holdMoneyLost = moneyLost;
             newMoney = globals.Money - moneyLost;
             globals.MoneyLostToday = true;
         }
@@ -163,17 +169,17 @@ public partial class disaster_stats : Control
         return newMoney;
     }
 
-    private int CurrentMoney()
-    {
-        globals.Money = newMoney;
-        return globals.Money;
-    }
+    // private int CurrentMoney()
+    // {
+    //     globals.Money = newMoney;
+    //     return globals.Money;
+    // }
 
-    public void UpdateMoney()
-    {
-        totalMoney = CurrentMoney();
-        globals.Money = totalMoney;
-    }
+    // public void UpdateMoney()
+    // {
+    //     totalMoney = CurrentMoney();
+    //     globals.Money = totalMoney;
+    // }
 
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,12 +1,12 @@
 using Godot;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic; 
 
 public partial class UpgradeManager : Control
 {
 	// signals
 	[Signal] public delegate void BackButtonPressedEventHandler();
-
 	[Signal] public delegate void UpgradeButtonPressedEventHandler();
 	[Signal] public delegate void PurchaseButtonPressedEventHandler();
 	[Signal] public delegate void ConfirmButtonPressedEventHandler();
@@ -74,7 +74,7 @@ public partial class UpgradeManager : Control
 				temp.CustomMinimumSize = new Vector2(95,0);
 				temp.ClipText = true;
 				temp.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
-				gridContainer.AddChild(temp);
+				// gridContainer.AddChild(temp);
 				upgradeButtons.Add(temp);
 				upgradeButtons[^1].Text = upgrade.Value.name;
 				upgradeButtons[^1].Pressed += () => OnUpgradeButtonPressed(upgrade.Value.name);
@@ -85,8 +85,41 @@ public partial class UpgradeManager : Control
 				}
 			}
 		}
-		
+		sortButtons(upgradeButtons, 0, upgradeButtons.Count-1);
 
+		foreach (Button btn in upgradeButtons) {
+			gridContainer.AddChild(btn);
+		}
+
+	}
+
+	private void swap(List<Button> arr, int i, int j)
+	{
+		Button temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	private int partition(List<Button> arr, int low, int high) {
+		Button pivot = arr[high];
+
+		int i = (low-1);
+		for (int j = low; j<= high - 1; j++) {
+			if(globals.Upgrades[arr[j].Text].cost < globals.Upgrades[pivot.Text].cost) {
+				i++;
+				swap(arr, i, j);
+			}
+		}
+		swap(arr, i+1, high);
+		return (i+1);
+	}
+	private void sortButtons(List<Button> arr, int low, int high) {
+		GD.Print("Sorting...");
+		if (low < high) {
+			int pi = partition(arr, low, high);
+			GD.Print(pi);
+			sortButtons(arr, low, pi-1);
+			sortButtons(arr,pi+1,high);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -121,10 +154,6 @@ public partial class UpgradeManager : Control
 			upgradeCostLabel.Text = "Cost: OWNED";
 			purchaseButton.Disabled = true;
 		}
-		
-		
-
-		
 	}
 
 	private void OnPurchaseButtonPressed()
@@ -137,10 +166,6 @@ public partial class UpgradeManager : Control
 		} else {
 			insufficientPopUp.Visible = true;
 		}
-		
-		
-
-		
 	}
 
 	private void OnConfirmButtonPressed()

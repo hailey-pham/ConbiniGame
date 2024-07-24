@@ -89,18 +89,6 @@ public partial class SceneManager : Node
             PackedScene scene = (PackedScene)GD.Load((string)scenes[sceneName]);
             Node instance = scene.Instantiate();
             sceneParent.AddChild(instance);
-
-
-            if (sceneName == "storyline")
-            {
-                var storylineInstance = instance as storyline;
-                if (storylineInstance != null)
-                {
-                    string[] dialogueLines = GetDialogueLinesForStoryline();
-                    storylineInstance.SetDialogue(dialogueLines);
-                    storylineInstance.DialogueFinished += () => ChangeScene("seasontitle", "FadeToBlack");
-                }
-            }
 			//announce what scene we've changed to
 			//calendar uses this
 			EmitSignal(nameof(SceneChanged), sceneName);
@@ -112,19 +100,6 @@ public partial class SceneManager : Node
 			GD.PrintErr("Scene not found!");
 		}
 	}
-    private string[] GetDialogueLinesForStoryline()
-    {
-		//return the dialogue lines for the storyline scene
-		return new string[]
-		{
-			"Grandpa passed away in the winter.",
-			"He owned this store, DisaStore...",
-			"Apparently I'm the one to inherit it.",
-			"We live in a village prone to disasters. I'm sure something's going to happen soon...",
-			"I should get straight to work!"
-        };
-    }
-
  
     public string PrevScene { get => prevScene; set => prevScene = value; }
 }

@@ -7,4 +7,4 @@ script = ExtResource("1_pcesh")
 name = "Grand Counter"
 description = "Gain a counter that sells items at a higher price"
 owned = false
-cost = 5000
+cost = 10000

@@ -18,6 +18,9 @@ public partial class globals : Node
     private static Dictionary<string, ItemRes> stock = new Dictionary<string, ItemRes>();
     public static int _purchaseCost;
 
+    public int _holdMoneyLost;
+    public bool sleepSkipped = false;
+
 	//daily properties
 	public static int _customersServed;
 	public static int _earnings;

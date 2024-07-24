@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cq6fojlwfxlai"]
 
 [ext_resource type="Script" path="res://Characters/NPC/npc.cs" id="1_5h8m4"]
-[ext_resource type="SpriteFrames" uid="uid://b6aqujy072qi7" path="res://Characters/NPC/BobSpriteFrames.tres" id="2_gssdw"]
+[ext_resource type="SpriteFrames" uid="uid://ca8ng6lxjx0yt" path="res://Characters/NPC/BobSpriteFrames.tres" id="2_gssdw"]
 [ext_resource type="PackedScene" uid="uid://bx5dch2keo0y7" path="res://Components/auto_animator.tscn" id="4_1men2"]
 [ext_resource type="Script" path="res://Scripts/StateMachine.cs" id="5_rvei0"]
 [ext_resource type="Script" path="res://Characters/NPC/ShoppingState.cs" id="6_7k7ox"]

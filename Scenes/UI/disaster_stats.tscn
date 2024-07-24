@@ -126,37 +126,84 @@ theme = SubResource("Theme_hyko5")
 [node name="UhOh" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 2.0
-offset_top = 5.0
+offset_top = 3.0
 offset_right = 243.0
-offset_bottom = 29.0
+offset_bottom = 27.0
 text = "Disaster has struck your store. You have lost a portion of your resources...
 "
 fit_content = true
 
+[node name="Original Money" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 300.0
+offset_bottom = 44.0
+text = "000"
+fit_content = true
+
 [node name="Stats" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-offset_left = 2.0
-offset_top = 39.0
-offset_right = 243.0
-offset_bottom = 51.0
-text = "Money Lost: ￥"
+offset_left = 160.0
+offset_top = 45.0
+offset_right = 300.0
+offset_bottom = 57.0
+theme_override_colors/default_color = Color(0.95, 0.2755, 0.2755, 1)
+text = "000"
 fit_content = true
 
 [node name="CurrentStats" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-offset_left = 2.0
-offset_top = 52.0
-offset_right = 243.0
-offset_bottom = 64.0
+offset_left = 160.0
+offset_top = 62.0
+offset_right = 304.0
+offset_bottom = 74.0
+text = "000"
+fit_content = true
+
+[node name="MoneyLabels" type="Control" parent="VBoxContainer"]
+anchors_preset = 0
+offset_left = 69.0
+offset_top = 71.0
+offset_right = 69.0
+offset_bottom = 71.0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MoneyLabels"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -13.0
+offset_right = 111.0
+offset_bottom = -12.0
+color = Color(0.945098, 0.878431, 0.862745, 1)
+
+[node name="Original Money" type="RichTextLabel" parent="VBoxContainer/MoneyLabels"]
+offset_top = -39.0
+offset_right = 86.0
+offset_bottom = -27.0
+text = "Money Lost:    ￥"
+fit_content = true
+
+[node name="Stats" type="RichTextLabel" parent="VBoxContainer/MoneyLabels"]
+offset_top = -26.0
+offset_right = 96.0
+offset_bottom = -14.0
+theme_override_colors/default_color = Color(0.94902, 0.27451, 0.27451, 1)
+text = "               ￥-"
+fit_content = true
+
+[node name="CurrentStats" type="RichTextLabel" parent="VBoxContainer/MoneyLabels"]
+offset_top = -9.0
+offset_right = 89.0
+offset_bottom = 3.0
 text = "Current Funds: ￥"
 fit_content = true
 
 [node name="ResourcesLost" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_left = 2.0
-offset_top = 71.0
+offset_top = 76.0
 offset_right = 243.0
-offset_bottom = 83.0
+offset_bottom = 88.0
 text = "Stock Lost:"
 fit_content = true
 
@@ -219,17 +266,17 @@ text = "RESTOCK"
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
 offset_left = 8.0
-offset_top = 88.0
+offset_top = 93.0
 offset_right = 248.0
-offset_bottom = 125.0
+offset_bottom = 130.0
 color = Color(0.788235, 0.67451, 0.647059, 0.196078)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
 offset_left = 8.0
-offset_top = 88.0
+offset_top = 93.0
 offset_right = 248.0
-offset_bottom = 126.0
+offset_bottom = 131.0
 theme = SubResource("Theme_2ckhi")
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0

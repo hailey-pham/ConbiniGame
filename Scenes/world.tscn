@@ -25,9 +25,9 @@
 [ext_resource type="AudioStream" uid="uid://sivy414r7kf4" path="res://Assets/Music/Shop Theme.wav" id="13_e5adc"]
 [ext_resource type="Texture2D" uid="uid://b1dgiug6vjg6a" path="res://Assets/DayProgress/SunIcon4.png" id="13_o4atj"]
 [ext_resource type="Texture2D" uid="uid://ca0rme5bji3ko" path="res://Assets/DayProgress/NewProgressBar.png" id="14_q5fq6"]
-[ext_resource type="SpriteFrames" uid="uid://i5iofkkv6grg" path="res://Characters/NPC/AlexSpriteFrames.tres" id="21_412su"]
-[ext_resource type="SpriteFrames" uid="uid://cthr1s7ur5rcn" path="res://Characters/NPC/AmeliaSpriteFrames.tres" id="22_khqci"]
-[ext_resource type="SpriteFrames" uid="uid://b6aqujy072qi7" path="res://Characters/NPC/BobSpriteFrames.tres" id="23_4fvy3"]
+[ext_resource type="SpriteFrames" uid="uid://bpp8m5uf6us81" path="res://Characters/NPC/AlexSpriteFrames.tres" id="21_412su"]
+[ext_resource type="SpriteFrames" uid="uid://d2s3s1halo2mm" path="res://Characters/NPC/AmeliaSpriteFrames.tres" id="22_khqci"]
+[ext_resource type="SpriteFrames" uid="uid://ca8ng6lxjx0yt" path="res://Characters/NPC/BobSpriteFrames.tres" id="23_4fvy3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(208, 93, 208, 67, 234, 38, 234, 154, 208, 139, 142, 154, 180, 139, 180, 113, 113, 155, 76, 139, 76, 113, 163, 38, 180, 67, 163, 54, 158, 71, 158, 53, 180, 93, 76, 93, 99, 71, 76, 67, 99, 53, 73, 53, 48, 67, 142, 198, 113, 198, 22, 155, 48, 139, 22, 38, 48, 113, 73, 38, 208, 113, 48, 93)
@@ -501,6 +501,7 @@ position = Vector2(128, 193)
 npcSprites = Array[SpriteFrames]([ExtResource("21_412su"), ExtResource("22_khqci"), ExtResource("23_4fvy3")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="npcSpawner"]
+process_mode = 3
 stream = ExtResource("9_wpaow")
 volume_db = -4.0
 max_polyphony = 2
@@ -510,6 +511,7 @@ visible = false
 position = Vector2(57, 29)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("13_e5adc")
 volume_db = -16.0
 autoplay = true
