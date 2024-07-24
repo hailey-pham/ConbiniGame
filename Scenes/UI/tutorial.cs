@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Timer = Godot.Timer;
 
 public partial class tutorial : Control
 {
@@ -27,10 +28,7 @@ public partial class tutorial : Control
     private storage storage;
 
     [Signal]
-    public delegate void TutorialFinishedEventHandler();
-
-    private Dictionary<string, string[]> script = new();
-      
+    public delegate void TutorialFinishedEventHandler();      
 
     public override void _Ready()
     {
@@ -92,6 +90,7 @@ public partial class tutorial : Control
         else
         {
             EmitSignal(nameof(TutorialFinished));
+            
         }
     }
 
@@ -140,7 +139,6 @@ public partial class tutorial : Control
 
     private void OnTutorialFinished()
     {
-        part++;
         GetTree().Paused = false;
         isTutorialPlaying = false;
         Hide();
@@ -205,7 +203,7 @@ public partial class tutorial : Control
         tutorialInstance.TutorialFinished += OnTutorialFinished;
 
         GetTree().Root.CallDeferred("add_child", tutorialInstance);
-
+        part++;
         StartTutorial(part);
     }
 
