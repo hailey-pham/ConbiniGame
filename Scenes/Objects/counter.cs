@@ -57,7 +57,7 @@ public partial class counter : StaticBody2D
         }
     }
 
-    private void OnSceneChanged(string sceneName)
+    protected void OnSceneChanged(string sceneName)
     {
         if(sceneName.Equals("endofdayscene"))
         {

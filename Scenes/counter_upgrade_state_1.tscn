@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://7fn5bdjpng5f"]
+
+[ext_resource type="PackedScene" uid="uid://cl8e50dilm7oa" path="res://Scenes/Objects/squarecounter.tscn" id="1_ihn81"]
+
+[node name="CounterUpgradeState1" type="Node2D" groups=["counterstate1"]]
+y_sort_enabled = true
+
+[node name="squarecounter" parent="." instance=ExtResource("1_ihn81")]
+position = Vector2(62, 83)
+
+[node name="squarecounter2" parent="." instance=ExtResource("1_ihn81")]
+position = Vector2(38, 83)
+
+[node name="squarecounter3" parent="." instance=ExtResource("1_ihn81")]
+position = Vector2(62, 129)
+
+[node name="squarecounter4" parent="." instance=ExtResource("1_ihn81")]
+position = Vector2(193, 83)
+
+[node name="squarecounter5" parent="." instance=ExtResource("1_ihn81")]
+position = Vector2(38, 129)
+
+[node name="squarecounter6" parent="." instance=ExtResource("1_ihn81")]
+position = Vector2(217, 83)
+
+[node name="squarecounter7" parent="." instance=ExtResource("1_ihn81")]
+position = Vector2(193, 129)
+
+[node name="squarecounter8" parent="." instance=ExtResource("1_ihn81")]
+position = Vector2(217, 129)
