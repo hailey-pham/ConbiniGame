@@ -177,6 +177,7 @@ offset_bottom = -12.0
 color = Color(0.945098, 0.878431, 0.862745, 1)
 
 [node name="Original Money" type="RichTextLabel" parent="VBoxContainer/MoneyLabels"]
+layout_mode = 0
 offset_top = -39.0
 offset_right = 86.0
 offset_bottom = -27.0
@@ -184,6 +185,7 @@ text = "Money Lost:    ￥"
 fit_content = true
 
 [node name="Stats" type="RichTextLabel" parent="VBoxContainer/MoneyLabels"]
+layout_mode = 0
 offset_top = -26.0
 offset_right = 96.0
 offset_bottom = -14.0
@@ -192,6 +194,7 @@ text = "               ￥-"
 fit_content = true
 
 [node name="CurrentStats" type="RichTextLabel" parent="VBoxContainer/MoneyLabels"]
+layout_mode = 0
 offset_top = -9.0
 offset_right = 89.0
 offset_bottom = 3.0
