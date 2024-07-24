@@ -295,20 +295,6 @@ public partial class globals : Node
         await t;
         await u;
 
-        //repeats the operation in case of any null pointers from disk
-
-        if(stock.ContainsValue(null))
-        {
-            t.Start();
-            await t;
-        }
-
-        if(_upgrades.ContainsValue(null))
-        {
-            u.Start(); 
-            await u;
-        }
-
         EmitSignal(nameof(GameLoaded));
     }
 }
