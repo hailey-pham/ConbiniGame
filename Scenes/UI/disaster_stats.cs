@@ -15,7 +15,6 @@ public partial class disaster_stats : Control
 
 
     private RichTextLabel disasterLabel;
-    private RichTextLabel messageLabel;
     private RichTextLabel statsLabel;
     private RichTextLabel currentStatsLabel;
     // private RichTextLabel itemsLostLabel;
@@ -49,7 +48,6 @@ public partial class disaster_stats : Control
 
         hbox = GetNode<HBoxContainer>("ScrollContainer/HBoxContainer");
         disasterLabel = GetNode<RichTextLabel>("VBoxContainer/UhOh");
-        messageLabel = GetNode<RichTextLabel>("VBoxContainer/Message");
         statsLabel = GetNode<RichTextLabel>("VBoxContainer/Stats");
         currentStatsLabel = GetNode<RichTextLabel>("VBoxContainer/CurrentStats");
         // itemsLostLabel = GetNode<RichTextLabel>("VBoxContainer/ItemsLost");
@@ -117,11 +115,14 @@ public partial class disaster_stats : Control
     {
         var globals = GetNode<globals>("/root/Globals");
 
-        LoseMoney();
-        globals.LoseStock();
-        CurrentMoney();
+        if(sceneManager.PrevScene != "disasterstatsscene") {
+            GD.Print(sceneManager.PrevScene);
+            LoseMoney();
+            globals.LoseStock();
+            CurrentMoney();
+        }
+        
         disasterLabel.Text = "Disaster has struck your store. You have lost a portion of your resources...";
-        // messageLabel.Text = "You lost a portion of your resources.";
         statsLabel.Text = "Money lost:  ￥" + moneyLost.ToString();
         currentStatsLabel.Text = "Current funds: ￥" + globals.Money.ToString();
         // itemsLostLabel.Text = "You lost " + (globals.stockLosePercentage * 100) + "% of each item";

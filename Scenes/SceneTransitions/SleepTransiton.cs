@@ -13,11 +13,21 @@ public partial class SleepTransiton : SceneTransition
 
     private PackedScene fadeToBlackTransition;
     private FadeToBlackTransition fadeInstance;
+
+    private Control spacebarIcon;
+    private Control spacebarText;
+
+    [Export] private int skipTimer = 20;
+
+    private bool doubleTap = false;
+    
     public override void _Ready()
     {
+        spacebarText = GetNode<Control>("Label");
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         fadeToBlackTransition = GD.Load<PackedScene>(fadeToBlackTransitionPath);
         fadeInstance = (FadeToBlackTransition) fadeToBlackTransition.Instantiate();
+        
         HideChildren();
     }
     public override async Task PlayOutAsync()
@@ -73,6 +83,17 @@ public partial class SleepTransiton : SceneTransition
             if (@event.IsPressed())
             {
                 animationPlayer.SpeedScale = 4;
+                Tween spacebarTween;
+                spacebarTween = spacebarText.CreateTween();
+                spacebarTween.TweenProperty(spacebarText, "modulate", new Color("ffffff00"), 0.5f);
+                
+                if(doubleTap) {
+                    animationPlayer.Play("Z");
+                    animationPlayer.Advance(2.5);
+                }
+            }
+            else if(@event.IsReleased()){
+                doubleTap = true;
             }
             else
             {

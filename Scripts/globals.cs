@@ -157,7 +157,7 @@ public partial class globals : Node
 		{
 			int minLoss = 1+Day*2;
 
-        	int percentLoss = Money / rnd.Next(2+itemProtection, 10);
+        	int percentLoss = item.currentStock / rnd.Next(2+itemProtection, 10);
 
 			int lossAmount;
 			if (minLoss > percentLoss) {
@@ -166,9 +166,10 @@ public partial class globals : Node
 				lossAmount = percentLoss;
 			}
 
-			item.LossAmount = lossAmount;
+			item.LossAmount = Math.Min(item.currentStock, lossAmount);
             // cant let stock go negative
             item.currentStock = Math.Max(0, item.currentStock - lossAmount);
+            GD.Print(item.name+": Items Lost ("+lossAmount+") Current Stock ("+item.currentStock+")");
 		}
     }
     public int ItemProtection

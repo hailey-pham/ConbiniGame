@@ -104,9 +104,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = 160.0
-offset_right = 40.0
-offset_bottom = 194.001
+offset_left = -128.0
+offset_right = -88.0
+offset_bottom = 34.001
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
@@ -118,3 +118,12 @@ bbcode_enabled = true
 text = "[center][shake rate=4 level=20 connected=1]Z[/shake][/center]"
 fit_content = true
 metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 155.0
+theme = ExtResource("2_qjp24")
+text = "
+Press [space] to speed up animation"
+horizontal_alignment = 1

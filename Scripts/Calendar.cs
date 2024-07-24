@@ -81,7 +81,6 @@ public partial class Calendar : Node2D
     {
         currentDay = 1;
         currentCycle = 1;
-        currentSeason = 1;
         // get scenemanager
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
         sceneManager.SceneChanged += OnSceneChanged;
