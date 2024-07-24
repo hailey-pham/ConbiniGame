@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 
 public partial class disaster_stats : Control
 {
@@ -138,16 +139,26 @@ public partial class disaster_stats : Control
 
     private int LoseMoney()
     {
-        int minLoss = 100+globals.Day*200;
-        int percentLoss = globals.Money / rnd.Next(2+disasterProtection, 10); // lose 10-50% of your money, 
+        //if we haven't already lost money today...
+        //stored in globals so data persists between scene loading
+        if(!globals.MoneyLostToday)
+        {
+            int minLoss = 100 + globals.Day * 200;
+            int percentLoss = globals.Money / rnd.Next(2 + disasterProtection, 10); // lose 10-50% of your money, 
 
-        if (minLoss > percentLoss) {
-            moneyLost = minLoss;
-        } else {
-            moneyLost = percentLoss;
+            if (minLoss > percentLoss)
+            {
+                moneyLost = minLoss;
+            }
+            else
+            {
+                moneyLost = percentLoss;
+            }
+
+            newMoney = globals.Money - moneyLost;
+            globals.MoneyLostToday = true;
         }
-
-        newMoney = globals.Money - moneyLost; 
+        
         return newMoney;
     }
 
