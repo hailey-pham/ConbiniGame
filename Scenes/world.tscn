@@ -1,16 +1,16 @@
 [gd_scene load_steps=40 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Script" path="res://Scenes/World.cs" id="1_msxpb"]
-[ext_resource type="Texture2D" uid="uid://dqr5dfoq68g7d" path="res://DisastoreInteriorTilemapV3.png" id="2_hyrcc"]
+[ext_resource type="Texture2D" uid="uid://cfbccnirvge7m" path="res://DisastoreInteriorTilemapV3.png" id="2_hyrcc"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="Texture2D" uid="uid://bpccdhn7cdrum" path="res://Assets/DisastoreInteriorTilemapV2.png" id="4_1jcc4"]
 [ext_resource type="Texture2D" uid="uid://dqr46mfcexeas" path="res://Assets/Bonsai.png" id="4_nhss0"]
-[ext_resource type="PackedScene" path="res://Scenes/counter_upgrade_state_0.tscn" id="4_yg7rd"]
-[ext_resource type="PackedScene" path="res://Scenes/counter_upgrade_state_1.tscn" id="5_ig0bw"]
+[ext_resource type="PackedScene" uid="uid://cmikix5dohqls" path="res://Scenes/counter_upgrade_state_0.tscn" id="4_yg7rd"]
+[ext_resource type="PackedScene" uid="uid://7fn5bdjpng5f" path="res://Scenes/counter_upgrade_state_1.tscn" id="5_ig0bw"]
 [ext_resource type="Texture2D" uid="uid://bwx1l3mn5dd05" path="res://Assets/GUI/MoneyBG.png" id="6_2v7vn"]
 [ext_resource type="PackedScene" uid="uid://byaiw4cj1167a" path="res://Scenes/Objects/checkout.tscn" id="6_qywxc"]
 [ext_resource type="Texture2D" uid="uid://cycxxpq3u6wpb" path="res://Assets/GUI/Calendar/CalendarSpring.png" id="6_uemoo"]
-[ext_resource type="PackedScene" path="res://Scenes/counter_upgrade_state_2.tscn" id="6_xhk7m"]
+[ext_resource type="PackedScene" uid="uid://b44a0wi06mle0" path="res://Scenes/counter_upgrade_state_2.tscn" id="6_xhk7m"]
 [ext_resource type="Script" path="res://Scenes/CalendarUI.cs" id="7_8yfgc"]
 [ext_resource type="Texture2D" uid="uid://w1v4qstoclyb" path="res://Assets/GUI/Calendar/CalendarSummer.png" id="8_5a4tn"]
 [ext_resource type="Texture2D" uid="uid://u8mpnmxntjad" path="res://Assets/GUI/Calendar/CalendarFall.png" id="9_d5nkg"]
@@ -495,7 +495,6 @@ position = Vector2(128, 57)
 [node name="CounterUpgradeState1" parent="NavigationRegion2D" instance=ExtResource("5_ig0bw")]
 
 [node name="CounterUpgradeState2" parent="NavigationRegion2D" instance=ExtResource("6_xhk7m")]
-visible = false
 
 [node name="Player" parent="." instance=ExtResource("3_gm0l6")]
 unique_name_in_owner = true
