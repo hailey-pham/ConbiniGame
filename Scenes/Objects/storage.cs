@@ -76,11 +76,13 @@ public partial class storage : Area2D
                 }
                 else // when inventory is opened
                 {
-                    if (Player._itemSpawner.currItem != null && (Player._itemSpawner2.currItem != null || !Player.IsStackItemUpgrade))
+                    // if (Player._itemSpawner.currItem != null && (Player._itemSpawner2.currItem != null || !Player.IsStackItemUpgrade))
+                    if(Player._itemSpawner.currItem != null)
                     {
                         Player._itemSpawner.currItem.ReturnItemToStock();
                         Player._itemSpawner.RemoveItemRes();
-                        if(Player.IsStackItemUpgrade)
+
+                        if(Player.IsStackItemUpgrade && Player._itemSpawner2.currItem != null)
                         { 
                             Player._itemSpawner2.currItem.ReturnItemToStock();
                             Player._itemSpawner2.RemoveItemRes();

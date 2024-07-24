@@ -8,4 +8,4 @@ protection = 1
 name = "Sprinklers"
 description = "Protect your building in the case of wildfires"
 owned = false
-cost = 5000
+cost = 20000

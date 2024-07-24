@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmjeltr2ss5ng"]
+[gd_scene load_steps=10 format=3 uid="uid://dmjeltr2ss5ng"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_jvu1w"]
 [ext_resource type="Texture2D" uid="uid://six140ru7we8" path="res://Assets/DisastoreTitle.png" id="2_c8gvx"]
 [ext_resource type="Script" path="res://Scenes/UI/CreditsPlayer.cs" id="2_ni4c7"]
 [ext_resource type="AudioStream" uid="uid://c52b6ib1jmsfa" path="res://Assets/Music/Shop End Credits.wav" id="4_asg3v"]
+[ext_resource type="Texture2D" uid="uid://b8dwcpupjwhlo" path="res://Assets/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0017.png" id="5_m42wu"]
+[ext_resource type="Texture2D" uid="uid://6jgkxg50q0nq" path="res://Assets/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0153.png" id="6_dk1cb"]
 
 [sub_resource type="Animation" id="Animation_v5acn"]
 length = 0.001
@@ -122,3 +124,18 @@ speedUp = 5.0
 stream = ExtResource("4_asg3v")
 volume_db = -6.0
 autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 15.0
+offset_bottom = 16.0
+texture = ExtResource("5_m42wu")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 146.0
+offset_right = 15.0
+offset_bottom = 162.0
+texture = ExtResource("6_dk1cb")

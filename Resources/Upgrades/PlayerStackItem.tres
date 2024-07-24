@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_5bwu6")
-name = "Player Stack Item"
-description = "Allows the player to hold 2 items."
-owned = true
-cost = 5000
+name = "Double Stack"
+description = "Allows you to carry two items on your head."
+owned = false
+cost = 50000

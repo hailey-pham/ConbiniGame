@@ -3,13 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Enumeration;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 
 public partial class globals : Node
 {
-	private static int _money;
+    //emited by load game when all resources and items have been loaded
+    [Signal]
+    public delegate void GameLoadedEventHandler();
+
+    private static int _money;
     private static Dictionary<string, ItemRes> stock = new Dictionary<string, ItemRes>();
     public static int _purchaseCost;
 
@@ -19,7 +24,8 @@ public partial class globals : Node
 	private static List<ItemRes> _itemsSoldToday = new();
 	public static int _day = 0;
 
-	private int itemProtection = 0;
+    private int itemProtection = 0;
+    
 
 	private int _customersEntered = 0;
 
@@ -31,11 +37,9 @@ public partial class globals : Node
 	[Signal]
 	public delegate void MoneyUpdatedEventHandler(int money);
 
-    //emited by load game when all resources and items have been loaded
-    [Signal]
-    public delegate void GameLoadedEventHandler();
-
 	private disaster_stats disasterstats;
+
+    private bool lostMoneyToday = false;
 
     public int Money
 	{
@@ -88,6 +92,7 @@ public partial class globals : Node
 	{
 		itemProtection = 0;
 
+
 		Stopwatch stopwatch = new Stopwatch();
 		stopwatch.Start();
 
@@ -119,6 +124,7 @@ public partial class globals : Node
 		ResetCustomers();
 		ResetEarnings();
 		ItemsSoldToday.Clear();
+        MoneyLostToday = false;
 	}
 
 	public static void DecrementItemResStock(ItemRes itemRes)
@@ -171,15 +177,16 @@ public partial class globals : Node
         set { itemProtection = value; }
     }
 
-	public void ResetGame()
+    public bool MoneyLostToday { get => lostMoneyToday; set => lostMoneyToday = value; }
+
+    public void ResetGame()
 	{
 		GD.Print("SetGame!");
         foreach (var item in stock.Values)
         {
             item.currentStock = 0;
         }
-		
-        Money = 500;
+        Money = 2000;
 		for (int i = 0; i < 20;i++)
 		{
 			if (i < 5)
@@ -210,13 +217,15 @@ public partial class globals : Node
     {
         var t = Task.Run(() =>
         {
+            stock.Clear();
+
             string path = "res://Resources/Items/";
             var dir = DirAccess.Open(path);
 
             string[] fileNames = dir.GetFiles();
             GD.Print("Getting items...");
 
-            Parallel.ForEach(fileNames, filename =>
+            foreach(var filename in fileNames)
             {
                 string tempFileName;
                 char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
@@ -239,18 +248,20 @@ public partial class globals : Node
 
                 Stock.Add(resource.name, resource);
                 GD.Print($"Added resource (item): {resource.name}");
-            });
+            }
         });
 
         var u = Task.Run(() =>
         {
+            Upgrades.Clear();
+
             string pathU = "res://Resources/Upgrades/";
             var dirU = DirAccess.Open(pathU);
 
             string[] fileNamesU = dirU.GetFiles();
             GD.Print("Getting upgrades...");
 
-            Parallel.ForEach(fileNamesU, fileName =>
+            foreach(var fileName in fileNamesU)
             {
                 string tempFileName;
                 char[] remap = { '.', 'r', 'e', 'm', 'a', 'p' };
@@ -267,9 +278,15 @@ public partial class globals : Node
 
                 // GD.Print("Adding resource (item)...");
                 Upgrade resourceU = GD.Load<Upgrade>(pathU + tempFileName);
+
+                if (resourceU == null)
+                {
+                    throw new Exception($"Resource at {pathU + tempFileName} failed to load!");
+                }
+
                 _upgrades.Add(resourceU.name, resourceU);
                 GD.Print("Added resource (upgrade): " + resourceU.name);
-            });
+            }
         });
 
         await t;

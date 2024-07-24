@@ -35,6 +35,8 @@ public partial class npc : CharacterBody2D
     public List<ItemRes> ShoppingCart { get => shoppingCart; set => shoppingCart = value; }
 
     private Vector2 _movementTargetPosition = new Vector2(70.0f, 226.0f);
+
+    private SpriteFrames spritesFrames;
     public Vector2 MovementTarget
     {
         get { return _navigationAgent.TargetPosition; }
@@ -51,6 +53,11 @@ public partial class npc : CharacterBody2D
 
         Callable.From(ActorSetup).CallDeferred();
         _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+
+        if(spritesFrames != null)
+        {
+            _animatedSprite.SpriteFrames = spritesFrames;
+        }
     }
 
     public override void _Process(double delta)
@@ -108,7 +115,11 @@ public partial class npc : CharacterBody2D
 
     public void SetSpriteFrames(SpriteFrames spriteFrames)
     {
-        Debug.Assert(_animatedSprite != null,"Tried to change sprite frames before entering tree!");
-        _animatedSprite.SpriteFrames = spriteFrames;
+        spritesFrames = spriteFrames;
+
+        if(_animatedSprite != null)
+        {
+            _animatedSprite.SpriteFrames = spriteFrames;
+        }
     }
 }
