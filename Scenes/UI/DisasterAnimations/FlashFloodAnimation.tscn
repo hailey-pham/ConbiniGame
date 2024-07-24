@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/UI/DisasterAnimations/FlashFloodAnimation.cs" id="1_mr0aa"]
 [ext_resource type="AudioStream" uid="uid://dnbac0lpmh411" path="res://Assets/Music/Rain.wav" id="3_dbdu2"]
 [ext_resource type="AudioStream" uid="uid://dpcunerwg6k4a" path="res://Assets/Music/Thunder.wav" id="3_pauqg"]
-[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="4_p6s1f"]
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Components/StoreFront.tscn" id="4_p6s1f"]
 
 [sub_resource type="Gradient" id="Gradient_7npl2"]
 colors = PackedColorArray(0.236334, 0.236334, 0.236334, 1, 1, 1, 1, 1)

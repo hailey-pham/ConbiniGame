@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/UI/DisasterAnimations/EarthquakeAnimation.cs" id="1_xn1he"]
 [ext_resource type="PackedScene" uid="uid://r6iwguk11m2d" path="res://Assets/StoreFront/SkyBackground.tscn" id="2_12ieo"]
-[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="2_l7e2k"]
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Components/StoreFront.tscn" id="2_l7e2k"]
 
 [sub_resource type="Animation" id="Animation_a7hxe"]
 length = 0.001
@@ -54,8 +54,8 @@ layout_mode = 0
 
 [node name="StoreFront" parent="." instance=ExtResource("2_l7e2k")]
 layout_mode = 1
-offset_right = 3584.0
-offset_bottom = 2240.0
+offset_right = 4096.0
+offset_bottom = 2560.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
