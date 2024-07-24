@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://je8p3wm0tt4e"]
 
 [ext_resource type="Script" path="res://Scenes/UI/forecast.cs" id="1_u6xcp"]
-[ext_resource type="PackedScene" uid="uid://r6iwguk11m2d" path="res://Assets/StoreFront/SkyBackground.tscn" id="2_35pms"]
+[ext_resource type="PackedScene" path="res://Assets/StoreFront/SkyBackground.tscn" id="2_35pms"]
 [ext_resource type="PackedScene" uid="uid://cyrhcj8qsy7hu" path="res://Scenes/UI/ForecastAnimation.tscn" id="3_byu8w"]
 [ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="3_ipr4b"]
 

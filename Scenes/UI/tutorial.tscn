@@ -1,10 +1,72 @@
-[gd_scene load_steps=6 format=3 uid="uid://dge26oo0wcr1c"]
+[gd_scene load_steps=9 format=3 uid="uid://dge26oo0wcr1c"]
 
 [ext_resource type="Script" path="res://Scenes/UI/tutorial.cs" id="1_4kg1w"]
 [ext_resource type="Texture2D" uid="uid://dkhiucorhkwnl" path="res://Assets/GUI/DialogueBox.png" id="1_7klqx"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="2_bnqub"]
 [ext_resource type="Texture2D" uid="uid://bco68s4lro64s" path="res://DisastoreMCSprite-Concerned-Open_V1.png" id="4_61eel"]
 [ext_resource type="Texture2D" uid="uid://bjcu57yusybiq" path="res://DisastoreMCSprite-Concerned-Closed_V1.png" id="5_y18pq"]
+
+[sub_resource type="Animation" id="Animation_esomi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConcernedMC:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ConcernedMCClosed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_emaqx"]
+resource_name = "talking_concerned"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConcernedMC:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ConcernedMCClosed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_db3uj"]
+_data = {
+"RESET": SubResource("Animation_esomi"),
+"talking_concerned": SubResource("Animation_emaqx")
+}
 
 [node name="Tutorial" type="Control"]
 process_mode = 3
@@ -26,6 +88,19 @@ offset_right = 237.0
 offset_bottom = 168.0
 scale = Vector2(0.76, 0.76)
 texture = ExtResource("4_61eel")
+
+[node name="ConcernedMCClosed" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -72.0
+offset_right = 237.0
+offset_bottom = 88.0
+grow_vertical = 2
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("5_y18pq")
 
 [node name="DialogueBox" type="TextureRect" parent="."]
 z_index = 10
@@ -65,12 +140,7 @@ scroll_active = false
 wait_time = 2.0
 one_shot = true
 
-[node name="ConcernedMCClosed" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 101.0
-offset_top = 5.0
-offset_right = 357.0
-offset_bottom = 165.0
-scale = Vector2(0.76, 0.76)
-texture = ExtResource("5_y18pq")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_db3uj")
+}
