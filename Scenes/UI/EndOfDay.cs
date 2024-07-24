@@ -52,7 +52,7 @@ public partial class EndOfDay : Control
         totalMoneyLabel = GetNode<RichTextLabel>("VBoxContainer/TotalMoney");
 
 		itemsSoldLabel = GetNode<Label>("VBoxContainer2/ItemsSoldLabel");
-		itemsSoldList = GetNode<ItemList>("VBoxContainer2/ItemsSoldList");
+		itemsSoldList = GetNode<ItemList>("VBoxContainer2/Control/ItemsSoldList");
 
 		globals = GetNode<globals>("/root/Globals");
 		calendar = GetNode<Calendar>("/root/Calendar");
@@ -113,8 +113,9 @@ public partial class EndOfDay : Control
 
 		foreach (var item in itemsSoldToday)
 		{
-			var itemTags = item.GetTagsAsEmoji();
-			itemsSoldList.AddItem(item.name + " " + itemTags, item.spriteTexture, false);
+			// var itemTags = item.GetTagsAsEmoji();
+			// itemsSoldList.AddItem(item.name + " " + itemTags, item.spriteTexture, false);
+			itemsSoldList.AddItem(item.name, item.spriteTexture, false);
 		}
 	}
 }

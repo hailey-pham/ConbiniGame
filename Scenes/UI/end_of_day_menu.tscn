@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bcfcdw8pkwlja"]
+[gd_scene load_steps=30 format=3 uid="uid://bcfcdw8pkwlja"]
 
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_4rgg3"]
 [ext_resource type="Script" path="res://Scenes/UI/EndOfDay.cs" id="2_xdosx"]
 [ext_resource type="Texture2D" uid="uid://f3k6l6ykd7k5" path="res://Assets/GUI/EndOfDayBanner.png" id="3_dscy2"]
-[ext_resource type="Theme" uid="uid://bave6qih56tgq" path="res://Scenes/UI/DarkerButtons.tres" id="3_ppul3"]
+[ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="3_ppul3"]
 [ext_resource type="Texture2D" uid="uid://i1agevnvawql" path="res://Assets/GUI/Items Sold Box.png" id="3_xnkck"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8hc"]
@@ -105,16 +105,32 @@ HScrollBar/styles/scroll = SubResource("StyleBoxFlat_j4t8e")
 Label/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
 Label/fonts/font = ExtResource("1_4rgg3")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fdb3g"]
-content_margin_left = 5.0
-content_margin_top = 12.0
-content_margin_right = 5.0
-content_margin_bottom = 12.0
-texture = ExtResource("3_xnkck")
-texture_margin_left = 5.0
-texture_margin_top = 12.0
-texture_margin_right = 5.0
-texture_margin_bottom = 12.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
+bg_color = Color(0.75, 0.612, 0.5775, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oghr"]
+bg_color = Color(0.878431, 0.752941, 0.721569, 1)
+border_width_left = 5
+border_color = Color(0.88, 0.75328, 0.7216, 1)
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_m1qbp"]
+ScrollContainer/styles/panel = null
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_3u5mo")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_3u5mo")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_3oghr")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjseo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ss2d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqkoq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y8scq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j4gsq"]
 
 [node name="EndOfDayMenu" type="Control"]
 layout_mode = 3
@@ -224,7 +240,7 @@ offset_right = -8.0
 offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 12
 
 [node name="ItemsSoldLabel" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
@@ -232,22 +248,33 @@ theme_override_colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
 text = "Items sold:"
 horizontal_alignment = 1
 
-[node name="ItemsSoldList" type="ItemList" parent="VBoxContainer2"]
+[node name="ItemsSoldBox" type="Sprite2D" parent="VBoxContainer2"]
+position = Vector2(48, 57.75)
+scale = Vector2(1, 0.868932)
+texture = ExtResource("3_xnkck")
+
+[node name="Control" type="Control" parent="VBoxContainer2"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
+
+[node name="ItemsSoldList" type="ItemList" parent="VBoxContainer2/Control"]
+layout_mode = 2
+offset_left = 5.0
+offset_right = 91.0
+offset_bottom = 68.0
 size_flags_vertical = 3
+theme = SubResource("Theme_m1qbp")
 theme_override_colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
 theme_override_colors/font_hovered_color = Color(0.192157, 0.164706, 0.164706, 1)
 theme_override_colors/font_selected_color = Color(0.192157, 0.164706, 0.164706, 1)
 theme_override_colors/guide_color = Color(0.192157, 0.164706, 0.164706, 1)
-theme_override_styles/panel = SubResource("StyleBoxTexture_fdb3g")
-theme_override_styles/focus = SubResource("StyleBoxTexture_fdb3g")
-theme_override_styles/selected_focus = SubResource("StyleBoxTexture_fdb3g")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tjseo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ss2d")
+theme_override_styles/hovered = SubResource("StyleBoxEmpty_aqkoq")
+theme_override_styles/selected = SubResource("StyleBoxEmpty_y8scq")
+theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_j4gsq")
 
 [node name="EndOfDayBanner" type="Sprite2D" parent="."]
 position = Vector2(128, 27)
 texture = ExtResource("3_dscy2")
-
-[node name="ItemsSoldBox" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(200, 109)
-texture = ExtResource("3_xnkck")

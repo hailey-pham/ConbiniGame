@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://cf7tdv1dbxi2k"]
+[gd_scene load_steps=5 format=3 uid="uid://cf7tdv1dbxi2k"]
+
+[ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_bxug6"]
+[ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="1_sm0qi"]
+[ext_resource type="Script" path="res://Scenes/Victory.cs" id="1_snmuu"]
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="3_eg6ex"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -7,21 +12,59 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_sm0qi")
+script = ExtResource("1_snmuu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 159.0
-color = Color(0, 0, 0, 1)
+color = Color(0.192157, 0.164706, 0.164706, 1)
+
+[node name="StoreFront" parent="." instance=ExtResource("3_eg6ex")]
+layout_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 256.0
-offset_bottom = 43.0
+offset_bottom = 158.0
+theme = ExtResource("1_bxug6")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center]Victory!!!! 
+text = "
 
-
-
-Congrats :3[/center]"
+[center]You survived a year"
 fit_content = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.562
+anchor_top = 0.719
+anchor_right = 0.982
+anchor_bottom = 0.961
+offset_left = 17.128
+offset_top = 0.960007
+offset_right = -2.39197
+offset_bottom = -21.76
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.01262, 1.0762)
+text = "Continue Playing"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.089
+anchor_top = -0.039
+anchor_right = -1.076
+anchor_bottom = 1.0
+offset_left = 695.784
+offset_top = 142.24
+offset_right = 524.456
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.01262, 1.0762)
+text = "Main Menu"

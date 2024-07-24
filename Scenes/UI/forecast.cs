@@ -35,6 +35,6 @@ public partial class forecast : Control
     public void OnDisplayTimerTimeout()
     {
         displayTimer.Stop();
-        sceneManager.ChangeScene("gamescene", "FadeToBlack");
+        sceneManager.ChangeScene("endofdayscene", "FadeToBlack");
     }
 }

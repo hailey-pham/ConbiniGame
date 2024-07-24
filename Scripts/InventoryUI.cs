@@ -95,10 +95,11 @@ public partial class InventoryUI : Control
 		// GD.Print("Item clicked" +index);
 		// var itemRes = inventoryItems[(int)index];
 		var itemRes = globals.Stock[itemName];
+		string tempItemName = "";
 
 		if (itemRes != null)
 		{
-			if (!playerItemSpawner.HasItem())
+			if (!playerItemSpawner.HasItem()) // player doesn't have an item
 			{
 				playerItemSpawner.AddItemRes(itemRes);
 				globals.DecrementItemResStock(itemRes);
@@ -107,13 +108,33 @@ public partial class InventoryUI : Control
 				// BG.Visible = false;
 			}
 			//false if it doesn't have an item or if it doesn't exist
-			else if (!playerItemSpawner2.HasItem() && Player.IsStackItemUpgrade)
+			else if (!playerItemSpawner2.HasItem() && Player.IsStackItemUpgrade) // player has stack upgrade and no second item
 			{
 				playerItemSpawner2.AddItemRes(itemRes);
 				globals.DecrementItemResStock(itemRes);
 				// Player.playerFreezeState();
 				// this.Visible = false;
 				// BG.Visible = false;
+			} else if (playerItemSpawner.HasItem() && !Player.IsStackItemUpgrade){ // player has one item and no upgrade
+				if(playerItemSpawner.currItem != null)
+				{
+					tempItemName = playerItemSpawner.currItem.name;
+					playerItemSpawner.currItem.ReturnItemToStock();
+					playerItemSpawner.RemoveItemRes();
+
+					if(tempItemName != itemRes.name) {
+						playerItemSpawner.AddItemRes(itemRes);
+						globals.DecrementItemResStock(itemRes);
+					}
+					
+				}
+			} else if (playerItemSpawner2.HasItem() && Player.IsStackItemUpgrade) { // player has two items and stack upgrade
+				playerItemSpawner.currItem.ReturnItemToStock();
+				playerItemSpawner.RemoveItemRes();
+				playerItemSpawner.AddItemRes(playerItemSpawner2.RemoveItemRes()); // add item in 2nd spawner to first spawner
+
+				playerItemSpawner2.AddItemRes(itemRes);
+				globals.DecrementItemResStock(itemRes);
 			}
 			
 		}
