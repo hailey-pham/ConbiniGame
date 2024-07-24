@@ -8,4 +8,4 @@ curveIncrease = 0.1
 name = "Advertisement"
 description = "Put a banner outside your store to draw in more customers"
 owned = false
-cost = 9000
+cost = 20000

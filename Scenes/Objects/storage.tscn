@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://vit6v1iaab2a"]
 
-[ext_resource type="PackedScene" uid="uid://corj4vn4m6apw" path="res://Scenes/Objects/inventory.tscn" id="2_xnbmo"]
+[ext_resource type="PackedScene" uid="uid://dvf8kxmq3w1lt" path="res://Scenes/Objects/inventory.tscn" id="2_xnbmo"]
 [ext_resource type="Script" path="res://Scenes/Objects/storage.cs" id="2_yhkxo"]
 [ext_resource type="Script" path="res://Scripts/InventoryUI.cs" id="12_4veed"]
-[ext_resource type="PackedScene" path="res://Scenes/inventory_item.tscn" id="13_kifw7"]
+[ext_resource type="PackedScene" uid="uid://c4j5rlbk2gvqb" path="res://Scenes/inventory_item.tscn" id="13_kifw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfu4v"]
 size = Vector2(58, 20)

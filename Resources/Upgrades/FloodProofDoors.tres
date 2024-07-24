@@ -9,4 +9,4 @@ lowProtection = 1
 name = "Flood Proof Doors"
 description = "Reduces damage in water based disasters"
 owned = false
-cost = 7500
+cost = 40000

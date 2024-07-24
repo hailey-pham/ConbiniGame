@@ -62,16 +62,14 @@ public partial class npcSpawner : Node2D
     {
         if (npcScene != null && npcCount <= maxNPCsInStore)
         {
-            Node newNpc = npcScene.Instantiate();
+            npc newNpc = (npc)npcScene.Instantiate();
             newNpc.Set("z_as_relative", false);
-            var npcScript = newNpc as npc;
-            npcScript.LeftStore += OnNPCLeaveStore;
+            newNpc.LeftStore += OnNPCLeaveStore;
 
             AddChild(newNpc);
-
             //sets the npc's sprite frames to a random one from the exported array
             var rng = new RandomNumberGenerator();
-            npcScript.SetSpriteFrames(npcSprites[rng.RandiRange(0, npcSprites.Count - 1)]);
+            newNpc.SetSpriteFrames(npcSprites[rng.RandiRange(0, npcSprites.Count - 1)]);
             newNpc.GetNode<Timer>("StateMachine/CheckoutState/Timer").WaitTime = npcWaitTime;
 			if(audioPlayer.IsInsideTree())
 			{

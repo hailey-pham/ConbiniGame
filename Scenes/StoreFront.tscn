@@ -2,15 +2,15 @@
 
 [ext_resource type="Shader" path="res://Scenes/UI/SeasonTitle.gdshader" id="1_0btbg"]
 [ext_resource type="Script" path="res://Scenes/StoreFront.cs" id="1_ihp1t"]
-[ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="2_n43pr"]
+[ext_resource type="Theme" uid="uid://bave6qih56tgq" path="res://Scenes/UI/DarkerButtons.tres" id="2_n43pr"]
 [ext_resource type="Texture2D" uid="uid://nqmo0ggwvwvc" path="res://Assets/StoreFront/FallSpritesheet.png" id="3_7nty7"]
 [ext_resource type="Texture2D" uid="uid://bmhc8xninrclb" path="res://Assets/StoreFront/Storefront_Flag.png" id="4_5atv1"]
 [ext_resource type="Texture2D" uid="uid://853qqveeqs35" path="res://Assets/StoreFront/SummerSpritesheet.png" id="4_oyc81"]
 [ext_resource type="Texture2D" uid="uid://cj5iiqpd718l4" path="res://Assets/StoreFront/Storefront_Vending.png" id="5_3rk8m"]
 [ext_resource type="Texture2D" uid="uid://b7qhx0bx3jk7m" path="res://Assets/StoreFront/SpringSpritesheet.png" id="6_b3aah"]
 [ext_resource type="Texture2D" uid="uid://cdokq42h811ai" path="res://Assets/StoreFront/Storefront_Winter_Greyscale.png" id="6_q1vim"]
-[ext_resource type="Texture2D" uid="uid://d0vhoettp2vs7" path="res://Storefront_Boards.png" id="10_hu5c2"]
-[ext_resource type="Texture2D" uid="uid://bqseti4puoiwd" path="res://Storefront_Bags.png" id="11_qi50v"]
+[ext_resource type="Texture2D" uid="uid://bendm6vgpd3eo" path="res://Storefront_Boards.png" id="10_hu5c2"]
+[ext_resource type="Texture2D" uid="uid://stche0wtoocm" path="res://Storefront_Bags.png" id="11_qi50v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ro0m"]
 shader = ExtResource("1_0btbg")
@@ -103,6 +103,7 @@ animations = [{
 }]
 
 [node name="StoreFront" type="Control"]
+process_mode = 3
 material = SubResource("ShaderMaterial_4ro0m")
 layout_mode = 3
 anchors_preset = 15
