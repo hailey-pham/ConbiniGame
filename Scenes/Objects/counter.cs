@@ -50,11 +50,11 @@ public partial class counter : StaticBody2D
                     {
                         //take itemres from player
                         itemSpawner.AddItemRes(Player._itemSpawner2.RemoveItemRes());
-                        EmitSignal(nameof(TakeItemres));
                     }
                     else if (Player._itemSpawner.HasItem())
                     {
                         itemSpawner.AddItemRes(Player._itemSpawner.RemoveItemRes());
+                        EmitSignal(nameof(TakeItemres));
                     }
                 }
             }

@@ -16,7 +16,9 @@ public partial class tutorial : Control
 
     private Timer tutorialTimer;
 
+    [Export]
     private float textDelay = 0.05f;
+
     private bool isTyping = false;
     private int part = 0;
 
@@ -27,9 +29,25 @@ public partial class tutorial : Control
     private SceneManager sceneManager;
     private counter counter;
     private storage storage;
+    private AudioStreamPlayer audioStreamPlayer;
+    private AnimationPlayer animationPlayer;
+
+    private Dictionary<string, DialogueLine[]> script = new();
 
     [Signal]
-    public delegate void TutorialFinishedEventHandler();      
+    public delegate void TutorialFinishedEventHandler();
+
+    struct DialogueLine
+    {
+        public DialogueLine(string text, string animationName = "talking_concerned")
+        {
+            Text = text;
+            AnimationName = animationName;
+        }
+
+        public string Text { get; }
+        public string AnimationName { get; }
+    }
 
     public override void _Ready()
     {
@@ -40,6 +58,8 @@ public partial class tutorial : Control
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
         sceneManager.SceneChanged += OnSceneChanged;
         tutorialText = GetNode<RichTextLabel>("TutorialText");
+        audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
         tutorialTimer = new Timer();
         tutorialTimer.WaitTime = 3.0f;
@@ -53,37 +73,36 @@ public partial class tutorial : Control
     //adds all the text to our script dictionary
     private void BuildScript()
     {
-        var opening = new string[]
+        var opening = new DialogueLine[]
         {
-            "Grandpa passed away in the winter.",
-            "He owned this store...",
-            "Apparently I'm the one to inherit it.",
-            "He lived in this village, prone to disasters. I'm sure something's going to happen soon...",
-            "I should get straight to work!"
+            new DialogueLine("Grandpa passed away in the winter."),
+            new DialogueLine("He owned this store..."),
+            new DialogueLine("Apparently I'm the one to inherit it."),
+            new DialogueLine("He lived in this village, prone to disasters. I'm sure something's going to happen soon..."),
+            new DialogueLine("I should get straight to work!","talking_grinning")
         };
 
         script.Add(nameof(opening), opening);
 
-        var openshop = new string[]
+        var openshop = new DialogueLine[]
         {
-            "If I remember correctly, there's a storage in the back...",
-            "I can press space to interact.",
+            new DialogueLine("If I remember correctly, there's a storage in the back..."),
+            new DialogueLine("I can press space to interact."),
         };
 
         script.Add(nameof(openshop), openshop);
 
-        var openinventory = new string[]
+        var openinventory = new DialogueLine[]
         {
-            "Grandpa must have been preparing for the spring. Customers will have a seasonal preference for sakura mochi.",
-            "Let's get those in stock."
+            new DialogueLine("Grandpa must have been preparing for the spring. Customers will have a seasonal preference for sakura mochi."),
+            new DialogueLine("Let's get those in stock.")
         };
 
         script.Add(nameof(openinventory), openinventory);
 
-        var placeitem = new string[]
-        {
-            "Great! I should keep restocking throughout the day so everyone can get what they need.",
-            "Once someone is done shopping, I need to go to the register to check them out."
+        var placeitem = new DialogueLine[] {
+            new DialogueLine("Great! I should keep restocking throughout the day so everyone can get what they need."), 
+            new DialogueLine("Once someone is done shopping, I need to go to the register to check them out.") 
         };
 
         script.Add(nameof(placeitem), placeitem);
@@ -99,7 +118,7 @@ public partial class tutorial : Control
         if (isTyping)
         {
             isTyping = false;
-            tutorialText.Text = script[currentTutorialName][currentStepIndex];
+            tutorialText.Text = script[currentTutorialName][currentStepIndex].Text;
         }
         else
         {
@@ -124,7 +143,11 @@ public partial class tutorial : Control
         Debug.Assert(script.ContainsKey(currentTutorialName), $"There is no tutorial with the name: {currentTutorialName}");
         if (currentStepIndex < script[currentTutorialName].Length)
         {
-            string line = script[currentTutorialName][currentStepIndex];
+            var dialogue = script[currentTutorialName][currentStepIndex];
+            animationPlayer.Play("RESET");
+            animationPlayer.Advance(0);
+            animationPlayer.Play(dialogue.AnimationName);
+            string line = dialogue.Text;
             await TypeText(line);
         }
         else
@@ -223,8 +246,10 @@ public partial class tutorial : Control
 
             tutorialText.Text += c;
             await ToSignal(GetTree().CreateTimer(textDelay), "timeout");
+            audioStreamPlayer.Play();
         }
 
         isTyping = false;
+        animationPlayer.Stop();
     }
 } 

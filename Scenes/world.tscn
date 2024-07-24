@@ -510,6 +510,7 @@ visible = false
 position = Vector2(57, 29)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("13_e5adc")
 volume_db = -16.0
 autoplay = true
