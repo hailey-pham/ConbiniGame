@@ -6,6 +6,9 @@ public partial class storage : Area2D
     [Signal]
     public delegate void FreezePlayerEventHandler();
 
+    [Signal]
+    public delegate void InventoryOpenedEventHandler();
+
     public player Player = null;
     private InventoryUI Inventory;
 
@@ -91,6 +94,7 @@ public partial class storage : Area2D
                     Inventory.Visible = true;
                     BG.Visible = true;
                     Player.playerFreezeState();
+                    EmitSignal(nameof(InventoryOpened));
                 }
 
                 

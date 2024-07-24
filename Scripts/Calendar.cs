@@ -32,6 +32,7 @@ public partial class Calendar : Node2D
     private SceneManager sceneManager;
     private globals globals;
     private disaster_stats stats;
+    private tutorial tutorial;
 
     private Timer timer;
 
@@ -50,10 +51,9 @@ public partial class Calendar : Node2D
 
     [Export]
     private int[] firstSpringArray;
-    private bool firstSpringPassed = false;
-
-    private bool tutorialShowing = false;
-
+    [Export]
+    private PackedScene tutorialScene;
+    
     private enum DisasterType
     {
         None = 0,
@@ -95,6 +95,11 @@ public partial class Calendar : Node2D
         GD.Print("Day: " + currentDay + " Season: " + currentSeasonStr);
         GD.Print("Current day index: " + currentDayIndex);
         GD.Print("Next day index: " + nextDayIndex);
+
+        tutorialScene = GD.Load<PackedScene>("res://Scenes/UI/tutorial.tscn");
+        var tutorialInstance = tutorialScene.Instantiate<tutorial>();
+
+        GetTree().Root.CallDeferred("add_child", tutorialInstance);
 
     }
     private void OnTimerTimeout()
@@ -161,17 +166,18 @@ public partial class Calendar : Node2D
     {
         if (sceneName == "gamescene")
         {
+
             // reset all daily stats
             globals.ResetDayStats();
-            timer.Start();
-            // get the label nodes
-            timeLabel = GetNode<Label>("/root/SceneManager/SceneParent/World/UI/TimeLabel");
-            calendarLabel = GetNode<Label>("/root/SceneManager/SceneParent/World/UI/CalendarLabel");
-            UpdateCalendarLabel();
-            OnSeasonChange(currentSeason);
-            
+             timer.Start();
+             // get the label nodes
+             timeLabel = GetNode<Label>("/root/SceneManager/SceneParent/World/UI/TimeLabel");
+             calendarLabel = GetNode<Label>("/root/SceneManager/SceneParent/World/UI/CalendarLabel");
+             UpdateCalendarLabel();
+             OnSeasonChange(currentSeason);
         }
 
+        
     }
 
     public void IncrementDay()
@@ -198,22 +204,9 @@ public partial class Calendar : Node2D
         GD.Print("Current day index: " + currentDayIndex);
         GD.Print("Next day index: " + nextDayIndex);
 
-        if (!firstSpringPassed && !tutorialShowing)
-        {
-            ShowTutorial();
-            tutorialShowing = true;
-        }
-        else if (firstSpringPassed)
-        {
-            tutorialShowing = false;
-        }
     }
 
-    private void ShowTutorial()
-    {
-        var sceneManager = GetNode<SceneManager>("/root/SceneManager");
-        sceneManager.ChangeScene("tutorial");
-    }
+  
 
     public bool IsDisasterDay()
     {
@@ -381,10 +374,9 @@ public partial class Calendar : Node2D
         var stopwatch = new Stopwatch();
         stopwatch.Start();
 
-        if (!firstSpringPassed && firstSpringArray != null && firstSpringArray.Length > 0)
+        if (firstSpringArray != null && firstSpringArray.Length > 0)
         {
             springArray = firstSpringArray;
-            firstSpringPassed = true;
         }
         else
         {

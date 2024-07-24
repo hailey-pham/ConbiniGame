@@ -6,6 +6,9 @@ public partial class counter : StaticBody2D
     private CounterArea counterArea;
     private ItemSpawner itemSpawner;
 
+    [Signal]
+    public delegate void TakeItemresEventHandler();
+
 
     public override void _Ready()
     {
@@ -47,6 +50,7 @@ public partial class counter : StaticBody2D
                     {
                         //take itemres from player
                         itemSpawner.AddItemRes(Player._itemSpawner2.RemoveItemRes());
+                        EmitSignal(nameof(TakeItemres));
                     }
                     else if (Player._itemSpawner.HasItem())
                     {
