@@ -79,6 +79,10 @@ public partial class UpgradeManager : Control
 				upgradeButtons[^1].Text = upgrade.Value.name;
 				upgradeButtons[^1].Pressed += () => OnUpgradeButtonPressed(upgrade.Value.name);
 				GD.Print(upgradeButtons[^1].Text);
+
+				if(upgrade.Value.name == "Grand Counter" && !globals.Upgrades["More Counters"].owned) {
+					upgradeButtons[^1].Visible = false;
+				}
 			}
 		}
 		
@@ -109,8 +113,18 @@ public partial class UpgradeManager : Control
 		currentUpgrade = globals.Upgrades[name];
 		upgradeNameLabel.Text = currentUpgrade.name;
 		upgradeDescriptionLabel.Text = currentUpgrade.description;
-		upgradeCostLabel.Text = "Cost: ￥"+currentUpgrade.cost;
-		purchaseButton.Disabled = false;
+
+		if(!currentUpgrade.owned) {
+			upgradeCostLabel.Text = "Cost: ￥"+currentUpgrade.cost;
+			purchaseButton.Disabled = false;
+		} else {
+			upgradeCostLabel.Text = "Cost: OWNED";
+			purchaseButton.Disabled = true;
+		}
+		
+		
+
+		
 	}
 
 	private void OnPurchaseButtonPressed()
@@ -119,6 +133,7 @@ public partial class UpgradeManager : Control
 		if(globals.Money > currentUpgrade.cost) {
 			upgradeQuestion.Text = "Do you want to purchase "+currentUpgrade.name+" for ￥"+currentUpgrade.cost+"?";
 			popUp.Visible = true;
+			
 		} else {
 			insufficientPopUp.Visible = true;
 		}
@@ -140,11 +155,13 @@ public partial class UpgradeManager : Control
 			// clear upgrade from current list
 
 			foreach (Button btn in upgradeButtons) {
-				if(globals.Upgrades[btn.Text].owned) {
-					btn.Visible = false;
+				if (btn.Text == "Grand Counter" && globals.Upgrades["More Counters"].owned) {
+					btn.Visible = true;
 				}
 			}
-			upgradeDescriptionLabel.Text = "You have already purchased this upgrade!";
+			
+
+			upgradeCostLabel.Text = "OWNED";
 			purchaseButton.Disabled = true;
 
 

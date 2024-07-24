@@ -44,7 +44,7 @@ public partial class World : Node2D
 		globals = GetNode<globals>("/root/Globals");
 
 		calendarUI.switchTexture(calendar.GetCurrentSeason());
-		dayLabel.Text = globals.Day.ToString();
+		dayLabel.Text = calendar.CurrentDay.ToString();
 		globals.CustomersEntered = 0;
 
 

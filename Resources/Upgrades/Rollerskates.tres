@@ -8,4 +8,4 @@ newSpeed = 140.0
 name = "Rollerskates"
 description = "Makes you move faster"
 owned = false
-cost = 5000
+cost = 15000

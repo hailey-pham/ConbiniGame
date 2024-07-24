@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dy00ust61emdc"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://il7820we7jdg"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrade Scripts/CounterUpgrade2.cs" id="1_pcesh"]
 
 [resource]
 script = ExtResource("1_pcesh")
-name = "Extra Valuable Counter!"
-description = "Gain an extra valuable counter that improves how much items sell!"
+name = "Grand Counter"
+description = "Gain a counter that sells items at a higher price"
 owned = false
 cost = 5000
