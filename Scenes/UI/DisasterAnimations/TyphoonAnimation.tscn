@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://l0u2c2ypktmq"]
 
-[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="1_ljfjc"]
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Components/StoreFront.tscn" id="1_ljfjc"]
 [ext_resource type="Script" path="res://Scenes/UI/DisasterAnimations/TyphoonAnimation.cs" id="1_r7pp6"]
 [ext_resource type="AudioStream" uid="uid://b64f6fbu6f6rn" path="res://Assets/Music/Typhoon.wav" id="1_wu5ek"]
 
