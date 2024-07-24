@@ -23,6 +23,7 @@ public partial class Calendar : Node2D
     private int currentDay = 1;
     private int currentSeason = 1;
     private string currentSeasonStr;
+    private int currentCycle = 1;
 
     private Label timeLabel;
     private Label calendarLabel;
@@ -72,6 +73,7 @@ public partial class Calendar : Node2D
     public override void _Ready()
     {
         currentDay = 1;
+        currentCycle = 1;
         // get scenemanager
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
         sceneManager.SceneChanged += OnSceneChanged;
@@ -125,6 +127,11 @@ public partial class Calendar : Node2D
     public void EndDay()
     {
         IncrementDay();
+        if(currentDay == 3 && currentSeason == 4*currentCycle)
+        {
+            currentCycle += 1;
+            sceneManager.ChangeScene("victory", "FadeToBlack");
+        }
         sceneManager.ChangeScene("endofdayscene", "FadeToBlack");
         EmitSignal(nameof(DisplayEndOfDayStats));
     }

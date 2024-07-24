@@ -9,10 +9,13 @@ public partial class main_menu : Control
 
     private SceneManager sceneManager;
 
+    private globals globals;
+
     public override void _Ready()
     {
         //get referenes to all the things instatiated at runtime
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
+        globals = GetNode<globals>("/root/Globals");
 
         var hbox = GetNode<HBoxContainer>("HBoxContainer");
         playButton = hbox.GetNode<Button>("PlayButton");
@@ -27,6 +30,7 @@ public partial class main_menu : Control
     private void onPlayPressed()
     {
         //change scene to game scene
+        globals.ResetGame();
         sceneManager.ChangeScene("storyline", "FadeToBlack");
     }
 
