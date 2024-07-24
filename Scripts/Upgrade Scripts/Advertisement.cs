@@ -10,10 +10,8 @@ public partial class Advertisement : Upgrade
 		flag.Visible = true;
 	} // Storefront.cs
 	public override void onLevelLoad(globals Global, Node root) {
-		Curve curve = root.GetChild<npcSpawner>(4).spawnCurve;
+		Curve curve = ((npcSpawner)root.GetTree().GetFirstNodeInGroup("spawner")).spawnCurve;
 		curve.SetPointValue(0, curve.GetPointPosition(0).Y+curveIncrease);
 		curve.SetPointValue(1, curve.GetPointPosition(1).Y+curveIncrease);
-
-
 	}
 }
