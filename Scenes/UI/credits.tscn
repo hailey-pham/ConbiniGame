@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmjeltr2ss5ng"]
+[gd_scene load_steps=11 format=3 uid="uid://dmjeltr2ss5ng"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_jvu1w"]
 [ext_resource type="Texture2D" uid="uid://six140ru7we8" path="res://Assets/DisastoreTitle.png" id="2_c8gvx"]
 [ext_resource type="Script" path="res://Scenes/UI/CreditsPlayer.cs" id="2_ni4c7"]
+[ext_resource type="Script" path="res://Scenes/UI/CreditsMetaLink.gd" id="2_rqkm7"]
 [ext_resource type="AudioStream" uid="uid://c52b6ib1jmsfa" path="res://Assets/Music/Shop End Credits.wav" id="4_asg3v"]
 [ext_resource type="Texture2D" uid="uid://b8dwcpupjwhlo" path="res://Assets/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0017.png" id="5_m42wu"]
 [ext_resource type="Texture2D" uid="uid://6jgkxg50q0nq" path="res://Assets/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0153.png" id="6_dk1cb"]
@@ -36,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 60),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 340), Vector2(0, -130)]
+"values": [Vector2(0, 340), Vector2(0, -229.995)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3l5go"]
@@ -70,8 +71,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0003
-offset_bottom = 40.0003
+offset_top = -120.0
+offset_bottom = 228.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jvu1w")
@@ -94,8 +95,19 @@ Still can't get [tornado radius=4 freq=3]docker[/tornado] working...
 Romeo Casale
 The [rainbow]Artist![/rainbow]
 
+Harley Hix
+[i][u]Voice Acting Extrodinaire![/u][/i]
+
+Jordan Davis
+[tornado radius=10.0 freq=1.0 connected=1]Relaxing main menu music.[/tornado]
+
+LimeZuF
+[color=Lime]For the Colorful Asset Pack![/color]
+[color=AQUA][url]https://limezu.itch.io/[/url][/color]
+
 Made with [color=red]愛[/color] at Kyoto University"
 fit_content = true
+script = ExtResource("2_rqkm7")
 
 [node name="TextureRect" type="TextureRect" parent="Scroll Node"]
 modulate = Color(100, 100, 100, 1)
@@ -139,3 +151,5 @@ offset_top = 146.0
 offset_right = 15.0
 offset_bottom = 162.0
 texture = ExtResource("6_dk1cb")
+
+[connection signal="meta_clicked" from="Scroll Node/RichTextLabel" to="Scroll Node/RichTextLabel" method="_on_meta_clicked"]
