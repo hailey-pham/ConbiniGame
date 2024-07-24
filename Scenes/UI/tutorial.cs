@@ -219,6 +219,11 @@ public partial class tutorial : Control
             StartTutorial("opening");
             isFirstSeason = false;
         }
+        else
+        {
+            //i'm sorry, little one
+            QueueFree();
+        }
         
     }
     private void OnGameSceneLoaded()

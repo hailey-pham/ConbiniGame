@@ -13,7 +13,7 @@ config_version=5
 config/name="ConbiniGame"
 run/main_scene="res://Scenes/UI/SceneManager.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://iconDraft2 - 256.png"
 
 [autoload]
 
