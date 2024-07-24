@@ -37,8 +37,6 @@ public partial class globals : Node
 	[Signal]
 	public delegate void MoneyUpdatedEventHandler(int money);
 
-    
-
 	private disaster_stats disasterstats;
 
     private bool lostMoneyToday = false;
@@ -188,7 +186,6 @@ public partial class globals : Node
         {
             item.currentStock = 0;
         }
-		
         Money = 2000;
 		for (int i = 0; i < 20;i++)
 		{
