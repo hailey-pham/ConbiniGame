@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf7tdv1dbxi2k"]
+[gd_scene load_steps=10 format=3 uid="uid://cf7tdv1dbxi2k"]
 
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_bxug6"]
 [ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="1_sm0qi"]
 [ext_resource type="Script" path="res://Scenes/Victory.cs" id="1_snmuu"]
-[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="3_eg6ex"]
+[ext_resource type="Texture2D" uid="uid://dqqeg3bm0s530" path="res://Assets/StoreFront/Storefront_Sky_Night.png" id="3_6w53s"]
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Components/StoreFront.tscn" id="3_eg6ex"]
+[ext_resource type="Script" path="res://Scenes/Fireworks.cs" id="5_dg8cf"]
+[ext_resource type="Texture2D" uid="uid://e5073wrnc0mk" path="res://Assets/Fireworks/Fireworks1.png" id="6_f0owg"]
+[ext_resource type="Texture2D" uid="uid://bbras0ug215xv" path="res://Assets/Fireworks/Fireworks2.png" id="7_oa7vw"]
+[ext_resource type="Texture2D" uid="uid://cq42nhrrwe8fv" path="res://Assets/Fireworks/Fireworks3.png" id="8_yee6u"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,26 +20,52 @@ grow_vertical = 2
 theme = ExtResource("1_sm0qi")
 script = ExtResource("1_snmuu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
+[node name="StorefrontSkyNight" type="Sprite2D" parent="."]
+position = Vector2(128, 80)
+texture = ExtResource("3_6w53s")
+
+[node name="Fireworks2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 256.0
-offset_bottom = 159.0
-color = Color(0.192157, 0.164706, 0.164706, 1)
+offset_bottom = 160.0
+script = ExtResource("5_dg8cf")
+fireworkTex1 = ExtResource("6_f0owg")
+fireworkTex2 = ExtResource("7_oa7vw")
+fireworkTex3 = ExtResource("8_yee6u")
 
 [node name="StoreFront" parent="." instance=ExtResource("3_eg6ex")]
 layout_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
-layout_mode = 0
+[node name="Fireworks" type="Control" parent="."]
+anchors_preset = 0
 offset_right = 256.0
-offset_bottom = 158.0
-theme = ExtResource("1_bxug6")
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "
+offset_bottom = 160.0
+script = ExtResource("5_dg8cf")
+fireworkTex1 = ExtResource("6_f0owg")
+fireworkTex2 = ExtResource("7_oa7vw")
+fireworkTex3 = ExtResource("8_yee6u")
+timeBetween = 20
 
-[center]You survived a year"
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 69.0
+offset_right = 256.0
+offset_bottom = 97.0
+color = Color(0.139996, 0.118191, 0.118193, 0.878431)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 2.0
+offset_right = 232.0
+offset_bottom = 26.0
+theme = ExtResource("1_bxug6")
+theme_override_colors/default_color = Color(0.85098, 0.764706, 0.741176, 1)
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]Congratulations!
+You have survived a year."
 fit_content = true
 
 [node name="Button" type="Button" parent="."]
@@ -44,9 +75,9 @@ anchor_left = 0.562
 anchor_top = 0.719
 anchor_right = 0.982
 anchor_bottom = 0.961
-offset_left = 17.128
-offset_top = 0.960007
-offset_right = -2.39197
+offset_left = 11.128
+offset_top = -0.0400009
+offset_right = -2.39198
 offset_bottom = -21.76
 grow_horizontal = 2
 grow_vertical = 2
@@ -60,7 +91,7 @@ anchor_left = -2.089
 anchor_top = -0.039
 anchor_right = -1.076
 anchor_bottom = 1.0
-offset_left = 695.784
+offset_left = 689.784
 offset_top = 142.24
 offset_right = 524.456
 offset_bottom = -8.0
