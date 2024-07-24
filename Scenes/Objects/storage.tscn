@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dvf8kxmq3w1lt" path="res://Scenes/Objects/inventory.tscn" id="2_xnbmo"]
 [ext_resource type="Script" path="res://Scenes/Objects/storage.cs" id="2_yhkxo"]
 [ext_resource type="Script" path="res://Scripts/InventoryUI.cs" id="12_4veed"]
-[ext_resource type="PackedScene" path="res://Scenes/inventory_item.tscn" id="13_kifw7"]
+[ext_resource type="PackedScene" uid="uid://c4j5rlbk2gvqb" path="res://Scenes/inventory_item.tscn" id="13_kifw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfu4v"]
 size = Vector2(58, 20)
@@ -47,7 +47,7 @@ VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_y5cpn")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_y5cpn")
 
-[node name="storage" type="Area2D"]
+[node name="storage" type="Area2D" groups=["storage"]]
 z_index = -1
 script = ExtResource("2_yhkxo")
 

@@ -50,8 +50,6 @@ public partial class storyline : Control
 
     public void ShowDialogue(string[] dialogueLines)
     {
-        GD.Print("ShowDialogue called with lines: ", dialogueLines.Length);
-
         _dialogueLines = dialogueLines;
         currentLineIndex = 0;
         ShowDialogueLine();
