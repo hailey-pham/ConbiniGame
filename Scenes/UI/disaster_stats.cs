@@ -164,6 +164,7 @@ public partial class disaster_stats : Control
             globals._holdMoneyLost = moneyLost;
             newMoney = globals.Money - moneyLost;
             globals.MoneyLostToday = true;
+            globals.Money = newMoney;
         }
         
         return newMoney;
