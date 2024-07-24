@@ -26,6 +26,7 @@ public partial class tutorial : Control
     private bool isFirstCounterStocked = false;
     private bool isFirstTimeInventory = false;
     private bool isFirstTimeEndOfDay = false;
+    private bool isFirstTimeDisasterStats = false;
     private bool isFirstDay = true;
     private bool isFirstSeason = true;
 
@@ -279,7 +280,11 @@ public partial class tutorial : Control
     private void OnDisasterStatsSceneLoaded()
     {
         //await ToSignal(GetTree().CreateTimer(1), "timeout");
-        StartTutorial("disasterstats");
+        if (!isFirstTimeDisasterStats)
+        {
+            isFirstTimeDisasterStats = true;
+            StartTutorial("disasterstats");
+        }
     }
 
     private void OnForecastEnded()
