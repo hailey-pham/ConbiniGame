@@ -1,20 +1,20 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://bk6yoil5hcrkt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u5mo"]
-bg_color = Color(0.835294, 0.74902, 0.72549, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jgub"]
+bg_color = Color(0.305882, 0.266667, 0.266667, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy2c7"]
 bg_color = Color(0.788235, 0.67451, 0.647059, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oghr"]
-bg_color = Color(0.945098, 0.878431, 0.862745, 1)
+bg_color = Color(0.878431, 0.752941, 0.721569, 1)
 border_width_left = 5
-border_color = Color(0.945098, 0.878431, 0.862745, 1)
+border_color = Color(0.88, 0.75328, 0.7216, 1)
 corner_detail = 1
 
 [resource]
 ScrollContainer/styles/panel = null
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3u5mo")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_8jgub")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_sy2c7")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sy2c7")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3oghr")

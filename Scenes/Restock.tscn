@@ -70,7 +70,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_y1mxr")
 Button/styles/pressed = SubResource("StyleBoxFlat_cqmef")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nuyb"]
-bg_color = Color(0.835294, 0.74902, 0.72549, 1)
+bg_color = Color(0.305882, 0.266667, 0.266667, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy2c7"]
 bg_color = Color(0.788235, 0.67451, 0.647059, 1)
@@ -82,7 +82,7 @@ border_color = Color(0.945098, 0.878431, 0.862745, 1)
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu5ur"]
-bg_color = Color(0.835294, 0.74902, 0.72549, 1)
+bg_color = Color(0.304132, 0.265202, 0.265193, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfk0o"]
 bg_color = Color(0.788235, 0.67451, 0.647059, 1)
@@ -211,11 +211,19 @@ grow_vertical = 0
 texture = ExtResource("3_3xaio")
 expand_mode = 3
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_top = 39.0
+offset_right = 149.0
+offset_bottom = 65.0
+color = Color(0.701961, 0.568627, 0.537255, 0.556863)
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_top = 34.0
 offset_right = 149.0
 offset_bottom = 74.0
+theme_override_constants/separation = 3
 
 [node name="HScrollBar" type="HScrollBar" parent="VBoxContainer"]
 layout_mode = 2
@@ -309,7 +317,7 @@ alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="FullOrder/Control"]
 clip_contents = false
 layout_mode = 0
-offset_left = 1.0
+offset_left = 3.0
 offset_right = 107.0
 offset_bottom = 80.0
 theme = ExtResource("10_ep5wf")
@@ -326,9 +334,9 @@ anchors_preset = 0
 [node name="ItemName" type="Label" parent="ItemInformation"]
 layout_mode = 0
 offset_left = 6.0
-offset_top = 61.0
+offset_top = 64.0
 offset_right = 57.0
-offset_bottom = 84.0
+offset_bottom = 87.0
 theme = ExtResource("1_wgo4a")
 text = "Water"
 vertical_alignment = 1

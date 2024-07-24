@@ -75,7 +75,7 @@ public partial class ShoppingState : State
         //get all the counters in the store and save their positions for later
         foreach (Node counter in GetTree().GetNodesInGroup("counters"))
         {
-            _counters.Add(counter as counter);
+             _counters.Add(counter as counter);
         }
 
         GenerateShoppingList();

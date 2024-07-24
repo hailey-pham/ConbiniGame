@@ -8,4 +8,4 @@ extendedWaitTime = 60
 name = "Decorations"
 description = "Add decorations to your store (NPCs will wait longer before leaving)"
 owned = false
-cost = 5000
+cost = 20000

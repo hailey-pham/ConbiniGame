@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmikix5dohqls"]
+
+[ext_resource type="PackedScene" uid="uid://dury0hel2kujq" path="res://Scenes/Objects/counter.tscn" id="1_q5fno"]
+
+[node name="CounterUpgradeState0" type="Node2D" groups=["counterstate0"]]
+y_sort_enabled = true
+
+[node name="counter" parent="." instance=ExtResource("1_q5fno")]
+z_as_relative = false
+position = Vector2(62, 72)
+collision_layer = 3
+
+[node name="counter2" parent="." instance=ExtResource("1_q5fno")]
+z_as_relative = false
+position = Vector2(62, 118)
+collision_layer = 3
+
+[node name="counter3" parent="." instance=ExtResource("1_q5fno")]
+z_as_relative = false
+position = Vector2(194, 72)
+collision_layer = 3
+
+[node name="counter4" parent="." instance=ExtResource("1_q5fno")]
+z_as_relative = false
+position = Vector2(194, 118)
+collision_layer = 3
