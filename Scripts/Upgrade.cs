@@ -4,7 +4,7 @@ using System;
 public partial class Upgrade : Resource
 {
 	[Export] public string name;
-	[Export] public string description;
+	[Export(PropertyHint.MultilineText)] public string description;
 	[Export] public bool owned; // if the upgrade is owned: true
 	[Export] public int cost;
 

@@ -6,6 +6,6 @@
 script = ExtResource("1_2jptx")
 protection = 3
 name = "Better Heating"
-description = "Reduces items lost in heavy snow"
+description = "Keeps items from freezing in cold weather. (Reduces item lost in heavy snow)"
 owned = false
 cost = 12000

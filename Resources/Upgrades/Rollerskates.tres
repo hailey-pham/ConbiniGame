@@ -6,6 +6,6 @@
 script = ExtResource("1_bw833")
 newSpeed = 140.0
 name = "Rollerskates"
-description = "Makes you move faster"
+description = "Helps you move faster"
 owned = false
 cost = 15000

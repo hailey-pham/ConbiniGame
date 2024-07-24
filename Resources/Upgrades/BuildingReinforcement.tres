@@ -7,6 +7,6 @@ script = ExtResource("1_v25jj")
 highProtection = 2
 lowProtection = 1
 name = "Building Reinforcement"
-description = "Reinforces building foundations. Helps prevent damage in earthquakes, floods, and strong wind conditions."
+description = "Strengthen the building's foundation. Reduces damage in earthquakes and strong wind conditions."
 owned = false
 cost = 36000

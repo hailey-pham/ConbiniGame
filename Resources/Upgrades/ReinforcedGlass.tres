@@ -7,6 +7,6 @@ script = ExtResource("1_f2x4j")
 itemProtection = 1
 moneyProtection = 1
 name = "Reinforced Glass"
-description = "Helps reduce damage in earthquakes and typhoons"
+description = "Stronger glass thats harder to break. (Reduce damage in earthquakes and typhoons)"
 owned = false
 cost = 18000

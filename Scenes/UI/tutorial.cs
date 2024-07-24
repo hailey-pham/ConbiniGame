@@ -132,7 +132,7 @@ public partial class tutorial : Control
         var disasterstats = new DialogueLine[]
         {
             new DialogueLine("Looks like the wildfire spread overnight..."),
-            new DialogueLine("I lost quite a bit in the incident. I should be careful from now on.","talking_reading")
+            new DialogueLine("I lost quite a bit in the incident, and I'll have to pay to repair all the damage. I should be careful from now on.","talking_reading")
         };
 
         script.Add(nameof(disasterstats), disasterstats);

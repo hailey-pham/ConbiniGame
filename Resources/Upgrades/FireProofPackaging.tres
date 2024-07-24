@@ -6,6 +6,6 @@
 script = ExtResource("1_b0sv0")
 protection = 2
 name = "Fire Proof Packaging"
-description = "Reduces amount of items lost in a wild fire"
+description = "Insulated packaging for all products. (Decrease stock loss in wild fires)"
 owned = false
 cost = 20000

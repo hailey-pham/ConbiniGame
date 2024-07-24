@@ -172,7 +172,7 @@ public partial class UpgradeManager : Control
 		EmitSignal(nameof(ConfirmButtonPressed));
 		
 		// if user has enough money to purchase upgrade, subtract money and set owned
-		if(globals.Money > currentUpgrade.cost) {
+		if(globals.Money >= currentUpgrade.cost) {
 			globals.Money -= currentUpgrade.cost;
 			globals.Upgrades[currentUpgrade.name].owned = true;
 

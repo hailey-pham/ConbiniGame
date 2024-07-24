@@ -149,7 +149,7 @@ public partial class RestockManager : Node
 	public void completePurchase() {
 		// check if user has enough funds to restock
 		// add restock amounts to global inventory
-		if(globals.Money > globals._purchaseCost) {
+		if(globals.Money >= globals._purchaseCost) {
 			globals.Money -= globals._purchaseCost;
 			globals._purchaseCost = 0;
 			foreach (var item in globals.Stock) {

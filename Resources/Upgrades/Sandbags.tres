@@ -6,6 +6,6 @@
 script = ExtResource("1_k0vpk")
 protection = 3
 name = "Sandbags"
-description = "Protects from Tsunami damage (ONE TIME USE)"
+description = "Divert water and reduce flood damage. Protects from water disasters and Earthquakes. (ONE TIME USE)"
 owned = false
 cost = 9000

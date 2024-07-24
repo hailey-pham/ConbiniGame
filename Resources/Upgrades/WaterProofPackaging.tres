@@ -6,6 +6,6 @@
 script = ExtResource("1_irf6w")
 protection = 2
 name = "Water Proof Packaging"
-description = "Reduces items lost in water based disasters"
+description = "Coated cardboard, sealed plastic, and laminated packaging. (Reduces damage in water based disasters)"
 owned = false
 cost = 25000

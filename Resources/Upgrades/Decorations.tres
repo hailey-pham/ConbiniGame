@@ -6,6 +6,6 @@
 script = ExtResource("1_vb6v4")
 extendedWaitTime = 60
 name = "Decorations"
-description = "Add decorations to your store (NPCs will wait longer before leaving)"
+description = "Decorations for your store. (NPCs will wait longer before leaving)"
 owned = false
 cost = 15000

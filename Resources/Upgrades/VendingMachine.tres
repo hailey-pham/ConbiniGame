@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_pxx5e")
 name = "Vending Machine"
-description = "Earn additional income at the end of every day"
+description = "Earn additional income at the end of every day based on how many customers enter."
 owned = false
 cost = 30000

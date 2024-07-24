@@ -7,6 +7,6 @@ script = ExtResource("1_fxvh1")
 highProtection = 2
 lowProtection = 1
 name = "Flood Proof Doors"
-description = "Reduces damage in water based disasters"
+description = "Doors with insulant weather strips to help prevent flooding. (Helps prevent damage in water based disasters)"
 owned = false
 cost = 25000
