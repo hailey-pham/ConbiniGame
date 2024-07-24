@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://ba674hdxfvrf7" path="res://Scenes/UI/DarkerButtons.tres" id="1_sm0qi"]
 [ext_resource type="Script" path="res://Scenes/Victory.cs" id="1_snmuu"]
 [ext_resource type="Texture2D" uid="uid://dqqeg3bm0s530" path="res://Assets/StoreFront/Storefront_Sky_Night.png" id="3_6w53s"]
-[ext_resource type="PackedScene" path="res://Scenes/StoreFront.tscn" id="3_eg6ex"]
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="3_eg6ex"]
 [ext_resource type="Script" path="res://Scenes/Fireworks.cs" id="5_dg8cf"]
 [ext_resource type="Texture2D" uid="uid://e5073wrnc0mk" path="res://Assets/Fireworks/Fireworks1.png" id="6_f0owg"]
 [ext_resource type="Texture2D" uid="uid://bbras0ug215xv" path="res://Assets/Fireworks/Fireworks2.png" id="7_oa7vw"]
