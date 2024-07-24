@@ -113,7 +113,6 @@ public partial class UpgradeManager : Control
 		return (i+1);
 	}
 	private void sortButtons(List<Button> arr, int low, int high) {
-		GD.Print("Sorting...");
 		if (low < high) {
 			int pi = partition(arr, low, high);
 			GD.Print(pi);

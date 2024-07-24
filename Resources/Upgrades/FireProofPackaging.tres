@@ -8,4 +8,4 @@ protection = 2
 name = "Fire Proof Packaging"
 description = "Reduces amount of items lost in a wild fire"
 owned = false
-cost = 40000
+cost = 20000

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://mmuatvnrannl"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c32s5u87njpgh"]
 
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_7f65y"]
 
@@ -11,7 +11,7 @@
 [resource]
 default_font = ExtResource("1_7f65y")
 default_font_size = 10
-Button/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
+Button/colors/font_color = Color(0.192157, 0.129412, 0.0313726, 1)
 Button/font_sizes/font_size = 10
 ItemList/colors/font_color = Color(0.192157, 0.164706, 0.164706, 1)
 ItemList/colors/font_hovered_color = Color(0.192157, 0.164706, 0.164706, 1)
@@ -25,4 +25,4 @@ ItemList/styles/hovered = SubResource("StyleBoxEmpty_tebw3")
 ItemList/styles/panel = SubResource("StyleBoxEmpty_t4gtp")
 ItemList/styles/selected = SubResource("StyleBoxEmpty_t4gtp")
 ItemList/styles/selected_focus = SubResource("StyleBoxEmpty_t4gtp")
-RichTextLabel/colors/default_color = Color(0.192157, 0.164706, 0.164706, 1)
+RichTextLabel/colors/default_color = Color(0.192157, 0.129412, 0.0313726, 1)

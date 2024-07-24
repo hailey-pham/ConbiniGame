@@ -7,4 +7,4 @@ script = ExtResource("1_5bwu6")
 name = "Double Stack"
 description = "Allows you to carry two items on your head."
 owned = false
-cost = 50000
+cost = 21000

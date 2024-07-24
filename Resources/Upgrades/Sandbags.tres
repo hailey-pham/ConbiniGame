@@ -8,4 +8,4 @@ protection = 3
 name = "Sandbags"
 description = "Protects from Tsunami damage (ONE TIME USE)"
 owned = false
-cost = 10000
+cost = 9000
