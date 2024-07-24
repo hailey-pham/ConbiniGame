@@ -27,6 +27,7 @@ public partial class tutorial : Control
     private bool isFirstTimeInventory = false;
     private bool isFirstTimeEndOfDay = false;
     private bool isFirstDay = true;
+    private bool isFirstSeason = true;
 
     private SceneManager sceneManager;
     private counter counter;
@@ -211,8 +212,13 @@ public partial class tutorial : Control
 
     private async void OnSeasonSceneLoaded()
     {
-        await ToSignal(GetTree().CreateTimer(3), "timeout");
-        StartTutorial("opening");
+        if(isFirstSeason)
+        {
+            await ToSignal(GetTree().CreateTimer(3), "timeout");
+            StartTutorial("opening");
+            isFirstSeason = false;
+        }
+        
     }
     private void OnGameSceneLoaded()
     {
