@@ -48,13 +48,18 @@ public partial class npcSpawner : Node2D
 		firstNPCTimer = GetNode<Timer>("FirstNPCTimer");
 
         //connects NPC spawner to spawn npcs when day increments a percent
-        Calendar calendar = GetNode<Calendar>("/root/Calendar");
+        calendar = GetNode<Calendar>("/root/Calendar");
 		global = GetNode<globals>("/root/Globals");
         calendar.DayPercent += _on_calendar_day_percent;
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    public override void _ExitTree()
+    {
+        calendar.DayPercent -= _on_calendar_day_percent;
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 	}
 
@@ -94,18 +99,14 @@ public partial class npcSpawner : Node2D
         }
     }
 
-    private void AddNPCIfEmpty()
+    private async void AddNPCIfEmpty()
     {
         if (npcCount == 0 && firstNPCTimer.TimeLeft == 0)
         {
             RandomNumberGenerator rng = new RandomNumberGenerator();
-            firstNPCTimer.WaitTime = rng.RandfRange(0, maxFirstNPCSpawnTime);
-            firstNPCTimer.Start();
-            firstNPCTimer.Timeout += () =>
-            {
-                SpawnNPC();
-                firstNPCTimer.Stop();
-            };
+			await ToSignal(GetTree().CreateTimer(rng.RandfRange(0, maxFirstNPCSpawnTime)), "timeout");
+            SpawnNPC();
+            firstNPCTimer.Stop();
         }
     }
 
@@ -116,7 +117,6 @@ public partial class npcSpawner : Node2D
 		if(IsStoreEmpty())
 		{
 			//we close the store if the day is up
-			calendar ??= GetNode<Calendar>("/root/Calendar");
 			if (calendar.IsDayOver())
 			{
 				calendar.EndDay();

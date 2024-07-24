@@ -25,7 +25,7 @@ public partial class LeaveState : State
 
         npcScript._navigationAgent.NavigationFinished += OnNavigationFinished;
 
-        npcSpawner = (Node2D) GetTree().GetFirstNodeInGroup("spawner");
+        npcSpawner = (npcSpawner) GetTree().GetFirstNodeInGroup("spawner");
 
         npcScript.MoveToPositionOffset(npcSpawner.GlobalPosition);
     }
