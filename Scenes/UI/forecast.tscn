@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://je8p3wm0tt4e"]
 
 [ext_resource type="Script" path="res://Scenes/UI/forecast.cs" id="1_u6xcp"]
-[ext_resource type="PackedScene" path="res://Assets/StoreFront/SkyBackground.tscn" id="2_35pms"]
+[ext_resource type="PackedScene" uid="uid://r6iwguk11m2d" path="res://Assets/StoreFront/SkyBackground.tscn" id="2_35pms"]
 [ext_resource type="PackedScene" uid="uid://cyrhcj8qsy7hu" path="res://Scenes/UI/ForecastAnimation.tscn" id="3_byu8w"]
-[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Components/StoreFront.tscn" id="3_ipr4b"]
+[ext_resource type="PackedScene" uid="uid://cc5jt5uehw73i" path="res://Scenes/StoreFront.tscn" id="3_ipr4b"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="6_sctoq"]
 [ext_resource type="FontFile" uid="uid://bba8wtlqt8yyp" path="res://Fonts/Early GameBoy.ttf" id="7_f8y7b"]
 
@@ -35,6 +35,7 @@ offset_bottom = -4.0
 _warningLabel = NodePath("../WarningLabel")
 
 [node name="WarningLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = -3.0
 offset_top = 136.0
 offset_right = 264.0

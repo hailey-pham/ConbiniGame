@@ -289,11 +289,6 @@ scroll_active = false
 wait_time = 2.0
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_db3uj")
-}
-
 [node name="ReadingMC" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
@@ -343,6 +338,11 @@ offset_right = 246.0
 offset_bottom = 168.0
 scale = Vector2(0.76, 0.76)
 texture = ExtResource("10_p0qqr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_db3uj")
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_m7peg")

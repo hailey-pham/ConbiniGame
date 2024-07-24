@@ -25,6 +25,7 @@ public partial class tutorial : Control
     private bool isTutorialPlaying = false;
     private bool isFirstCounterStocked = false;
     private bool isFirstTimeInventory = false;
+    private bool isFirstDay = true;
 
     private SceneManager sceneManager;
     private counter counter;
@@ -62,7 +63,7 @@ public partial class tutorial : Control
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
         tutorialTimer = new Timer();
-        tutorialTimer.WaitTime = 3.0f;
+        tutorialTimer.WaitTime = 1.0f;
         tutorialTimer.OneShot = true;
         tutorialTimer.Timeout += OnTutorialTimerTimeout;
         AddChild(tutorialTimer);
@@ -94,7 +95,7 @@ public partial class tutorial : Control
 
         var openinventory = new DialogueLine[]
         {
-            new DialogueLine("Grandpa must have been preparing for the spring. Customers will have a seasonal preference for sakura mochi."),
+            new DialogueLine("Grandpa must have been preparing for the spring. Customers will have a seasonal preference for Sakura Mochi.","talking_reading"),
             new DialogueLine("Let's get those in stock.")
         };
 
@@ -106,6 +107,32 @@ public partial class tutorial : Control
         };
 
         script.Add(nameof(placeitem), placeitem);
+
+        var forecast = new DialogueLine[]
+        {
+            new DialogueLine("The forecast is warning us of a wildfire soon!"),
+            new DialogueLine("I'd better prepare...")
+        };
+
+        script.Add(nameof(forecast), forecast);
+
+        var endofday = new DialogueLine[]
+        {
+            new DialogueLine("I should restock items with the money I have."),
+            new DialogueLine("Customers will have a disaster preference for fire extinguishers, so I'll buy those for tomorrow.","talking_reading"),
+            new DialogueLine("I can also purchase upgrades to protect the store from disasters."),
+            new DialogueLine("After that's done, I can click the sleep button to move on to the next day.","talking_grinning")
+        };
+
+        script.Add(nameof(endofday), endofday);
+
+        var disasterstats = new DialogueLine[]
+        {
+            new DialogueLine("Looks like the wildfire spread overnight..."),
+            new DialogueLine("I lost quite a bit in the incident. I should be careful from now on.","talking_reading")
+        };
+
+        script.Add(nameof(disasterstats), disasterstats);
     }
 
     private void OnTutorialTimerTimeout()
@@ -169,6 +196,15 @@ public partial class tutorial : Control
             case "seasontitle":
                 OnSeasonSceneLoaded();
                 break;
+            case "forecastscene":
+                OnForecastSceneLoaded();
+                break;
+            case "endofdayscene":
+                OnEndOfDaySceneLoaded();
+                break;
+            case "disasterstatsscene":
+                OnDisasterStatsSceneLoaded();
+                break;
         }
     }
 
@@ -179,10 +215,15 @@ public partial class tutorial : Control
     }
     private void OnGameSceneLoaded()
     {
-        SubscribeToCounterSignal();
-        tutorialTimer.Start();
-        storage = (storage)GetTree().GetFirstNodeInGroup("storage");
-        storage.InventoryOpened += OnInventoryOpened;
+        if(isFirstDay)
+        {
+            SubscribeToCounterSignal();
+            tutorialTimer.Start();
+            storage = (storage)GetTree().GetFirstNodeInGroup("storage");
+            storage.InventoryOpened += OnInventoryOpened;
+            isFirstDay = false;
+        }
+        
     }
     private void SubscribeToCounterSignal()
     {
@@ -198,7 +239,6 @@ public partial class tutorial : Control
     {
         if (!isFirstCounterStocked)
         {
-            GetTree().Paused = true;
             isFirstCounterStocked = true;
             StartTutorial("placeitem");
         }
@@ -208,10 +248,32 @@ public partial class tutorial : Control
     {
         if (!isFirstTimeInventory)
         {
-            GetTree().Paused = true;
             isFirstTimeInventory = true;
             StartTutorial("openinventory");
         }
+    }
+
+    private void OnForecastSceneLoaded()
+    {
+        forecast forecast = (forecast)sceneManager.GetNode("SceneParent/Forecast");
+        forecast.ForecastEnded += OnForecastEnded;
+    }
+
+    private async void OnEndOfDaySceneLoaded()
+    {
+        await ToSignal(GetTree().CreateTimer(1), "timeout");
+        StartTutorial("endofday");
+    }
+
+    private void OnDisasterStatsSceneLoaded()
+    {
+        //await ToSignal(GetTree().CreateTimer(1), "timeout");
+        StartTutorial("disasterstats");
+    }
+
+    private void OnForecastEnded()
+    {
+        StartTutorial("forecast");
     }
 
     private void EndTutorial()
@@ -221,6 +283,8 @@ public partial class tutorial : Control
         GetTree().Paused = false;
         isTutorialPlaying = false;
         Hide();
+
+        GetViewport().SetInputAsHandled();
     }
 
     public void StartTutorial(string tutorialName)
