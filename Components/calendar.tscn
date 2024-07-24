@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cowkc28g6f0ov"]
+[gd_scene load_steps=3 format=3 uid="uid://cowkc28g6f0ov"]
 
 [ext_resource type="Script" path="res://Scripts/Calendar.cs" id="1_y1mrd"]
+[ext_resource type="PackedScene" uid="uid://dge26oo0wcr1c" path="res://Scenes/UI/tutorial.tscn" id="2_3iq40"]
 
 [node name="Calendar" type="Node2D"]
 script = ExtResource("1_y1mrd")
 firstSpringArray = PackedInt32Array(0, 0, 4)
+tutorialScene = ExtResource("2_3iq40")
 
 [node name="Timer" type="Timer" parent="."]

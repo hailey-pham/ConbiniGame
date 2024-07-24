@@ -31,7 +31,7 @@ public partial class main_menu : Control
     {
         //change scene to game scene
         globals.ResetGame();
-        sceneManager.ChangeScene("storyline", "FadeToBlack");
+        sceneManager.ChangeScene("seasontitle", "FadeToBlack");
     }
 
     private void onCreditsPressed()
