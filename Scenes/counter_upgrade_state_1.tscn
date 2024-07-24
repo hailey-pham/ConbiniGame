@@ -6,16 +6,16 @@
 y_sort_enabled = true
 
 [node name="squarecounter" parent="." instance=ExtResource("1_ihn81")]
-position = Vector2(62, 83)
+position = Vector2(65, 83)
 
 [node name="squarecounter2" parent="." instance=ExtResource("1_ihn81")]
 position = Vector2(32, 83)
 
 [node name="squarecounter3" parent="." instance=ExtResource("1_ihn81")]
-position = Vector2(62, 129)
+position = Vector2(65, 129)
 
 [node name="squarecounter4" parent="." instance=ExtResource("1_ihn81")]
-position = Vector2(193, 83)
+position = Vector2(190, 83)
 
 [node name="squarecounter5" parent="." instance=ExtResource("1_ihn81")]
 position = Vector2(32, 129)
@@ -24,7 +24,7 @@ position = Vector2(32, 129)
 position = Vector2(223, 83)
 
 [node name="squarecounter7" parent="." instance=ExtResource("1_ihn81")]
-position = Vector2(193, 129)
+position = Vector2(190, 129)
 
 [node name="squarecounter8" parent="." instance=ExtResource("1_ihn81")]
 position = Vector2(223, 129)
