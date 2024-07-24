@@ -183,7 +183,7 @@ public partial class globals : Node
             item.currentStock = 0;
         }
 		
-        Money = 500;
+        Money = 2000;
 		for (int i = 0; i < 20;i++)
 		{
 			if (i < 5)

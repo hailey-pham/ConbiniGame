@@ -76,7 +76,7 @@ public partial class disaster_stats : Control
     {
         //Theoretically if you start the day without items or stock you will lose the game :3
         bool emptyStock = true;
-        if(globals.Money == 0)
+        if(globals.Money < 100)
         {
             foreach (var item in globals.Stock.Values)
             {
