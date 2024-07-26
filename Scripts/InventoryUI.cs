@@ -86,7 +86,7 @@ public partial class InventoryUI : Control
         }
 		
 #if DEBUG
-		GetChild<VBoxContainer>(0).AddChild((Control)inventoryIcon.Instantiate());
+		//GetChild<VBoxContainer>(0).AddChild((Control)inventoryIcon.Instantiate());
 #endif
 		
 	}

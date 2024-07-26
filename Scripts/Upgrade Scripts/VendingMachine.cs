@@ -12,7 +12,7 @@ public partial class VendingMachine : Upgrade
 	
 
 	public override void onDayEnd(globals Global, Node root) { // There is no additional UI for this, help	
-		int vendingCustomers = rnd.Next(5,(int)(globals.CustomersEntered/5.0));
+		int vendingCustomers = rnd.Next(5,(int)(Global.CustomersEntered/5.0));
 		int vendingRevenue  = vendingCustomers*100;
 		Global.Money += vendingRevenue;
 		// Node vendingMachineNode = Global.FindChild("VendingMachineLabel", true);

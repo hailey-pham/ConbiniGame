@@ -37,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 60),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 340), Vector2(0, -229.995)]
+"values": [Vector2(0, 340), Vector2(0, -245)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3l5go"]
@@ -105,6 +105,9 @@ LimeZuF
 [color=Lime]For the Colorful Asset Pack![/color]
 [color=AQUA][url]https://limezu.itch.io/[/url][/color]
 
+Ilham Khateeb
+[color=gold] Cultural Consultant
+[/color]
 Made with [color=red]愛[/color] at Kyoto University"
 fit_content = true
 script = ExtResource("2_rqkm7")

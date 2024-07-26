@@ -202,9 +202,11 @@ public partial class globals : Node
             IncrementItemResStock(stock["Toilet Paper"]);
         }
 #if DEBUG
+        Money = 999999;
         foreach (var item in stock.Values)
         {
-            item.currentStock = 999;
+            //temporarily commenting out so we don't have max stock on presentation
+            //item.currentStock = 999;
         }
 #endif
 		
