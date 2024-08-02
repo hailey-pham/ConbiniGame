@@ -1,13 +1,13 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://oawvk0cu233a"]
 
 [ext_resource type="Script" path="res://Scripts/ItemRes.cs" id="1_np6bn"]
-[ext_resource type="Texture2D" uid="uid://dllpm8eciob25" path="res://Assets/Items/Raincoat.png" id="2_p2anb"]
+[ext_resource type="Texture2D" uid="uid://b7xgrvwphs4c5" path="res://Assets/Items/Raincoat.png" id="2_p2anb"]
 
 [resource]
 script = ExtResource("1_np6bn")
 name = "Rain Jacket"
 price = 700
 restockPrice = 500
-SeasonFlags = 0
+SeasonFlags = 4
 DisasterFlags = 44
 spriteTexture = ExtResource("2_p2anb")

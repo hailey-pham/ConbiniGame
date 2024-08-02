@@ -8,4 +8,4 @@ protection = 1
 name = "Window Boards"
 description = "Board up your windows. Helps prevent damage in typhoons. Gets destroyed in wild fires. (ONE TIME USE)"
 owned = false
-cost = 7500
+cost = 1500

@@ -9,4 +9,4 @@ moneyProtection = 1
 name = "Reinforced Glass"
 description = "Stronger glass thats harder to break. (Reduce damage in earthquakes and typhoons)"
 owned = false
-cost = 18000
+cost = 13000

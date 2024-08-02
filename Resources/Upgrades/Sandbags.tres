@@ -8,4 +8,4 @@ protection = 3
 name = "Sandbags"
 description = "Divert water and reduce flood damage. Protects from water disasters and Earthquakes. (ONE TIME USE)"
 owned = false
-cost = 9000
+cost = 3000
