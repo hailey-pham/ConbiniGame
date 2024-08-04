@@ -15,7 +15,7 @@ public partial class globals : Node
     public delegate void GameLoadedEventHandler();
 
     private static int _money;
-    private static Dictionary<string, ItemRes> stock = new Dictionary<string, ItemRes>();
+    private Dictionary<string, ItemRes> stock = new Dictionary<string, ItemRes>();
     public static int _purchaseCost;
 
     public int _holdMoneyLost;
@@ -39,6 +39,10 @@ public partial class globals : Node
 	//signal to tell money GUI to update
 	[Signal]
 	public delegate void MoneyUpdatedEventHandler(int money);
+
+    //signal for stock
+    [Signal]
+    public delegate void StockUpdatedEventHandler();
 
 	private disaster_stats disasterstats;
 
@@ -87,7 +91,14 @@ public partial class globals : Node
 		}
 	}
 
-    public static Dictionary<string, ItemRes> Stock { get => stock; set => stock = value; }
+    public Dictionary<string, ItemRes> Stock { 
+        get { return stock; }
+        set {
+            stock = value;
+            EmitSignal(nameof(StockUpdated));
+        }
+    }
+    
     public static List<ItemRes> ItemsSoldToday { get => _itemsSoldToday; set => _itemsSoldToday = value; }
 
     // Called when the node enters the scene tree for the first time.
@@ -131,14 +142,16 @@ public partial class globals : Node
         MoneyLostToday = false;
 	}
 
-	public static void DecrementItemResStock(ItemRes itemRes)
+	public void DecrementItemResStock(ItemRes itemRes)
 	{
 		stock[itemRes.name].currentStock = stock[itemRes.name].currentStock - 1;
+        EmitSignal(nameof(StockUpdated));
     }
 
-	public static void IncrementItemResStock(ItemRes itemRes)
+	public void IncrementItemResStock(ItemRes itemRes)
 	{
         stock[itemRes.name].currentStock = stock[itemRes.name].currentStock + 1;
+        
     }
 
 	public void SellItem(ItemRes item)

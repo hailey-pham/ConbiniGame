@@ -7,6 +7,7 @@ public partial class NPCPreferenceModifier : Node
 {
     private Calendar calendar;
     private SceneManager sceneManager;
+    private globals globals;
 
     private static List<ItemWithProb> itemProbabilities = new List<ItemWithProb>();
 
@@ -25,6 +26,7 @@ public partial class NPCPreferenceModifier : Node
     {
         sceneManager = GetNode<SceneManager>("/root/SceneManager");
         sceneManager.SceneChanged += OnSceneChanged;
+        globals = GetNode<globals>("/root/Globals");
     }
     public float ItemBuyProbability(ItemRes item)
     {

@@ -1,11 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://c7rjtc6wfqbbo"]
+[gd_scene load_steps=42 format=3 uid="uid://c7rjtc6wfqbbo"]
 
 [ext_resource type="Script" path="res://Scenes/World.cs" id="1_msxpb"]
 [ext_resource type="Texture2D" uid="uid://cfbccnirvge7m" path="res://DisastoreInteriorTilemapV3.png" id="2_hyrcc"]
 [ext_resource type="PackedScene" uid="uid://c82k6db7jqgqs" path="res://Characters/player.tscn" id="3_gm0l6"]
 [ext_resource type="Texture2D" uid="uid://bpccdhn7cdrum" path="res://Assets/DisastoreInteriorTilemapV2.png" id="4_1jcc4"]
 [ext_resource type="Texture2D" uid="uid://dqr46mfcexeas" path="res://Assets/Bonsai.png" id="4_nhss0"]
-[ext_resource type="PackedScene" uid="uid://cmikix5dohqls" path="res://Scenes/counter_upgrade_state_0.tscn" id="4_yg7rd"]
+[ext_resource type="PackedScene" path="res://Scenes/counter_upgrade_state_0.tscn" id="4_yg7rd"]
 [ext_resource type="PackedScene" uid="uid://7fn5bdjpng5f" path="res://Scenes/counter_upgrade_state_1.tscn" id="5_ig0bw"]
 [ext_resource type="Texture2D" uid="uid://bwx1l3mn5dd05" path="res://Assets/GUI/MoneyBG.png" id="6_2v7vn"]
 [ext_resource type="PackedScene" uid="uid://byaiw4cj1167a" path="res://Scenes/Objects/checkout.tscn" id="6_qywxc"]
@@ -30,6 +30,8 @@
 [ext_resource type="SpriteFrames" uid="uid://bpp8m5uf6us81" path="res://Characters/NPC/AlexSpriteFrames.tres" id="21_412su"]
 [ext_resource type="SpriteFrames" uid="uid://d2s3s1halo2mm" path="res://Characters/NPC/AmeliaSpriteFrames.tres" id="22_khqci"]
 [ext_resource type="SpriteFrames" uid="uid://ca8ng6lxjx0yt" path="res://Characters/NPC/BobSpriteFrames.tres" id="23_4fvy3"]
+[ext_resource type="Theme" uid="uid://bave6qih56tgq" path="res://Scenes/UI/DarkerButtons.tres" id="24_nfacn"]
+[ext_resource type="Script" path="res://Scenes/CloseEarly.cs" id="25_ybhio"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y8ues"]
 vertices = PackedVector2Array(208, 93, 208, 67, 234, 38, 234, 154, 208, 139, 142, 154, 180, 139, 180, 113, 113, 155, 76, 139, 76, 113, 163, 38, 180, 67, 163, 54, 158, 71, 158, 53, 180, 93, 76, 93, 99, 71, 76, 67, 99, 53, 73, 53, 48, 67, 142, 198, 113, 198, 22, 155, 48, 139, 22, 38, 48, 113, 73, 38, 208, 113, 48, 93)
@@ -643,6 +645,16 @@ root_node = NodePath("../Suns")
 libraries = {
 "": SubResource("AnimationLibrary_c32fq")
 }
+
+[node name="Close Early Button" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 135.0
+offset_right = 251.0
+offset_bottom = 154.0
+theme = ExtResource("24_nfacn")
+text = "Close Early?"
+script = ExtResource("25_ybhio")
 
 [node name="npcSpawner" parent="." groups=["spawner"] instance=ExtResource("9_w4hoi")]
 z_index = -1

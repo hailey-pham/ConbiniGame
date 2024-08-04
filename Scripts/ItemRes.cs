@@ -55,7 +55,8 @@ public partial class ItemRes : Resource
     public void ReturnItemToStock()
     {
         //add one back to the global stock
-        globals.Stock[name].currentStock++;
+        // globals.Stock[name].currentStock++;
+        currentStock++;
     }
 
     public int LossAmount

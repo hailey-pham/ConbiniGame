@@ -104,6 +104,7 @@ public partial class Calendar : Node2D
         GetTree().Root.CallDeferred("add_child", tutorialInstance);
 
     }
+
     private void OnTimerTimeout()
     {
         elapsedTime += 1;
@@ -500,5 +501,11 @@ public partial class Calendar : Node2D
             EndDay();
         }
 #endif
+    }
+
+    public void EndDayEarly() {
+        timer.Stop();
+        elapsedTime = 0; // reset elapsed time
+        EndDay();
     }
 }

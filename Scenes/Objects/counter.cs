@@ -5,6 +5,7 @@ public partial class counter : StaticBody2D
 {
     private CounterArea counterArea;
     private ItemSpawner itemSpawner;
+    private globals globals;
 
     [Signal]
     public delegate void TakeItemresEventHandler();
@@ -15,6 +16,8 @@ public partial class counter : StaticBody2D
         counterArea = GetNode<CounterArea>("counter_area");
         //Item Spawner for the counter
         itemSpawner = GetNode<ItemSpawner>("ItemSpawner");
+        globals = GetNode<globals>("/root/Globals");
+        GD.Print("COUNTER: "+globals);
 
         var sceneManager = GetNode<SceneManager>("/root/SceneManager");
         sceneManager.SceneChanged += OnSceneChanged;

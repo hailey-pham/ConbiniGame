@@ -28,6 +28,6 @@ public partial class Victory : Control
     {
         EmitSignal(nameof(ButtonPressed));
         GD.Print("Continue :3");
-        sceneManager.ChangeScene("gamescene", "FadeToBlack");
+        sceneManager.ChangeScene("endofday", "FadeToBlack");
     }
 }
