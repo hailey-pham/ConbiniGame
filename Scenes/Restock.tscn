@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://hunt30xi3ai5"]
+[gd_scene load_steps=31 format=3 uid="uid://hunt30xi3ai5"]
 
 [ext_resource type="FontFile" uid="uid://doyavnd5jdgxd" path="res://Fonts/JF-Dot-MPlus10.ttf" id="1_km65n"]
 [ext_resource type="Theme" uid="uid://0owu7viu20al" path="res://Scenes/UI/main_menu.tres" id="1_wgo4a"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://bave6qih56tgq" path="res://Scenes/UI/DarkerButtons.tres" id="9_j8lql"]
 [ext_resource type="Theme" uid="uid://bk6yoil5hcrkt" path="res://Scenes/VScroll.tres" id="10_ep5wf"]
 [ext_resource type="Texture2D" uid="uid://crfjb33kxxpc0" path="res://Assets/ButtonBG.png" id="11_vsaxu"]
+[ext_resource type="PackedScene" uid="uid://cc6g1ra1nwp1o" path="res://Scenes/pause_menu.tscn" id="12_ufw36"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqmef"]
 bg_color = Color(0.66858, 0.533531, 0.501091, 1)
@@ -508,5 +509,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_v17pk")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_v17pk")
 theme_override_styles/focus = SubResource("StyleBoxFlat_v17pk")
 text = "Back"
+
+[node name="PauseMenu" parent="." instance=ExtResource("12_ufw36")]
+layout_mode = 1
 
 [connection signal="pressed" from="FullOrder/Purchase" to="." method="_on_purchase_pressed"]

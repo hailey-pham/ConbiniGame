@@ -1,0 +1,176 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc6g1ra1nwp1o"]
+
+[ext_resource type="Theme" uid="uid://cya8uk46fljr1" path="res://Scenes/UI/UI.tres" id="1_s0j0g"]
+[ext_resource type="Script" path="res://Scripts/pause_menu.cs" id="2_l7fx0"]
+[ext_resource type="Texture2D" uid="uid://ctid4rjxh0ki3" path="res://Assets/Forecasts/earthquakeForecast.png" id="3_62isn"]
+[ext_resource type="Theme" uid="uid://bave6qih56tgq" path="res://Scenes/UI/DarkerButtons.tres" id="4_lmx57"]
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("tabs")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s0j0g")
+script = ExtResource("2_l7fx0")
+tabs = [NodePath("GameStats"), NodePath("Options"), NodePath("Quit")]
+SeasonStrings = PackedStringArray("[img=11x12]res://Assets/SeasonIcons/SpringIcon.png[/img] Spring", "[img=11x12]res://Assets/SeasonIcons/SummerIcon.png[/img] Summer", "[img=11x12]res://Assets/SeasonIcons/FallIcon.png[/img] Fall", "[img=11x12]res://Assets/SeasonIcons/WinterIcon.png[/img] Winter")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 257.0
+offset_bottom = 160.0
+color = Color(0.0313726, 0.0196078, 0.0196078, 0.67451)
+
+[node name="BG" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 3.0
+offset_bottom = 3.0
+theme = ExtResource("1_s0j0g")
+
+[node name="Outline" type="ColorRect" parent="BG"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 23.0
+offset_right = 216.0
+offset_bottom = 128.0
+color = Color(0.192157, 0.164706, 0.164706, 1)
+
+[node name="MainBG" type="ColorRect" parent="BG"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 46.0
+offset_right = 215.0
+offset_bottom = 108.0
+color = Color(0.85098, 0.764706, 0.741176, 1)
+
+[node name="Label" type="Label" parent="BG"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 24.0
+offset_right = 215.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.85098, 0.764706, 0.741176, 1)
+text = "GAME PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tabs" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 3.0
+offset_bottom = 3.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tabs"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 109.0
+offset_right = 215.0
+offset_bottom = 127.0
+theme_override_constants/separation = 1
+
+[node name="Main" type="Button" parent="Tabs/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Main"
+
+[node name="Options" type="Button" parent="Tabs/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Options"
+
+[node name="Quit" type="Button" parent="Tabs/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit"
+
+[node name="GameStats" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 3.0
+offset_bottom = 3.0
+
+[node name="Warning" type="TextureRect" parent="GameStats"]
+offset_left = 161.0
+offset_top = 54.0
+offset_right = 219.0
+offset_bottom = 100.0
+texture = ExtResource("3_62isn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameStats"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 52.0
+offset_right = 171.0
+offset_bottom = 102.0
+theme_override_constants/separation = 6
+
+[node name="DaysSurvived" type="RichTextLabel" parent="GameStats/VBoxContainer"]
+layout_mode = 2
+text = "XX Days Survived"
+fit_content = true
+scroll_active = false
+autowrap_mode = 1
+
+[node name="CalendarDay" type="RichTextLabel" parent="GameStats/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=12x12]res://Assets/SeasonIcons/SpringIcon.png[/img] Spring 1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 1
+
+[node name="CurrentFunds" type="RichTextLabel" parent="GameStats/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Current Funds: $1000000"
+fit_content = true
+scroll_active = false
+autowrap_mode = 1
+
+[node name="Options" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_top = 3.0
+offset_right = 40.0
+offset_bottom = 43.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 46.0
+offset_right = 215.0
+offset_bottom = 108.0
+bbcode_enabled = true
+text = "[center]
+
+No Options"
+
+[node name="Quit" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Quit"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 55.0
+offset_right = 215.0
+offset_bottom = 98.0
+bbcode_enabled = true
+text = "[center]Are you sure you want 
+to quit?"
+scroll_active = false
+
+[node name="FinalQuit" type="Button" parent="Quit"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 83.0
+offset_right = 159.0
+offset_bottom = 101.0
+theme = ExtResource("4_lmx57")
+text = "Quit Game"

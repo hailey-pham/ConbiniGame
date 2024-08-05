@@ -20,6 +20,8 @@ public partial class World : Node2D
 	Node instance;
 
     Label dayLabel;
+
+	// Control pauseMenu;
 	
 
     public override void _Ready()
@@ -36,6 +38,8 @@ public partial class World : Node2D
 		calendarUI = GetNode<CalendarUI>("UI/CalendarUI");
 		dayLabel = GetNode<Label>("UI/DayLabel");
 		audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+		// pauseMenu = GetNode<Control>("PauseMenu");
+		// pauseMenu.Visible = false;
 		audioPlayer.Finished += () =>
 		{
 			audioPlayer.Play();
@@ -100,5 +104,14 @@ public partial class World : Node2D
 	{
 
 	}
+
+	// public override void _Input(InputEvent @event)
+    // {
+    //     if(@event.IsActionReleased("Exit"))
+    //     {
+	// 		pauseMenu.Visible = !pauseMenu.Visible;
+	// 		GetTree().Paused = !GetTree().Paused;
+	// 	}
+    // }
 }
 
