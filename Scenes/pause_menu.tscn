@@ -91,6 +91,7 @@ offset_top = 3.0
 offset_bottom = 3.0
 
 [node name="Warning" type="TextureRect" parent="GameStats"]
+layout_mode = 0
 offset_left = 161.0
 offset_top = 54.0
 offset_right = 219.0

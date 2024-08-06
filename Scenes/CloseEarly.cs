@@ -29,14 +29,14 @@ public partial class CloseEarly : Button
 			}
 		}
 
-		if(outOfStock && !this.Visible) {
-			this.Visible = true;
+		if(outOfStock && !Visible) {
+			Visible = true;
 
-			// Tween tween = this.CreateTween();
-			// tween.TweenInterval(0.1);
-			// tween.SetEase(Tween.EaseType.Out);
-			// Modulate = new Color("ffffff00");
-			// tween.TweenProperty(this, "modulate", new Color("ffffffff"), 1f);
+			Tween tween = GetTree().CreateTween();
+			tween.TweenInterval(0.1);
+			tween.SetEase(Tween.EaseType.Out);
+			Modulate = new Color("ffffff00");
+			tween.TweenProperty(this, "modulate", new Color("ffffffff"), 1f);
 		}
     }
 
