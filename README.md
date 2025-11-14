@@ -3,6 +3,8 @@
 > Upgrade your convenience store
 > Prepare for natural disasters (Earthquakes, Tsunamis, Typhoons, and Fires)
 
+[PLAY NOW ON ITCH.IO](https://plasmamintz.itch.io/disastore)
+
 ## Build Instructions
 ### Requirements:
 1. Ubuntu 22.04
